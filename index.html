@@ -1,6 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+<style>
+  /* ===== Shared helpers ===== */
+  .hz-is-visible { /* toggled by JS */ }
+
+  /* Smooth show on enter (fallback if animation not supported) */
+  [data-hz-aos] { opacity: 0; transform: translateY(8px); transition: opacity .5s ease, transform .5s ease; }
+  .hz-is-visible[data-hz-aos] { opacity: 1; transform: translateY(0); }
+
+  /* ===== Floating motifs ===== */
+  @keyframes hz-float {
+    0%,100% { transform: translateY(0); }
+    50% { transform: translateY(-14px); }
+  }
+  .hz-float { animation: hz-float 6s ease-in-out infinite; }
+
+  /* Keep motifs behind content but inside hero */
+  .hz-motifs { position:absolute; inset:0; pointer-events:none; user-select:none; z-index:0; }
+  .hz-hero-content { position:relative; z-index:10; }
+
+  /* ===== Green Loop ===== */
+  /* circumference ~ 2πr = 2*3.1416*145 ≈ 910 */
+  .hz-loop-path { stroke-dasharray: 910; stroke-dashoffset: 910; }
+  .hz-loop-draw .hz-loop-path { animation: hz-loop-draw 1.6s ease-out forwards; }
+  @keyframes hz-loop-draw { to { stroke-dashoffset: 0; } }
+
+  /* ===== Net-Zero Journey ===== */
+  .hz-nz-bar { --hz-pct: 72%; }   /* <— change this % in one place */
+  .hz-nz-fill { width: 0; transition: width 1.4s cubic-bezier(0.22,1,0.36,1); }
+  .hz-nz-animate .hz-nz-fill { width: var(--hz-pct); }
+</style>
+
+    
+    <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hertzwave - Enterprise Carbon Accounting & Net-Zero Planning Platform</title>
@@ -169,29 +201,33 @@
     </div>
 
     <!-- Hero Section with added spacing -->
-    <section class="pt-28 pb-16 bg-gradient-to-br from-green-50 via-white to-hertz-light/20 overflow-hidden">
 
-        <!-- Floating green motifs layer (decorative) -->
-<div aria-hidden="true" class="absolute inset-0 pointer-events-none select-none z-0">
-  <!-- leaf -->
-  <svg class="absolute -left-10 top-6 w-24 opacity-25 animate-float" viewBox="0 0 64 64" fill="none">
-    <path d="M56 8C40 8 24 20 16 36c-6 12-6 20-6 20s8 0 20-6C46 42 58 26 56 8Z"
-          stroke="#4A7C59" stroke-width="2" fill="#A8E6A3"></path>
-  </svg>
-  <!-- droplet -->
-  <svg class="absolute right-10 top-24 w-16 opacity-20 animate-float" style="animation-duration:8s" viewBox="0 0 64 64" fill="none">
-    <path d="M32 6c8 14 18 20 18 30a18 18 0 1 1-36 0c0-10 10-16 18-30Z"
-          stroke="#4A7C59" stroke-width="2" fill="#A8E6A3"></path>
-  </svg>
-  <!-- wind -->
-  <svg class="absolute left-1/3 bottom-6 w-28 opacity-20 animate-float" style="animation-duration:7s" viewBox="0 0 96 24" fill="none">
-    <path d="M2 12h48M18 6h60M10 18h70" stroke="#4A7C59" stroke-width="2" stroke-linecap="round"/>
-  </svg>
-</div>
+<!-- Hero Section with added spacing -->
+<section class="pt-28 pb-16 bg-gradient-to-br from-green-50 via-white to-hertz-light/20 overflow-hidden relative">
+  
+  <!-- Floating green motifs layer (decorative) -->
+  <div class="hz-motifs" aria-hidden="true">
+    <!-- leaf -->
+    <svg class="absolute -left-10 top-6 w-24 opacity-20 hz-float" viewBox="0 0 64 64" fill="none">
+      <path d="M56 8C40 8 24 20 16 36c-6 12-6 20-6 20s8 0 20-6C46 42 58 26 56 8Z"
+            stroke="#4A7C59" stroke-width="2" fill="#A8E6A3"></path>
+    </svg>
+    <!-- droplet -->
+    <svg class="absolute right-10 top-24 w-16 opacity-20 hz-float" style="animation-duration:8s" viewBox="0 0 64 64" fill="none">
+      <path d="M32 6c8 14 18 20 18 30a18 18 0 1 1-36 0c0-10 10-16 18-30Z"
+            stroke="#4A7C59" stroke-width="2" fill="#A8E6A3"></path>
+    </svg>
+    <!-- wind -->
+    <svg class="absolute left-1/3 bottom-6 w-28 opacity-20 hz-float" style="animation-duration:7s" viewBox="0 0 96 24" fill="none">
+      <path d="M2 12h48M18 6h60M10 18h70" stroke="#4A7C59" stroke-width="2" stroke-linecap="round"/>
+    </svg>
+  </div>
+
+  <!-- Hero content wrapper (now sits above motifs) -->
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 hz-hero-content">
 
 
-        
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
             <div class="grid lg:grid-cols-2 gap-12 items-center">
                 <div class="animate-fade-in-up">
                     <h1 class="text-3xl lg:text-4xl font-semibold text-gray-900 mb-6 leading-tight">
@@ -408,29 +444,28 @@
        class="w-full h-56 md:h-72 lg:h-96 object-cover select-none pointer-events-none">
 </section>
 
-<!-- Green Loop (scroll-drawn circular diagram) -->
-<section id="green-loop" class="py-16 bg-white" data-animate-on-scroll>
-  <style>
-    /* Circle circumference for r=145 ≈ 910 */
-    #green-loop .path { stroke-dasharray: 910; stroke-dashoffset: 910; }
-    #green-loop.is-visible .path { animation: loop-draw 1600ms ease-out forwards; }
-    @keyframes loop-draw { to { stroke-dashoffset: 0; } }
-  </style>
 
+    <section id="green-loop" class="py-16 bg-white" data-hz-aos>
   <div class="max-w-4xl mx-auto px-6 text-center">
     <h3 class="text-2xl lg:text-3xl font-semibold text-gray-900 mb-4">The Green Loop</h3>
-    <p class="text-gray-600 mb-8">Compliance → AI → Net-Zero, continuously improving with real-time data.</p>
+    <p class="text-gray-600 mb-8">
+      Compliance → AI → Net-Zero, continuously improving with real-time data.
+    </p>
 
     <div class="relative mx-auto max-w-xl">
       <svg viewBox="0 0 400 400" class="w-full">
         <defs>
-          <linearGradient id="loopGrad" x1="0" y1="0" x2="1" y2="1">
+          <linearGradient id="hzLoopGrad" x1="0" y1="0" x2="1" y2="1">
             <stop offset="0%"  stop-color="#A8E6A3"/>
             <stop offset="100%" stop-color="#4A7C59"/>
           </linearGradient>
         </defs>
+
         <!-- main circle -->
-        <circle cx="200" cy="200" r="145" fill="none" stroke="url(#loopGrad)" stroke-width="10" class="path"/>
+        <circle cx="200" cy="200" r="145" fill="none"
+                stroke="url(#hzLoopGrad)" stroke-width="10"
+                class="hz-loop-path"/>
+
         <!-- arrowheads -->
         <path d="M200 45 l10 22 h-20 Z" fill="#4A7C59"/>
         <path d="M355 200 l-22 10 v-20 Z" fill="#4A7C59"/>
@@ -452,6 +487,7 @@
     </div>
   </div>
 </section>
+
 
 
     
@@ -687,15 +723,7 @@
         </div>
     </section>
 
-<!-- Net-Zero Journey Progress (scroll-fill) -->
-<section id="netzero-journey" class="py-16 bg-gradient-to-br from-hertz-light/20 to-green-50" data-animate-on-scroll>
-  <style>
-    /* Set your target once via CSS variable: e.g., 72% */
-    #netzero-journey .bar { --pct: 72%; }
-    #netzero-journey .fill { width: 0; transition: width 1400ms cubic-bezier(0.22, 1, 0.36, 1); }
-    #netzero-journey.is-visible .fill { width: var(--pct); }
-  </style>
-
+<section id="netzero-journey" class="py-16 bg-gradient-to-br from-hertz-light/20 to-green-50 hz-nz-bar" data-hz-aos>
   <div class="max-w-4xl mx-auto px-6">
     <div class="flex items-center gap-3 mb-4">
       <i class="fas fa-leaf text-hertz-primary text-2xl"></i>
@@ -703,16 +731,16 @@
     </div>
     <p class="text-gray-600 mb-6">Track tangible progress from baseline to target with live, auditable data.</p>
 
-    <div class="bg-white rounded-2xl shadow p-6 bar">
+    <div class="bg-white rounded-2xl shadow p-6">
       <div class="flex justify-between text-sm text-gray-600 mb-2">
         <span>Baseline</span>
         <span class="font-medium text-hertz-dark">Target</span>
       </div>
 
       <div class="w-full h-4 rounded-full bg-hertz-primary/20 overflow-hidden">
-        <div class="fill h-4 rounded-full bg-hertz-primary relative">
+        <div class="hz-nz-fill h-4 rounded-full bg-hertz-primary relative">
           <span class="absolute -top-8 right-0 translate-x-1/2 bg-white px-2 py-1 rounded shadow text-xs font-semibold text-hertz-dark">
-            <span id="nz-label">72% to Target</span>
+            <span id="hz-nz-label">72% to Target</span>
           </span>
         </div>
       </div>
@@ -939,6 +967,41 @@
 })();
 </script>
 
+<script>
+/* Robust visibility + animation toggles without relying on Tailwind utilities */
+(function () {
+  function inView(el, offset = 0) {
+    const r = el.getBoundingClientRect();
+    return (r.top <= (window.innerHeight || document.documentElement.clientHeight) - offset) && (r.bottom >= 0 + offset);
+  }
+
+  const onEnter = () => {
+    // 1) Green Loop: add class to animate stroke
+    const loop = document.getElementById('green-loop');
+    if (loop && !loop.classList.contains('hz-loop-draw') && inView(loop, 80)) {
+      loop.classList.add('hz-is-visible', 'hz-loop-draw');
+    }
+
+    // 2) Net-Zero Journey: fill bar
+    const nz = document.getElementById('netzero-journey');
+    if (nz && !nz.classList.contains('hz-nz-animate') && inView(nz, 80)) {
+      nz.classList.add('hz-is-visible', 'hz-nz-animate');
+    }
+
+    // 3) Generic AOS
+    document.querySelectorAll('[data-hz-aos]').forEach(el => {
+      if (!el.classList.contains('hz-is-visible') && inView(el, 80)) {
+        el.classList.add('hz-is-visible');
+      }
+    });
+  };
+
+  ['load','scroll','resize'].forEach(evt => window.addEventListener(evt, onEnter, { passive: true }));
+  // kick once in case elements are already in view
+  onEnter();
+})();
+</script>
+    
 
 </body>
 </html>
