@@ -170,6 +170,25 @@
 
     <!-- Hero Section with added spacing -->
     <section class="pt-28 pb-16 bg-gradient-to-br from-green-50 via-white to-hertz-light/20 overflow-hidden">
+<!-- Floating green motifs layer (decorative) -->
+<div aria-hidden="true" class="absolute inset-0 pointer-events-none select-none">
+  <!-- leaf -->
+  <svg class="absolute -left-10 top-6 w-24 opacity-10 animate-float" viewBox="0 0 64 64" fill="none">
+    <path d="M56 8C40 8 24 20 16 36c-6 12-6 20-6 20s8 0 20-6C46 42 58 26 56 8Z"
+          stroke="#4A7C59" stroke-width="2" fill="#A8E6A3"></path>
+  </svg>
+  <!-- droplet -->
+  <svg class="absolute right-10 top-24 w-16 opacity-10 animate-float" style="animation-duration:8s" viewBox="0 0 64 64" fill="none">
+    <path d="M32 6c8 14 18 20 18 30a18 18 0 1 1-36 0c0-10 10-16 18-30Z"
+          stroke="#4A7C59" stroke-width="2" fill="#A8E6A3"></path>
+  </svg>
+  <!-- wind -->
+  <svg class="absolute left-1/3 bottom-6 w-28 opacity-10 animate-float" style="animation-duration:7s" viewBox="0 0 96 24" fill="none">
+    <path d="M2 12h48M18 6h60M10 18h70" stroke="#4A7C59" stroke-width="2" stroke-linecap="round"/>
+  </svg>
+</div>
+
+        
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid lg:grid-cols-2 gap-12 items-center">
                 <div class="animate-fade-in-up">
@@ -387,6 +406,51 @@
        class="w-full h-56 md:h-72 lg:h-96 object-cover select-none pointer-events-none">
 </section>
 
+    <!-- Green Loop (scroll-drawn circular diagram) -->
+<section id="green-loop" class="py-16 bg-white" data-animate-on-scroll>
+  <style>
+    /* Draw-on-scroll effect */
+    #green-loop .path {
+      stroke-dasharray: 1200;
+      stroke-dashoffset: 1200;
+      transition: stroke-dashoffset 1600ms ease-out;
+    }
+    #green-loop.is-visible .path { stroke-dashoffset: 0; }
+  </style>
+
+  <div class="max-w-4xl mx-auto px-6 text-center">
+    <h3 class="text-2xl lg:text-3xl font-semibold text-gray-900 mb-4">
+      The Green Loop
+    </h3>
+    <p class="text-gray-600 mb-8">Compliance → AI → Net-Zero, continuously improving with real-time data.</p>
+
+    <div class="relative mx-auto max-w-xl">
+      <!-- circular path -->
+      <svg viewBox="0 0 400 400" class="w-full">
+        <defs>
+          <linearGradient id="loopGrad" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%"  stop-color="#A8E6A3"/>
+            <stop offset="100%" stop-color="#4A7C59"/>
+          </linearGradient>
+        </defs>
+        <circle cx="200" cy="200" r="145" fill="none" stroke="url(#loopGrad)" stroke-width="10" class="path"/>
+        <!-- arrowheads -->
+        <path d="M200 50 l10 22 h-20 Z" fill="#4A7C59"/>
+        <path d="M345 200 l-22 10 v-20 Z" fill="#4A7C59"/>
+        <path d="M200 350 l-10 -22 h20 Z" fill="#4A7C59"/>
+      </svg>
+
+      <!-- Nodes -->
+      <div class="absolute inset-0">
+        <div class="absolute left-1/2 -translate-x-1/2 -top-2 bg-white shadow-md rounded-full px-4 py-2 text-hertz-dark font-semibold">Compliance</div>
+        <div class="absolute -right-2 top-1/2 -translate-y-1/2 bg-white shadow-md rounded-full px-4 py-2 text-hertz-dark font-semibold">AI</div>
+        <div class="absolute left-1/2 -translate-x-1/2 -bottom-2 bg-white shadow-md rounded-full px-4 py-2 text-hertz-dark font-semibold">Net-Zero</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+    
 <!-- Industries -->
 <section id="industries" class="py-16 bg-white">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -629,6 +693,45 @@
         </div>
     </section>
 
+<!-- Net-Zero Journey Progress (scroll-fill) -->
+<section id="netzero-journey" class="py-16 bg-gradient-to-br from-hertz-light/20 to-green-50" data-animate-on-scroll>
+  <style>
+    #netzero-journey .fill { width: 0; transition: width 1400ms cubic-bezier(0.22, 1, 0.36, 1); }
+    /* set your target here (e.g., 72%) */
+    #netzero-journey.is-visible .fill { width: 72%; }
+  </style>
+
+  <div class="max-w-4xl mx-auto px-6">
+    <div class="flex items-center gap-3 mb-4">
+      <i class="fas fa-leaf text-hertz-primary text-2xl"></i>
+      <h3 class="text-2xl lg:text-3xl font-semibold text-gray-900">Your Net-Zero Journey</h3>
+    </div>
+    <p class="text-gray-600 mb-6">Track tangible progress from baseline to target with live, auditable data.</p>
+
+    <div class="bg-white rounded-2xl shadow p-6">
+      <div class="flex justify-between text-sm text-gray-600 mb-2">
+        <span>Baseline</span>
+        <span class="font-medium text-hertz-dark">Target</span>
+      </div>
+
+      <div class="w-full h-4 rounded-full bg-hertz-primary/20 overflow-hidden">
+        <div class="fill h-4 rounded-full bg-hertz-primary relative">
+          <span class="absolute -top-8 right-0 translate-x-1/2 bg-white px-2 py-1 rounded shadow text-xs font-semibold text-hertz-dark">
+            72% to Target
+          </span>
+        </div>
+      </div>
+
+      <div class="mt-4 grid grid-cols-3 gap-4 text-sm">
+        <div><span class="text-gray-500">Scope 1</span><div class="font-semibold text-gray-900">−18%</div></div>
+        <div><span class="text-gray-500">Scope 2</span><div class="font-semibold text-gray-900">−36%</div></div>
+        <div><span class="text-gray-500">Scope 3</span><div class="font-semibold text-gray-900">−9%</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+    
     <!-- CTA Section -->
     <section class="py-16 bg-gradient-to-r from-hertz-primary to-hertz-dark">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -820,5 +923,15 @@
             }
         });
     </script>
+  // Scroll-trigger helper: adds .is-visible to any element with the data-animate-on-scroll attribute
+  (function () {
+    const io = new IntersectionObserver(
+      (entries) => entries.forEach(e => e.isIntersecting && e.target.classList.add('is-visible')),
+      { threshold: 0.35 }
+    );
+    document.querySelectorAll('[data-animate-on-scroll]').forEach(el => io.observe(el));
+  })();
+</script>
+
 </body>
 </html>
