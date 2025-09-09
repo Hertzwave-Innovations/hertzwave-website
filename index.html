@@ -256,13 +256,13 @@
   <!-- Floating green motifs layer (decorative) -->
 <div class="hz-motifs hz-fade-in" aria-hidden="true">
   <!-- leaf (moved down/right; more visible) -->
-  <svg class="absolute left-10 top-31 w-32 opacity-40 hz-float" viewBox="0 0 64 64" fill="none">
+  <svg class="absolute left-10 top-32 w-32 opacity-40 hz-float" viewBox="0 0 64 64" fill="none">
     <path d="M56 8C40 8 24 20 16 36c-6 12-6 20-6 20s8 0 20-6C46 42 58 26 56 8Z"
           stroke="#2F4F3F" stroke-width="2.5" fill="#A8E6A3"></path>
   </svg>
 
   <!-- droplets cluster (left droplet moved away & smaller) -->
-  <svg class="absolute left-28 top-48 w-10 opacity-30 hz-float" style="animation-duration:7s" viewBox="0 0 64 64" fill="none">
+  <svg class="absolute left-29 top-48 w-10 opacity-30 hz-float" style="animation-duration:7s" viewBox="0 0 64 64" fill="none">
     <path d="M32 6c8 14 18 20 18 30a18 18 0 1 1-36 0c0-10 10-16 18-30Z"
           stroke="#4A7C59" stroke-width="1.8" fill="#A8E6A3"></path>
   </svg>
@@ -790,36 +790,38 @@
     </section>
 
 <!-- Net-Zero Journey -->
+
 <section id="netzero-journey" class="pt-16 pb-24 bg-gradient-to-br from-hertz-light/20 to-green-50 relative z-10">
-  <div class="max-w-4xl mx-auto px-4 text-center">
-    <h2 class="text-2xl lg:text-3xl font-semibold text-gray-900 mb-4 flex items-center justify-center">
+  <div class="max-w-4xl mx-auto px-4">
+    <h2 class="text-2xl lg:text-3xl font-semibold text-gray-900 mb-3 text-center flex items-center justify-center">
       <i class="fas fa-leaf text-hertz-primary mr-2"></i> Your Net-Zero Journey
     </h2>
-    <p class="text-gray-600 mb-8">
+    <p class="text-gray-600 text-center mb-8">
       Track tangible progress from baseline to target with live, auditable data.
     </p>
 
-    <!-- Progress bar container -->
-    <div class="relative bg-white rounded-xl shadow p-6">
-      <div class="flex justify-between text-sm font-medium text-gray-700 mb-3">
+    <div class="hz-nz-card bg-white rounded-xl shadow p-6">
+      <div class="flex justify-between items-center text-sm font-medium text-gray-700 mb-4">
         <span>Baseline</span>
-        <span class="text-hertz-dark font-semibold">72% to Target</span>
+        <span class="text-hertz-dark font-semibold"><span id="hzNzLabel">72%</span> to Target</span>
       </div>
 
-      <!-- Animated Net-Zero Bar -->
-      <div class="hz-nz-bar"></div>
+      <!-- Track + Fill -->
+      <div class="hz-nz-track">
+        <div class="hz-nz-fill"></div>
+      </div>
 
       <!-- Scope breakdown -->
-      <div class="grid grid-cols-3 gap-4 mt-4 text-sm">
-        <div>
+      <div class="grid grid-cols-3 gap-4 mt-5 text-sm">
+        <div class="text-center">
           <div class="font-bold text-hertz-dark">-18%</div>
           <div class="text-gray-500">Scope 1</div>
         </div>
-        <div>
+        <div class="text-center">
           <div class="font-bold text-hertz-dark">-36%</div>
           <div class="text-gray-500">Scope 2</div>
         </div>
-        <div>
+        <div class="text-center">
           <div class="font-bold text-hertz-dark">-9%</div>
           <div class="text-gray-500">Scope 3</div>
         </div>
@@ -827,6 +829,7 @@
     </div>
   </div>
 </section>
+
 
 
 
