@@ -102,12 +102,13 @@
   to { opacity: 1; }
 }
 
+/* Net-Zero Journey Bar */
 .hz-nz-bar { 
-  --hz-pct: 72%;   /* <— edit this number to control how much of the bar fills */
+  --hz-pct: 72%;   /* adjust this % as needed */
   position: relative;
   background: rgba(74, 124, 89, 0.2);
   border-radius: 9999px;
-  height: 12px;
+  height: 14px;        /* ensure visible height */
   overflow: hidden;
 }
 
@@ -116,7 +117,7 @@
   display: block;
   height: 100%;
   width: var(--hz-pct);
-  background: #4A7C59;   /* hertz-primary */
+  background: #4A7C59;
   border-radius: 9999px;
   animation: hz-nz-fill 1.6s ease-out forwards;
 }
@@ -125,6 +126,7 @@
   from { width: 0; }
   to   { width: var(--hz-pct); }
 }
+
 </style>
 
         
