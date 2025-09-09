@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Hertzwave - Enterprise Carbon Accounting & Net-Zero Planning Platform</title>
   <meta name="description" content="AI-powered carbon accounting platform for BRSR, CSRD & global compliance across 15+ industries. Replace expensive consultants with intelligent automation.">
+
+  <!-- Tailwind + Fonts -->
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
@@ -19,34 +21,7 @@
             'hertz-dark': '#2F4F3F',
             'hertz-black': '#000000'
           },
-          fontFamily: {
-            'outfit': ['Outfit', 'sans-serif']
-          },
-          animation: {
-            'float': 'float 6s ease-in-out infinite',
-            'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-            'fade-in-up': 'fadeInUp 1s ease-out',
-            'slide-in-left': 'slideInLeft 0.8s ease-out',
-            'slide-in-right': 'slideInRight 0.8s ease-out'
-          },
-          keyframes: {
-            float: {
-              '0%, 100%': { transform: 'translateY(0px)' },
-              '50%': { transform: 'translateY(-20px)' }
-            },
-            fadeInUp: {
-              '0%': { opacity: '0', transform: 'translateY(30px)' },
-              '100%': { opacity: '1', transform: 'translateY(0)' }
-            },
-            slideInLeft: {
-              '0%': { opacity: '0', transform: 'translateX(-50px)' },
-              '100%': { opacity: '1', transform: 'translateX(0)' }
-            },
-            slideInRight: {
-              '0%': { opacity: '0', transform: 'translateX(50px)' },
-              '100%': { opacity: '1', transform: 'translateX(0)' }
-            }
-          }
+          fontFamily: { 'outfit': ['Outfit', 'sans-serif'] },
         }
       }
     }
@@ -54,25 +29,23 @@
 
   <style>
     /* ===== Shared helpers ===== */
-    .hz-is-visible {}
-
     [data-hz-aos] { opacity: 0; transform: translateY(8px); transition: opacity .5s ease, transform .5s ease; }
     .hz-is-visible[data-hz-aos] { opacity: 1; transform: translateY(0); }
 
-    /* ===== Floating motifs ===== */
+    /* Floating motifs */
     @keyframes hz-float { 0%,100% { transform: translateY(0);} 50% { transform: translateY(-14px);} }
     .hz-float { animation: hz-float 6s ease-in-out infinite; }
     .hz-motifs { position:absolute; inset:0; pointer-events:none; user-select:none; z-index:0; }
     .hz-hero-content { position:relative; z-index:10; }
 
-    /* ===== Green Loop ===== */
+    /* Green Loop */
     .hz-loop-path { stroke-dasharray: 910; stroke-dashoffset: 910; }
     .hz-loop-draw .hz-loop-path { animation: hz-loop-draw 1.6s ease-out forwards; }
     @keyframes hz-loop-draw { to { stroke-dashoffset: 0; } }
     @keyframes hz-loop-spin { from { stroke-dashoffset: 910; } to { stroke-dashoffset: 0; } }
     .hz-loop-spin { animation: hz-loop-spin 12s linear infinite; }
 
-    /* ===== Net-Zero Journey ===== */
+    /* Net-Zero Journey */
     .hz-nz-card { position: relative; }
     .hz-nz-track {
       --hz-pct: 72%;
@@ -80,7 +53,6 @@
       border-radius: 9999px;
       background: rgba(74,124,89,0.20);
       overflow: hidden;
-      position: relative;
     }
     .hz-nz-fill {
       height: 100%;
@@ -94,35 +66,31 @@
 
 <body class="bg-white font-outfit">
 
-  <!-- your entire body content remains unchanged -->
+  <!-- === ALL YOUR CONTENT GOES HERE === -->
+  <!-- (Navigation, Hero, Features, Industries, Trust, Net-Zero section, CTA, Footer, etc.) -->
 
-  <!-- Scripts -->
+  <!-- === Scripts go last === -->
   <script>
     // Mobile menu toggle
-    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-    const mobileMenu = document.getElementById('mobile-menu');
-    if (mobileMenuBtn) {
-      mobileMenuBtn.addEventListener('click', () => {
-        mobileMenu.classList.toggle('hidden');
-      });
+    const btn = document.getElementById('mobile-menu-btn');
+    const menu = document.getElementById('mobile-menu');
+    if (btn && menu) {
+      btn.addEventListener('click', () => menu.classList.toggle('hidden'));
     }
 
-    // Add scroll effect to navigation
+    // Nav shadow
     window.addEventListener('scroll', () => {
       const nav = document.querySelector('nav');
-      if (window.scrollY > 50) nav.classList.add('shadow-lg');
-      else nav.classList.remove('shadow-lg');
+      if (nav) nav.classList.toggle('shadow-lg', window.scrollY > 50);
     });
   </script>
 
   <script>
-    /* === Net-Zero Journey animation restart === */
+    /* Net-Zero Journey animation */
     (function(){
       const section = document.getElementById('netzero-journey');
       if (!section) return;
-
       const fill = section.querySelector('.hz-nz-fill');
-
       function animateBar(){
         if (!fill) return;
         fill.style.animation = 'none';
@@ -130,50 +98,24 @@
         void fill.offsetWidth;
         fill.style.animation = 'hz-nz-grow 1.6s ease-out forwards';
       }
-
       const io = new IntersectionObserver((entries)=>{
-        entries.forEach((e)=>{
+        entries.forEach(e=>{
           if (e.isIntersecting) animateBar();
-          else {
-            fill.style.animation = 'none';
-            fill.style.width = '0';
-          }
+          else { fill.style.animation = 'none'; fill.style.width = '0'; }
         });
       }, { threshold: 0.45 });
-
       io.observe(section);
     })();
   </script>
 
   <script>
-    /* Fade-in on scroll */
-    (function () {
-      const els = document.querySelectorAll('[data-animate-on-scroll]');
-      if (!('IntersectionObserver' in window) || !els.length) {
-        els.forEach(el => el.classList.add('is-visible'));
-        return;
-      }
-      const io = new IntersectionObserver((entries, obs) => {
-        entries.forEach(e => {
-          if (e.isIntersecting) {
-            e.target.classList.add('is-visible');
-            obs.unobserve(e.target);
-          }
-        });
-      }, { rootMargin: '0px 0px -15% 0px', threshold: 0.2 });
-      els.forEach(el => io.observe(el));
-    })();
-  </script>
-
-  <script>
-    /* Green loop animation reset */
+    /* Green loop + fade-in */
     (function () {
       function inView(el, pad = 0) {
         const r = el.getBoundingClientRect();
         const h = window.innerHeight || document.documentElement.clientHeight;
         return r.top <= h - pad && r.bottom >= 0 + pad;
       }
-
       const loop = document.getElementById('green-loop');
       const loopPath = loop ? loop.querySelector('.hz-loop-path') : null;
       const LOOP_CIRC = 910;
@@ -201,4 +143,5 @@
   </script>
 </body>
 </html>
+
 
