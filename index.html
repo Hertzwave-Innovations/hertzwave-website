@@ -93,41 +93,39 @@
 
 <style>
 
-        /* Fade-in on load for motifs */
-.hz-fade-in {
-  opacity: 0;
-  animation: hz-fadeIn 1.5s ease-out forwards;
-}
-@keyframes hz-fadeIn {
-  to { opacity: 1; }
-}
-
-/* Net-Zero Journey Bar */
-.hz-nz-bar { 
-  --hz-pct: 72%;   /* adjust this % as needed */
+/* Net-Zero Journey Bar (re-animates on demand) */
+.hz-nz-bar{
+  --hz-pct: 72%;                 /* change this number to set the target fill */
   position: relative;
-  background: rgba(74, 124, 89, 0.2);
+  background: rgba(74,124,89,.2);
   border-radius: 9999px;
-  height: 14px;        /* ensure visible height */
+  height: 14px;
   overflow: hidden;
 }
 
-.hz-nz-bar::after {
-  content: "";
-  display: block;
-  height: 100%;
-  width: var(--hz-pct);
-  background: #4A7C59;
-  border-radius: 9999px;
+/* base state: empty */
+.hz-nz-bar::after{
+  content:"";
+  display:block;
+  height:100%;
+  width:0;                        /* stays empty until we add .hz-animate */
+  background:#4A7C59;
+  border-radius:9999px;
+}
+
+/* animated state: fills to --hz-pct */
+.hz-nz-bar.hz-animate::after{
   animation: hz-nz-fill 1.6s ease-out forwards;
+  width: var(--hz-pct);
 }
 
-@keyframes hz-nz-fill {
-  from { width: 0; }
-  to   { width: var(--hz-pct); }
+@keyframes hz-nz-fill{
+  from{ width:0; }
+  to  { width:var(--hz-pct); }
 }
-
 </style>
+
+
 
         
 </style> 
@@ -258,7 +256,7 @@
   <!-- Floating green motifs layer (decorative) -->
 <div class="hz-motifs hz-fade-in" aria-hidden="true">
   <!-- leaf (moved down/right; more visible) -->
-  <svg class="absolute left-10 top-32 w-32 opacity-40 hz-float" viewBox="0 0 64 64" fill="none">
+  <svg class="absolute left-10 top-31 w-32 opacity-40 hz-float" viewBox="0 0 64 64" fill="none">
     <path d="M56 8C40 8 24 20 16 36c-6 12-6 20-6 20s8 0 20-6C46 42 58 26 56 8Z"
           stroke="#2F4F3F" stroke-width="2.5" fill="#A8E6A3"></path>
   </svg>
