@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Hertzwave - Enterprise Carbon Accounting & Net-Zero Planning Platform</title>
-  <meta name="description" content="AI-powered carbon accounting platform for BRSR, CSRD & global compliance across 15+ industries. Replace expensive consultants with intelligent automation.">
+  <meta name="description" content="AI-powered carbon accounting platform for BRSR, CSRD & global compliance across 15+ industries. Replace expensive consultants with intelligent automation."/>
 
   <!-- Tailwind + Fonts -->
   <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
 
   <script>
     tailwind.config = {
@@ -17,11 +17,26 @@
         extend: {
           colors: {
             'hertz-light': '#A8E6A3',
-            'hertz-primary': '#4A7C59', 
+            'hertz-primary': '#4A7C59',
             'hertz-dark': '#2F4F3F',
             'hertz-black': '#000000'
           },
-          fontFamily: { 'outfit': ['Outfit', 'sans-serif'] },
+          fontFamily: {
+            'outfit': ['Outfit', 'sans-serif']
+          },
+          animation: {
+            'float': 'float 6s ease-in-out infinite',
+            'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+            'fade-in-up': 'fadeInUp 1s ease-out',
+            'slide-in-left': 'slideInLeft 0.8s ease-out',
+            'slide-in-right': 'slideInRight 0.8s ease-out'
+          },
+          keyframes: {
+            float: { '0%, 100%': { transform: 'translateY(0px)' }, '50%': { transform: 'translateY(-20px)' } },
+            fadeInUp: { '0%': { opacity: '0', transform: 'translateY(30px)' }, '100%': { opacity: '1', transform: 'translateY(0)' } },
+            slideInLeft: { '0%': { opacity: '0', transform: 'translateX(-50px)' }, '100%': { opacity: '1', transform: 'translateX(0)' } },
+            slideInRight: { '0%': { opacity: '0', transform: 'translateX(50px)' }, '100%': { opacity: '1', transform: 'translateX(0)' } }
+          }
         }
       }
     }
@@ -32,32 +47,36 @@
     [data-hz-aos] { opacity: 0; transform: translateY(8px); transition: opacity .5s ease, transform .5s ease; }
     .hz-is-visible[data-hz-aos] { opacity: 1; transform: translateY(0); }
 
-    /* Floating motifs */
+    /* ===== Floating motifs ===== */
     @keyframes hz-float { 0%,100% { transform: translateY(0);} 50% { transform: translateY(-14px);} }
     .hz-float { animation: hz-float 6s ease-in-out infinite; }
     .hz-motifs { position:absolute; inset:0; pointer-events:none; user-select:none; z-index:0; }
     .hz-hero-content { position:relative; z-index:10; }
 
-    /* Green Loop */
+    /* ===== Green Loop ===== */
+    /* circumference ~ 2πr = 2*3.1416*145 ≈ 910 */
     .hz-loop-path { stroke-dasharray: 910; stroke-dashoffset: 910; }
+    /* Optional one-off draw (kept for compatibility) */
     .hz-loop-draw .hz-loop-path { animation: hz-loop-draw 1.6s ease-out forwards; }
     @keyframes hz-loop-draw { to { stroke-dashoffset: 0; } }
+    /* Continuous spin */
     @keyframes hz-loop-spin { from { stroke-dashoffset: 910; } to { stroke-dashoffset: 0; } }
     .hz-loop-spin { animation: hz-loop-spin 12s linear infinite; }
 
-    /* Net-Zero Journey */
+    /* ===== Net-Zero Journey ===== */
     .hz-nz-card { position: relative; }
-    .hz-nz-track {
-      --hz-pct: 72%;
+    .hz-nz-track{
+      --hz-pct: 72%;            /* <-- change this to set the target fill */
       height: 14px;
       border-radius: 9999px;
       background: rgba(74,124,89,0.20);
       overflow: hidden;
+      position: relative;
     }
-    .hz-nz-fill {
+    .hz-nz-fill{
       height: 100%;
-      width: 0;
-      background: #4A7C59;
+      width: 0;                 /* starts empty; JS animates this */
+      background: #4A7C59;      /* hertz-primary */
       border-radius: 9999px;
     }
     @keyframes hz-nz-grow { from { width: 0; } to { width: var(--hz-pct); } }
@@ -65,20 +84,849 @@
 </head>
 
 <body class="bg-white font-outfit">
+  <!-- Navigation -->
+  <nav class="fixed top-0 w-full bg-white/95 backdrop-blur-sm border-b border-gray-200 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-16">
+        <div class="flex items-center">
+          <!-- Hertzwave Logo Image -->
+          <img src="/HW-Logo-Light.png" alt="Hertzwave" style="width:35%; height:auto;">
+        </div>
+        <div class="hidden md:flex items-center space-x-8">
+          <a href="#features" class="text-gray-700 hover:text-hertz-primary transition-colors font-medium">Platform</a>
+          <a href="#solutions" class="text-gray-700 hover:text-hertz-primary transition-colors font-medium">Solutions</a>
+          <a href="#industries" class="text-gray-700 hover:text-hertz-primary transition-colors font-medium">Industries</a>
+          <a href="#resources" class="text-gray-700 hover:text-hertz-primary transition-colors font-medium">Resources</a>
+          <a href="#about" class="text-gray-700 hover:text-hertz-primary transition-colors font-medium">About</a>
+          <button id="book-demo-nav" class="bg-hertz-primary text-white px-6 py-2 rounded-lg hover:bg-hertz-dark transition-colors font-semibold">
+            Book a Demo
+          </button>
+        </div>
+        <div class="md:hidden">
+          <button id="mobile-menu-btn" class="text-gray-700">
+            <i class="fas fa-bars text-xl"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="md:hidden hidden bg-white border-t border-gray-200">
+      <div class="px-4 pt-2 pb-4 space-y-2">
+        <a href="#features" class="block py-2 text-gray-700 font-medium">Platform</a>
+        <a href="#solutions" class="block py-2 text-gray-700 font-medium">Solutions</a>
+        <a href="#industries" class="block py-2 text-gray-700 font-medium">Industries</a>
+        <a href="#resources" class="block py-2 text-gray-700 font-medium">Resources</a>
+        <a href="#about" class="block py-2 text-gray-700 font-medium">About</a>
+        <button id="book-demo-mobile" class="w-full bg-hertz-primary text-white px-6 py-2 rounded-lg mt-2 font-semibold">
+          Book a Demo
+        </button>
+      </div>
+    </div>
+  </nav>
 
-  <!-- === ALL YOUR CONTENT GOES HERE === -->
-  <!-- (Navigation, Hero, Features, Industries, Trust, Net-Zero section, CTA, Footer, etc.) -->
+  <!-- Demo Form Modal -->
+  <div id="demo-modal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden">
+    <div class="flex items-center justify-center min-h-screen p-4">
+      <div class="bg-white rounded-lg max-w-md w-full p-6">
+        <div class="flex justify-between items-center mb-4">
+          <h3 class="text-xl font-semibold text-gray-900">Book a Demo</h3>
+          <button id="close-modal" class="text-gray-400 hover:text-gray-600">
+            <i class="fas fa-times text-xl"></i>
+          </button>
+        </div>
+        <form id="demo-form">
+          <div class="space-y-4">
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-1">Full Name *</label>
+              <input type="text" name="name" required class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-hertz-primary focus:border-hertz-primary">
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-1">Email *</label>
+              <input type="email" name="email" required class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-hertz-primary focus:border-hertz-primary">
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-1">Company *</label>
+              <input type="text" name="company" required class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-hertz-primary focus:border-hertz-primary">
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-1">Job Title</label>
+              <input type="text" name="title" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-hertz-primary focus:border-hertz-primary">
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-1">Company Size</label>
+              <select name="company_size" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-hertz-primary focus:border-hertz-primary">
+                <option value="">Select size</option>
+                <option value="1-50">1-50 employees</option>
+                <option value="51-200">51-200 employees</option>
+                <option value="201-1000">201-1000 employees</option>
+                <option value="1000+">1000+ employees</option>
+              </select>
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-1">Industry</label>
+              <select name="industry" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-hertz-primary focus:border-hertz-primary">
+                <option value="">Select industry</option>
+                <option value="steel">Steel & Metals</option>
+                <option value="oil-gas">Oil & Gas</option>
+                <option value="cement">Cement</option>
+                <option value="chemicals">Chemicals</option>
+                <option value="automotive">Automotive</option>
+                <option value="textiles">Textiles</option>
+                <option value="food">Food & Beverage</option>
+                <option value="aviation">Aviation</option>
+                <option value="power">Power Generation</option>
+                <option value="mining">Mining</option>
+                <option value="shipping">Shipping</option>
+                <option value="pulp-paper">Pulp & Paper</option>
+                <option value="healthcare">Healthcare</option>
+                <option value="pharmaceuticals">Pharmaceuticals</option>
+                <option value="hospitality">Hospitality</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-1">Message</label>
+              <textarea name="message" rows="3" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-hertz-primary focus:border-hertz-primary" placeholder="Tell us about your carbon accounting needs..."></textarea>
+            </div>
+          </div>
+          <div class="mt-6">
+            <button type="submit" class="w-full bg-hertz-primary text-white py-2 px-4 rounded-lg hover:bg-hertz-dark transition-colors font-semibold">
+              Request Demo
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
 
-  <!-- === Scripts go last === -->
+  <!-- Hero Section with added spacing -->
+  <section class="pt-28 pb-16 bg-gradient-to-br from-green-50 via-white to-hertz-light/20 overflow-hidden relative">
+    <!-- Floating green motifs layer -->
+    <div class="hz-motifs" aria-hidden="true">
+      <!-- leaf -->
+      <svg class="absolute left-10 top-32 w-32 opacity-40 hz-float" viewBox="0 0 64 64" fill="none">
+        <path d="M56 8C40 8 24 20 16 36c-6 12-6 20-6 20s8 0 20-6C46 42 58 26 56 8Z"
+              stroke="#2F4F3F" stroke-width="2.5" fill="#A8E6A3"></path>
+      </svg>
+      <!-- droplets (multiple) -->
+      <svg class="absolute left-28 top-48 w-10 opacity-30 hz-float" style="animation-duration:7s" viewBox="0 0 64 64" fill="none">
+        <path d="M32 6c8 14 18 20 18 30a18 18 0 1 1-36 0c0-10 10-16 18-30Z"
+              stroke="#4A7C59" stroke-width="1.8" fill="#A8E6A3"></path>
+      </svg>
+      <svg class="absolute right-24 top-40 w-16 opacity-40 hz-float" style="animation-duration:9s" viewBox="0 0 64 64" fill="none">
+        <path d="M32 6c8 14 18 20 18 30a18 18 0 1 1-36 0c0-10 10-16 18-30Z"
+              stroke="#4A7C59" stroke-width="2" fill="#A8E6A3"></path>
+      </svg>
+      <svg class="absolute left-1/4 bottom-16 w-10 opacity-20 hz-float" style="animation-duration:6s" viewBox="0 0 64 64" fill="none">
+        <path d="M32 6c8 14 18 20 18 30a18 18 0 1 1-36 0c0-10 10-16 18-30Z"
+              stroke="#4A7C59" stroke-width="1.5" fill="#A8E6A3"></path>
+      </svg>
+      <svg class="absolute right-1/3 bottom-24 w-20 opacity-30 hz-float" style="animation-duration:11s" viewBox="0 0 64 64" fill="none">
+        <path d="M32 6c8 14 18 20 18 30a18 18 0 1 1-36 0c0-10 10-16 18-30Z"
+              stroke="#4A7C59" stroke-width="2" fill="#A8E6A3"></path>
+      </svg>
+      <svg class="absolute left-1/2 top-20 w-14 opacity-25 hz-float" style="animation-duration:12s" viewBox="0 0 64 64" fill="none">
+        <path d="M32 6c8 14 18 20 18 30a18 18 0 1 1-36 0c0-10 10-16 18-30Z"
+              stroke="#4A7C59" stroke-width="2" fill="#A8E6A3"></path>
+      </svg>
+    </div>
+
+    <!-- Hero content -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 hz-hero-content">
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+        <div class="animate-fade-in-up">
+          <h1 class="text-3xl lg:text-4xl font-semibold text-gray-900 mb-6 leading-tight">
+            Enterprise Carbon Accounting & <span class="text-hertz-primary">Net-Zero Planning Platform</span>
+          </h1>
+          <p class="text-xl text-gray-600 mb-8 leading-relaxed font-light">
+            Automated BRSR, CSRD & global compliance for 15+ industries. Replace expensive consultants with AI-powered carbon management that delivers <span class="font-medium text-hertz-primary">90% cost reduction</span>.
+          </p>
+          <div class="flex flex-col sm:flex-row gap-4">
+            <!-- Start Free Trial -->
+            <a href="http://netzero.hertzwave.in" target="_blank" rel="noopener"
+               class="bg-hertz-primary text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-hertz-dark transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg inline-flex items-center justify-center">
+              <i class="fas fa-rocket mr-2"></i>Start Free Trial
+            </a>
+            <button id="book-demo-hero" class="border-2 border-hertz-primary text-hertz-primary px-8 py-4 rounded-lg text-lg font-semibold hover:bg-hertz-primary hover:text-white transition-all duration-300">
+              <i class="fas fa-calendar mr-2"></i>Book a Demo
+            </button>
+            <!-- Contact for Pricing -->
+            <a href="mailto:info@hertzwave.in?subject=Pricing%20inquiry%20-%20Hertzwave&body=Hi%20Hertzwave%20team%2C%0D%0A%0D%0AI%27m%20interested%20in%20pricing%20for%20the%20Hertzwave%20platform.%0D%0A%0D%0AName%3A%0D%0ACompany%3A%0D%0AIndustry%3A%0D%0ACompany%20Size%3A%0D%0AUse%20case%3A%0D%0ATimeline%3A%0D%0APhone%3A%0D%0A%0D%0AThanks%21"
+               class="border-2 border-gray-300 text-gray-700 px-8 py-4 rounded-lg text-lg font-semibold hover:border-hertz-primary hover:text-hertz-primary transition-all duration-300 inline-flex items-center justify-center">
+              <i class="fas fa-phone mr-2"></i>Contact for Pricing
+            </a>
+          </div>
+        </div>
+        <div class="relative animate-slide-in-right">
+          <div class="absolute inset-0 bg-gradient-to-r from-hertz-light to-hertz-primary rounded-3xl blur-3xl opacity-20 animate-pulse-slow"></div>
+          <div class="relative bg-white p-8 rounded-3xl shadow-2xl border border-hertz-light/50">
+            <div class="space-y-6">
+              <div class="flex items-center justify-between">
+                <h3 class="text-2xl font-semibold text-gray-900">Carbon Dashboard</h3>
+                <div class="bg-hertz-light text-hertz-dark px-3 py-1 rounded-full text-sm font-semibold">Live</div>
+              </div>
+              <div class="grid grid-cols-3 gap-4">
+                <div class="bg-gradient-to-br from-red-50 to-red-100 p-4 rounded-xl">
+                  <div class="text-red-600 font-semibold text-2xl">1,247</div>
+                  <div class="text-red-700 text-sm font-light">Scope 1 (tCO₂e)</div>
+                </div>
+                <div class="bg-gradient-to-br from-orange-50 to-orange-100 p-4 rounded-xl">
+                  <div class="text-orange-600 font-semibold text-2xl">3,589</div>
+                  <div class="text-orange-700 text-sm font-light">Scope 2 (tCO₂e)</div>
+                </div>
+                <div class="bg-gradient-to-br from-yellow-50 to-yellow-100 p-4 rounded-xl">
+                  <div class="text-yellow-600 font-semibold text-2xl">12,456</div>
+                  <div class="text-yellow-700 text-sm font-light">Scope 3 (tCO₂e)</div>
+                </div>
+              </div>
+              <div class="bg-hertz-light/30 p-4 rounded-xl">
+                <div class="flex items-center justify-between mb-2">
+                  <span class="text-hertz-dark font-medium">Net-Zero Progress</span>
+                  <span class="text-hertz-dark font-semibold">23%</span>
+                </div>
+                <div class="bg-hertz-primary/20 rounded-full h-3">
+                  <div class="bg-hertz-primary rounded-full h-3 w-1/4 animate-pulse"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Value Proposition -->
+  <section class="py-16 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl lg:text-4xl font-semibold text-gray-900 mb-6">
+          Why Choose <span class="text-hertz-primary">Hertzwave Carbon Platform</span>
+        </h2>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto font-light">
+          The only platform that combines AI-powered automation with comprehensive compliance, delivering enterprise-grade capabilities at SME-friendly approaches.
+        </p>
+      </div>
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div class="text-center group hover:scale-105 transition-transform duration-300">
+          <div class="bg-gradient-to-br from-hertz-light/30 to-green-100 p-6 rounded-2xl mb-4 group-hover:shadow-xl transition-shadow">
+            <div class="text-hertz-primary text-4xl mb-4">
+              <i class="fas fa-chart-line"></i>
+            </div>
+            <h3 class="text-xl font-semibold text-gray-900 mb-2">90% Cost Reduction</h3>
+            <p class="text-gray-600 font-light text-sm">vs. expensive Big 4 consulting services</p>
+          </div>
+        </div>
+        <div class="text-center group hover:scale-105 transition-transform duration-300">
+          <div class="bg-gradient-to-br from-blue-50 to-blue-100 p-6 rounded-2xl mb-4 group-hover:shadow-xl transition-shadow">
+            <div class="text-blue-600 text-4xl mb-4">
+              <i class="fas fa-robot"></i>
+            </div>
+            <h3 class="text-xl font-semibold text-gray-900 mb-2">AI-Powered Validation</h3>
+            <p class="text-gray-600 font-light text-sm">≥90% confidence scoring across 15 industries</p>
+          </div>
+        </div>
+        <div class="text-center group hover:scale-105 transition-transform duration-300">
+          <div class="bg-gradient-to-br from-purple-50 to-purple-100 p-6 rounded-2xl mb-4 group-hover:shadow-xl transition-shadow">
+            <div class="text-purple-600 text-4xl mb-4">
+              <i class="fas fa-shield-alt"></i>
+            </div>
+            <h3 class="text-xl font-semibold text-gray-900 mb-2">Global Compliance</h3>
+            <p class="text-gray-600 font-light text-sm">BRSR, CSRD, TCFD, ISSB, GRESB, UK SECR, HKEX Standards and more </p>
+          </div>
+        </div>
+        <div class="text-center group hover:scale-105 transition-transform duration-300">
+          <div class="bg-gradient-to-br from-amber-50 to-amber-100 p-6 rounded-2xl mb-4 group-hover:shadow-xl transition-shadow">
+            <div class="text-amber-600 text-4xl mb-4">
+              <i class="fas fa-bolt"></i>
+            </div>
+            <h3 class="text-xl font-semibold text-gray-900 mb-2">Real-time Tracking</h3>
+            <p class="text-gray-600 font-light text-sm">Emissions & net-zero pathway monitoring</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Platform Features -->
+  <section id="features" class="py-16 bg-gradient-to-br from-gray-50 to-hertz-light/10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl lg:text-4xl font-semibold text-gray-900 mb-6">
+          Complete <span class="text-hertz-primary">Carbon Intelligence</span> Platform
+        </h2>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto font-light">
+          From data ingestion to regulatory reporting, everything you need for comprehensive carbon management.
+        </p>
+      </div>
+      <div class="grid lg:grid-cols-3 gap-8">
+        <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow border border-hertz-light/30">
+          <div class="text-hertz-primary text-3xl mb-4">
+            <i class="fas fa-upload"></i>
+          </div>
+          <h3 class="text-xl font-semibold text-gray-900 mb-4">Ingestion Hub</h3>
+          <p class="text-gray-600 mb-4 font-light">Plug-and-play connectors for SAP Ariba, Concur, CSV & SFTP. Normalize data in minutes, not months.</p>
+          <ul class="text-sm text-gray-500 space-y-2 font-light">
+            <li><i class="fas fa-check text-hertz-primary mr-2"></i>Multi-source integration</li>
+            <li><i class="fas fa-check text-hertz-primary mr-2"></i>Automated data validation</li>
+            <li><i class="fas fa-check text-hertz-primary mr-2"></i>Real-time processing</li>
+          </ul>
+        </div>
+        <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow border border-hertz-light/30">
+          <div class="text-hertz-primary text-3xl mb-4">
+            <i class="fas fa-brain"></i>
+          </div>
+          <h3 class="text-xl font-semibold text-gray-900 mb-4">Validation AI</h3>
+          <p class="text-gray-600 mb-4 font-light">ML-powered validator that auto-maps schemas, flags duplicates & gaps with ≥90% confidence.</p>
+          <ul class="text-sm text-gray-500 space-y-2 font-light">
+            <li><i class="fas fa-check text-hertz-primary mr-2"></i>Intelligent schema mapping</li>
+            <li><i class="fas fa-check text-hertz-primary mr-2"></i>Duplicate detection</li>
+            <li><i class="fas fa-check text-hertz-primary mr-2"></i>Quality scoring</li>
+          </ul>
+        </div>
+        <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow border border-hertz-light/30">
+          <div class="text-hertz-primary text-3xl mb-4">
+            <i class="fas fa-calculator"></i>
+          </div>
+          <h3 class="text-xl font-semibold text-gray-900 mb-4">Emissions Engine</h3>
+          <p class="text-gray-600 mb-4 font-light">Scope 1-3 calculator with region-specific factors (DEFRA, EPA, Ecoinvent). Built for scale.</p>
+          <ul class="text-sm text-gray-500 space-y-2 font-light">
+            <li><i class="fas fa-check text-hertz-primary mr-2"></i>All scope calculations</li>
+            <li><i class="fas fa-check text-hertz-primary mr-2"></i>Regional emission factors</li>
+            <li><i class="fas fa-check text-hertz-primary mr-2"></i>High-performance processing</li>
+          </ul>
+        </div>
+        <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow border border-hertz-light/30">
+          <div class="text-hertz-primary text-3xl mb-4">
+            <i class="fas fa-file-alt"></i>
+          </div>
+          <h3 class="text-xl font-semibold text-gray-900 mb-4">Compliance Mapper</h3>
+          <p class="text-gray-600 mb-4 font-light">"One-click" export to BRSR, CSRD, TCFD & ISSB formats—no spreadsheet wrangling required.</p>
+          <ul class="text-sm text-gray-500 space-y-2 font-light">
+            <li><i class="fas fa-check text-hertz-primary mr-2"></i>Multiple frameworks</li>
+            <li><i class="fas fa-check text-hertz-primary mr-2"></i>Automated formatting</li>
+            <li><i class="fas fa-check text-hertz-primary mr-2"></i>Instant exports</li>
+          </ul>
+        </div>
+        <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow border border-hertz-light/30">
+          <div class="text-hertz-primary text-3xl mb-4">
+            <i class="fas fa-users"></i>
+          </div>
+          <h3 class="text-xl font-semibold text-gray-900 mb-4">Supplier Evaluation</h3>
+          <p class="text-gray-600 mb-4 font-light">Live supplier leaderboard scoring CO₂e/USD + data completeness. Spot high-impact vendors fast.</p>
+          <ul class="text-sm text-gray-500 space-y-2 font-light">
+            <li><i class="fas fa-check text-hertz-primary mr-2"></i>Real-time scoring</li>
+            <li><i class="fas fa-check text-hertz-primary mr-2"></i>Performance tracking</li>
+            <li><i class="fas fa-check text-hertz-primary mr-2"></i>Risk identification</li>
+          </ul>
+        </div>
+        <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow border border-hertz-light/30">
+          <div class="text-hertz-primary text-3xl mb-4">
+            <i class="fas fa-route"></i>
+          </div>
+          <h3 class="text-xl font-semibold text-gray-900 mb-4">Net-Zero Pathfinder</h3>
+          <p class="text-gray-600 mb-4 font-light">Scenario modeler that shows your glide-path to net-zero under multiple reduction levers.</p>
+          <ul class="text-sm text-gray-500 space-y-2 font-light">
+            <li><i class="fas fa-check text-hertz-primary mr-2"></i>Multiple scenarios</li>
+            <li><i class="fas fa-check text-hertz-primary mr-2"></i>Investment planning</li>
+            <li><i class="fas fa-check text-hertz-primary mr-2"></i>Progress tracking</li>
+          </ul>
+        </div>
+      </div>
+      <div class="text-center mt-12">
+        <a href="mailto:info@hertzwave.in?subject=Platform%20Pricing%20inquiry%20-%20Hertzwave&body=Hi%20Hertzwave%20team%2C%0D%0A%0D%0AI%27m%20interested%20in%20platform%20pricing.%0D%0A%0D%0AName%3A%0D%0ACompany%3A%0D%0AIndustry%3A%0D%0ACompany%20Size%3A%0D%0AUse%20case%3A%0D%0ATimeline%3A%0D%0APhone%3A%0D%0A%0D%0AThanks%21"
+           class="bg-hertz-primary text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-hertz-dark transition-colors inline-flex items-center justify-center">
+          <i class="fas fa-phone mr-2"></i>Contact for Platform Pricing
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Wide Image Separator -->
+  <section aria-label="decorative separator" class="w-full">
+    <img src="./landscape1.jpg" alt="" loading="lazy" class="w-full h-56 md:h-72 lg:h-96 object-cover select-none pointer-events-none">
+  </section>
+
+  <!-- The Green Loop -->
+  <section id="green-loop" class="py-16 bg-white" data-hz-aos>
+    <div class="max-w-4xl mx-auto px-6 text-center">
+      <h3 class="text-2xl lg:text-3xl font-semibold text-gray-900 mb-4">The Green Loop</h3>
+      <p class="text-gray-600 mb-8">
+        Compliance → AI → Net-Zero, continuously improving with real-time data.
+      </p>
+
+      <div class="relative mx-auto max-w-xl">
+        <svg viewBox="0 0 400 400" class="w-full">
+          <defs>
+            <linearGradient id="hzLoopGrad" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%"  stop-color="#A8E6A3"/>
+              <stop offset="100%" stop-color="#4A7C59"/>
+            </linearGradient>
+          </defs>
+
+          <!-- main circle -->
+          <circle cx="200" cy="200" r="145" fill="none"
+                  stroke="url(#hzLoopGrad)" stroke-width="10"
+                  class="hz-loop-path hz-loop-spin"/>
+
+          <!-- arrowheads -->
+          <path d="M200 45 l10 22 h-20 Z" fill="#4A7C59"/>
+          <path d="M355 200 l-22 10 v-20 Z" fill="#4A7C59"/>
+          <path d="M200 355 l-10 -22 h20 Z" fill="#4A7C59"/>
+        </svg>
+
+        <!-- Labels -->
+        <div class="absolute inset-0">
+          <div class="absolute left-1/2 -translate-x-1/2 -top-2 bg-white shadow-md rounded-full px-4 py-2 text-hertz-dark font-semibold">
+            Compliance
+          </div>
+          <div class="absolute -right-2 top-1/2 -translate-y-1/2 bg-white shadow-md rounded-full px-4 py-2 text-hertz-dark font-semibold">
+            AI
+          </div>
+          <div class="absolute left-1/2 -translate-x-1/2 -bottom-2 bg-white shadow-md rounded-full px-4 py-2 text-hertz-dark font-semibold">
+            Net-Zero
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Industries -->
+  <section id="industries" class="py-16 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl lg:text-4xl font-semibold text-gray-900 mb-6">
+          <span class="text-hertz-primary">Industry Solutions</span> for Every Sector
+        </h2>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto font-light">
+          Specialized carbon accounting solutions tailored for your industry's unique emissions profile and regulatory requirements.
+        </p>
+      </div>
+
+      <!-- Industry Grid (16) -->
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <!-- Steel & Metals -->
+        <div class="bg-gradient-to-br from-red-50 to-red-100 p-6 rounded-xl hover:shadow-lg transition-all duration-300 group cursor-pointer">
+          <div class="text-red-600 text-2xl mb-3 group-hover:scale-110 transition-transform">
+            <i class="fas fa-industry"></i>
+          </div>
+          <h3 class="font-semibold text-gray-900 mb-2">Steel & Metals</h3>
+          <p class="text-sm text-gray-600 font-light">High-emission intensity tracking</p>
+        </div>
+
+        <!-- Oil & Gas -->
+        <div class="bg-gradient-to-br from-blue-50 to-blue-100 p-6 rounded-xl hover:shadow-lg transition-all duration-300 group cursor-pointer">
+          <div class="text-blue-600 text-2xl mb-3 group-hover:scale-110 transition-transform">
+            <i class="fas fa-oil-can"></i>
+          </div>
+          <h3 class="font-semibold text-gray-900 mb-2">Oil & Gas</h3>
+          <p class="text-sm text-gray-600 font-light">Upstream/downstream analysis</p>
+        </div>
+
+        <!-- Cement -->
+        <div class="bg-gradient-to-br from-gray-50 to-gray-100 p-6 rounded-xl hover:shadow-lg transition-all duration-300 group cursor-pointer">
+          <div class="text-gray-600 text-2xl mb-3 group-hover:scale-110 transition-transform">
+            <i class="fas fa-building"></i>
+          </div>
+          <h3 class="font-semibold text-gray-900 mb-2">Cement</h3>
+          <p class="text-sm text-gray-600 font-light">Process emission calculations</p>
+        </div>
+
+        <!-- Automotive -->
+        <div class="bg-gradient-to-br from-green-50 to-green-100 p-6 rounded-xl hover:shadow-lg transition-all duration-300 group cursor-pointer">
+          <div class="text-green-600 text-2xl mb-3 group-hover:scale-110 transition-transform">
+            <i class="fas fa-car"></i>
+          </div>
+          <h3 class="font-semibold text-gray-900 mb-2">Automotive</h3>
+          <p class="text-sm text-gray-600 font-light">Manufacturing & supply chain</p>
+        </div>
+
+        <!-- Textiles -->
+        <div class="bg-gradient-to-br from-pink-50 to-pink-100 p-6 rounded-xl hover:shadow-lg transition-all duration-300 group cursor-pointer">
+          <div class="text-pink-600 text-2xl mb-3 group-hover:scale-110 transition-transform">
+            <i class="fas fa-tshirt"></i>
+          </div>
+          <h3 class="font-semibold text-gray-900 mb-2">Textiles</h3>
+          <p class="text-sm text-gray-600 font-light">Scope 3 complexity</p>
+        </div>
+
+        <!-- Food & Agriculture -->
+        <div class="bg-gradient-to-br from-orange-50 to-orange-100 p-6 rounded-xl hover:shadow-lg transition-all duration-300 group cursor-pointer">
+          <div class="text-orange-600 text-2xl mb-3 group-hover:scale-110 transition-transform">
+            <i class="fas fa-tractor"></i>
+          </div>
+          <h3 class="font-semibold text-gray-900 mb-2">Food & Agriculture</h3>
+          <p class="text-sm text-gray-600 font-light">Process/farm inputs, supplier scope</p>
+        </div>
+
+        <!-- Power Generation -->
+        <div class="bg-gradient-to-br from-yellow-50 to-yellow-100 p-6 rounded-xl hover:shadow-lg transition-all duration-300 group cursor-pointer">
+          <div class="text-yellow-600 text-2xl mb-3 group-hover:scale-110 transition-transform">
+            <i class="fas fa-bolt"></i>
+          </div>
+          <h3 class="font-semibold text-gray-900 mb-2">Power Generation</h3>
+          <p class="text-sm text-gray-600 font-light">Grid emission factors</p>
+        </div>
+
+        <!-- Mining -->
+        <div class="bg-gradient-to-br from-amber-50 to-amber-100 p-6 rounded-xl hover:shadow-lg transition-all duration-300 group cursor-pointer">
+          <div class="text-amber-600 text-2xl mb-3 group-hover:scale-110 transition-transform">
+            <i class="fas fa-mountain"></i>
+          </div>
+          <h3 class="font-semibold text-gray-900 mb-2">Mining</h3>
+          <p class="text-sm text-gray-600 font-light">Extraction operations</p>
+        </div>
+
+        <!-- Shipping -->
+        <div class="bg-gradient-to-br from-teal-50 to-teal-100 p-6 rounded-xl hover:shadow-lg transition-all duration-300 group cursor-pointer">
+          <div class="text-teal-600 text-2xl mb-3 group-hover:scale-110 transition-transform">
+            <i class="fas fa-ship"></i>
+          </div>
+          <h3 class="font-semibold text-gray-900 mb-2">Shipping</h3>
+          <p class="text-sm text-gray-600 font-light">Maritime transport</p>
+        </div>
+
+        <!-- Healthcare -->
+        <div class="bg-gradient-to-br from-cyan-50 to-cyan-100 p-6 rounded-xl hover:shadow-lg transition-all duration-300 group cursor-pointer">
+          <div class="text-cyan-600 text-2xl mb-3 group-hover:scale-110 transition-transform">
+            <i class="fas fa-hospital"></i>
+          </div>
+          <h3 class="font-semibold text-gray-900 mb-2">Healthcare</h3>
+          <p class="text-sm text-gray-600 font-light">Medical facility emissions</p>
+        </div>
+
+        <!-- Pharma & Chemicals -->
+        <div class="bg-gradient-to-br from-indigo-50 to-indigo-100 p-6 rounded-xl hover:shadow-lg transition-all duration-300 group cursor-pointer">
+          <div class="text-indigo-600 text-2xl mb-3 group-hover:scale-110 transition-transform">
+            <i class="fas fa-pills"></i>
+          </div>
+          <h3 class="font-semibold text-gray-900 mb-2">Pharma & Chemicals</h3>
+          <p class="text-sm text-gray-600 font-light">R&D, production, compliance</p>
+        </div>
+
+        <!-- Hospitality -->
+        <div class="bg-gradient-to-br from-rose-50 to-rose-100 p-6 rounded-xl hover:shadow-lg transition-all duration-300 group cursor-pointer">
+          <div class="text-rose-600 text-2xl mb-3 group-hover:scale-110 transition-transform">
+            <i class="fas fa-bed"></i>
+          </div>
+          <h3 class="font-semibold text-gray-900 mb-2">Hospitality</h3>
+          <p class="text-sm text-gray-600 font-light">Hotels and tourism</p>
+        </div>
+
+        <!-- Technology / Data Centers -->
+        <div class="bg-gradient-to-br from-sky-50 to-sky-100 p-6 rounded-xl hover:shadow-lg transition-all duration-300 group cursor-pointer">
+          <div class="text-sky-600 text-2xl mb-3 group-hover:scale-110 transition-transform">
+            <i class="fas fa-server"></i>
+          </div>
+          <h3 class="font-semibold text-gray-900 mb-2">Technology / Data Centers</h3>
+          <p class="text-sm text-gray-600 font-light">Electricity-heavy, location factors</p>
+        </div>
+
+        <!-- Real Estate / Construction -->
+        <div class="bg-gradient-to-br from-purple-50 to-purple-100 p-6 rounded-xl hover:shadow-lg transition-all duration-300 group cursor-pointer">
+          <div class="text-purple-600 text-2xl mb-3 group-hover:scale-110 transition-transform">
+            <i class="fas fa-city"></i>
+          </div>
+          <h3 class="font-semibold text-gray-900 mb-2">Real Estate / Construction</h3>
+          <p class="text-sm text-gray-600 font-light">Building ops + embodied carbon</p>
+        </div>
+
+        <!-- Energy & Utilities -->
+        <div class="bg-gradient-to-br from-lime-50 to-lime-100 p-6 rounded-xl hover:shadow-lg transition-all duration-300 group cursor-pointer">
+          <div class="text-lime-600 text-2xl mb-3 group-hover:scale-110 transition-transform">
+            <i class="fas fa-battery-full"></i>
+          </div>
+          <h3 class="font-semibold text-gray-900 mb-2">Energy & Utilities</h3>
+          <p class="text-sm text-gray-600 font-light">Emission factors + intensity KPIs</p>
+        </div>
+
+        <!-- Fertiliser -->
+        <div class="bg-gradient-to-br from-green-50 to-green-100 p-6 rounded-xl hover:shadow-lg transition-all duration-300 group cursor-pointer">
+          <div class="text-green-700 text-2xl mb-3 group-hover:scale-110 transition-transform">
+            <i class="fas fa-seedling"></i>
+          </div>
+          <h3 class="font-semibold text-gray-900 mb-2">Fertiliser</h3>
+          <p class="text-sm text-gray-600 font-light">Ammonia/Urea production emissions</p>
+        </div>
+      </div>
+
+      <div class="text-center mt-12">
+        <button class="bg-hertz-primary text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-hertz-dark transition-colors">
+          <i class="fas fa-phone mr-2"></i>Contact for Industry Pricing
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Wide Image Separator -->
+  <section aria-label="decorative separator" class="w-full">
+    <img src="./landscape2.jpg" alt="" loading="lazy" class="w-full h-56 md:h-72 lg:h-96 object-cover select-none pointer-events-none">
+  </section>
+
+  <!-- Trust Section -->
+  <section class="py-16 bg-gradient-to-br from-hertz-light/20 to-green-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl lg:text-4xl font-semibold text-gray-900 mb-6">
+          Trusted by Leading <span class="text-hertz-primary">Enterprises</span>
+        </h2>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto font-light">
+          Enterprise-grade security, compliance, and reliability for your carbon management needs.
+        </p>
+      </div>
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="text-center">
+          <div class="bg-white p-8 rounded-2xl shadow-lg">
+            <div class="text-hertz-primary text-3xl mb-4">
+              <i class="fas fa-shield-alt"></i>
+            </div>
+            <h3 class="text-xl font-semibold text-gray-900 mb-4">Security & Compliance</h3>
+            <div class="space-y-2 text-gray-600 font-light">
+              <div><i class="fas fa-check text-hertz-primary mr-2"></i>ISO 27001 Certified</div>
+              <div><i class="fas fa-check text-hertz-primary mr-2"></i>SOC 2 Type II</div>
+              <div><i class="fas fa-check text-hertz-primary mr-2"></i>GDPR Compliant</div>
+            </div>
+          </div>
+        </div>
+        <div class="text-center">
+          <div class="bg-white p-8 rounded-2xl shadow-lg">
+            <div class="text-hertz-primary text-3xl mb-4">
+              <i class="fas fa-users"></i>
+            </div>
+            <h3 class="text-xl font-semibold text-gray-900 mb-4">Growing Customer Base</h3>
+            <div class="space-y-2 text-gray-600 font-light">
+              <div><i class="fas fa-check text-hertz-primary mr-2"></i>500+ Companies Served</div>
+              <div><i class="fas fa-check text-hertz-primary mr-2"></i>Global Presence</div>
+              <div><i class="fas fa-check text-hertz-primary mr-2"></i>99.9% Uptime SLA</div>
+            </div>
+          </div>
+        </div>
+        <div class="text-center">
+          <div class="bg-white p-8 rounded-2xl shadow-lg">
+            <div class="text-hertz-primary text-3xl mb-4">
+              <i class="fas fa-handshake"></i>
+            </div>
+            <h3 class="text-xl font-semibold text-gray-900 mb-4">Partner Ecosystem</h3>
+            <div class="space-y-2 text-gray-600 font-light">
+              <div><i class="fas fa-check text-hertz-primary mr-2"></i>Big 4 Partnerships</div>
+              <div><i class="fas fa-check text-hertz-primary mr-2"></i>Technology Integrations</div>
+              <div><i class="fas fa-check text-hertz-primary mr-2"></i>Expert Support</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Net-Zero Journey -->
+  <section id="netzero-journey" class="pt-16 pb-24 bg-gradient-to-br from-hertz-light/20 to-green-50 relative z-10">
+    <div class="max-w-4xl mx-auto px-4">
+      <h2 class="text-2xl lg:text-3xl font-semibold text-gray-900 mb-3 text-center flex items-center justify-center">
+        <i class="fas fa-leaf text-hertz-primary mr-2"></i> Your Net-Zero Journey
+      </h2>
+      <p class="text-gray-600 text-center mb-8">
+        Track tangible progress from baseline to target with live, auditable data.
+      </p>
+
+      <div class="hz-nz-card bg-white rounded-xl shadow p-6">
+        <div class="flex justify-between items-center text-sm font-medium text-gray-700 mb-4">
+          <span>Baseline</span>
+          <span class="text-hertz-dark font-semibold"><span id="hzNzLabel">72%</span> to Target</span>
+        </div>
+
+        <!-- Track + Fill -->
+        <div class="hz-nz-track">
+          <div class="hz-nz-fill"></div>
+        </div>
+
+        <!-- Scope breakdown -->
+        <div class="grid grid-cols-3 gap-4 mt-5 text-sm">
+          <div class="text-center">
+            <div class="font-bold text-hertz-dark">-18%</div>
+            <div class="text-gray-500">Scope 1</div>
+          </div>
+          <div class="text-center">
+            <div class="font-bold text-hertz-dark">-36%</div>
+            <div class="text-gray-500">Scope 2</div>
+          </div>
+          <div class="text-center">
+            <div class="font-bold text-hertz-dark">-9%</div>
+            <div class="text-gray-500">Scope 3</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-16 bg-gradient-to-r from-hertz-primary to-hertz-dark">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-3xl lg:text-4xl font-semibold text-white mb-6">
+        Ready to Transform Your Carbon Management?
+      </h2>
+      <p class="text-xl text-hertz-light mb-8 font-light">
+        Join leading enterprises using AI-powered carbon accounting to achieve compliance and net-zero goals.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <!-- Start Free Trial -->
+        <a href="http://www.netzero.hertzwave.in" target="_blank" rel="noopener"
+           class="bg-white text-hertz-primary px-8 py-4 rounded-lg text-lg font-semibold hover:bg-gray-100 transition-colors inline-flex items-center justify-center">
+          <i class="fas fa-rocket mr-2"></i>Start Free Trial
+        </a>
+        <button id="book-demo-cta" class="border-2 border-white text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-white hover:text-hertz-primary transition-colors">
+          <i class="fas fa-calendar mr-2"></i>Book a Demo
+        </button>
+        <!-- Contact for Pricing -->
+        <a href="mailto:info@hertzwave.in?subject=Pricing%20inquiry%20-%20Hertzwave&body=Hi%20Hertzwave%20team%2C%0D%0A%0D%0AI%27m%20interested%20in%20pricing%20for%20the%20Hertzwave%20platform.%0D%0A%0D%0AName%3A%0D%0ACompany%3A%0D%0AIndustry%3A%0D%0ACompany%20Size%3A%0D%0AUse%20case%3A%0D%0ATimeline%3A%0D%0APhone%3A%0D%0A%0D%0AThanks%21"
+           class="border-2 border-white text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-white hover:text-hertz-primary transition-colors inline-flex items-center justify-center">
+          <i class="fas fa-phone mr-2"></i>Contact for Pricing
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-white py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div>
+          <img src="/HW-Logo-Light.png" alt="Hertzwave" class="w-[50%] h-auto brightness-0 invert">
+          <div class="mt-8">
+            <p class="text-gray-400 mb-4">
+              AI-powered carbon accounting platform for enterprise compliance and net-zero planning.
+            </p>
+            <div class="flex space-x-4">
+              <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                <i class="fab fa-linkedin text-xl"></i>
+              </a>
+              <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                <i class="fab fa-twitter text-xl"></i>
+              </a>
+              <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                <i class="fab fa-github text-xl"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div>
+          <h3 class="text-lg font-semibold mb-4">Platform</h3>
+          <ul class="space-y-2 text-gray-400">
+            <li><a href="#" class="hover:text-white transition-colors">Ingestion Hub</a></li>
+            <li><a href="#" class="hover:text-white transition-colors">Validation AI</a></li>
+            <li><a href="#" class="hover:text-white transition-colors">Emissions Engine</a></li>
+            <li><a href="#" class="hover:text-white transition-colors">Compliance Mapper</a></li>
+            <li><a href="#" class="hover:text-white transition-colors">Supplier Evaluation</a></li>
+            <li><a href="#" class="hover:text-white transition-colors">Net-Zero Pathfinder</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="text-lg font-semibold mb-4">Industries</h3>
+          <ul class="space-y-2 text-gray-400">
+            <li><a href="#" class="hover:text-white transition-colors">Steel & Metals</a></li>
+            <li><a href="#" class="hover:text-white transition-colors">Oil & Gas</a></li>
+            <li><a href="#" class="hover:text-white transition-colors">Chemicals</a></li>
+            <li><a href="#" class="hover:text-white transition-colors">Automotive</a></li>
+            <li><a href="#" class="hover:text-white transition-colors">Aviation</a></li>
+            <li><a href="#" class="hover:text-white transition-colors">Healthcare</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="text-lg font-semibold mb-4">Company</h3>
+          <ul class="space-y-2 text-gray-400">
+            <li><a href="#" class="hover:text-white transition-colors">About Us</a></li>
+            <li><a href="#" class="hover:text-white transition-colors">Careers</a></li>
+            <li><a href="#" class="hover:text-white transition-colors">Contact</a></li>
+            <li><a href="#" class="hover:text-white transition-colors">Privacy Policy</a></li>
+            <li><a href="#" class="hover:text-white transition-colors">Terms of Service</a></li>
+            <li><a href="#" class="hover:text-white transition-colors">Security</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="border-t border-gray-800 mt-12 pt-8">
+        <div class="flex flex-col md:flex-row justify-between items-center">
+          <p class="text-gray-400 text-sm">
+            © 2025 Hertzwave. All rights reserved.
+          </p>
+          <div class="flex space-x-6 mt-4 md:mt-0">
+            <span class="text-gray-400 text-sm">SOC 2 Type II Certified</span>
+            <span class="text-gray-400 text-sm">ISO 27001</span>
+            <span class="text-gray-400 text-sm">GDPR Compliant</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ===== Scripts ===== -->
+
   <script>
     // Mobile menu toggle
-    const btn = document.getElementById('mobile-menu-btn');
-    const menu = document.getElementById('mobile-menu');
-    if (btn && menu) {
-      btn.addEventListener('click', () => menu.classList.toggle('hidden'));
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    if (mobileMenuBtn && mobileMenu) {
+      mobileMenuBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
     }
 
-    // Nav shadow
+    // Demo modal functionality
+    const demoModal = document.getElementById('demo-modal');
+    const closeModal = document.getElementById('close-modal');
+    const demoButtons = [
+      document.getElementById('book-demo-nav'),
+      document.getElementById('book-demo-mobile'),
+      document.getElementById('book-demo-hero'),
+      document.getElementById('book-demo-cta')
+    ];
+
+    if (demoButtons.length && demoModal) {
+      demoButtons.forEach(btn => {
+        if (btn) btn.addEventListener('click', () => {
+          demoModal.classList.remove('hidden');
+          document.body.style.overflow = 'hidden';
+        });
+      });
+    }
+
+    if (closeModal && demoModal) {
+      closeModal.addEventListener('click', () => {
+        demoModal.classList.add('hidden');
+        document.body.style.overflow = 'auto';
+      });
+
+      demoModal.addEventListener('click', (e) => {
+        if (e.target === demoModal) {
+          demoModal.classList.add('hidden');
+          document.body.style.overflow = 'auto';
+        }
+      });
+    }
+
+    // Form submission
+    const demoForm = document.getElementById('demo-form');
+    if (demoForm) {
+      demoForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const formData = new FormData(e.target);
+        const data = Object.fromEntries(formData);
+        console.log('Demo request:', data);
+        alert('Thank you for your interest! We will contact you shortly to schedule your demo.');
+        demoModal.classList.add('hidden');
+        document.body.style.overflow = 'auto';
+        e.target.reset();
+      });
+    }
+
+    // Smooth scrolling for internal links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          if (mobileMenu) mobileMenu.classList.add('hidden');
+        }
+      });
+    });
+
+    // Add scroll effect to navigation
     window.addEventListener('scroll', () => {
       const nav = document.querySelector('nav');
       if (nav) nav.classList.toggle('shadow-lg', window.scrollY > 50);
@@ -86,30 +934,55 @@
   </script>
 
   <script>
-    /* Net-Zero Journey animation */
+    /* Net-Zero Journey animation (restarts each time section enters view) */
     (function(){
       const section = document.getElementById('netzero-journey');
       if (!section) return;
       const fill = section.querySelector('.hz-nz-fill');
+
       function animateBar(){
         if (!fill) return;
         fill.style.animation = 'none';
         fill.style.width = '0';
-        void fill.offsetWidth;
+        void fill.offsetWidth; // force reflow
         fill.style.animation = 'hz-nz-grow 1.6s ease-out forwards';
       }
+
       const io = new IntersectionObserver((entries)=>{
         entries.forEach(e=>{
           if (e.isIntersecting) animateBar();
-          else { fill.style.animation = 'none'; fill.style.width = '0'; }
+          else {
+            fill.style.animation = 'none';
+            fill.style.width = '0';
+          }
         });
       }, { threshold: 0.45 });
+
       io.observe(section);
     })();
   </script>
 
   <script>
-    /* Green loop + fade-in */
+    /* Fade-in helper for [data-hz-aos] */
+    (function () {
+      function inView(el, pad = 0) {
+        const r = el.getBoundingClientRect();
+        const h = window.innerHeight || document.documentElement.clientHeight;
+        return r.top <= h - pad && r.bottom >= 0 + pad;
+      }
+      function tick() {
+        document.querySelectorAll('[data-hz-aos]').forEach(el=>{
+          if (inView(el,80)) el.classList.add('hz-is-visible');
+          else el.classList.remove('hz-is-visible');
+        });
+      }
+      ['load','scroll','resize'].forEach(evt => window.addEventListener(evt, tick, { passive: true }));
+      tick();
+    })();
+  </script>
+
+  <script>
+    /* (Optional) Green loop reset-on-view (harmless with spin) */
     (function () {
       function inView(el, pad = 0) {
         const r = el.getBoundingClientRect();
@@ -121,21 +994,12 @@
       const LOOP_CIRC = 910;
 
       function tick() {
-        if (loop) {
-          if (inView(loop, 80)) {
-            if (!loop.classList.contains('hz-loop-draw')) {
-              if (loopPath) loopPath.style.strokeDashoffset = LOOP_CIRC;
-              loop.classList.add('hz-is-visible','hz-loop-draw');
-            }
-          } else {
-            loop.classList.remove('hz-loop-draw');
-            if (loopPath) loopPath.style.strokeDashoffset = LOOP_CIRC;
+        if (loop && loopPath) {
+          // Keep path ready; spin handles the continuous motion
+          if (!inView(loop, 80)) {
+            loopPath.style.strokeDashoffset = LOOP_CIRC;
           }
         }
-        document.querySelectorAll('[data-hz-aos]').forEach(el=>{
-          if (inView(el,80)) el.classList.add('hz-is-visible');
-          else el.classList.remove('hz-is-visible');
-        });
       }
       ['load','scroll','resize'].forEach(evt => window.addEventListener(evt, tick, { passive: true }));
       tick();
@@ -143,5 +1007,4 @@
   </script>
 </body>
 </html>
-
 
