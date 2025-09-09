@@ -93,40 +93,30 @@
 
 <style>
 
-/* Net-Zero Journey Bar (re-animates on demand) */
-.hz-nz-bar{
-  --hz-pct: 72%;                 /* change this number to set the target fill */
-  position: relative;
-  background: rgba(74,124,89,.2);
-  border-radius: 9999px;
+/* Net-Zero Journey styles */
+.hz-nz-card { position: relative; }
+
+.hz-nz-track{
+  --hz-pct: 72%;            /* <-- change this to set the target fill */
   height: 14px;
+  border-radius: 9999px;
+  background: rgba(74,124,89,0.20);
   overflow: hidden;
+  position: relative;
 }
 
-/* base state: empty */
-.hz-nz-bar::after{
-  content:"";
-  display:block;
-  height:100%;
-  width:0;                        /* stays empty until we add .hz-animate */
-  background:#4A7C59;
-  border-radius:9999px;
+.hz-nz-fill{
+  height: 100%;
+  width: 0;                 /* starts empty; JS animates this */
+  background: #4A7C59;      /* hertz-primary */
+  border-radius: 9999px;
 }
 
-/* animated state: fills to --hz-pct */
-.hz-nz-bar.hz-animate::after{
-  animation: hz-nz-fill 1.6s ease-out forwards;
-  width: var(--hz-pct);
+/* animation keyframes */
+@keyframes hz-nz-grow {
+  from { width: 0; }
+  to   { width: var(--hz-pct); }
 }
-
-@keyframes hz-nz-fill{
-  from{ width:0; }
-  to  { width:var(--hz-pct); }
-}
-</style>
-
-
-
         
 </style> 
     </head>
@@ -1024,6 +1014,37 @@
                 nav.classList.remove('shadow-lg');
             }
         });
+
+      /* === Net-Zero Journey animation restart === */
+    (function(){
+      const section = document.getElementById('netzero-journey');
+      if (!section) return;
+
+      const track = section.querySelector('.hz-nz-track');
+      const fill  = section.querySelector('.hz-nz-fill');
+
+      function animateBar(){
+        if (!track || !fill) return;
+        fill.style.animation = 'none';
+        fill.style.width = '0';
+        void fill.offsetWidth; // force reflow
+        fill.style.animation = 'hz-nz-grow 1.6s ease-out forwards';
+      }
+
+      const io = new IntersectionObserver((entries)=>{
+        entries.forEach((e)=>{
+          if (e.isIntersecting) animateBar();
+          else {
+            fill.style.animation = 'none';
+            fill.style.width = '0';
+          }
+        });
+      }, { threshold: 0.45 });
+
+      io.observe(section);
+    })();
+
+      
 <script>
 /* Adds .is-visible when elements enter the viewport.
    Falls back to immediate visibility if IO isn't supported. */
@@ -1076,15 +1097,7 @@
       }
     }
 
-    // Net-Zero Journey bar
-    if (nz) {
-      if (inView(nz, 80)) {
-        nz.classList.add('hz-is-visible','hz-nz-animate');
-      } else {
-        // remove so it can refill on re-entry
-        nz.classList.remove('hz-nz-animate');
-      }
-    }
+
 
     // Generic fade-in
     document.querySelectorAll('[data-hz-aos]').forEach(el=>{
@@ -1096,6 +1109,8 @@
   ['load','scroll','resize'].forEach(evt => window.addEventListener(evt, tick, { passive: true }));
   tick();
 })();
+
+  
 </script>
 
 
