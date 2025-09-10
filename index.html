@@ -61,7 +61,7 @@
     @keyframes hz-loop-draw { to { stroke-dashoffset: 0; } }
     /* Continuous spin */
     @keyframes hz-loop-spin { from { stroke-dashoffset: 910; } to { stroke-dashoffset: 0; } }
-    .hz-loop-spin { animation: hz-loop-spin 12s linear infinite; }
+    .hz-loop-spin { animation: hz-loop-spin 6s linear infinite; }
 
     /* ===== Net-Zero Journey ===== */
     .hz-nz-card { position: relative; }
@@ -464,9 +464,10 @@
           </defs>
 
           <!-- main circle -->
-          <circle cx="200" cy="200" r="145" fill="none"
-                  stroke="url(#hzLoopGrad)" stroke-width="10"
-                  class="hz-loop-path hz-loop-spin"/>
+<circle cx="200" cy="200" r="145" fill="none"
+        stroke="url(#hzLoopGrad)" stroke-width="10"
+        class="hz-loop-path hz-loop-spin"
+        transform="rotate(-90 200 200)"/>
 
           <!-- arrowheads -->
           <path d="M200 45 l10 22 h-20 Z" fill="#4A7C59"/>
