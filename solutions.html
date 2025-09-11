@@ -1,118 +1,333 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <link rel="stylesheet" href="styles.css">
+
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Hertzwave – Solutions</title>
-  <meta name="description" content="Solutions to accelerate net-zero: regulatory compliance, carbon accounting, supplier insights, AI validation, decarbonization planning, and executive dashboards."/>
-
-  <!-- Tailwind (CDN) -->
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Hertzwave Solutions — Pillars, Details & Outcomes</title>
+  <meta name="description" content="Explore Hertzwave solution pillars with deep dives for Compliance, Data Ingestion, Emissions & Factors, Supplier Evaluation, Net‑Zero Planning, and Reporting & Assurance." />
   <script src="https://cdn.tailwindcss.com"></script>
-
-  <!-- Fonts & Icons -->
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'hertz-light':'#A8E6A3',
+            'hertz-primary':'#4A7C59',
+            'hertz-dark':'#2F4F3F',
+            'hertz-black':'#000000'
+          },
+          fontFamily: { 'outfit':['Outfit','sans-serif'] },
+          animation: {
+            'float':'float 6s ease-in-out infinite',
+            'pulse-slow':'pulse 3s cubic-bezier(0.4,0,0.6,1) infinite'
+          },
+          keyframes: {
+            float:{ '0%,100%':{transform:'translateY(0)'}, '50%':{transform:'translateY(-12px)'} }
+          }
+        }
+      }
+    }
+  </script>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-
-  <!-- Optional: your shared stylesheet; keep this file next to solutions.html -->
-  <link rel="stylesheet" href="./style.css" />
-
   <style>
-    body { font-family: 'Outfit', system-ui, -apple-system, Segoe UI, Roboto, sans-serif; }
-    .hz-logo { height: 1.75rem; width: auto; }
-    .hz-logo-footer { height: 1.5rem; width: auto; }
-    .hz-hero { position: relative; overflow: hidden; }
-    .hz-motifs { position:absolute; inset:0; pointer-events:none; user-select:none; z-index:0; }
-    .hz-hero-content { position:relative; z-index:10; }
-    @keyframes hz-float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-14px)} }
-    .hz-float{ animation: hz-float 6s ease-in-out infinite; }
-    .hz-section { scroll-margin-top: 90px; }
+    body{font-family: 'Outfit', sans-serif}
+    .hz-motifs{position:absolute; inset:0; pointer-events:none; user-select:none; z-index:0}
+    .hz-hero{position:relative; z-index:10}
   </style>
 </head>
+<body class="bg-white">
 
-<body class="bg-white font-outfit text-gray-900">
-  <!-- Navigation -->
+  <!-- Nav -->
   <nav class="fixed top-0 w-full bg-white/95 backdrop-blur-sm border-b border-gray-200 z-50">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex justify-between items-center h-16">
-        <div class="flex items-center">
-          <a href="./index.html" class="flex items-center">
-            <img src="./HW-Logo-Light.png" alt="Hertzwave" class="hz-logo brightness-0 invert" />
-          </a>
-        </div>
+        <a href="index.html" class="flex items-center space-x-3">
+          <!-- Use relative path so it works on GitHub Pages and Vercel -->
+          <img src="HW-Logo-Light.png" alt="Hertzwave" class="hz-logo" />
+        </a>
         <div class="hidden md:flex items-center space-x-8">
-          <a href="./platform.html" class="text-gray-700 hover:text-hertz-primary transition-colors font-medium">Platform</a>
-          <a href="./solutions.html" class="text-hertz-primary font-semibold">Solutions</a>
-          <a href="./industries.html" class="text-gray-700 hover:text-hertz-primary transition-colors font-medium">Industries</a>
-          <a href="./resources.html" class="text-gray-700 hover:text-hertz-primary transition-colors font-medium">Resources</a>
-          <a href="./about.html" class="text-gray-700 hover:text-hertz-primary transition-colors font-medium">About</a>
+          <a href="platform.html" class="text-gray-700 hover:text-hertz-primary">Platform</a>
+          <a href="solutions.html" class="text-hertz-primary font-semibold">Solutions</a>
+          <a href="industries.html" class="text-gray-700 hover:text-hertz-primary">Industries</a>
+          <a href="resources.html" class="text-gray-700 hover:text-hertz-primary">Resources</a>
+          <a href="about.html" class="text-gray-700 hover:text-hertz-primary">About</a>
           <a href="http://netzero.hertzwave.in" target="_blank" rel="noopener"
-             class="bg-hertz-primary text-white px-6 py-2 rounded-lg hover:bg-hertz-dark transition-colors font-semibold">
-            Start Free Trial
-          </a>
+             class="bg-hertz-primary text-white px-6 py-2 rounded-lg hover:bg-hertz-dark font-semibold">Start Free Trial</a>
         </div>
+        <button class="md:hidden text-gray-700" id="navBtn"><i class="fas fa-bars text-xl"></i></button>
+      </div>
+    </div>
+    <div id="mobileNav" class="hidden md:hidden bg-white border-t border-gray-200">
+      <div class="px-4 py-3 space-y-2">
+        <a href="platform.html" class="block py-2 text-gray-700">Platform</a>
+        <a href="solutions.html" class="block py-2 text-hertz-primary font-semibold">Solutions</a>
+        <a href="industries.html" class="block py-2 text-gray-700">Industries</a>
+        <a href="resources.html" class="block py-2 text-gray-700">Resources</a>
+        <a href="about.html" class="block py-2 text-gray-700">About</a>
+        <a href="http://netzero.hertzwave.in" target="_blank" rel="noopener"
+           class="block w-full text-center bg-hertz-primary text-white px-6 py-2 rounded-lg font-semibold mt-2">Start Free Trial</a>
       </div>
     </div>
   </nav>
 
   <!-- Hero -->
-  <header class="hz-hero pt-28 pb-16 bg-gradient-to-br from-green-50 via-white to-hertz-light/20">
+  <header class="pt-28 pb-16 bg-gradient-to-br from-green-50 via-white to-hertz-light/20 overflow-hidden relative">
+    <!-- Floating green motifs with many droplets -->
     <div class="hz-motifs">
-      <svg class="absolute left-12 top-20 w-28 opacity-40 hz-float" viewBox="0 0 64 64" fill="none">
+      <!-- leaf -->
+      <svg class="absolute left-10 top-28 w-32 opacity-40 animate-float" viewBox="0 0 64 64" fill="none">
         <path d="M56 8C40 8 24 20 16 36c-6 12-6 20-6 20s8 0 20-6C46 42 58 26 56 8Z"
               stroke="#2F4F3F" stroke-width="2.5" fill="#A8E6A3"></path>
       </svg>
+      <!-- droplets -->
+      <svg class="absolute left-28 top-48 w-10 opacity-30 animate-float" style="animation-duration:7s" viewBox="0 0 64 64" fill="none">
+        <path d="M32 6c8 14 18 20 18 30a18 18 0 1 1-36 0c0-10 10-16 18-30Z"
+              stroke="#4A7C59" stroke-width="1.8" fill="#A8E6A3"></path>
+      </svg>
+      <svg class="absolute right-24 top-40 w-16 opacity-40 animate-float" style="animation-duration:9s" viewBox="0 0 64 64" fill="none">
+        <path d="M32 6c8 14 18 20 18 30a18 18 0 1 1-36 0c0-10 10-16 18-30Z"
+              stroke="#4A7C59" stroke-width="2" fill="#A8E6A3"></path>
+      </svg>
+      <svg class="absolute left-1/4 bottom-16 w-10 opacity-20 animate-float" style="animation-duration:6s" viewBox="0 0 64 64" fill="none">
+        <path d="M32 6c8 14 18 20 18 30a18 18 0 1 1-36 0c0-10 10-16 18-30Z"
+              stroke="#4A7C59" stroke-width="1.5" fill="#A8E6A3"></path>
+      </svg>
+      <svg class="absolute right-1/3 bottom-24 w-20 opacity-30 animate-float" style="animation-duration:11s" viewBox="0 0 64 64" fill="none">
+        <path d="M32 6c8 14 18 20 18 30a18 18 0 1 1-36 0c0-10 10-16 18-30Z"
+              stroke="#4A7C59" stroke-width="2" fill="#A8E6A3"></path>
+      </svg>
+      <svg class="absolute left-1/2 top-20 w-14 opacity-25 animate-float" style="animation-duration:12s" viewBox="0 0 64 64" fill="none">
+        <path d="M32 6c8 14 18 20 18 30a18 18 0 1 1-36 0c0-10 10-16 18-30Z"
+              stroke="#4A7C59" stroke-width="2" fill="#A8E6A3"></path>
+      </svg>
     </div>
 
-    <div class="hz-hero-content max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      <h1 class="text-3xl lg:text-4xl font-semibold mb-4">
-        Solutions to Help You Accelerate <span class="text-hertz-primary">Net-Zero</span>
-      </h1>
-      <p class="text-lg lg:text-xl text-gray-600 max-w-3xl mx-auto">
-        From audit-ready compliance to supplier insights and decarbonization planning—Hertzwave unifies
-        carbon data, intelligence, and action across your enterprise.
-      </p>
+    <div class="hz-hero max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-10 items-center">
+        <div>
+          <h1 class="text-3xl lg:text-4xl font-semibold text-gray-900 mb-4 leading-tight">
+            Solutions for <span class="text-hertz-primary">Compliance & Net‑Zero</span>
+          </h1>
+          <p class="text-lg lg:text-xl text-gray-600 mb-6">
+            Six pillars that turn raw data into audit‑ready reporting and real emission reductions.
+          </p>
+          <div class="flex flex-wrap gap-4">
+            <a href="#pillars" class="bg-hertz-primary text-white px-6 py-3 rounded-lg hover:bg-hertz-dark font-semibold">Explore Solutions</a>
+            <a href="#deep-dives" class="border-2 border-hertz-primary text-hertz-primary px-6 py-3 rounded-lg hover:bg-hertz-primary hover:text-white font-semibold">Jump to Details</a>
+          </div>
+        </div>
+        <div class="relative">
+          <div class="absolute inset-0 bg-gradient-to-r from-hertz-light to-hertz-primary rounded-3xl blur-3xl opacity-20 animate-pulse-slow"></div>
+          <div class="relative bg-white p-8 rounded-3xl shadow-2xl border border-hertz-light/50">
+            <h3 class="text-xl font-semibold text-gray-900 mb-4">Outcomes</h3>
+            <ul class="space-y-3 text-gray-700">
+              <li><i class="fa-solid fa-file-shield mr-2 text-hertz-primary"></i> Faster compliance across regions</li>
+              <li><i class="fa-solid fa-leaf mr-2 text-hertz-primary"></i> Verified reduction plans</li>
+              <li><i class="fa-solid fa-diagram-project mr-2 text-hertz-primary"></i> Supplier engagement at scale</li>
+              <li><i class="fa-solid fa-chart-line mr-2 text-hertz-primary"></i> Decision‑ready dashboards</li>
+            </ul>
+          </div>
+        </div>
+      </div>
     </div>
   </header>
 
-  <!-- Solutions Pillars -->
-  <section class="py-16 bg-white">
+  <!-- Landscape break -->
+  <section aria-label="decorative separator" class="w-full">
+    <img src="./plandscape1.jpg" alt="" class="w-full h-48 md:h-64 lg:h-80 object-cover select-none pointer-events-none">
+  </section>
+
+  <!-- Pillars grid -->
+  <section id="pillars" class="py-16 bg-gradient-to-br from-gray-50 to-hertz-light/10">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-12">
-        <h2 class="text-2xl lg:text-3xl font-semibold">What We Solve</h2>
-        <p class="text-gray-600 mt-2">Six solution pillars covering compliance, accounting, planning, supply-chain engagement, AI validation, and dashboards.</p>
+        <h2 class="text-3xl lg:text-4xl font-semibold text-gray-900">Solution Pillars</h2>
+        <p class="text-lg text-gray-600">Choose a pillar to learn more.</p>
       </div>
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-        <div class="bg-gradient-to-br from-green-50 to-green-100 p-6 rounded-2xl shadow hover:shadow-lg">
-          <h3 class="text-lg font-semibold">Regulatory Compliance</h3>
-          <p class="text-gray-600 text-sm mt-2">BRSR, CSRD, TCFD, ISSB, GRESB, SECR, HKEX—pre-mapped with one-click export.</p>
-          <a href="#compliance" class="mt-4 inline-flex items-center text-hertz-primary font-semibold">Learn More <i class="fa fa-arrow-right ml-2"></i></a>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- 1 Compliance Automation -->
+        <div class="bg-white p-7 rounded-2xl shadow border border-hertz-light/30">
+          <div class="text-hertz-primary text-3xl mb-3"><i class="fas fa-clipboard-check"></i></div>
+          <h3 class="text-xl font-semibold text-gray-900 mb-2">Compliance Automation</h3>
+          <p class="text-gray-600 mb-4">Map data to BRSR, CSRD, TCFD, ISSB, SECR, HKEX and more.</p>
+          <a href="#compliance" class="text-hertz-primary font-semibold hover:underline">Learn More →</a>
         </div>
-        <div class="bg-gradient-to-br from-blue-50 to-blue-100 p-6 rounded-2xl shadow hover:shadow-lg">
-          <h3 class="text-lg font-semibold">Carbon Accounting</h3>
-          <p class="text-gray-600 text-sm mt-2">Scope 1–3 engine with regional factors, intensity metrics, and audit trails.</p>
-          <a href="#carbon-accounting" class="mt-4 inline-flex items-center text-blue-700 font-semibold">Learn More <i class="fa fa-arrow-right ml-2"></i></a>
+
+        <!-- 2 Data & Ingestion -->
+        <div class="bg-white p-7 rounded-2xl shadow border border-hertz-light/30">
+          <div class="text-hertz-primary text-3xl mb-3"><i class="fas fa-plug"></i></div>
+          <h3 class="text-xl font-semibold text-gray-900 mb-2">Data & Ingestion</h3>
+          <p class="text-gray-600 mb-4">Connect ERPs, CSV/SFTP and APIs. Normalize and validate at scale.</p>
+          <a href="#ingestion" class="text-hertz-primary font-semibold hover:underline">Learn More →</a>
         </div>
-        <div class="bg-gradient-to-br from-amber-50 to-amber-100 p-6 rounded-2xl shadow hover:shadow-lg">
-          <h3 class="text-lg font-semibold">Decarbonization Planning</h3>
-          <p class="text-gray-600 text-sm mt-2">Scenarios, reduction levers, carbon price impact, and glide-path tracking.</p>
-          <a href="#decarbonization" class="mt-4 inline-flex items-center text-amber-700 font-semibold">Learn More <i class="fa fa-arrow-right ml-2"></i></a>
+
+        <!-- 3 Emissions & Factors -->
+        <div class="bg-white p-7 rounded-2xl shadow border border-hertz-light/30">
+          <div class="text-hertz-primary text-3xl mb-3"><i class="fas fa-calculator"></i></div>
+          <h3 class="text-xl font-semibold text-gray-900 mb-2">Emissions & Factors</h3>
+          <p class="text-gray-600 mb-4">Scope 1–3 with DEFRA/EPA/Ecoinvent. Versioned, region‑aware factors.</p>
+          <a href="#emissions" class="text-hertz-primary font-semibold hover:underline">Learn More →</a>
+        </div>
+
+        <!-- 4 Supplier Evaluation -->
+        <div class="bg-white p-7 rounded-2xl shadow border border-hertz-light/30">
+          <div class="text-hertz-primary text-3xl mb-3"><i class="fas fa-people-carry-box"></i></div>
+          <h3 class="text-xl font-semibold text-gray-900 mb-2">Supplier Evaluation</h3>
+          <p class="text-gray-600 mb-4">Score CO₂e/USD, completeness & risk. Drive engagement.</p>
+          <a href="#suppliers" class="text-hertz-primary font-semibold hover:underline">Learn More →</a>
+        </div>
+
+        <!-- 5 Net‑Zero Planning -->
+        <div class="bg-white p-7 rounded-2xl shadow border border-hertz-light/30">
+          <div class="text-hertz-primary text-3xl mb-3"><i class="fas fa-route"></i></div>
+          <h3 class="text-xl font-semibold text-gray-900 mb-2">Net‑Zero Planning</h3>
+          <p class="text-gray-600 mb-4">Scenario modeler, CAPEX/OPEX, glide‑path tracking.</p>
+          <a href="#netzero" class="text-hertz-primary font-semibold hover:underline">Learn More →</a>
+        </div>
+
+        <!-- 6 Reporting & Assurance -->
+        <div class="bg-white p-7 rounded-2xl shadow border border-hertz-light/30">
+          <div class="text-hertz-primary text-3xl mb-3"><i class="fas fa-file-lines"></i></div>
+          <h3 class="text-xl font-semibold text-gray-900 mb-2">Reporting & Assurance</h3>
+          <p class="text-gray-600 mb-4">Reporting Studio, audit trails, and Assurance Pack.</p>
+          <a href="#reporting" class="text-hertz-primary font-semibold hover:underline">Learn More →</a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Placeholder for detailed sections -->
-  <section id="compliance" class="py-16 bg-gray-50">
-    <div class="max-w-5xl mx-auto px-4">
-      <h2 class="text-2xl font-semibold mb-4">Regulatory Compliance</h2>
-      <p class="text-gray-600">Detailed explanation of compliance features will go here.</p>
+  <!-- Landscape break -->
+  <section aria-label="decorative separator" class="w-full">
+    <img src="./plandscape2.jpg" alt="" class="w-full h-48 md:h-64 lg:h-80 object-cover select-none pointer-events-none">
+  </section>
+
+  <!-- Deep dives -->
+  <section id="deep-dives" class="py-16 bg-white">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
+
+      <!-- Compliance -->
+      <article id="compliance" class="scroll-mt-24">
+        <h3 class="text-2xl lg:text-3xl font-semibold text-gray-900 mb-3">Compliance Automation</h3>
+        <p class="text-gray-600 mb-4">Automate mapping to global frameworks with templates and guardrails.</p>
+        <ul class="list-disc list-inside text-gray-700 space-y-1">
+          <li>Multi-framework mapping (BRSR, CSRD, TCFD, ISSB, SECR, HKEX, GRESB)</li>
+          <li>Pre‑built templates and validation checks</li>
+          <li>Audit‑ready exports and change logs</li>
+        </ul>
+      </article>
+
+      <!-- Ingestion -->
+      <article id="ingestion" class="scroll-mt-24">
+        <h3 class="text-2xl lg:text-3xl font-semibold text-gray-900 mb-3">Data & Ingestion</h3>
+        <p class="text-gray-600 mb-4">High‑throughput pipelines, connectors and schema mapping.</p>
+        <ul class="list-disc list-inside text-gray-700 space-y-1">
+          <li>ERP/connectors (SAP Ariba, Concur, CSV/SFTP, APIs)</li>
+          <li>Schema auto‑mapping & deduplication</li>
+          <li>Observability: retries, alerts, lineage</li>
+        </ul>
+      </article>
+
+      <!-- Emissions -->
+      <article id="emissions" class="scroll-mt-24">
+        <h3 class="text-2xl lg:text-3xl font-semibold text-gray-900 mb-3">Emissions & Factors</h3>
+        <p class="text-gray-600 mb-4">Transparent factor versioning and scope coverage.</p>
+        <ul class="list-disc list-inside text-gray-700 space-y-1">
+          <li>Scope 1–3 (activity‑ & spend‑based)</li>
+          <li>Region‑aware factors (DEFRA, EPA, Ecoinvent)</li>
+          <li>Batch & realtime compute, reproducible runs</li>
+        </ul>
+      </article>
+
+      <!-- Suppliers -->
+      <article id="suppliers" class="scroll-mt-24">
+        <h3 class="text-2xl lg:text-3xl font-semibold text-gray-900 mb-3">Supplier Evaluation</h3>
+        <p class="text-gray-600 mb-4">Scorecards, benchmarks and collaboration workflows.</p>
+        <ul class="list-disc list-inside text-gray-700 space-y-1">
+          <li>CO₂e/USD, completeness and risk indices</li>
+          <li>Invite suppliers; collect attestations & data</li>
+          <li>Automated reminders and status dashboards</li>
+        </ul>
+      </article>
+
+      <!-- Net‑Zero -->
+      <article id="netzero" class="scroll-mt-24">
+        <h3 class="text-2xl lg:text-3xl font-semibold text-gray-900 mb-3">Net‑Zero Planning</h3>
+        <p class="text-gray-600 mb-4">Glide‑paths with reduction levers and ROI.</p>
+        <ul class="list-disc list-inside text-gray-700 space-y-1">
+          <li>What‑if scenarios and investment timelines</li>
+          <li>CAPEX/OPEX and payback views</li>
+          <li>Targets, alerts and progress reporting</li>
+        </ul>
+      </article>
+
+      <!-- Reporting -->
+      <article id="reporting" class="scroll-mt-24">
+        <h3 class="text-2xl lg:text-3xl font-semibold text-gray-900 mb-3">Reporting & Assurance</h3>
+        <p class="text-gray-600 mb-4">Bring your data to life, then package for auditors.</p>
+        <ul class="list-disc list-inside text-gray-700 space-y-1">
+          <li>Reporting Studio with export templates</li>
+          <li>Full audit trail and reviewer workflows</li>
+          <li>Assurance Pack for external auditors</li>
+        </ul>
+      </article>
+
     </div>
   </section>
 
+  <!-- Landscape break -->
+  <section aria-label="decorative separator" class="w-full">
+    <img src="./plandscape3.jpg" alt="" class="w-full h-48 md:h-64 lg:h-80 object-cover select-none pointer-events-none">
+  </section>
+
+  <!-- CTA -->
+  <section class="py-16 bg-gradient-to-r from-hertz-primary to-hertz-dark">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-3xl lg:text-4xl font-semibold text-white mb-6">Ready to go deeper?</h2>
+      <p class="text-lg text-hertz-light mb-8">See the platform in action with your data and workflows.</p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="http://netzero.hertzwave.in" target="_blank" rel="noopener"
+           class="bg-white text-hertz-primary px-8 py-4 rounded-lg text-lg font-semibold hover:bg-gray-100">
+          <i class="fas fa-rocket mr-2"></i>Start Free Trial
+        </a>
+        <a href="mailto:info@hertzwave.in?subject=Hertzwave%20demo%20request&body=Hi%20team%2C%0D%0A%0D%0AWe%27d%20like%20a%20demo%20of%20the%20Hertzwave%20platform.%20Our%20use%20case%20is%3A%20...%0D%0ACompany%3A%0D%0ATimeline%3A%0D%0A%0D%0AThanks!"
+           class="border-2 border-white text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-white hover:text-hertz-primary">
+          <i class="fas fa-calendar mr-2"></i>Book a Demo
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
   <footer class="bg-gray-900 text-white py-10">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <a href="./index.html"><img src="./HW-Logo-Light.png" alt="Hertzwave" class="hz-logo-footer brightness-0 invert"></a>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between">
+      <a href="index.html">
+        <img src="HW-Logo-Light.png" alt="Hertzwave" class="hz-logo-footer brightness-0 invert">
+      </a>
+      <p class="text-gray-400 text-sm mt-4 md:mt-0">© 2025 Hertzwave. All rights reserved.</p>
     </div>
   </footer>
+
+  <script>
+    // mobile nav
+    const navBtn = document.getElementById('navBtn');
+    const mobileNav = document.getElementById('mobileNav');
+    if (navBtn) navBtn.addEventListener('click', ()=> mobileNav.classList.toggle('hidden'));
+
+    // smooth scroll for Learn More
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', (e) => {
+        const id = a.getAttribute('href');
+        const el = document.querySelector(id);
+        if (el) {
+          e.preventDefault();
+          el.scrollIntoView({ behavior:'smooth', block:'start' });
+        }
+      });
+    });
+  </script>
 </body>
 </html>
