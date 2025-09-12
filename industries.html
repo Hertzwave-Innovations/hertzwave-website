@@ -5,18 +5,44 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Hertzwave — Industries</title>
   <meta name="description" content="Hertzwave — Industries" />
+
+  <!-- Tailwind CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Tailwind custom config (ADD THIS RIGHT BELOW THE CDN) -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'hertz-light':  '#A8E6A3',
+            'hertz-primary':'#4A7C59',
+            'hertz-dark':   '#2F4F3F',
+            'hertz-black':  '#000000'
+          },
+          fontFamily: { 'outfit': ['Outfit', 'sans-serif'] },
+          animation: {
+            'pulse-slow': 'pulse 3s cubic-bezier(0.4,0,0.6,1) infinite',
+          },
+          keyframes: {
+            float: { 
+              '0%,100%': { transform: 'translateY(0)' },
+              '50%': { transform: 'translateY(-12px)' }
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Fonts, icons, custom CSS -->
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
-  <style>
-    body{font-family:'Outfit',sans-serif}
-    .hz-motifs{position:absolute; inset:0; pointer-events:none; user-select:none; z-index:0}
-    .hz-hero{position:relative; z-index:10}
-    @keyframes hz-float {0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
-    .animate-float{animation:hz-float 6s ease-in-out infinite}
-  </style>
 </head>
+
+  
+  
 <body class="bg-white">
   <!-- Nav -->
   <nav class="fixed top-0 w-full bg-white/95 backdrop-blur-sm border-b border-gray-200 z-50">
