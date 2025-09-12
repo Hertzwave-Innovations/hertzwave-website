@@ -104,10 +104,15 @@
     </div>
   </header>
 
- <!-- Landscape separator – full image, letterboxed if needed -->
+<!-- Landscape separator — full-bleed cover -->
 <section aria-label="separator" class="w-full">
-  <img src="./industries11.svg" alt=""
-       class="block w-full max-h-80 md:max-h-96 object-contain select-none pointer-events-none">
+  <div class="relative w-full overflow-hidden h-60 md:h-72 lg:h-96 xl:h-[28rem]">
+    <img
+      src="./industries11.svg"
+      alt=""
+      class="absolute inset-0 w-full h-full object-cover select-none pointer-events-none"
+    />
+  </div>
 </section>
 
 
