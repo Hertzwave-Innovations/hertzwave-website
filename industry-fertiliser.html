@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Fertiliser — Hertzwave Industry Solution</title>
+  <meta name="description" content="Fertiliser — Hertzwave Industry Solution" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    body{font-family:'Outfit',sans-serif}
+    .hz-motifs{position:absolute; inset:0; pointer-events:none; user-select:none; z-index:0}
+    .hz-hero{position:relative; z-index:10}
+    @keyframes hz-float {0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+    .animate-float{animation:hz-float 6s ease-in-out infinite}
+  </style>
+</head>
+<body class="bg-white">
+  <!-- Nav -->
+  <nav class="fixed top-0 w-full bg-white/95 backdrop-blur-sm border-b border-gray-200 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-16">
+        <a href="index.html" class="flex items-center space-x-3">
+          <img src="/HW-Logo-Light.png" alt="Hertzwave" class="hz-logo" />
+        </a>
+        <div class="hidden md:flex items-center space-x-8">
+          <a href="platform.html" class="text-gray-700 hover:text-hertz-primary">Platform</a>
+          <a href="solutions.html" class="text-gray-700 hover:text-hertz-primary">Solutions</a>
+          <a href="industries.html" class="text-hertz-primary font-semibold">Industries</a>
+          <a href="resources.html" class="text-gray-700 hover:text-hertz-primary">Resources</a>
+          <a href="about.html" class="text-gray-700 hover:text-hertz-primary">About</a>
+          <a href="http://netzero.hertzwave.in" target="_blank" rel="noopener"
+             class="bg-hertz-primary text-white px-6 py-2 rounded-lg hover:bg-hertz-dark font-semibold">Start Free Trial</a>
+        </div>
+        <button class="md:hidden text-gray-700" id="navBtn"><i class="fas fa-bars text-xl"></i></button>
+      </div>
+    </div>
+    <div id="mobileNav" class="hidden md:hidden bg-white border-t border-gray-200">
+      <div class="px-4 py-3 space-y-2">
+        <a href="platform.html" class="block py-2 text-gray-700">Platform</a>
+        <a href="solutions.html" class="block py-2 text-gray-700">Solutions</a>
+        <a href="industries.html" class="block py-2 text-hertz-primary font-semibold">Industries</a>
+        <a href="resources.html" class="block py-2 text-gray-700">Resources</a>
+        <a href="about.html" class="block py-2 text-gray-700">About</a>
+        <a href="http://netzero.hertzwave.in" target="_blank" rel="noopener"
+           class="block w-full text-center bg-hertz-primary text-white px-6 py-2 rounded-lg font-semibold mt-2">Start Free Trial</a>
+      </div>
+    </div>
+  </nav>
+
+        <!-- Hero -->
+        <header class="pt-28 pb-16 bg-gradient-to-br from-green-50 via-white to-hertz-light/20 overflow-hidden relative">
+          <!-- Green motifs -->
+<div class="hz-motifs">
+  <svg class="absolute left-10 top-28 w-32 opacity-40 animate-float" viewBox="0 0 64 64" fill="none">
+    <path d="M56 8C40 8 24 20 16 36c-6 12-6 20-6 20s8 0 20-6C46 42 58 26 56 8Z"
+          stroke="#2F4F3F" stroke-width="2.5" fill="#A8E6A3"></path>
+  </svg>
+  <svg class="absolute right-24 top-16 w-14 opacity-30 animate-float" style="animation-duration:8s" viewBox="0 0 64 64" fill="none">
+    <path d="M32 6c8 14 18 20 18 30a18 18 0 1 1-36 0c0-10 10-16 18-30Z"
+          stroke="#4A7C59" stroke-width="1.6" fill="#A8E6A3"></path>
+  </svg>
+  <svg class="absolute left-1/3 bottom-10 w-20 opacity-25 animate-float" style="animation-duration:10s" viewBox="0 0 64 64" fill="none">
+    <path d="M32 6c8 14 18 20 18 30a18 18 0 1 1-36 0c0-10 10-16 18-30Z"
+          stroke="#4A7C59" stroke-width="2" fill="#A8E6A3"></path>
+  </svg>
+</div>
+
+          <div class="hz-hero max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-10 items-center">
+              <div>
+                <h1 class="text-3xl lg:text-4xl font-semibold text-gray-900 mb-4 leading-tight">Fertiliser</h1>
+                <p class="text-lg text-gray-700">Ammonia/urea synthesis (Haber-Bosch) dominates; grey/blue/green ammonia pathways alter intensity drastically.</p>
+                <div class="mt-6 flex gap-3">
+                  <a href="industries.html" class="border-2 border-hertz-primary text-hertz-primary px-6 py-3 rounded-lg hover:bg-hertz-primary hover:text-white font-semibold">All Industries</a>
+                  <a href="#dashboard" class="bg-hertz-primary text-white px-6 py-3 rounded-lg hover:bg-hertz-dark font-semibold">Sample Dashboard</a>
+                </div>
+              </div>
+              <div class="relative">
+                <div class="absolute inset-0 bg-gradient-to-r from-hertz-light to-hertz-primary rounded-3xl blur-3xl opacity-20 animate-pulse-slow"></div>
+                <div class="relative bg-white p-8 rounded-3xl shadow-2xl border border-hertz-light/50">
+                  <div class="text-green-700 text-4xl mb-3"><i class="fas fa-seedling"></i></div>
+                  <h3 class="text-xl font-semibold mb-2">What we cover</h3>
+                  <ul class="text-gray-700 space-y-2">
+                    <li><i class="fa-solid fa-circle-small mr-2"></i> Measurement → Validation → Reporting</li>
+                    <li><i class="fa-solid fa-circle-small mr-2"></i> Scenario planning & reduction levers</li>
+                    <li><i class="fa-solid fa-circle-small mr-2"></i> Compliance mapping: BRSR / CSRD / TCFD</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </header>
+
+        <!-- Landscape separator -->
+        <section aria-label="separator" class="w-full">
+          <img src="./landscape2.jpg" alt="" class="w-full h-48 md:h-64 lg:h-80 object-cover select-none pointer-events-none">
+        </section>
+
+        <!-- Measurement Areas -->
+        <section class="py-16 bg-white">
+          <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-3 gap-8">
+              <div class="bg-gradient-to-br from-green-50 to-green-100 p-6 rounded-2xl">
+                <h3 class="text-xl font-semibold text-gray-900 mb-3">Scope 1</h3>
+                <ul class="text-gray-700 space-y-2 text-sm">
+                  <li>Combustion & process emissions tracking</li>
+                  <li>Operational meters • fuel logs • process factors</li>
+                  <li>Fugitives (where applicable)</li>
+                </ul>
+              </div>
+              <div class="bg-gradient-to-br from-green-50 to-green-100 p-6 rounded-2xl">
+                <h3 class="text-xl font-semibold text-gray-900 mb-3">Scope 2</h3>
+                <ul class="text-gray-700 space-y-2 text-sm">
+                  <li>Market- vs location-based methods</li>
+                  <li>Renewables, PPAs & certificates</li>
+                  <li>Granular hourly matching (optional)</li>
+                </ul>
+              </div>
+              <div class="bg-gradient-to-br from-green-50 to-green-100 p-6 rounded-2xl">
+                <h3 class="text-xl font-semibold text-gray-900 mb-3">Scope 3</h3>
+                <ul class="text-gray-700 space-y-2 text-sm">
+                  <li>Purchased goods/services, logistics, use-phase</li>
+                  <li>Supplier Evaluation module for primary data</li>
+                  <li>Data quality grading & uncertainty</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="mt-10 bg-white border border-hertz-light/40 rounded-2xl p-6">
+              <h4 class="text-lg font-semibold text-gray-900 mb-2">Compliance Mapping</h4>
+              <p class="text-gray-700 text-sm">Out-of-the-box mapping for BRSR / CSRD / TCFD / GRI with evidence trails and export-ready templates.</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Dashboard -->
+        <section id="dashboard" class="py-16 bg-gradient-to-br from-gray-50 to-hertz-light/10">
+          <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-10">
+              <h2 class="text-2xl lg:text-3xl font-semibold text-gray-900">Sample Dashboard</h2>
+              <p class="text-gray-600">Illustrative snapshot of KPIs your teams will track.</p>
+            </div>
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+  <div class="bg-white rounded-xl shadow p-5">
+    <div class="text-sm text-gray-500">Scope 1 (tCO₂e)</div>
+    <div class="text-2xl font-semibold text-gray-900 mt-1">12,450</div>
+    <div class="mt-3 h-3 bg-hertz-primary/20 rounded-full">
+      <div class="h-3 bg-hertz-primary rounded-full w-2/3"></div>
+    </div>
+  </div>
+  <div class="bg-white rounded-xl shadow p-5">
+    <div class="text-sm text-gray-500">Scope 2 (tCO₂e)</div>
+    <div class="text-2xl font-semibold text-gray-900 mt-1">8,310</div>
+    <div class="mt-3 h-3 bg-hertz-primary/20 rounded-full">
+      <div class="h-3 bg-hertz-primary rounded-full w-1/2"></div>
+    </div>
+  </div>
+  <div class="bg-white rounded-xl shadow p-5">
+    <div class="text-sm text-gray-500">Scope 3 (tCO₂e)</div>
+    <div class="text-2xl font-semibold text-gray-900 mt-1">42,980</div>
+    <div class="mt-3 h-3 bg-hertz-primary/20 rounded-full">
+      <div class="h-3 bg-hertz-primary rounded-full w-4/5"></div>
+    </div>
+  </div>
+  <div class="bg-white rounded-xl shadow p-5">
+    <div class="text-sm text-gray-500">Compliance Readiness</div>
+    <div class="text-2xl font-semibold text-gray-900 mt-1">BRSR • CSRD • TCFD</div>
+    <div class="mt-3">
+      <span class="inline-block bg-green-100 text-hertz-dark px-3 py-1 rounded-full text-xs font-semibold">On Track</span>
+    </div>
+  </div>
+</div>
+
+            <div class="grid md:grid-cols-3 gap-6 mt-6">
+              <div class="bg-white rounded-xl shadow p-5">
+                <div class="text-sm text-gray-500">Intensity KPI</div>
+                <div class="text-2xl font-semibold text-gray-900 mt-1">0.42 tCO₂e / unit</div>
+                <p class="text-xs text-gray-500 mt-2">Rolling 12-month intensity</p>
+              </div>
+              <div class="bg-white rounded-xl shadow p-5">
+                <div class="text-sm text-gray-500">Data Completeness</div>
+                <div class="text-2xl font-semibold text-gray-900 mt-1">92%</div>
+                <p class="text-xs text-gray-500 mt-2">Validation AI coverage</p>
+              </div>
+              <div class="bg-white rounded-xl shadow p-5">
+                <div class="text-sm text-gray-500">Reduction Pipeline</div>
+                <div class="text-2xl font-semibold text-gray-900 mt-1">15 projects</div>
+                <p class="text-xs text-gray-500 mt-2">Capex: $3.2M • Payback: 2.8y</p>
+              </div>
+            </div>
+          </div>
+        </section>
+  <!-- CTA -->
+  <section class="py-16 bg-gradient-to-r from-hertz-primary to-hertz-dark mt-16">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-3xl lg:text-4xl font-semibold text-white mb-6">Ready to go deeper?</h2>
+      <p class="text-lg text-hertz-light mb-8">See the platform in action with your data and workflows.</p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="http://netzero.hertzwave.in" target="_blank" rel="noopener"
+           class="bg-white text-hertz-primary px-8 py-4 rounded-lg text-lg font-semibold hover:bg-gray-100">
+          <i class="fas fa-rocket mr-2"></i>Start Free Trial
+        </a>
+        <a href="mailto:info@hertzwave.in?subject=Hertzwave%20demo%20request&body=Hi%20team%2C%0D%0AWe%27d%20like%20a%20demo.%0D%0AUse%20case%3A%0D%0ACompany%3A%0D%0ATimeline%3A%0D%0A"
+           class="border-2 border-white text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-white hover:text-hertz-primary">
+          <i class="fas fa-calendar mr-2"></i>Book a Demo
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-white py-10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between">
+      <a href="index.html"><img src="/HW-Logo-Light.png" alt="Hertzwave" class="hz-logo-footer"></a>
+      <p class="text-gray-400 text-sm mt-4 md:mt-0">© 2025 Hertzwave. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    const navBtn = document.getElementById('navBtn');
+    const mobileNav = document.getElementById('mobileNav');
+    if (navBtn) navBtn.addEventListener('click', ()=> mobileNav.classList.toggle('hidden'));
+  </script>
+</body>
+</html>
