@@ -1,0 +1,519 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Hertzwave Industries — Sector-Specific Solutions</title>
+  <meta name="description" content="Explore Hertzwave’s industry-specific carbon accounting solutions, dashboards and compliance mapping." />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <style>
+    body { font-family: 'Outfit', sans-serif; }
+    .hz-motifs { position:absolute; inset:0; pointer-events:none; user-select:none; z-index:0; }
+    .hz-hero { position:relative; z-index:10; }
+  </style>
+</head>
+<body class="bg-white">
+
+  <!-- Navigation -->
+  <nav class="fixed top-0 w-full bg-white/95 backdrop-blur-sm border-b border-gray-200 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-16">
+        <a href="index.html" class="flex items-center space-x-3">
+          <img src="/HW-Logo-Light.png" alt="Hertzwave" class="hz-logo" />
+        </a>
+        <div class="hidden md:flex items-center space-x-8">
+          <a href="platform.html" class="text-gray-700 hover:text-hertz-primary">Platform</a>
+          <a href="solutions.html" class="text-gray-700 hover:text-hertz-primary">Solutions</a>
+          <a href="industries.html" class="text-hertz-primary font-semibold">Industries</a>
+          <a href="resources.html" class="text-gray-700 hover:text-hertz-primary">Resources</a>
+          <a href="about.html" class="text-gray-700 hover:text-hertz-primary">About</a>
+          <a href="http://netzero.hertzwave.in" target="_blank" rel="noopener"
+             class="bg-hertz-primary text-white px-6 py-2 rounded-lg hover:bg-hertz-dark font-semibold">Start Free Trial</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <header class="pt-28 pb-16 bg-gradient-to-br from-green-50 via-white to-hertz-light/20 overflow-hidden relative">
+    <div class="hz-motifs">
+      <svg class="absolute left-10 top-28 w-32 opacity-40 animate-float" viewBox="0 0 64 64" fill="none">
+        <path d="M56 8C40 8 24 20 16 36c-6 12-6 20-6 20s8 0 20-6C46 42 58 26 56 8Z"
+              stroke="#2F4F3F" stroke-width="2.5" fill="#A8E6A3"></path>
+      </svg>
+    </div>
+    <div class="hz-hero max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h1 class="text-4xl font-semibold text-gray-900 mb-4">Industry-Specific Carbon Intelligence</h1>
+      <p class="text-xl text-gray-600 max-w-3xl mx-auto">Deep domain expertise, prebuilt templates, and sample dashboards for 16 key industries—helping you achieve confidence in reporting and accelerate net-zero planning.</p>
+    </div>
+  </header>
+
+  <!-- Industry Grid -->
+  <section class="py-16 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <!-- Generate 16 industry tiles -->
+
+        <div class="bg-gradient-to-br from-green-50 to-green-100 p-6 rounded-xl hover:shadow-lg transition-all group cursor-pointer">
+          <div class="text-green-700 text-2xl mb-3 group-hover:scale-110 transition-transform">
+            <i class="fas fa-industry"></i>
+          </div>
+          <h3 class="font-semibold text-gray-900 mb-2">Steel & Metals</h3>
+          <ul class="text-sm text-gray-600 space-y-1">
+            <li><i class="fas fa-check text-hertz-primary mr-2"></i>Blast furnace coke rate</li><li><i class="fas fa-check text-hertz-primary mr-2"></i>DRI input tracking</li><li><i class="fas fa-check text-hertz-primary mr-2"></i>Supply chain emissions</li><li><i class="fas fa-check text-hertz-primary mr-2"></i>Port & rail logistics</li><li><i class="fas fa-check text-hertz-primary mr-2"></i>BRSR/CSRD reporting</li>
+          </ul>
+          <a href="#steel-&-metals" class="text-hertz-primary text-sm font-medium inline-block mt-2 hover:underline">Learn more</a>
+        </div>
+    
+        <div class="bg-gradient-to-br from-green-50 to-green-100 p-6 rounded-xl hover:shadow-lg transition-all group cursor-pointer">
+          <div class="text-green-700 text-2xl mb-3 group-hover:scale-110 transition-transform">
+            <i class="fas fa-oil-can"></i>
+          </div>
+          <h3 class="font-semibold text-gray-900 mb-2">Oil & Gas</h3>
+          <ul class="text-sm text-gray-600 space-y-1">
+            <li><i class="fas fa-check text-hertz-primary mr-2"></i>Flaring & venting</li><li><i class="fas fa-check text-hertz-primary mr-2"></i>Pipeline compression energy</li><li><i class="fas fa-check text-hertz-primary mr-2"></i>Refinery process units</li><li><i class="fas fa-check text-hertz-primary mr-2"></i>Tank farm losses</li><li><i class="fas fa-check text-hertz-primary mr-2"></i>Methane leak detection</li>
+          </ul>
+          <a href="#oil-&-gas" class="text-hertz-primary text-sm font-medium inline-block mt-2 hover:underline">Learn more</a>
+        </div>
+    
+        <div class="bg-gradient-to-br from-green-50 to-green-100 p-6 rounded-xl hover:shadow-lg transition-all group cursor-pointer">
+          <div class="text-green-700 text-2xl mb-3 group-hover:scale-110 transition-transform">
+            <i class="fas fa-building"></i>
+          </div>
+          <h3 class="font-semibold text-gray-900 mb-2">Cement</h3>
+          <ul class="text-sm text-gray-600 space-y-1">
+            <li><i class="fas fa-check text-hertz-primary mr-2"></i>Clinker factor tracking</li><li><i class="fas fa-check text-hertz-primary mr-2"></i>Kiln fuel consumption</li><li><i class="fas fa-check text-hertz-primary mr-2"></i>Electricity intensity</li><li><i class="fas fa-check text-hertz-primary mr-2"></i>Alternative fuels %</li><li><i class="fas fa-check text-hertz-primary mr-2"></i>Scope 3 upstream quarrying</li>
+          </ul>
+          <a href="#cement" class="text-hertz-primary text-sm font-medium inline-block mt-2 hover:underline">Learn more</a>
+        </div>
+    
+        <div class="bg-gradient-to-br from-green-50 to-green-100 p-6 rounded-xl hover:shadow-lg transition-all group cursor-pointer">
+          <div class="text-green-700 text-2xl mb-3 group-hover:scale-110 transition-transform">
+            <i class="fas fa-car"></i>
+          </div>
+          <h3 class="font-semibold text-gray-900 mb-2">Automotive</h3>
+          <ul class="text-sm text-gray-600 space-y-1">
+            <li><i class="fas fa-check text-hertz-primary mr-2"></i>Plant energy</li><li><i class="fas fa-check text-hertz-primary mr-2"></i>Paint shop VOC emissions</li><li><i class="fas fa-check text-hertz-primary mr-2"></i>Supply chain Scope 3</li><li><i class="fas fa-check text-hertz-primary mr-2"></i>Battery production emissions</li><li><i class="fas fa-check text-hertz-primary mr-2"></i>Distribution logistics</li>
+          </ul>
+          <a href="#automotive" class="text-hertz-primary text-sm font-medium inline-block mt-2 hover:underline">Learn more</a>
+        </div>
+    
+        <div class="bg-gradient-to-br from-green-50 to-green-100 p-6 rounded-xl hover:shadow-lg transition-all group cursor-pointer">
+          <div class="text-green-700 text-2xl mb-3 group-hover:scale-110 transition-transform">
+            <i class="fas fa-tshirt"></i>
+          </div>
+          <h3 class="font-semibold text-gray-900 mb-2">Textiles</h3>
+          <ul class="text-sm text-gray-600 space-y-1">
+            <li><i class="fas fa-check text-hertz-primary mr-2"></i>Process steam usage</li><li><i class="fas fa-check text-hertz-primary mr-2"></i>Dyeing/finishing effluent</li><li><i class="fas fa-check text-hertz-primary mr-2"></i>Tier-2/3 supplier mapping</li><li><i class="fas fa-check text-hertz-primary mr-2"></i>Energy intensity (kWh/kg)</li><li><i class="fas fa-check text-hertz-primary mr-2"></i>Water recycling KPIs</li>
+          </ul>
+          <a href="#textiles" class="text-hertz-primary text-sm font-medium inline-block mt-2 hover:underline">Learn more</a>
+        </div>
+    
+        <div class="bg-gradient-to-br from-green-50 to-green-100 p-6 rounded-xl hover:shadow-lg transition-all group cursor-pointer">
+          <div class="text-green-700 text-2xl mb-3 group-hover:scale-110 transition-transform">
+            <i class="fas fa-tractor"></i>
+          </div>
+          <h3 class="font-semibold text-gray-900 mb-2">Food & Agriculture</h3>
+          <ul class="text-sm text-gray-600 space-y-1">
+            <li><i class="fas fa-check text-hertz-primary mr-2"></i>Fertilizer usage</li><li><i class="fas fa-check text-hertz-primary mr-2"></i>On-farm energy</li><li><i class="fas fa-check text-hertz-primary mr-2"></i>Cold chain transport</li><li><i class="fas fa-check text-hertz-primary mr-2"></i>Packaging emissions</li><li><i class="fas fa-check text-hertz-primary mr-2"></i>Methane/N₂O factors</li>
+          </ul>
+          <a href="#food-&-agriculture" class="text-hertz-primary text-sm font-medium inline-block mt-2 hover:underline">Learn more</a>
+        </div>
+    
+        <div class="bg-gradient-to-br from-green-50 to-green-100 p-6 rounded-xl hover:shadow-lg transition-all group cursor-pointer">
+          <div class="text-green-700 text-2xl mb-3 group-hover:scale-110 transition-transform">
+            <i class="fas fa-bolt"></i>
+          </div>
+          <h3 class="font-semibold text-gray-900 mb-2">Power Generation</h3>
+          <ul class="text-sm text-gray-600 space-y-1">
+            <li><i class="fas fa-check text-hertz-primary mr-2"></i>Plant heat rate</li><li><i class="fas fa-check text-hertz-primary mr-2"></i>Fuel mix data</li><li><i class="fas fa-check text-hertz-primary mr-2"></i>Grid EF alignment</li><li><i class="fas fa-check text-hertz-primary mr-2"></i>Auxiliary power</li><li><i class="fas fa-check text-hertz-primary mr-2"></i>Transmission losses</li>
+          </ul>
+          <a href="#power-generation" class="text-hertz-primary text-sm font-medium inline-block mt-2 hover:underline">Learn more</a>
+        </div>
+    
+        <div class="bg-gradient-to-br from-green-50 to-green-100 p-6 rounded-xl hover:shadow-lg transition-all group cursor-pointer">
+          <div class="text-green-700 text-2xl mb-3 group-hover:scale-110 transition-transform">
+            <i class="fas fa-mountain"></i>
+          </div>
+          <h3 class="font-semibold text-gray-900 mb-2">Mining</h3>
+          <ul class="text-sm text-gray-600 space-y-1">
+            <li><i class="fas fa-check text-hertz-primary mr-2"></i>Diesel equipment usage</li><li><i class="fas fa-check text-hertz-primary mr-2"></i>Ore haul distance</li><li><i class="fas fa-check text-hertz-primary mr-2"></i>Explosives & process gases</li><li><i class="fas fa-check text-hertz-primary mr-2"></i>Beneficiation plant energy</li><li><i class="fas fa-check text-hertz-primary mr-2"></i>Fugitive dust controls</li>
+          </ul>
+          <a href="#mining" class="text-hertz-primary text-sm font-medium inline-block mt-2 hover:underline">Learn more</a>
+        </div>
+    
+        <div class="bg-gradient-to-br from-green-50 to-green-100 p-6 rounded-xl hover:shadow-lg transition-all group cursor-pointer">
+          <div class="text-green-700 text-2xl mb-3 group-hover:scale-110 transition-transform">
+            <i class="fas fa-ship"></i>
+          </div>
+          <h3 class="font-semibold text-gray-900 mb-2">Shipping</h3>
+          <ul class="text-sm text-gray-600 space-y-1">
+            <li><i class="fas fa-check text-hertz-primary mr-2"></i>Voyage fuel consumption</li><li><i class="fas fa-check text-hertz-primary mr-2"></i>IMO CII alignment</li><li><i class="fas fa-check text-hertz-primary mr-2"></i>Port calls</li><li><i class="fas fa-check text-hertz-primary mr-2"></i>Cold ironing adoption</li><li><i class="fas fa-check text-hertz-primary mr-2"></i>Supply chain LCA</li>
+          </ul>
+          <a href="#shipping" class="text-hertz-primary text-sm font-medium inline-block mt-2 hover:underline">Learn more</a>
+        </div>
+    
+        <div class="bg-gradient-to-br from-green-50 to-green-100 p-6 rounded-xl hover:shadow-lg transition-all group cursor-pointer">
+          <div class="text-green-700 text-2xl mb-3 group-hover:scale-110 transition-transform">
+            <i class="fas fa-hospital"></i>
+          </div>
+          <h3 class="font-semibold text-gray-900 mb-2">Healthcare</h3>
+          <ul class="text-sm text-gray-600 space-y-1">
+            <li><i class="fas fa-check text-hertz-primary mr-2"></i>Scope 1 anesthetic gases</li><li><i class="fas fa-check text-hertz-primary mr-2"></i>Hospital energy use</li><li><i class="fas fa-check text-hertz-primary mr-2"></i>Medical waste tracking</li><li><i class="fas fa-check text-hertz-primary mr-2"></i>Fleet logistics</li><li><i class="fas fa-check text-hertz-primary mr-2"></i>Water/steam sterilization loads</li>
+          </ul>
+          <a href="#healthcare" class="text-hertz-primary text-sm font-medium inline-block mt-2 hover:underline">Learn more</a>
+        </div>
+    
+        <div class="bg-gradient-to-br from-green-50 to-green-100 p-6 rounded-xl hover:shadow-lg transition-all group cursor-pointer">
+          <div class="text-green-700 text-2xl mb-3 group-hover:scale-110 transition-transform">
+            <i class="fas fa-pills"></i>
+          </div>
+          <h3 class="font-semibold text-gray-900 mb-2">Pharma & Chemicals</h3>
+          <ul class="text-sm text-gray-600 space-y-1">
+            <li><i class="fas fa-check text-hertz-primary mr-2"></i>Batch process energy</li><li><i class="fas fa-check text-hertz-primary mr-2"></i>Solvent recovery</li><li><i class="fas fa-check text-hertz-primary mr-2"></i>Refrigerant losses</li><li><i class="fas fa-check text-hertz-primary mr-2"></i>Lab ventilation rates</li><li><i class="fas fa-check text-hertz-primary mr-2"></i>Hazardous waste treatment</li>
+          </ul>
+          <a href="#pharma-&-chemicals" class="text-hertz-primary text-sm font-medium inline-block mt-2 hover:underline">Learn more</a>
+        </div>
+    
+        <div class="bg-gradient-to-br from-green-50 to-green-100 p-6 rounded-xl hover:shadow-lg transition-all group cursor-pointer">
+          <div class="text-green-700 text-2xl mb-3 group-hover:scale-110 transition-transform">
+            <i class="fas fa-bed"></i>
+          </div>
+          <h3 class="font-semibold text-gray-900 mb-2">Hospitality</h3>
+          <ul class="text-sm text-gray-600 space-y-1">
+            <li><i class="fas fa-check text-hertz-primary mr-2"></i>Room energy per occupied room</li><li><i class="fas fa-check text-hertz-primary mr-2"></i>Laundry steam</li><li><i class="fas fa-check text-hertz-primary mr-2"></i>Kitchen gas</li><li><i class="fas fa-check text-hertz-primary mr-2"></i>Waste segregation rates</li><li><i class="fas fa-check text-hertz-primary mr-2"></i>Water reuse KPIs</li>
+          </ul>
+          <a href="#hospitality" class="text-hertz-primary text-sm font-medium inline-block mt-2 hover:underline">Learn more</a>
+        </div>
+    
+        <div class="bg-gradient-to-br from-green-50 to-green-100 p-6 rounded-xl hover:shadow-lg transition-all group cursor-pointer">
+          <div class="text-green-700 text-2xl mb-3 group-hover:scale-110 transition-transform">
+            <i class="fas fa-server"></i>
+          </div>
+          <h3 class="font-semibold text-gray-900 mb-2">Technology/Data Centers</h3>
+          <ul class="text-sm text-gray-600 space-y-1">
+            <li><i class="fas fa-check text-hertz-primary mr-2"></i>PUE & WUE tracking</li><li><i class="fas fa-check text-hertz-primary mr-2"></i>IT load monitoring</li><li><i class="fas fa-check text-hertz-primary mr-2"></i>UPS/generator diesel</li><li><i class="fas fa-check text-hertz-primary mr-2"></i>Cooling efficiency</li><li><i class="fas fa-check text-hertz-primary mr-2"></i>Renewable PPAs</li>
+          </ul>
+          <a href="#technology/data-centers" class="text-hertz-primary text-sm font-medium inline-block mt-2 hover:underline">Learn more</a>
+        </div>
+    
+        <div class="bg-gradient-to-br from-green-50 to-green-100 p-6 rounded-xl hover:shadow-lg transition-all group cursor-pointer">
+          <div class="text-green-700 text-2xl mb-3 group-hover:scale-110 transition-transform">
+            <i class="fas fa-city"></i>
+          </div>
+          <h3 class="font-semibold text-gray-900 mb-2">Real Estate/Construction</h3>
+          <ul class="text-sm text-gray-600 space-y-1">
+            <li><i class="fas fa-check text-hertz-primary mr-2"></i>Embodied carbon in materials</li><li><i class="fas fa-check text-hertz-primary mr-2"></i>Construction diesel usage</li><li><i class="fas fa-check text-hertz-primary mr-2"></i>Site power</li><li><i class="fas fa-check text-hertz-primary mr-2"></i>HVAC commissioning</li><li><i class="fas fa-check text-hertz-primary mr-2"></i>Post-occupancy ops</li>
+          </ul>
+          <a href="#real-estate/construction" class="text-hertz-primary text-sm font-medium inline-block mt-2 hover:underline">Learn more</a>
+        </div>
+    
+        <div class="bg-gradient-to-br from-green-50 to-green-100 p-6 rounded-xl hover:shadow-lg transition-all group cursor-pointer">
+          <div class="text-green-700 text-2xl mb-3 group-hover:scale-110 transition-transform">
+            <i class="fas fa-battery-full"></i>
+          </div>
+          <h3 class="font-semibold text-gray-900 mb-2">Energy & Utilities</h3>
+          <ul class="text-sm text-gray-600 space-y-1">
+            <li><i class="fas fa-check text-hertz-primary mr-2"></i>Grid emission factors</li><li><i class="fas fa-check text-hertz-primary mr-2"></i>T&D loss rates</li><li><i class="fas fa-check text-hertz-primary mr-2"></i>Renewable share</li><li><i class="fas fa-check text-hertz-primary mr-2"></i>Peak demand curves</li><li><i class="fas fa-check text-hertz-primary mr-2"></i>Storage integration</li>
+          </ul>
+          <a href="#energy-&-utilities" class="text-hertz-primary text-sm font-medium inline-block mt-2 hover:underline">Learn more</a>
+        </div>
+    
+        <div class="bg-gradient-to-br from-green-50 to-green-100 p-6 rounded-xl hover:shadow-lg transition-all group cursor-pointer">
+          <div class="text-green-700 text-2xl mb-3 group-hover:scale-110 transition-transform">
+            <i class="fas fa-seedling"></i>
+          </div>
+          <h3 class="font-semibold text-gray-900 mb-2">Fertiliser</h3>
+          <ul class="text-sm text-gray-600 space-y-1">
+            <li><i class="fas fa-check text-hertz-primary mr-2"></i>Ammonia production intensity</li><li><i class="fas fa-check text-hertz-primary mr-2"></i>Urea plant efficiency</li><li><i class="fas fa-check text-hertz-primary mr-2"></i>N₂O abatement factors</li><li><i class="fas fa-check text-hertz-primary mr-2"></i>Feedstock CO₂ capture</li><li><i class="fas fa-check text-hertz-primary mr-2"></i>Bagging/transport emissions</li>
+          </ul>
+          <a href="#fertiliser" class="text-hertz-primary text-sm font-medium inline-block mt-2 hover:underline">Learn more</a>
+        </div>
+    
+      </div>
+    </div>
+  </section>
+
+  <!-- Landscape separator -->
+  <section class="w-full">
+    <img src="./landscape1.jpg" alt="" class="w-full h-48 md:h-64 lg:h-80 object-cover select-none pointer-events-none">
+  </section>
+
+  <!-- Detailed Sections -->
+  <section class="py-16 bg-gradient-to-br from-gray-50 to-hertz-light/10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-20">
+
+      <div id="steel-&-metals" class="bg-white p-8 rounded-2xl shadow border border-hertz-light/30">
+        <h2 class="text-2xl font-semibold text-hertz-primary mb-4">Steel & Metals</h2>
+        <p class="text-gray-600 mb-6">Our platform addresses critical emission sources in the Steel & Metals sector, helping you collect auditable data, apply correct factors, and generate ready-to-file compliance reports.</p>
+        <div class="grid md:grid-cols-2 gap-8">
+          <ul class="space-y-2 text-gray-700">
+            <li><i class="fas fa-industry text-hertz-primary mr-2"></i>Blast furnace coke rate</li><li><i class="fas fa-industry text-hertz-primary mr-2"></i>DRI input tracking</li><li><i class="fas fa-industry text-hertz-primary mr-2"></i>Supply chain emissions</li><li><i class="fas fa-industry text-hertz-primary mr-2"></i>Port & rail logistics</li><li><i class="fas fa-industry text-hertz-primary mr-2"></i>BRSR/CSRD reporting</li>
+          </ul>
+          <div class="grid grid-cols-2 gap-4">
+            <div class="bg-green-50 p-4 rounded-xl text-center shadow"><span class="block text-xl font-bold text-hertz-primary">Scope 1</span><span class="text-sm text-gray-600">Direct emissions</span></div>
+            <div class="bg-green-50 p-4 rounded-xl text-center shadow"><span class="block text-xl font-bold text-hertz-primary">Scope 2</span><span class="text-sm text-gray-600">Energy indirect</span></div>
+            <div class="bg-green-50 p-4 rounded-xl text-center shadow"><span class="block text-xl font-bold text-hertz-primary">Scope 3</span><span class="text-sm text-gray-600">Value-chain</span></div>
+            <div class="bg-green-50 p-4 rounded-xl text-center shadow"><span class="block text-xl font-bold text-hertz-primary">Compliance</span><span class="text-sm text-gray-600">BRSR / CSRD</span></div>
+          </div>
+        </div>
+      </div>
+    
+      <div id="oil-&-gas" class="bg-white p-8 rounded-2xl shadow border border-hertz-light/30">
+        <h2 class="text-2xl font-semibold text-hertz-primary mb-4">Oil & Gas</h2>
+        <p class="text-gray-600 mb-6">Our platform addresses critical emission sources in the Oil & Gas sector, helping you collect auditable data, apply correct factors, and generate ready-to-file compliance reports.</p>
+        <div class="grid md:grid-cols-2 gap-8">
+          <ul class="space-y-2 text-gray-700">
+            <li><i class="fas fa-industry text-hertz-primary mr-2"></i>Flaring & venting</li><li><i class="fas fa-industry text-hertz-primary mr-2"></i>Pipeline compression energy</li><li><i class="fas fa-industry text-hertz-primary mr-2"></i>Refinery process units</li><li><i class="fas fa-industry text-hertz-primary mr-2"></i>Tank farm losses</li><li><i class="fas fa-industry text-hertz-primary mr-2"></i>Methane leak detection</li>
+          </ul>
+          <div class="grid grid-cols-2 gap-4">
+            <div class="bg-green-50 p-4 rounded-xl text-center shadow"><span class="block text-xl font-bold text-hertz-primary">Scope 1</span><span class="text-sm text-gray-600">Direct emissions</span></div>
+            <div class="bg-green-50 p-4 rounded-xl text-center shadow"><span class="block text-xl font-bold text-hertz-primary">Scope 2</span><span class="text-sm text-gray-600">Energy indirect</span></div>
+            <div class="bg-green-50 p-4 rounded-xl text-center shadow"><span class="block text-xl font-bold text-hertz-primary">Scope 3</span><span class="text-sm text-gray-600">Value-chain</span></div>
+            <div class="bg-green-50 p-4 rounded-xl text-center shadow"><span class="block text-xl font-bold text-hertz-primary">Compliance</span><span class="text-sm text-gray-600">BRSR / CSRD</span></div>
+          </div>
+        </div>
+      </div>
+    
+      <div id="cement" class="bg-white p-8 rounded-2xl shadow border border-hertz-light/30">
+        <h2 class="text-2xl font-semibold text-hertz-primary mb-4">Cement</h2>
+        <p class="text-gray-600 mb-6">Our platform addresses critical emission sources in the Cement sector, helping you collect auditable data, apply correct factors, and generate ready-to-file compliance reports.</p>
+        <div class="grid md:grid-cols-2 gap-8">
+          <ul class="space-y-2 text-gray-700">
+            <li><i class="fas fa-industry text-hertz-primary mr-2"></i>Clinker factor tracking</li><li><i class="fas fa-industry text-hertz-primary mr-2"></i>Kiln fuel consumption</li><li><i class="fas fa-industry text-hertz-primary mr-2"></i>Electricity intensity</li><li><i class="fas fa-industry text-hertz-primary mr-2"></i>Alternative fuels %</li><li><i class="fas fa-industry text-hertz-primary mr-2"></i>Scope 3 upstream quarrying</li>
+          </ul>
+          <div class="grid grid-cols-2 gap-4">
+            <div class="bg-green-50 p-4 rounded-xl text-center shadow"><span class="block text-xl font-bold text-hertz-primary">Scope 1</span><span class="text-sm text-gray-600">Direct emissions</span></div>
+            <div class="bg-green-50 p-4 rounded-xl text-center shadow"><span class="block text-xl font-bold text-hertz-primary">Scope 2</span><span class="text-sm text-gray-600">Energy indirect</span></div>
+            <div class="bg-green-50 p-4 rounded-xl text-center shadow"><span class="block text-xl font-bold text-hertz-primary">Scope 3</span><span class="text-sm text-gray-600">Value-chain</span></div>
+            <div class="bg-green-50 p-4 rounded-xl text-center shadow"><span class="block text-xl font-bold text-hertz-primary">Compliance</span><span class="text-sm text-gray-600">BRSR / CSRD</span></div>
+          </div>
+        </div>
+      </div>
+    
+      <div id="automotive" class="bg-white p-8 rounded-2xl shadow border border-hertz-light/30">
+        <h2 class="text-2xl font-semibold text-hertz-primary mb-4">Automotive</h2>
+        <p class="text-gray-600 mb-6">Our platform addresses critical emission sources in the Automotive sector, helping you collect auditable data, apply correct factors, and generate ready-to-file compliance reports.</p>
+        <div class="grid md:grid-cols-2 gap-8">
+          <ul class="space-y-2 text-gray-700">
+            <li><i class="fas fa-industry text-hertz-primary mr-2"></i>Plant energy</li><li><i class="fas fa-industry text-hertz-primary mr-2"></i>Paint shop VOC emissions</li><li><i class="fas fa-industry text-hertz-primary mr-2"></i>Supply chain Scope 3</li><li><i class="fas fa-industry text-hertz-primary mr-2"></i>Battery production emissions</li><li><i class="fas fa-industry text-hertz-primary mr-2"></i>Distribution logistics</li>
+          </ul>
+          <div class="grid grid-cols-2 gap-4">
+            <div class="bg-green-50 p-4 rounded-xl text-center shadow"><span class="block text-xl font-bold text-hertz-primary">Scope 1</span><span class="text-sm text-gray-600">Direct emissions</span></div>
+            <div class="bg-green-50 p-4 rounded-xl text-center shadow"><span class="block text-xl font-bold text-hertz-primary">Scope 2</span><span class="text-sm text-gray-600">Energy indirect</span></div>
+            <div class="bg-green-50 p-4 rounded-xl text-center shadow"><span class="block text-xl font-bold text-hertz-primary">Scope 3</span><span class="text-sm text-gray-600">Value-chain</span></div>
+            <div class="bg-green-50 p-4 rounded-xl text-center shadow"><span class="block text-xl font-bold text-hertz-primary">Compliance</span><span class="text-sm text-gray-600">BRSR / CSRD</span></div>
+          </div>
+        </div>
+      </div>
+    
+      <div id="textiles" class="bg-white p-8 rounded-2xl shadow border border-hertz-light/30">
+        <h2 class="text-2xl font-semibold text-hertz-primary mb-4">Textiles</h2>
+        <p class="text-gray-600 mb-6">Our platform addresses critical emission sources in the Textiles sector, helping you collect auditable data, apply correct factors, and generate ready-to-file compliance reports.</p>
+        <div class="grid md:grid-cols-2 gap-8">
+          <ul class="space-y-2 text-gray-700">
+            <li><i class="fas fa-industry text-hertz-primary mr-2"></i>Process steam usage</li><li><i class="fas fa-industry text-hertz-primary mr-2"></i>Dyeing/finishing effluent</li><li><i class="fas fa-industry text-hertz-primary mr-2"></i>Tier-2/3 supplier mapping</li><li><i class="fas fa-industry text-hertz-primary mr-2"></i>Energy intensity (kWh/kg)</li><li><i class="fas fa-industry text-hertz-primary mr-2"></i>Water recycling KPIs</li>
+          </ul>
+          <div class="grid grid-cols-2 gap-4">
+            <div class="bg-green-50 p-4 rounded-xl text-center shadow"><span class="block text-xl font-bold text-hertz-primary">Scope 1</span><span class="text-sm text-gray-600">Direct emissions</span></div>
+            <div class="bg-green-50 p-4 rounded-xl text-center shadow"><span class="block text-xl font-bold text-hertz-primary">Scope 2</span><span class="text-sm text-gray-600">Energy indirect</span></div>
+            <div class="bg-green-50 p-4 rounded-xl text-center shadow"><span class="block text-xl font-bold text-hertz-primary">Scope 3</span><span class="text-sm text-gray-600">Value-chain</span></div>
+            <div class="bg-green-50 p-4 rounded-xl text-center shadow"><span class="block text-xl font-bold text-hertz-primary">Compliance</span><span class="text-sm text-gray-600">BRSR / CSRD</span></div>
+          </div>
+        </div>
+      </div>
+    
+      <div id="food-&-agriculture" class="bg-white p-8 rounded-2xl shadow border border-hertz-light/30">
+        <h2 class="text-2xl font-semibold text-hertz-primary mb-4">Food & Agriculture</h2>
+        <p class="text-gray-600 mb-6">Our platform addresses critical emission sources in the Food & Agriculture sector, helping you collect auditable data, apply correct factors, and generate ready-to-file compliance reports.</p>
+        <div class="grid md:grid-cols-2 gap-8">
+          <ul class="space-y-2 text-gray-700">
+            <li><i class="fas fa-industry text-hertz-primary mr-2"></i>Fertilizer usage</li><li><i class="fas fa-industry text-hertz-primary mr-2"></i>On-farm energy</li><li><i class="fas fa-industry text-hertz-primary mr-2"></i>Cold chain transport</li><li><i class="fas fa-industry text-hertz-primary mr-2"></i>Packaging emissions</li><li><i class="fas fa-industry text-hertz-primary mr-2"></i>Methane/N₂O factors</li>
+          </ul>
+          <div class="grid grid-cols-2 gap-4">
+            <div class="bg-green-50 p-4 rounded-xl text-center shadow"><span class="block text-xl font-bold text-hertz-primary">Scope 1</span><span class="text-sm text-gray-600">Direct emissions</span></div>
+            <div class="bg-green-50 p-4 rounded-xl text-center shadow"><span class="block text-xl font-bold text-hertz-primary">Scope 2</span><span class="text-sm text-gray-600">Energy indirect</span></div>
+            <div class="bg-green-50 p-4 rounded-xl text-center shadow"><span class="block text-xl font-bold text-hertz-primary">Scope 3</span><span class="text-sm text-gray-600">Value-chain</span></div>
+            <div class="bg-green-50 p-4 rounded-xl text-center shadow"><span class="block text-xl font-bold text-hertz-primary">Compliance</span><span class="text-sm text-gray-600">BRSR / CSRD</span></div>
+          </div>
+        </div>
+      </div>
+    
+      <div id="power-generation" class="bg-white p-8 rounded-2xl shadow border border-hertz-light/30">
+        <h2 class="text-2xl font-semibold text-hertz-primary mb-4">Power Generation</h2>
+        <p class="text-gray-600 mb-6">Our platform addresses critical emission sources in the Power Generation sector, helping you collect auditable data, apply correct factors, and generate ready-to-file compliance reports.</p>
+        <div class="grid md:grid-cols-2 gap-8">
+          <ul class="space-y-2 text-gray-700">
+            <li><i class="fas fa-industry text-hertz-primary mr-2"></i>Plant heat rate</li><li><i class="fas fa-industry text-hertz-primary mr-2"></i>Fuel mix data</li><li><i class="fas fa-industry text-hertz-primary mr-2"></i>Grid EF alignment</li><li><i class="fas fa-industry text-hertz-primary mr-2"></i>Auxiliary power</li><li><i class="fas fa-industry text-hertz-primary mr-2"></i>Transmission losses</li>
+          </ul>
+          <div class="grid grid-cols-2 gap-4">
+            <div class="bg-green-50 p-4 rounded-xl text-center shadow"><span class="block text-xl font-bold text-hertz-primary">Scope 1</span><span class="text-sm text-gray-600">Direct emissions</span></div>
+            <div class="bg-green-50 p-4 rounded-xl text-center shadow"><span class="block text-xl font-bold text-hertz-primary">Scope 2</span><span class="text-sm text-gray-600">Energy indirect</span></div>
+            <div class="bg-green-50 p-4 rounded-xl text-center shadow"><span class="block text-xl font-bold text-hertz-primary">Scope 3</span><span class="text-sm text-gray-600">Value-chain</span></div>
+            <div class="bg-green-50 p-4 rounded-xl text-center shadow"><span class="block text-xl font-bold text-hertz-primary">Compliance</span><span class="text-sm text-gray-600">BRSR / CSRD</span></div>
+          </div>
+        </div>
+      </div>
+    
+      <div id="mining" class="bg-white p-8 rounded-2xl shadow border border-hertz-light/30">
+        <h2 class="text-2xl font-semibold text-hertz-primary mb-4">Mining</h2>
+        <p class="text-gray-600 mb-6">Our platform addresses critical emission sources in the Mining sector, helping you collect auditable data, apply correct factors, and generate ready-to-file compliance reports.</p>
+        <div class="grid md:grid-cols-2 gap-8">
+          <ul class="space-y-2 text-gray-700">
+            <li><i class="fas fa-industry text-hertz-primary mr-2"></i>Diesel equipment usage</li><li><i class="fas fa-industry text-hertz-primary mr-2"></i>Ore haul distance</li><li><i class="fas fa-industry text-hertz-primary mr-2"></i>Explosives & process gases</li><li><i class="fas fa-industry text-hertz-primary mr-2"></i>Beneficiation plant energy</li><li><i class="fas fa-industry text-hertz-primary mr-2"></i>Fugitive dust controls</li>
+          </ul>
+          <div class="grid grid-cols-2 gap-4">
+            <div class="bg-green-50 p-4 rounded-xl text-center shadow"><span class="block text-xl font-bold text-hertz-primary">Scope 1</span><span class="text-sm text-gray-600">Direct emissions</span></div>
+            <div class="bg-green-50 p-4 rounded-xl text-center shadow"><span class="block text-xl font-bold text-hertz-primary">Scope 2</span><span class="text-sm text-gray-600">Energy indirect</span></div>
+            <div class="bg-green-50 p-4 rounded-xl text-center shadow"><span class="block text-xl font-bold text-hertz-primary">Scope 3</span><span class="text-sm text-gray-600">Value-chain</span></div>
+            <div class="bg-green-50 p-4 rounded-xl text-center shadow"><span class="block text-xl font-bold text-hertz-primary">Compliance</span><span class="text-sm text-gray-600">BRSR / CSRD</span></div>
+          </div>
+        </div>
+      </div>
+    
+      <div id="shipping" class="bg-white p-8 rounded-2xl shadow border border-hertz-light/30">
+        <h2 class="text-2xl font-semibold text-hertz-primary mb-4">Shipping</h2>
+        <p class="text-gray-600 mb-6">Our platform addresses critical emission sources in the Shipping sector, helping you collect auditable data, apply correct factors, and generate ready-to-file compliance reports.</p>
+        <div class="grid md:grid-cols-2 gap-8">
+          <ul class="space-y-2 text-gray-700">
+            <li><i class="fas fa-industry text-hertz-primary mr-2"></i>Voyage fuel consumption</li><li><i class="fas fa-industry text-hertz-primary mr-2"></i>IMO CII alignment</li><li><i class="fas fa-industry text-hertz-primary mr-2"></i>Port calls</li><li><i class="fas fa-industry text-hertz-primary mr-2"></i>Cold ironing adoption</li><li><i class="fas fa-industry text-hertz-primary mr-2"></i>Supply chain LCA</li>
+          </ul>
+          <div class="grid grid-cols-2 gap-4">
+            <div class="bg-green-50 p-4 rounded-xl text-center shadow"><span class="block text-xl font-bold text-hertz-primary">Scope 1</span><span class="text-sm text-gray-600">Direct emissions</span></div>
+            <div class="bg-green-50 p-4 rounded-xl text-center shadow"><span class="block text-xl font-bold text-hertz-primary">Scope 2</span><span class="text-sm text-gray-600">Energy indirect</span></div>
+            <div class="bg-green-50 p-4 rounded-xl text-center shadow"><span class="block text-xl font-bold text-hertz-primary">Scope 3</span><span class="text-sm text-gray-600">Value-chain</span></div>
+            <div class="bg-green-50 p-4 rounded-xl text-center shadow"><span class="block text-xl font-bold text-hertz-primary">Compliance</span><span class="text-sm text-gray-600">BRSR / CSRD</span></div>
+          </div>
+        </div>
+      </div>
+    
+      <div id="healthcare" class="bg-white p-8 rounded-2xl shadow border border-hertz-light/30">
+        <h2 class="text-2xl font-semibold text-hertz-primary mb-4">Healthcare</h2>
+        <p class="text-gray-600 mb-6">Our platform addresses critical emission sources in the Healthcare sector, helping you collect auditable data, apply correct factors, and generate ready-to-file compliance reports.</p>
+        <div class="grid md:grid-cols-2 gap-8">
+          <ul class="space-y-2 text-gray-700">
+            <li><i class="fas fa-industry text-hertz-primary mr-2"></i>Scope 1 anesthetic gases</li><li><i class="fas fa-industry text-hertz-primary mr-2"></i>Hospital energy use</li><li><i class="fas fa-industry text-hertz-primary mr-2"></i>Medical waste tracking</li><li><i class="fas fa-industry text-hertz-primary mr-2"></i>Fleet logistics</li><li><i class="fas fa-industry text-hertz-primary mr-2"></i>Water/steam sterilization loads</li>
+          </ul>
+          <div class="grid grid-cols-2 gap-4">
+            <div class="bg-green-50 p-4 rounded-xl text-center shadow"><span class="block text-xl font-bold text-hertz-primary">Scope 1</span><span class="text-sm text-gray-600">Direct emissions</span></div>
+            <div class="bg-green-50 p-4 rounded-xl text-center shadow"><span class="block text-xl font-bold text-hertz-primary">Scope 2</span><span class="text-sm text-gray-600">Energy indirect</span></div>
+            <div class="bg-green-50 p-4 rounded-xl text-center shadow"><span class="block text-xl font-bold text-hertz-primary">Scope 3</span><span class="text-sm text-gray-600">Value-chain</span></div>
+            <div class="bg-green-50 p-4 rounded-xl text-center shadow"><span class="block text-xl font-bold text-hertz-primary">Compliance</span><span class="text-sm text-gray-600">BRSR / CSRD</span></div>
+          </div>
+        </div>
+      </div>
+    
+      <div id="pharma-&-chemicals" class="bg-white p-8 rounded-2xl shadow border border-hertz-light/30">
+        <h2 class="text-2xl font-semibold text-hertz-primary mb-4">Pharma & Chemicals</h2>
+        <p class="text-gray-600 mb-6">Our platform addresses critical emission sources in the Pharma & Chemicals sector, helping you collect auditable data, apply correct factors, and generate ready-to-file compliance reports.</p>
+        <div class="grid md:grid-cols-2 gap-8">
+          <ul class="space-y-2 text-gray-700">
+            <li><i class="fas fa-industry text-hertz-primary mr-2"></i>Batch process energy</li><li><i class="fas fa-industry text-hertz-primary mr-2"></i>Solvent recovery</li><li><i class="fas fa-industry text-hertz-primary mr-2"></i>Refrigerant losses</li><li><i class="fas fa-industry text-hertz-primary mr-2"></i>Lab ventilation rates</li><li><i class="fas fa-industry text-hertz-primary mr-2"></i>Hazardous waste treatment</li>
+          </ul>
+          <div class="grid grid-cols-2 gap-4">
+            <div class="bg-green-50 p-4 rounded-xl text-center shadow"><span class="block text-xl font-bold text-hertz-primary">Scope 1</span><span class="text-sm text-gray-600">Direct emissions</span></div>
+            <div class="bg-green-50 p-4 rounded-xl text-center shadow"><span class="block text-xl font-bold text-hertz-primary">Scope 2</span><span class="text-sm text-gray-600">Energy indirect</span></div>
+            <div class="bg-green-50 p-4 rounded-xl text-center shadow"><span class="block text-xl font-bold text-hertz-primary">Scope 3</span><span class="text-sm text-gray-600">Value-chain</span></div>
+            <div class="bg-green-50 p-4 rounded-xl text-center shadow"><span class="block text-xl font-bold text-hertz-primary">Compliance</span><span class="text-sm text-gray-600">BRSR / CSRD</span></div>
+          </div>
+        </div>
+      </div>
+    
+      <div id="hospitality" class="bg-white p-8 rounded-2xl shadow border border-hertz-light/30">
+        <h2 class="text-2xl font-semibold text-hertz-primary mb-4">Hospitality</h2>
+        <p class="text-gray-600 mb-6">Our platform addresses critical emission sources in the Hospitality sector, helping you collect auditable data, apply correct factors, and generate ready-to-file compliance reports.</p>
+        <div class="grid md:grid-cols-2 gap-8">
+          <ul class="space-y-2 text-gray-700">
+            <li><i class="fas fa-industry text-hertz-primary mr-2"></i>Room energy per occupied room</li><li><i class="fas fa-industry text-hertz-primary mr-2"></i>Laundry steam</li><li><i class="fas fa-industry text-hertz-primary mr-2"></i>Kitchen gas</li><li><i class="fas fa-industry text-hertz-primary mr-2"></i>Waste segregation rates</li><li><i class="fas fa-industry text-hertz-primary mr-2"></i>Water reuse KPIs</li>
+          </ul>
+          <div class="grid grid-cols-2 gap-4">
+            <div class="bg-green-50 p-4 rounded-xl text-center shadow"><span class="block text-xl font-bold text-hertz-primary">Scope 1</span><span class="text-sm text-gray-600">Direct emissions</span></div>
+            <div class="bg-green-50 p-4 rounded-xl text-center shadow"><span class="block text-xl font-bold text-hertz-primary">Scope 2</span><span class="text-sm text-gray-600">Energy indirect</span></div>
+            <div class="bg-green-50 p-4 rounded-xl text-center shadow"><span class="block text-xl font-bold text-hertz-primary">Scope 3</span><span class="text-sm text-gray-600">Value-chain</span></div>
+            <div class="bg-green-50 p-4 rounded-xl text-center shadow"><span class="block text-xl font-bold text-hertz-primary">Compliance</span><span class="text-sm text-gray-600">BRSR / CSRD</span></div>
+          </div>
+        </div>
+      </div>
+    
+      <div id="technology/data-centers" class="bg-white p-8 rounded-2xl shadow border border-hertz-light/30">
+        <h2 class="text-2xl font-semibold text-hertz-primary mb-4">Technology/Data Centers</h2>
+        <p class="text-gray-600 mb-6">Our platform addresses critical emission sources in the Technology/Data Centers sector, helping you collect auditable data, apply correct factors, and generate ready-to-file compliance reports.</p>
+        <div class="grid md:grid-cols-2 gap-8">
+          <ul class="space-y-2 text-gray-700">
+            <li><i class="fas fa-industry text-hertz-primary mr-2"></i>PUE & WUE tracking</li><li><i class="fas fa-industry text-hertz-primary mr-2"></i>IT load monitoring</li><li><i class="fas fa-industry text-hertz-primary mr-2"></i>UPS/generator diesel</li><li><i class="fas fa-industry text-hertz-primary mr-2"></i>Cooling efficiency</li><li><i class="fas fa-industry text-hertz-primary mr-2"></i>Renewable PPAs</li>
+          </ul>
+          <div class="grid grid-cols-2 gap-4">
+            <div class="bg-green-50 p-4 rounded-xl text-center shadow"><span class="block text-xl font-bold text-hertz-primary">Scope 1</span><span class="text-sm text-gray-600">Direct emissions</span></div>
+            <div class="bg-green-50 p-4 rounded-xl text-center shadow"><span class="block text-xl font-bold text-hertz-primary">Scope 2</span><span class="text-sm text-gray-600">Energy indirect</span></div>
+            <div class="bg-green-50 p-4 rounded-xl text-center shadow"><span class="block text-xl font-bold text-hertz-primary">Scope 3</span><span class="text-sm text-gray-600">Value-chain</span></div>
+            <div class="bg-green-50 p-4 rounded-xl text-center shadow"><span class="block text-xl font-bold text-hertz-primary">Compliance</span><span class="text-sm text-gray-600">BRSR / CSRD</span></div>
+          </div>
+        </div>
+      </div>
+    
+      <div id="real-estate/construction" class="bg-white p-8 rounded-2xl shadow border border-hertz-light/30">
+        <h2 class="text-2xl font-semibold text-hertz-primary mb-4">Real Estate/Construction</h2>
+        <p class="text-gray-600 mb-6">Our platform addresses critical emission sources in the Real Estate/Construction sector, helping you collect auditable data, apply correct factors, and generate ready-to-file compliance reports.</p>
+        <div class="grid md:grid-cols-2 gap-8">
+          <ul class="space-y-2 text-gray-700">
+            <li><i class="fas fa-industry text-hertz-primary mr-2"></i>Embodied carbon in materials</li><li><i class="fas fa-industry text-hertz-primary mr-2"></i>Construction diesel usage</li><li><i class="fas fa-industry text-hertz-primary mr-2"></i>Site power</li><li><i class="fas fa-industry text-hertz-primary mr-2"></i>HVAC commissioning</li><li><i class="fas fa-industry text-hertz-primary mr-2"></i>Post-occupancy ops</li>
+          </ul>
+          <div class="grid grid-cols-2 gap-4">
+            <div class="bg-green-50 p-4 rounded-xl text-center shadow"><span class="block text-xl font-bold text-hertz-primary">Scope 1</span><span class="text-sm text-gray-600">Direct emissions</span></div>
+            <div class="bg-green-50 p-4 rounded-xl text-center shadow"><span class="block text-xl font-bold text-hertz-primary">Scope 2</span><span class="text-sm text-gray-600">Energy indirect</span></div>
+            <div class="bg-green-50 p-4 rounded-xl text-center shadow"><span class="block text-xl font-bold text-hertz-primary">Scope 3</span><span class="text-sm text-gray-600">Value-chain</span></div>
+            <div class="bg-green-50 p-4 rounded-xl text-center shadow"><span class="block text-xl font-bold text-hertz-primary">Compliance</span><span class="text-sm text-gray-600">BRSR / CSRD</span></div>
+          </div>
+        </div>
+      </div>
+    
+      <div id="energy-&-utilities" class="bg-white p-8 rounded-2xl shadow border border-hertz-light/30">
+        <h2 class="text-2xl font-semibold text-hertz-primary mb-4">Energy & Utilities</h2>
+        <p class="text-gray-600 mb-6">Our platform addresses critical emission sources in the Energy & Utilities sector, helping you collect auditable data, apply correct factors, and generate ready-to-file compliance reports.</p>
+        <div class="grid md:grid-cols-2 gap-8">
+          <ul class="space-y-2 text-gray-700">
+            <li><i class="fas fa-industry text-hertz-primary mr-2"></i>Grid emission factors</li><li><i class="fas fa-industry text-hertz-primary mr-2"></i>T&D loss rates</li><li><i class="fas fa-industry text-hertz-primary mr-2"></i>Renewable share</li><li><i class="fas fa-industry text-hertz-primary mr-2"></i>Peak demand curves</li><li><i class="fas fa-industry text-hertz-primary mr-2"></i>Storage integration</li>
+          </ul>
+          <div class="grid grid-cols-2 gap-4">
+            <div class="bg-green-50 p-4 rounded-xl text-center shadow"><span class="block text-xl font-bold text-hertz-primary">Scope 1</span><span class="text-sm text-gray-600">Direct emissions</span></div>
+            <div class="bg-green-50 p-4 rounded-xl text-center shadow"><span class="block text-xl font-bold text-hertz-primary">Scope 2</span><span class="text-sm text-gray-600">Energy indirect</span></div>
+            <div class="bg-green-50 p-4 rounded-xl text-center shadow"><span class="block text-xl font-bold text-hertz-primary">Scope 3</span><span class="text-sm text-gray-600">Value-chain</span></div>
+            <div class="bg-green-50 p-4 rounded-xl text-center shadow"><span class="block text-xl font-bold text-hertz-primary">Compliance</span><span class="text-sm text-gray-600">BRSR / CSRD</span></div>
+          </div>
+        </div>
+      </div>
+    
+      <div id="fertiliser" class="bg-white p-8 rounded-2xl shadow border border-hertz-light/30">
+        <h2 class="text-2xl font-semibold text-hertz-primary mb-4">Fertiliser</h2>
+        <p class="text-gray-600 mb-6">Our platform addresses critical emission sources in the Fertiliser sector, helping you collect auditable data, apply correct factors, and generate ready-to-file compliance reports.</p>
+        <div class="grid md:grid-cols-2 gap-8">
+          <ul class="space-y-2 text-gray-700">
+            <li><i class="fas fa-industry text-hertz-primary mr-2"></i>Ammonia production intensity</li><li><i class="fas fa-industry text-hertz-primary mr-2"></i>Urea plant efficiency</li><li><i class="fas fa-industry text-hertz-primary mr-2"></i>N₂O abatement factors</li><li><i class="fas fa-industry text-hertz-primary mr-2"></i>Feedstock CO₂ capture</li><li><i class="fas fa-industry text-hertz-primary mr-2"></i>Bagging/transport emissions</li>
+          </ul>
+          <div class="grid grid-cols-2 gap-4">
+            <div class="bg-green-50 p-4 rounded-xl text-center shadow"><span class="block text-xl font-bold text-hertz-primary">Scope 1</span><span class="text-sm text-gray-600">Direct emissions</span></div>
+            <div class="bg-green-50 p-4 rounded-xl text-center shadow"><span class="block text-xl font-bold text-hertz-primary">Scope 2</span><span class="text-sm text-gray-600">Energy indirect</span></div>
+            <div class="bg-green-50 p-4 rounded-xl text-center shadow"><span class="block text-xl font-bold text-hertz-primary">Scope 3</span><span class="text-sm text-gray-600">Value-chain</span></div>
+            <div class="bg-green-50 p-4 rounded-xl text-center shadow"><span class="block text-xl font-bold text-hertz-primary">Compliance</span><span class="text-sm text-gray-600">BRSR / CSRD</span></div>
+          </div>
+        </div>
+      </div>
+    
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-white py-10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between">
+      <a href="index.html">
+        <img src="/HW-Logo-Light.png" alt="Hertzwave" class="hz-logo-footer brightness-0 invert">
+      </a>
+      <p class="text-gray-400 text-sm mt-4 md:mt-0">© 2025 Hertzwave. All rights reserved.</p>
+    </div>
+  </footer>
+</body>
+</html>
