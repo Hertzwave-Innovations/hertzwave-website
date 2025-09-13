@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Webinar — ESRS E1 Deep Dive | Hertzwave</title>
+  <meta name="description" content="Evidence expectations, intensity KPIs, assurance pitfalls, and how to prepare ESRS E1 disclosures with Hertzwave."/>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <style>
+    :root{--hz-primary:#4A7C59;--hz-dark:#2F4F3F}
+    body{font-family:'Outfit',sans-serif}
+    .hz-logo{height:32px!important;max-height:32px!important;width:auto!important;display:block;object-fit:contain}
+  </style>
+</head>
+<body class="bg-white text-gray-900">
+  <nav class="border-b border-gray-200 bg-white/95 backdrop-blur-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      <a href="/index.html"><img src="/HW-Logo-Light.png" alt="Hertzwave" class="hz-logo"></a>
+      <div class="hidden md:flex gap-6 text-sm">
+        <a href="/platform.html" class="text-gray-700 hover:text-[var(--hz-primary)]">Platform</a>
+        <a href="/solutions.html" class="text-gray-700 hover:text-[var(--hz-primary)]">Solutions</a>
+        <a href="/industries.html" class="text-gray-700 hover:text-[var(--hz-primary)]">Industries</a>
+        <a href="/resources/" class="text-[var(--hz-primary)] font-semibold">Resources</a>
+        <a href="/about.html" class="text-gray-700 hover:text-[var(--hz-primary)]">About</a>
+      </div>
+      <a href="http://netzero.hertzwave.in" target="_blank" rel="noopener"
+         class="px-4 py-2 bg-[var(--hz-primary)] text-white rounded hover:bg-[var(--hz-dark)]">Start Free Trial</a>
+    </div>
+  </nav>
+
+  <header class="bg-gradient-to-br from-emerald-50 via-white to-emerald-100/30">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-14 text-center">
+      <a href="/resources/" class="text-sm text-[var(--hz-primary)] hover:underline">&larr; Back to Resources</a>
+      <h1 class="text-3xl lg:text-4xl font-semibold mt-2">ESRS E1 Deep Dive</h1>
+      <p class="text-gray-600 mt-2">Evidence expectations, intensity KPIs, and common assurance findings—what to fix early.</p>
+      <div class="mt-3 text-sm text-gray-500">On-demand · 60 min</div>
+      <div class="mt-6">
+        <a href="#register" class="px-5 py-2 rounded bg-[var(--hz-primary)] text-white hover:bg-[var(--hz-dark)]">Watch Recording</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-10">
+    <section>
+      <h2 class="text-2xl font-semibold">What we cover</h2>
+      <ul class="list-disc ml-6 mt-3 space-y-2 text-gray-700">
+        <li>Structure of ESRS E1 and linkage to other ESRS</li>
+        <li>Intensity metrics (Scope 1/2/3) and activity boundaries</li>
+        <li>Controls: factor versioning, variance analysis, reviewer sign-off</li>
+        <li>Exporting evidence-backed disclosures from Hertzwave</li>
+      </ul>
+    </section>
+
+    <section id="register" class="bg-gray-50 rounded-2xl p-6 border">
+      <div class="font-semibold mb-2">Access the recording + slides</div>
+      <form onsubmit="event.preventDefault(); alert('Thanks! We’ll email the recording & slides.'); this.reset();">
+        <div class="flex gap-2">
+          <input required type="email" placeholder="your@company.com" class="border rounded p-2 w-full"/>
+          <button class="px-4 py-2 bg-[var(--hz-primary)] text-white rounded hover:bg-[var(--hz-dark)]">Send</button>
+        </div>
+      </form>
+      <div class="mt-3 text-sm">
+        Related: <a class="text-[var(--hz-primary)] underline" href="/resources/guides/brsr-to-csrd-mapping.html">BRSR → CSRD: Mapping</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="border-t py-8 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-sm text-gray-600 flex items-center justify-between">
+      <a href="/index.html"><img src="/HW-Logo-Light.png" alt="Hertzwave" class="hz-logo"></a>
+      <div class="flex gap-6 items-center">
+        <a href="/privacy.html" class="hover:text-gray-800">Privacy</a>
+        <a href="/terms.html" class="hover:text-gray-800">Terms</a>
+        <a href="/contact.html" class="hover:text-gray-800">Contact</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
