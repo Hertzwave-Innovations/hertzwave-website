@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Guides — Hertzwave Resources</title>
+  <meta name="description" content="Guides for credible, audit-ready carbon accounting — GHG Protocol basics, Scope 3, CSRD mappings, electricity factors and more." />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root{ --hz-primary:#4A7C59; --hz-dark:#2F4F3F; --hz-light:#A8E6A3; }
+    body{font-family:'Outfit',sans-serif}
+    .hz-logo{height:32px!important;max-height:32px!important;width:auto!important;display:block;object-fit:contain}
+    .chip{padding:.5rem .9rem;border-radius:9999px;background:#f3f4f6;color:#111827;font-size:.875rem;cursor:pointer;user-select:none}
+    .chip[data-active="true"]{background:#e0f2f1;color:#0f766e;border:1px solid #99f6e4}
+    .resource-card{transition:opacity .15s ease, transform .15s ease}
+    .resource-card[hidden]{display:none!important}
+  </style>
+</head>
+<body class="bg-white text-gray-900">
+
+  <!-- Nav -->
+  <nav class="border-b border-gray-200 bg-white/95 backdrop-blur-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      <a href="/index.html" class="flex items-center"><img src="/HW-Logo-Light.png" alt="Hertzwave" class="hz-logo" /></a>
+      <div class="hidden md:flex gap-6 text-sm">
+        <a href="/platform.html"   class="text-gray-700 hover:text-[var(--hz-primary)]">Platform</a>
+        <a href="/solutions.html"  class="text-gray-700 hover:text-[var(--hz-primary)]">Solutions</a>
+        <a href="/industries.html" class="text-gray-700 hover:text-[var(--hz-primary)]">Industries</a>
+        <a href="/resources/"      class="text-[var(--hz-primary)] font-semibold">Resources</a>
+        <a href="/about.html"      class="text-gray-700 hover:text-[var(--hz-primary)]">About</a>
+      </div>
+      <a href="http://netzero.hertzwave.in" target="_blank" rel="noopener"
+         class="px-4 py-2 bg-[var(--hz-primary)] text-white rounded hover:bg-[var(--hz-dark)]">Start Free Trial</a>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <header class="bg-gradient-to-br from-emerald-50 via-white to-emerald-100/30">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
+      <a href="/resources/" class="text-sm text-[var(--hz-primary)] hover:underline">&larr; Back to Resources</a>
+      <h1 class="text-3xl lg:text-4xl font-semibold mt-2">Guides</h1>
+      <p class="text-gray-600 mt-2 max-w-2xl">Deep dives and how-tos for credible carbon accounting and reporting.</p>
+    </div>
+  </header>
+
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+    <!-- Search + topic chips -->
+    <div class="mb-8 grid md:grid-cols-[1fr_auto] gap-3 items-start">
+      <input id="searchBox" placeholder="Search guides…" class="border rounded p-3 w-full" />
+      <div class="flex flex-wrap gap-2 text-sm">
+        <button class="chip" data-chip data-tag="ghg">GHG Protocol</button>
+        <button class="chip" data-chip data-tag="scope3">Scope 3</button>
+        <button class="chip" data-chip data-tag="csrd">CSRD / ESRS</button>
+        <button class="chip" data-chip data-tag="electricity">Electricity Factors</button>
+        <button class="chip" data-chip data-tag="supplier">Supplier / Data</button>
+      </div>
+    </div>
+
+    <!-- Guides grid -->
+    <div id="cards" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+      <!-- Carbon Accounting 101 -->
+      <a href="/resources/guides/carbon-accounting-101.html"
+         class="resource-card block p-5 border rounded-xl hover:shadow"
+         data-title="carbon accounting 101" data-keywords="ghg protocol scopes 1 2 3 data hierarchy calculation"
+         data-tags="ghg">
+        <div class="text-sm text-gray-500">Guide · GHG Protocol</div>
+        <div class="font-semibold mt-1">Carbon Accounting 101</div>
+        <p class="text-sm text-gray-600 mt-2">Scopes 1–3, data hierarchy, correct calculations, audit-ready controls.</p>
+        <div class="mt-4 text-xs text-gray-500">10 min read · Updated Sep 2025</div>
+      </a>
+
+      <!-- BRSR to CSRD -->
+      <a href="/resources/guides/brsr-to-csrd-mapping.html"
+         class="resource-card block p-5 border rounded-xl hover:shadow"
+         data-title="brsr to csrd mapping" data-keywords="esrs e1 e5 mapping disclosure"
+         data-tags="csrd">
+        <div class="text-sm text-gray-500">Guide · BRSR → CSRD</div>
+        <div class="font-semibold mt-1">BRSR to CSRD: Mapping</div>
+        <p class="text-sm text-gray-600 mt-2">Where BRSR fields map to ESRS E1–E5; evidence expectations.</p>
+        <div class="mt-4 text-xs text-gray-500">12 min read · Updated Sep 2025</div>
+      </a>
+
+      <!-- Scope 3 Prioritization -->
+      <a href="/resources/guides/scope-3-prioritization.html"
+         class="resource-card block p-5 border rounded-xl hover:shadow"
+         data-title="scope 3 prioritization" data-keywords="value chain hotspots materiality"
+         data-tags="scope3 supplier">
+        <div class="text-sm text-gray-500">Guide · Scope 3</div>
+        <div class="font-semibold mt-1">Scope 3 Prioritization</div>
+        <p class="text-sm text-gray-600 mt-2">Focus on the largest, most influenceable categories first.</p>
+        <div class="mt-4 text-xs text-gray-500">9 min read · Updated Sep 2025</div>
+      </a>
+
+      <!-- Electricity Factors -->
+      <a href="/resources/guides/electricity-factors.html"
+         class="resource-card block p-5 border rounded-xl hover:shadow"
+         data-title="electricity factors india global" data-keywords="grid factors residual mix market based"
+         data-tags="electricity ghg">
+        <div class="text-sm text-gray-500">Guide · Electricity</div>
+        <div class="font-semibold mt-1">Electricity Factors: India &amp; Global</div>
+        <p class="text-sm text-gray-600 mt-2">Location vs market-based factors, residual mix, PPAs/RECs.</p>
+        <div class="mt-4 text-xs text-gray-500">11 min read · Updated Sep 2025</div>
+      </a>
+
+      <!-- Data Quality Controls (optional starter) -->
+      <a href="/resources/guides/data-quality-controls.html"
+         class="resource-card block p-5 border rounded-xl hover:shadow"
+         data-title="data quality controls" data-keywords="validation audit trail evidence"
+         data-tags="supplier ghg">
+        <div class="text-sm text-gray-500">Guide · Controls</div>
+        <div class="font-semibold mt-1">Data Quality &amp; Assurance Controls</div>
+        <p class="text-sm text-gray-600 mt-2">Factor versioning, reviewer sign-off, variance analysis, evidence vault.</p>
+        <div class="mt-4 text-xs text-gray-500">8 min read · Updated Sep 2025</div>
+      </a>
+
+    </div>
+
+    <!-- Empty state -->
+    <div id="emptyState" class="hidden mt-10 p-6 rounded-xl border bg-gray-50 text-gray-700">
+      No guides match your search/filters. Try clearing a tag or changing your query.
+    </div>
+
+    <div class="mt-10">
+      <a href="/resources/" class="inline-flex items-center text-[color:var(--hz-primary)] font-semibold hover:underline">
+        <i class="fa-solid fa-arrow-left mr-2"></i>Back to Resources
+      </a>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="border-t py-8 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-sm text-gray-600 flex items-center justify-between">
+      <a href="/index.html" class="flex items-center"><img src="/HW-Logo-Light.png" alt="Hertzwave" class="hz-logo"/></a>
+      <div class="flex gap-6 items-center">
+        <a href="/privacy.html" class="hover:text-gray-800">Privacy</a>
+        <a href="/terms.html" class="hover:text-gray-800">Terms</a>
+        <a href="/contact.html" class="hover:text-gray-800">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Search + tag filter JS -->
+  <script>
+    (function(){
+      const cards = Array.from(document.querySelectorAll('.resource-card'));
+      const chips = Array.from(document.querySelectorAll('[data-chip]'));
+      const input = document.getElementById('searchBox');
+      const empty = document.getElementById('emptyState');
+      const active = new Set(); // selected tags
+
+      function apply(){
+        const q = (input.value || '').trim().toLowerCase();
+        let visible = 0;
+        cards.forEach(card=>{
+          const tags = (card.dataset.tags||'').split(/\s+/);
+          const hay = (card.dataset.title + ' ' + (card.dataset.keywords||'')).toLowerCase();
+          const tagPass = active.size===0 || [...active].every(t=>tags.includes(t));
+          const textPass = q==='' || hay.includes(q);
+          const show = tagPass && textPass;
+          card.hidden = !show;
+          if(show) visible++;
+        });
+        empty.classList.toggle('hidden', visible!==0);
+      }
+
+      chips.forEach(chip=>{
+        chip.addEventListener('click', ()=>{
+          const t = chip.dataset.tag;
+          const on = chip.getAttribute('data-active') === 'true';
+          if(on){ active.delete(t); chip.setAttribute('data-active','false'); }
+          else  { active.add(t);   chip.setAttribute('data-active','true');  }
+          apply();
+        });
+      });
+      input.addEventListener('input', apply);
+    })();
+  </script>
+</body>
+</html>
