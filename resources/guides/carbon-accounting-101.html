@@ -11,45 +11,32 @@
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
   <style>
     /* Brand tokens (match your index.html colors) */
-    :root{
-      --hz-light:#A8E6A3; --hz-primary:#4A7C59; --hz-dark:#2F4F3F;
+    :root { --hz-light:#A8E6A3; --hz-primary:#4A7C59; --hz-dark:#2F4F3F; }
+    body { font-family:'Outfit',sans-serif }
+
+    /* Keep nav/footer logo consistent everywhere */
+    .hz-logo {
+      height: 32px !important;     /* same as Tailwind h-8 */
+      max-height: 32px !important;
+      width: auto !important;
+      display: block;
+      object-fit: contain;
+      flex-shrink: 0;
     }
-    body{font-family:'Outfit',sans-serif}
-    /* Simple article typography without Tailwind plugins */
-    .guide-body h2{font-size:1.5rem;line-height:1.35;font-weight:600;margin:2.25rem 0 1rem;color:#111827}
-    .guide-body h3{font-size:1.25rem;line-height:1.4;font-weight:600;margin:1.5rem 0 .75rem;color:#1f2937}
-    .guide-body p{margin:.9rem 0;color:#374151}
-    .guide-body ul{margin:.5rem 0 1rem 1.25rem;list-style:disc;color:#374151}
-    .guide-body ol{margin:.5rem 0 1rem 1.25rem;list-style:decimal;color:#374151}
-    .guide-body li{margin:.35rem 0}
-    .callout{background:#ecfdf5;border:1px solid #a7f3d0;border-radius:.75rem;padding:1rem}
-    /* Keep nav logo consistent everywhere */
 
- <style>
-  /* Force a consistent nav/footer logo size across all pages */
-  #hzNavLogo, #hzFooterLogo {
-    height: 32px !important;   /* same as h-8 */
-    max-height: 32px !important;
-    width: auto !important;
-    aspect-ratio: auto !important;
-    display: block;
-    object-fit: contain;
-    flex-shrink: 0;
-  }
-</style>
-   
-    
-    <!-- Navigation -->
-<a href="/index.html" class="flex items-center">
-  <img id="hzNavLogo" src="/HW-Logo-Light.png" alt="Hertzwave">
-</a>
-
-
-
+    /* Simple article typography (no Tailwind plugins) */
+    .guide-body h2 { font-size:1.5rem; line-height:1.35; font-weight:600; margin:2.25rem 0 1rem; color:#111827; }
+    .guide-body h3 { font-size:1.25rem; line-height:1.4;  font-weight:600; margin:1.5rem 0 .75rem;  color:#1f2937; }
+    .guide-body p  { margin:.9rem 0; color:#374151; }
+    .guide-body ul { margin:.5rem 0 1rem 1.25rem; list-style:disc;   color:#374151; }
+    .guide-body ol { margin:.5rem 0 1rem 1.25rem; list-style:decimal; color:#374151; }
+    .guide-body li { margin:.35rem 0 }
+    .callout { background:#ecfdf5; border:1px solid #a7f3d0; border-radius:.75rem; padding:1rem }
   </style>
 </head>
 <body class="bg-white text-gray-900">
-  <!-- NAV (mirrors homepage but with fixed logo size) -->
+
+  <!-- NAV -->
   <nav class="fixed top-0 w-full bg-white/95 backdrop-blur-sm border-b border-gray-200 z-50">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex justify-between items-center h-16">
@@ -57,13 +44,14 @@
           <img src="/HW-Logo-Light.png" alt="Hertzwave" class="hz-logo"/>
         </a>
         <div class="hidden md:flex items-center space-x-8">
-          <a href="/platform.html" class="text-gray-700 hover:text-[var(--hz-primary)]">Platform</a>
-          <a href="/solutions.html" class="text-gray-700 hover:text-[var(--hz-primary)]">Solutions</a>
+          <a href="/platform.html"   class="text-gray-700 hover:text-[var(--hz-primary)]">Platform</a>
+          <a href="/solutions.html"  class="text-gray-700 hover:text-[var(--hz-primary)]">Solutions</a>
           <a href="/industries.html" class="text-gray-700 hover:text-[var(--hz-primary)]">Industries</a>
-          <a href="/resources/" class="text-[var(--hz-primary)] font-semibold">Resources</a>
-          <a href="/about.html" class="text-gray-700 hover:text-[var(--hz-primary)]">About</a>
+          <a href="/resources/"      class="text-[var(--hz-primary)] font-semibold">Resources</a>
+          <a href="/about.html"      class="text-gray-700 hover:text-[var(--hz-primary)]">About</a>
           <a href="http://netzero.hertzwave.in" target="_blank" rel="noopener"
-             class="bg-[var(--hz-primary)] text-white px-6 py-2 rounded-lg hover:bg-[var(--hz-dark)] font-semibold">Start Free Trial</a>
+             class="bg-[var(--hz-primary)] text-white px-6 py-2 rounded-lg hover:bg-[var(--hz-dark)] font-semibold">
+             Start Free Trial</a>
         </div>
       </div>
     </div>
@@ -154,11 +142,8 @@ Total = 12,000 × 2.54 / 1,000 = 30.48 tCO₂e
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between">
       <a href="/index.html"><img src="/HW-Logo-Light.png" alt="Hertzwave" class="hz-logo brightness-0 invert"/></a>
       <p class="text-gray-400 text-sm mt-4 md:mt-0">© 2025 Hertzwave. All rights reserved.</p>
-      <a href="/index.html">
-  <img id="hzFooterLogo" src="/HW-Logo-Light.png" alt="Hertzwave">
-</a>
-
     </div>
   </footer>
 </body>
 </html>
+
