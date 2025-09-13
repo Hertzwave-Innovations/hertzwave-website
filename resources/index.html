@@ -8,15 +8,21 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <style>
-    :root{ --hz-primary:#4A7C59; --hz-light:#A8E6A3; }
+    :root{ --hz-primary:#4A7C59; --hz-dark:#2F4F3F; }
     body{font-family:'Outfit',sans-serif}
-    /* Consistent logo size across pages */
+    /* Normalized logo size used site-wide */
     .hz-logo{height:32px!important;max-height:32px!important;width:auto!important;display:block;object-fit:contain}
+    /* Small helper for the filter chips */
+    .chip{padding:.5rem .9rem;border-radius:9999px;background:#f3f4f6;color:#111827;font-size:.875rem;cursor:pointer;user-select:none}
+    .chip[data-active="true"]{background:#e0f2f1;color:#0f766e;border:1px solid #99f6e4}
+    /* Simple card tag for search/filtering */
+    .resource-card{transition:opacity .15s ease, transform .15s ease}
+    .resource-card[hidden]{display:none!important}
   </style>
 </head>
 <body class="bg-white text-gray-900">
 
-  <!-- Nav -->
+  <!-- Nav (with image logo, fixed size) -->
   <nav class="border-b border-gray-200 bg-white/95 backdrop-blur-sm">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
       <a href="/index.html" class="flex items-center">
@@ -30,7 +36,7 @@
         <a href="/about.html"      class="text-gray-700 hover:text-[var(--hz-primary)]">About</a>
       </div>
       <a href="http://netzero.hertzwave.in" target="_blank" rel="noopener"
-         class="px-4 py-2 bg-[var(--hz-primary)] text-white rounded hover:bg-[#2F4F3F]">Start Free Trial</a>
+         class="px-4 py-2 bg-[var(--hz-primary)] text-white rounded hover:bg-[var(--hz-dark)]">Start Free Trial</a>
     </div>
   </nav>
 
@@ -48,38 +54,47 @@
   </header>
 
   <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
-    <!-- Search/filters -->
-    <div class="mb-8 grid md:grid-cols-2 gap-3">
-      <input placeholder="Search guides, templates, calculators..." class="border rounded p-3 w-full" />
+    <!-- Search / filters -->
+    <div class="mb-8 grid md:grid-cols-[1fr_auto] gap-3 items-start">
+      <input id="searchBox" placeholder="Search guides, templates, calculators..." class="border rounded p-3 w-full" />
       <div class="flex flex-wrap gap-2 text-sm">
-        <span class="px-3 py-2 rounded-full bg-gray-100">Guides</span>
-        <span class="px-3 py-2 rounded-full bg-gray-100">Templates</span>
-        <span class="px-3 py-2 rounded-full bg-gray-100">Calculators</span>
-        <span class="px-3 py-2 rounded-full bg-gray-100">Case Studies</span>
-        <span class="px-3 py-2 rounded-full bg-gray-100">Webinars</span>
+        <button class="chip" data-chip data-type="guide">Guides</button>
+        <button class="chip" data-chip data-type="template">Templates</button>
+        <button class="chip" data-chip data-type="calculator">Calculators</button>
+        <button class="chip" data-chip data-type="case">Case Studies</button>
+        <button class="chip" data-chip data-type="webinar">Webinars</button>
       </div>
     </div>
 
     <!-- Featured Guides -->
-    <section class="mb-10">
+    <section id="featured-guides" class="mb-10">
       <div class="flex items-center justify-between mb-4">
         <h2 class="text-2xl font-semibold">Featured Guides</h2>
+        <!-- Fixed link -->
         <a href="/resources/guides/" class="text-emerald-700 hover:underline">View all</a>
       </div>
       <div class="grid md:grid-cols-3 gap-6">
-        <a href="/resources/guides/carbon-accounting-101.html" class="block p-5 border rounded-xl hover:shadow">
+        <a href="/resources/guides/carbon-accounting-101.html"
+           class="resource-card block p-5 border rounded-xl hover:shadow"
+           data-type="guide" data-title="carbon accounting 101" data-keywords="ghg protocol scopes 1 2 3 data hierarchy">
           <div class="text-sm text-gray-500">Guide · GHG Protocol</div>
           <div class="font-semibold mt-1">Carbon Accounting 101</div>
           <p class="text-sm text-gray-600 mt-2">Core methods, data hierarchies, and audit-ready controls—no fluff.</p>
           <div class="mt-4 text-xs text-gray-500">10 min read · Updated Sep 2025</div>
         </a>
-        <a href="/resources/guides/brsr-to-csrd-mapping.html" class="block p-5 border rounded-xl hover:shadow">
+
+        <a href="/resources/guides/brsr-to-csrd-mapping.html"
+           class="resource-card block p-5 border rounded-xl hover:shadow"
+           data-type="guide" data-title="brsr to csrd mapping" data-keywords="esrs e1 e5 mapping compliance">
           <div class="text-sm text-gray-500">Guide · BRSR → CSRD</div>
           <div class="font-semibold mt-1">BRSR to CSRD: Mapping</div>
           <p class="text-sm text-gray-600 mt-2">Where BRSR fields map to ESRS E1–E5; evidence expectations.</p>
           <div class="mt-4 text-xs text-gray-500">12 min read · Updated Sep 2025</div>
         </a>
-        <a href="/resources/guides/scope-3-prioritization.html" class="block p-5 border rounded-xl hover:shadow">
+
+        <a href="/resources/guides/scope-3-prioritization.html"
+           class="resource-card block p-5 border rounded-xl hover:shadow"
+           data-type="guide" data-title="scope 3 prioritization" data-keywords="value chain hotspots materiality">
           <div class="text-sm text-gray-500">Guide · Scope 3</div>
           <div class="font-semibold mt-1">Scope 3 Prioritization</div>
           <p class="text-sm text-gray-600 mt-2">Focus on the largest, most influenceable categories first.</p>
@@ -94,24 +109,35 @@
         <h2 class="text-2xl font-semibold">Calculators</h2>
       </div>
       <div class="grid md:grid-cols-4 gap-6">
-        <a href="/resources/calculators/scope2-lb-vs-mb.html" class="block p-5 border rounded-xl hover:shadow">
+        <a href="/resources/calculators/scope2-lb-vs-mb.html"
+           class="resource-card block p-5 border rounded-xl hover:shadow"
+           data-type="calculator" data-title="scope 2 location market based" data-keywords="lb mb electricity">
           <div class="text-sm text-gray-500">Calculator</div>
           <div class="font-semibold mt-1">Scope 2: LB vs MB</div>
           <p class="text-sm text-gray-600 mt-2">Compare location vs market-based emissions.</p>
         </a>
-        <a href="/resources/calculators/refrigerant-co2e.html" class="block p-5 border rounded-xl hover:shadow">
+
+        <a href="/resources/calculators/refrigerant-co2e.html"
+           class="resource-card block p-5 border rounded-xl hover:shadow"
+           data-type="calculator" data-title="refrigerant to co2e" data-keywords="gwp leaks hfc">
           <div class="text-sm text-gray-500">Calculator</div>
           <div class="font-semibold mt-1">Refrigerant → CO₂e</div>
           <p class="text-sm text-gray-600 mt-2">Convert leaks to tCO₂e using GWP.</p>
         </a>
-        <a href="/resources/calculators/pue-wue-cue-impact.html" class="block p-5 border rounded-xl hover:shadow">
+
+        <a href="/resources/calculators/pue-wue-cue-impact.html"
+           class="resource-card block p-5 border rounded-xl hover:shadow"
+           data-type="calculator" data-title="pue wue cue" data-keywords="efficiency data centers">
           <div class="text-sm text-gray-500">Calculator</div>
           <div class="font-semibold mt-1">PUE/WUE/CUE</div>
           <p class="text-sm text-gray-600 mt-2">Estimate efficiency & footprint.</p>
         </a>
-        <a href="/resources/calculators/td-loss-intensity.html" class="block p-5 border rounded-xl hover:shadow">
+
+        <a href="/resources/calculators/td-loss-intensity.html"
+           class="resource-card block p-5 border rounded-xl hover:shadow"
+           data-type="calculator" data-title="td loss intensity" data-keywords="grid distribution">
           <div class="text-sm text-gray-500">Calculator</div>
-          <div class="font-semibold mt-1">T&D Loss → Intensity</div>
+          <div class="font-semibold mt-1">T&amp;D Loss → Intensity</div>
           <p class="text-sm text-gray-600 mt-2">Impact of losses on delivered intensity.</p>
         </a>
       </div>
@@ -123,27 +149,41 @@
         <h2 class="text-2xl font-semibold">Templates & Checklists</h2>
       </div>
       <div class="grid md:grid-cols-3 gap-6">
-        <a href="/resources/templates/brsr-data-collection.xlsx" class="block p-5 border rounded-xl hover:shadow">
+        <a href="/resources/templates/brsr-data-collection.xlsx"
+           class="resource-card block p-5 border rounded-xl hover:shadow"
+           data-type="template" data-title="brsr data collection" data-keywords="xlsx template">
           <div class="text-sm text-gray-500">Template · BRSR</div>
           <div class="font-semibold mt-1">BRSR Data Collection (XLSX)</div>
           <p class="text-sm text-gray-600 mt-2">Site/entity energy, emissions, water & waste with audit trails.</p>
         </a>
-        <a href="/resources/templates/csrd-e1-checklist.xlsx" class="block p-5 border rounded-xl hover:shadow">
+
+        <a href="/resources/templates/csrd-e1-checklist.xlsx"
+           class="resource-card block p-5 border rounded-xl hover:shadow"
+           data-type="template" data-title="esrs e1 checklist" data-keywords="csrd checklist">
           <div class="text-sm text-gray-500">Checklist · CSRD</div>
           <div class="font-semibold mt-1">ESRS E1 Disclosure Checklist</div>
           <p class="text-sm text-gray-600 mt-2">Track owners, systems, frequency & evidence.</p>
         </a>
-        <a href="/resources/templates/scope3-supplier-survey-short.docx" class="block p-5 border rounded-xl hover:shadow">
+
+        <a href="/resources/templates/scope3-supplier-survey-short.docx"
+           class="resource-card block p-5 border rounded-xl hover:shadow"
+           data-type="template" data-title="supplier survey short" data-keywords="scope 3 docx">
           <div class="text-sm text-gray-500">Template · Scope 3</div>
           <div class="font-semibold mt-1">Supplier Survey – Short (DOCX)</div>
           <p class="text-sm text-gray-600 mt-2">Minimal fields for low-materiality suppliers.</p>
         </a>
-        <a href="/resources/templates/scope3-supplier-survey-long.docx" class="block p-5 border rounded-xl hover:shadow">
+
+        <a href="/resources/templates/scope3-supplier-survey-long.docx"
+           class="resource-card block p-5 border rounded-xl hover:shadow"
+           data-type="template" data-title="supplier survey long" data-keywords="scope 3 docx detailed">
           <div class="text-sm text-gray-500">Template · Scope 3</div>
           <div class="font-semibold mt-1">Supplier Survey – Long (DOCX)</div>
           <p class="text-sm text-gray-600 mt-2">Detailed capture: energy, LCAs, certifications.</p>
         </a>
-        <a href="/resources/templates/cbam-readiness-checklist.docx" class="block p-5 border rounded-xl hover:shadow">
+
+        <a href="/resources/templates/cbam-readiness-checklist.docx"
+           class="resource-card block p-5 border rounded-xl hover:shadow"
+           data-type="template" data-title="cbam readiness pack" data-keywords="eu carbon border adjustment">
           <div class="text-sm text-gray-500">Checklist · CBAM</div>
           <div class="font-semibold mt-1">CBAM Readiness Pack (DOCX)</div>
           <p class="text-sm text-gray-600 mt-2">Data capture, verification, reporting, mitigation.</p>
@@ -156,7 +196,11 @@
       <div class="p-6 rounded-xl border bg-gray-50">
         <div class="font-semibold">Glossary</div>
         <p class="text-gray-700 mt-1 text-sm">Bite-sized definitions linked across the hub. Try <em>“Residual mix”</em> or <em>“Allocation”.</em></p>
-        <div class="mt-2"><a href="/resources/guides/electricity-factors.html" class="text-emerald-700 underline">Electricity Factors: India & Global →</a></div>
+        <div class="mt-2">
+          <a href="/resources/guides/electricity-factors.html" class="text-emerald-700 underline">
+            Electricity Factors: India & Global →
+          </a>
+        </div>
       </div>
     </section>
 
@@ -173,7 +217,7 @@
     </section>
   </main>
 
-  <!-- Footer -->
+  <!-- Footer (with logo) -->
   <footer class="border-t py-8 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-sm text-gray-600 flex items-center justify-between">
       <a href="/index.html" class="flex items-center">
@@ -187,5 +231,39 @@
     </div>
   </footer>
 
+  <!-- Tiny JS: search + chip filters -->
+  <script>
+    (function(){
+      const cards = Array.from(document.querySelectorAll('.resource-card'));
+      const chips = Array.from(document.querySelectorAll('[data-chip]'));
+      const input = document.getElementById('searchBox');
+
+      // active types set (empty = show all)
+      const active = new Set();
+
+      function applyFilters(){
+        const q = (input.value || '').trim().toLowerCase();
+        cards.forEach(card=>{
+          const type = card.dataset.type || '';
+          const hay = (card.dataset.title + ' ' + (card.dataset.keywords||'')).toLowerCase();
+          const passType = active.size === 0 || active.has(type);
+          const passText = q === '' || hay.includes(q);
+          card.hidden = !(passType && passText);
+        });
+      }
+
+      chips.forEach(chip=>{
+        chip.addEventListener('click', ()=>{
+          const t = chip.dataset.type;
+          const on = chip.getAttribute('data-active') === 'true';
+          if(on){ active.delete(t); chip.setAttribute('data-active','false'); }
+          else  { active.add(t);   chip.setAttribute('data-active','true');  }
+          applyFilters();
+        });
+      });
+
+      input.addEventListener('input', applyFilters);
+    })();
+  </script>
 </body>
 </html>
