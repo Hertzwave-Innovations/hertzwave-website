@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Hertzwave — Pharma & Chemicals</title>
+  <meta name="description" content="Industry solution for Pharma & Chemicals — measurement areas, compliance mapping, and sample dashboards." />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    body{font-family:'Outfit',sans-serif}
+    .hz-motifs{position:absolute; inset:0; pointer-events:none; user-select:none; z-index:0}
+    .hz-hero{position:relative; z-index:10}
+    @keyframes hz-float {0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+    .animate-float{animation:hz-float 6s ease-in-out infinite}
+    [data-hz-aos]{opacity:0; transform:translateY(8px); transition:opacity .6s ease, transform .6s ease}
+    .hz-show{opacity:1; transform:translateY(0)}
+    .bar{height:10px;border-radius:9999px;overflow:hidden;background:rgba(16,185,129,.15)}
+    .bar > span{display:block;height:100%;background:#10B981;border-radius:9999px;width:0}
+  </style>
+</head>
+<body class="bg-white">
+
+  <!-- Nav -->
+  <nav class="fixed top-0 w-full bg-white/95 backdrop-blur-sm border-b border-gray-200 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-16">
+        <a href="index.html" class="flex items-center space-x-3">
+          <img src="/HW-Logo-Light.png" alt="Hertzwave" class="hz-logo" />
+        </a>
+        <div class="hidden md:flex items-center space-x-8">
+          <a href="platform.html" class="text-gray-700 hover:text-hertz-primary">Platform</a>
+          <a href="solutions.html" class="text-gray-700 hover:text-hertz-primary">Solutions</a>
+          <a href="industries.html" class="text-hertz-primary font-semibold">Industries</a>
+          <a href="resources.html" class="text-gray-700 hover:text-hertz-primary">Resources</a>
+          <a href="about.html" class="text-gray-700 hover:text-hertz-primary">About</a>
+          <a href="http://netzero.hertzwave.in" target="_blank" rel="noopener"
+             class="bg-hertz-primary text-white px-6 py-2 rounded-lg hover:bg-hertz-dark font-semibold">Start Free Trial</a>
+        </div>
+        <button class="md:hidden text-gray-700" id="navBtn"><i class="fas fa-bars text-xl"></i></button>
+      </div>
+    </div>
+    <div id="mobileNav" class="hidden md:hidden bg-white border-t border-gray-200">
+      <div class="px-4 py-3 space-y-2">
+        <a href="platform.html" class="block py-2 text-gray-700">Platform</a>
+        <a href="solutions.html" class="block py-2 text-gray-700">Solutions</a>
+        <a href="industries.html" class="block py-2 text-hertz-primary font-semibold">Industries</a>
+        <a href="resources.html" class="block py-2 text-gray-700">Resources</a>
+        <a href="about.html" class="block py-2 text-gray-700">About</a>
+        <a href="http://netzero.hertzwave.in" target="_blank" rel="noopener"
+           class="block w-full text-center bg-hertz-primary text-white px-6 py-2 rounded-lg font-semibold mt-2">Start Free Trial</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <header class="pt-28 pb-14 bg-gradient-to-br from-green-50 via-white to-hertz-light/20 overflow-hidden relative">
+    <div class="hz-motifs">
+      <svg class="absolute left-10 top-28 w-32 opacity-40 animate-float" viewBox="0 0 64 64" fill="none">
+        <path d="M56 8C40 8 24 20 16 36c-6 12-6 20-6 20s8 0 20-6C46 42 58 26 56 8Z"
+              stroke="#2F4F3F" stroke-width="2.5" fill="#A8E6A3"></path>
+      </svg>
+      <svg class="absolute right-24 top-16 w-14 opacity-30 animate-float" style="animation-duration:8s" viewBox="0 0 64 64" fill="none">
+        <path d="M32 6c8 14 18 20 18 30a18 18 0 1 1-36 0c0-10 10-16 18-30Z"
+              stroke="#4A7C59" stroke-width="1.6" fill="#A8E6A3"></path>
+      </svg>
+      <svg class="absolute left-1/3 bottom-10 w-20 opacity-25 animate-float" style="animation-duration:10s" viewBox="0 0 64 64" fill="none">
+        <path d="M32 6c8 14 18 20 18 30a18 18 0 1 1-36 0c0-10 10-16 18-30Z"
+              stroke="#4A7C59" stroke-width="2" fill="#A8E6A3"></path>
+      </svg>
+    </div>
+
+    <div class="hz-hero max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <p class="text-hertz-primary font-semibold mb-2">Industry</p>
+      <h1 class="text-3xl lg:text-4xl font-semibold text-gray-900 mb-3">Pharma & Chemicals</h1>
+      <p class="text-lg text-gray-600 max-w-3xl">
+        Across <span class="font-medium">APIs, formulations, bulk chemicals, and specialty</span>, decarbonization targets
+        <span class="font-medium">process heat</span> (boilers/steam, dryers), <span class="font-medium">solvent management</span>,
+        <span class="font-medium">N₂O and process gases</span>, <span class="font-medium">CHP/electrification</span>, and <span class="font-medium">flares</span>.
+        Challenges include <span class="font-medium">batch variability</span>, stringent <span class="font-medium">GMP/QA</span>, hazardous waste streams,
+        cold-chain and <span class="font-medium">cleanroom</span> HVAC with high ACH.
+      </p>
+    </div>
+  </header>
+
+  <!-- Above-the-fold two-column: Context + Measurement cards -->
+  <section class="py-8 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-10 items-start">
+      <!-- Context left (extra bullets) -->
+      <div>
+        <h2 class="text-2xl font-semibold text-gray-900 mb-4">Key drivers & challenges</h2>
+        <ul class="space-y-3 text-gray-700">
+          <li><i class="fa-solid fa-fire-burner text-hertz-primary mr-2"></i>Process heat: <span class="font-medium">steam boilers</span>, MEE, dryers—fuel switch, heat recovery, <span class="font-medium">electric steam</span>.</li>
+          <li><i class="fa-solid fa-vial text-hertz-primary mr-2"></i>Solvents & VOCs: recovery, <span class="font-medium">condensation/adsorption</span>, TO/oxidizers; inventory & losses.</li>
+          <li><i class="fa-solid fa-cloud text-hertz-primary mr-2"></i>Process gases: <span class="font-medium">N₂O</span> (nitric/adipic), HFCs/PFCs, <span class="font-medium">H₂</span> flares—abatement & metering.</li>
+          <li><i class="fa-solid fa-temperature-low text-hertz-primary mr-2"></i>Cleanroom HVAC & cold chain: ACH optimization, heat recovery, low-GWP refrigerants.</li>
+          <li><i class="fa-solid fa-recycle text-hertz-primary mr-2"></i>Waste & water: ETP/RO/MEE energy, hazardous incineration, by-product valorization.</li>
+        </ul>
+      </div>
+
+      <!-- Measurement cards right -->
+      <div class="grid sm:grid-cols-2 gap-6">
+        <div class="bg-gradient-to-br from-emerald-50 to-emerald-100 p-5 rounded-xl shadow border border-emerald-100" data-hz-aos>
+          <div class="text-emerald-700 text-xl mb-2"><i class="fa-solid fa-fire"></i> Scope 1 — On-site</div>
+          <ul class="text-sm text-gray-700 space-y-2">
+            <li>Boilers/thermic fluid heaters (coal/gas/HSD/biomass), DG sets.</li>
+            <li>Process emissions: <span class="font-medium">N₂O</span>, <span class="font-medium">CO₂</span> from carbonates, acid gas scrubbers.</li>
+            <li>Flares & fugitives: VOCs, <span class="font-medium">HFCs/PFCs</span>, refrigerants.</li>
+          </ul>
+        </div>
+        <div class="bg-gradient-to-br from-yellow-50 to-yellow-100 p-5 rounded-xl shadow border border-yellow-100" data-hz-aos>
+          <div class="text-yellow-700 text-xl mb-2"><i class="fa-solid fa-plug"></i> Scope 2 — Electricity</div>
+          <ul class="text-sm text-gray-700 space-y-2">
+            <li>Cleanroom HVAC, compressors, chilled water plants, mixers/reactors.</li>
+            <li>Market vs location-based accounting; captive/CHP & wheeling PPAs.</li>
+            <li>Cold rooms & freezers monitoring.</li>
+          </ul>
+        </div>
+        <div class="bg-gradient-to-br from-sky-50 to-sky-100 p-5 rounded-xl shadow border border-sky-100" data-hz-aos>
+          <div class="text-sky-700 text-xl mb-2"><i class="fa-solid fa-diagram-project"></i> Scope 3 — Upstream</div>
+          <ul class="text-sm text-gray-700 space-y-2">
+            <li>Feedstocks, catalysts, packaging, solvents, lab supplies.</li>
+            <li>Capital goods (reactors, columns, chillers, cleanroom modules).</li>
+            <li>Inbound logistics and contractor activities.</li>
+          </ul>
+        </div>
+        <div class="bg-gradient-to-br from-purple-50 to-purple-100 p-5 rounded-xl shadow border border-purple-100" data-hz-aos>
+          <div class="text-purple-700 text-xl mb-2"><i class="fa-solid fa-truck-fast"></i> Scope 3 — Downstream</div>
+          <ul class="text-sm text-gray-700 space-y-2">
+            <li>Product distribution, cold-chain, returns & take-back schemes.</li>
+            <li>Use-phase (where relevant) and end-of-life of packaging/chemicals.</li>
+            <li>Waste disposal & third-party treatment footprints.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Landscape separator -->
+  <section aria-label="separator" class="w-full">
+    <div class="relative w-full overflow-hidden" style="height: 360px;">
+      <img src="./industries16.jpg"
+           alt=""
+           class="absolute inset-0 w-full h-full object-cover select-none pointer-events-none">
+    </div>
+  </section>
+
+  <!-- Compliance -->
+  <section class="py-14 bg-gradient-to-br from-gray-50 to-hertz-light/10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-2xl font-semibold text-gray-900 mb-6">Compliance & Frameworks</h2>
+      <div class="grid md:grid-cols-3 gap-6">
+        <div class="bg-white p-6 rounded-xl shadow border border-hertz-light/30" data-hz-aos>
+          <h3 class="font-semibold text-gray-900 mb-2">BRSR / SEBI</h3>
+          <p class="text-gray-600 text-sm">Energy, emissions, water/waste KPIs, supplier mapping, and audit trails.</p>
+        </div>
+        <div class="bg-white p-6 rounded-xl shadow border border-hertz-light/30" data-hz-aos>
+          <h3 class="font-semibold text-gray-900 mb-2">CSRD / ESRS E1–E5</h3>
+          <p class="text-gray-600 text-sm">Entity/site-level Scope 1–3, intensity (tCO₂e/t product, per batch), targets & transition plans.</p>
+        </div>
+        <div class="bg-white p-6 rounded-xl shadow border border-hertz-light/30" data-hz-aos>
+          <h3 class="font-semibold text-gray-900 mb-2">GHG Protocol + Sector Guides</h3>
+          <p class="text-gray-600 text-sm">Process emissions (N₂O, VOCs), flares, solvent losses; contractual instruments & RECs.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Landscape separator -->
+  <section aria-label="separator" class="w-full">
+    <div class="relative w-full overflow-hidden" style="height: 360px;">
+      <img src="./industries14.jpg"
+           alt=""
+           class="absolute inset-0 w-full h-full object-cover select-none pointer-events-none">
+    </div>
+  </section>
+
+  <!-- Sample dashboard -->
+  <section class="py-14 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between mb-6">
+        <h2 class="text-2xl font-semibold text-gray-900">Sample Dashboard — Plant & Batches</h2>
+        <span class="px-3 py-1 rounded-full text-xs font-semibold bg-emerald-50 text-emerald-700">Demo</span>
+      </div>
+
+      <div class="grid lg:grid-cols-3 gap-6">
+        <!-- Emissions & Intensity -->
+        <div class="bg-white p-6 rounded-2xl shadow border border-hertz-light/30" data-hz-aos>
+          <div class="flex items-center justify-between mb-4">
+            <h3 class="font-semibold text-gray-900">Emissions & Intensity</h3>
+            <span class="text-xs px-2 py-1 rounded bg-gray-100 text-gray-700">tCO₂e & tCO₂e/t product (YTD)</span>
+          </div>
+          <div class="grid grid-cols-3 gap-4 text-center">
+            <div>
+              <div class="text-rose-600 text-2xl font-semibold">1.9M</div>
+              <div class="text-rose-700 text-xs">Scope 1</div>
+            </div>
+            <div>
+              <div class="text-amber-600 text-2xl font-semibold">1.1M</div>
+              <div class="text-amber-700 text-xs">Scope 2</div>
+            </div>
+            <div>
+              <div class="text-sky-600 text-2xl font-semibold">2.7M</div>
+              <div class="text-sky-700 text-xs">Scope 3</div>
+            </div>
+          </div>
+          <div class="mt-5 grid grid-cols-2 gap-3">
+            <div class="p-3 rounded-lg bg-indigo-50">
+              <div class="text-indigo-700 text-xs">tCO₂e/t product</div>
+              <div class="text-indigo-700 text-2xl font-semibold">0.42</div>
+              <div class="text-indigo-700 text-xs">▼ 6% YoY</div>
+            </div>
+            <div class="p-3 rounded-lg bg-emerald-50">
+              <div class="text-emerald-700 text-xs">Solvent recovery</div>
+              <div class="text-emerald-700 text-2xl font-semibold">78%</div>
+              <div class="text-emerald-700 text-xs">▲ +8 pts</div>
+            </div>
+          </div>
+          <div class="mt-5">
+            <div class="text-xs text-gray-600 mb-1">Progress to 2030 target (-40% intensity)</div>
+            <div class="bar"><span style="width:49%"></span></div>
+          </div>
+        </div>
+
+        <!-- Process & Utilities KPIs -->
+        <div class="bg-white p-6 rounded-2xl shadow border border-hertz-light/30" data-hz-aos>
+          <h3 class="font-semibold text-gray-900 mb-4">Process & Utilities KPIs</h3>
+          <div class="grid grid-cols-2 gap-4">
+            <div class="p-3 rounded-lg bg-amber-50">
+              <div class="text-amber-700 text-sm">Energy intensity</div>
+              <div class="text-amber-700 text-2xl font-semibold">6.8 GJ/t</div>
+              <div class="text-amber-700 text-xs">▼ 5%</div>
+            </div>
+            <div class="p-3 rounded-lg bg-purple-50">
+              <div class="text-purple-700 text-sm">Boiler efficiency</div>
+              <div class="text-purple-700 text-2xl font-semibold">86%</div>
+              <div class="text-purple-700 text-xs">▲ +2 pts</div>
+            </div>
+            <div class="p-3 rounded-lg bg-sky-50">
+              <div class="text-sky-700 text-sm">VOC emissions</div>
+              <div class="text-sky-700 text-2xl font-semibold">0.74 kg/t</div>
+              <div class="text-sky-700 text-xs">▼ 9%</div>
+            </div>
+            <div class="p-3 rounded-lg bg-rose-50">
+              <div class="text-rose-700 text-sm">ETP load (COD)</div>
+              <div class="text-rose-700 text-2xl font-semibold">1,250 mg/L</div>
+              <div class="text-rose-700 text-xs">▼ 11%</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Compliance status -->
+        <div class="bg-white p-6 rounded-2xl shadow border border-hertz-light/30" data-hz-aos>
+          <div class="flex items-center justify-between mb-4">
+            <h3 class="font-semibold text-gray-900">Compliance Status</h3>
+            <span class="px-2 py-1 text-xs rounded bg-emerald-100 text-emerald-800">Updated</span>
+          </div>
+          <ul class="space-y-3 text-sm text-gray-700">
+            <li class="flex items-center justify-between">
+              <span>GHG Protocol alignment</span><span class="font-semibold text-emerald-700">✔</span>
+            </li>
+            <li class="flex items-center justify-between">
+              <span>BRSR energy & emissions</span><span class="font-semibold text-emerald-700">✔</span>
+            </li>
+            <li class="flex items-center justify-between">
+              <span>CSRD ESRS E1 targets</span><span class="font-semibold text-amber-700">▲ In progress</span>
+            </li>
+            <li class="flex items-center justify-between">
+              <span>Process gas registry (N₂O/VOC)</span><span class="font-semibold text-rose-700">● Attention</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-10 bg-gradient-to-r from-emerald-50 via-white to-hertz-light/20 border-t border-gray-100">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="rounded-2xl p-6 md:p-8 border border-emerald-100 shadow bg-white flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+        <div>
+          <h3 class="text-xl font-semibold text-gray-900">Ready to decarbonize your plants?</h3>
+          <p class="text-gray-600">Ingest batch logs, utility meters, solvent inventories & flare stacks—publish BRSR/CSRD with audit trails.</p>
+        </div>
+        <div class="flex gap-3">
+          <a href="http://netzero.hertzwave.in" target="_blank" rel="noopener" class="px-5 py-2 rounded-lg bg-hertz-primary text-white font-semibold hover:bg-hertz-dark">Start Free Trial</a>
+          <a href="solutions.html" class="px-5 py-2 rounded-lg border border-gray-300 text-gray-700 hover:bg-gray-50">See Solutions</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="py-10 border-t border-gray-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-sm text-gray-600">
+      <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+        <div class="flex items-center gap-3">
+          <img src="/HW-Logo-Light.png" alt="Hertzwave" class="w-24" />
+          <span>© <span id="year"></span> Hertzwave. All rights reserved.</span>
+        </div>
+        <div class="flex gap-6">
+          <a href="privacy.html" class="hover:text-gray-800">Privacy</a>
+          <a href="terms.html" class="hover:text-gray-800">Terms</a>
+          <a href="contact.html" class="hover:text-gray-800">Contact</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // mobile nav toggle
+    document.getElementById('navBtn')?.addEventListener('click',()=>{
+      const m=document.getElementById('mobileNav'); if(!m) return; m.classList.toggle('hidden');
+    });
+    // simple intersection animate
+    const obs=new IntersectionObserver((ents)=>{
+      ents.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('hz-show');
+        e.target.querySelectorAll('.bar > span').forEach((el)=>{
+          const w=el.getAttribute('style')?.match(/width:\s*([0-9.]+%)/)?.[1]||'0%';
+          requestAnimationFrame(()=>{ el.style.width=w; });
+        });
+      }});
+    },{threshold:.12});
+    document.querySelectorAll('[data-hz-aos]').forEach(el=>obs.observe(el));
+    // footer year
+    document.getElementById('year').textContent=new Date().getFullYear();
+  </script>
+
+</body>
+</html>
