@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Hertzwave — Food & Agriculture</title>
+  <meta name="description" content="Industry solution for Food & Agriculture — measurement areas, compliance mapping, and sample dashboards." />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    body{font-family:'Outfit',sans-serif}
+    .hz-motifs{position:absolute; inset:0; pointer-events:none; user-select:none; z-index:0}
+    .hz-hero{position:relative; z-index:10}
+    @keyframes hz-float {0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+    .animate-float{animation:hz-float 6s ease-in-out infinite}
+    /* simple load-in anim for cards */
+    [data-hz-aos]{opacity:0; transform:translateY(8px); transition:opacity .5s ease, transform .5s ease}
+    .hz-show{opacity:1; transform:translateY(0)}
+    /* mini bar */
+    .bar{height:10px;border-radius:9999px;overflow:hidden;background:rgba(74,124,89,.2)}
+    .bar > span{display:block;height:100%;background:#4A7C59;border-radius:9999px;width:0}
+  </style>
+</head>
+<body class="bg-white">
+
+  <!-- Nav -->
+  <nav class="fixed top-0 w-full bg-white/95 backdrop-blur-sm border-b border-gray-200 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-16">
+        <a href="index.html" class="flex items-center space-x-3">
+          <img src="/HW-Logo-Light.png" alt="Hertzwave" class="hz-logo" />
+        </a>
+        <div class="hidden md:flex items-center space-x-8">
+          <a href="platform.html" class="text-gray-700 hover:text-hertz-primary">Platform</a>
+          <a href="solutions.html" class="text-gray-700 hover:text-hertz-primary">Solutions</a>
+          <a href="industries.html" class="text-hertz-primary font-semibold">Industries</a>
+          <a href="resources.html" class="text-gray-700 hover:text-hertz-primary">Resources</a>
+          <a href="about.html" class="text-gray-700 hover:text-hertz-primary">About</a>
+          <a href="http://netzero.hertzwave.in" target="_blank" rel="noopener"
+             class="bg-hertz-primary text-white px-6 py-2 rounded-lg hover:bg-hertz-dark font-semibold">Start Free Trial</a>
+        </div>
+        <button class="md:hidden text-gray-700" id="navBtn"><i class="fas fa-bars text-xl"></i></button>
+      </div>
+    </div>
+    <div id="mobileNav" class="hidden md:hidden bg-white border-t border-gray-200">
+      <div class="px-4 py-3 space-y-2">
+        <a href="platform.html" class="block py-2 text-gray-700">Platform</a>
+        <a href="solutions.html" class="block py-2 text-gray-700">Solutions</a>
+        <a href="industries.html" class="block py-2 text-hertz-primary font-semibold">Industries</a>
+        <a href="resources.html" class="block py-2 text-gray-700">Resources</a>
+        <a href="about.html" class="block py-2 text-gray-700">About</a>
+        <a href="http://netzero.hertzwave.in" target="_blank" rel="noopener"
+           class="block w-full text-center bg-hertz-primary text-white px-6 py-2 rounded-lg font-semibold mt-2">Start Free Trial</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <header class="pt-28 pb-14 bg-gradient-to-br from-green-50 via-white to-hertz-light/20 overflow-hidden relative">
+    <div class="hz-motifs">
+      <svg class="absolute left-10 top-28 w-32 opacity-40 animate-float" viewBox="0 0 64 64" fill="none">
+        <path d="M56 8C40 8 24 20 16 36c-6 12-6 20-6 20s8 0 20-6C46 42 58 26 56 8Z"
+              stroke="#2F4F3F" stroke-width="2.5" fill="#A8E6A3"></path>
+      </svg>
+      <svg class="absolute right-24 top-16 w-14 opacity-30 animate-float" style="animation-duration:8s" viewBox="0 0 64 64" fill="none">
+        <path d="M32 6c8 14 18 20 18 30a18 18 0 1 1-36 0c0-10 10-16 18-30Z"
+              stroke="#4A7C59" stroke-width="1.6" fill="#A8E6A3"></path>
+      </svg>
+      <svg class="absolute left-1/3 bottom-10 w-20 opacity-25 animate-float" style="animation-duration:10s" viewBox="0 0 64 64" fill="none">
+        <path d="M32 6c8 14 18 20 18 30a18 18 0 1 1-36 0c0-10 10-16 18-30Z"
+              stroke="#4A7C59" stroke-width="2" fill="#A8E6A3"></path>
+      </svg>
+    </div>
+
+    <div class="hz-hero max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <p class="text-hertz-primary font-semibold mb-2">Industry</p>
+      <h1 class="text-3xl lg:text-4xl font-semibold text-gray-900 mb-3">Food & Agriculture</h1>
+      <p class="text-lg text-gray-600 max-w-3xl">
+        Decarbonization in Food & Agriculture hinges on sustainable inputs (fertilizers, feed, seed), 
+        precision agriculture (reduced fuel, optimized irrigation), methane and nitrous oxide management, 
+        cold-chain efficiency, and deforestation-free sourcing. Key challenges include data collection across 
+        dispersed farms, seasonal variability, supplier engagement for Scope 3, and emissions factor uncertainty (soil, manure, land-use).
+      </p>
+    </div>
+  </header>
+
+  <!-- Above-the-fold two-column: Context + Measurement cards -->
+  <section class="py-8 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-10 items-start">
+      <!-- Context left (extra bullets) -->
+      <div>
+        <h2 class="text-2xl font-semibold text-gray-900 mb-4">Key drivers & challenges</h2>
+        <ul class="space-y-3 text-gray-700">
+          <li><i class="fa-solid fa-seedling text-hertz-primary mr-2"></i>Optimize <span class="font-medium">fertilizer application (4R)</span> & switch to <span class="font-medium">low-carbon ammonia/urea</span>.</li>
+          <li><i class="fa-solid fa-droplet text-hertz-primary mr-2"></i>Precision irrigation & pumps; <span class="font-medium">solar-diesel hybrid</span> transitions.</li>
+          <li><i class="fa-solid fa-cow text-hertz-primary mr-2"></i>Livestock enteric methane, <span class="font-medium">manure management</span>, and feed additives.</li>
+          <li><i class="fa-solid fa-truck-fast text-hertz-primary mr-2"></i>Cold-chain energy efficiency & refrigerant leakage control.</li>
+          <li><i class="fa-solid fa-tree text-hertz-primary mr-2"></i>Deforestation-free sourcing & <span class="font-medium">land-use change</span> attribution.</li>
+        </ul>
+      </div>
+
+      <!-- Measurement cards right -->
+      <div class="grid sm:grid-cols-2 gap-6">
+        <div class="bg-gradient-to-br from-orange-50 to-orange-100 p-5 rounded-xl shadow border border-orange-100" data-hz-aos>
+          <div class="text-orange-600 text-xl mb-2"><i class="fa-solid fa-fire"></i> Scope 1</div>
+          <ul class="text-sm text-gray-700 space-y-2">
+            <li>On-farm fuel (tractors, pumps, dryers), process heat.</li>
+            <li>Enteric fermentation (CH₄), manure storage (CH₄/N₂O).</li>
+            <li>Refrigerant leaks in cold rooms, packhouses.</li>
+          </ul>
+        </div>
+        <div class="bg-gradient-to-br from-yellow-50 to-yellow-100 p-5 rounded-xl shadow border border-yellow-100" data-hz-aos>
+          <div class="text-yellow-600 text-xl mb-2"><i class="fa-solid fa-bolt"></i> Scope 2</div>
+          <ul class="text-sm text-gray-700 space-y-2">
+            <li>Purchased electricity for irrigation, processing, storage.</li>
+            <li>Cold-chain warehouses & retail refrigeration.</li>
+            <li>Market vs location-based factors; REC/green tariff.</li>
+          </ul>
+        </div>
+        <div class="bg-gradient-to-br from-green-50 to-green-100 p-5 rounded-xl shadow border border-green-100" data-hz-aos>
+          <div class="text-green-700 text-xl mb-2"><i class="fa-solid fa-wheat-awn"></i> Scope 3 — Upstream</div>
+          <ul class="text-sm text-gray-700 space-y-2">
+            <li>Fertilizers, pesticides, seeds; animal feed.</li>
+            <li>Land-use change (LUC), embedded emissions in inputs.</li>
+            <li>Inbound logistics; supplier farming practices.</li>
+          </ul>
+        </div>
+        <div class="bg-gradient-to-br from-teal-50 to-teal-100 p-5 rounded-xl shadow border border-teal-100" data-hz-aos>
+          <div class="text-teal-600 text-xl mb-2"><i class="fa-solid fa-truck-ramp-box"></i> Scope 3 — Downstream</div>
+          <ul class="text-sm text-gray-700 space-y-2">
+            <li>Distribution (ambient/chilled/frozen), retail energy.</li>
+            <li>Food loss & waste handling; packaging end-of-life.</li>
+            <li>Use-phase where applicable (HORECA prep energy).</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Landscape separator -->
+  <section aria-label="separator" class="w-full">
+    <div class="relative w-full overflow-hidden" style="height: 360px;">
+      <img src="./industries16.jpg"
+           alt=""
+           class="absolute inset-0 w-full h-full object-cover select-none pointer-events-none">
+    </div>
+  </section>
+
+  <!-- Compliance -->
+  <section class="py-14 bg-gradient-to-br from-gray-50 to-hertz-light/10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-2xl font-semibold text-gray-900 mb-6">Compliance & Frameworks</h2>
+      <div class="grid md:grid-cols-3 gap-6">
+        <div class="bg-white p-6 rounded-xl shadow border border-hertz-light/30" data-hz-aos>
+          <h3 class="font-semibold text-gray-900 mb-2">BRSR / SEBI</h3>
+          <p class="text-gray-600 text-sm">Automated mapping of energy, water, and emissions indicators across farm and processing sites with audit trails.</p>
+        </div>
+        <div class="bg-white p-6 rounded-xl shadow border border-hertz-light/30" data-hz-aos>
+          <h3 class="font-semibold text-gray-900 mb-2">CSRD / ESRS E1–E5</h3>
+          <p class="text-gray-600 text-sm">Materiality assessment for AFOLU topics, Scope 3 Category 1/11, biodiversity and water disclosures, and narrative controls.</p>
+        </div>
+        <div class="bg-white p-6 rounded-xl shadow border border-hertz-light/30" data-hz-aos>
+          <h3 class="font-semibold text-gray-900 mb-2">GHG Protocol AFOLU / FAO</h3>
+          <p class="text-gray-600 text-sm">Alignment with IPCC methodologies for N₂O/CH₄, soil organic carbon accounting, and LUC factor treatment.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Landscape separator -->
+  <section aria-label="separator" class="w-full">
+    <div class="relative w-full overflow-hidden" style="height: 360px;">
+      <img src="./industries14.jpg"
+           alt=""
+           class="absolute inset-0 w-full h-full object-cover select-none pointer-events-none">
+    </div>
+  </section>
+
+  <!-- Sample dashboard -->
+  <section class="py-14 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between mb-6">
+        <h2 class="text-2xl font-semibold text-gray-900">Sample Dashboard — Agri Supply Chain</h2>
+        <span class="px-3 py-1 rounded-full text-xs font-semibold bg-emerald-50 text-emerald-700">Demo</span>
+      </div>
+
+      <div class="grid lg:grid-cols-3 gap-6">
+        <!-- Emissions -->
+        <div class="bg-white p-6 rounded-2xl shadow border border-hertz-light/30" data-hz-aos>
+          <div class="flex items-center justify-between mb-4">
+            <h3 class="font-semibold text-gray-900">Emissions</h3>
+            <span class="text-xs px-2 py-1 rounded bg-gray-100 text-gray-700">tCO₂e (YTD)</span>
+          </div>
+          <div class="grid grid-cols-3 gap-4 text-center">
+            <div>
+              <div class="text-rose-600 text-2xl font-semibold">0.36M</div>
+              <div class="text-rose-700 text-xs">Scope 1</div>
+            </div>
+            <div>
+              <div class="text-amber-600 text-2xl font-semibold">0.18M</div>
+              <div class="text-amber-700 text-xs">Scope 2</div>
+            </div>
+            <div>
+              <div class="text-teal-600 text-2xl font-semibold">1.92M</div>
+              <div class="text-teal-700 text-xs">Scope 3</div>
+            </div>
+          </div>
+          <div class="mt-5">
+            <div class="text-xs text-gray-600 mb-1">Progress to 2030 target (‑25%)</div>
+            <div class="bar"><span style="width:44%"></span></div>
+          </div>
+        </div>
+
+        <!-- Intensity & farm KPIs -->
+        <div class="bg-white p-6 rounded-2xl shadow border border-hertz-light/30" data-hz-aos>
+          <h3 class="font-semibold text-gray-900 mb-4">Intensity & Farm KPIs</h3>
+          <div class="grid grid-cols-2 gap-4">
+            <div class="p-3 rounded-lg bg-green-50">
+              <div class="text-sm text-green-700">kgCO₂e/kg output</div>
+              <div class="text-green-700 text-2xl font-semibold">2.84</div>
+              <div class="text-xs text-green-700">▼ 4% YoY</div>
+            </div>
+            <div class="p-3 rounded-lg bg-sky-50">
+              <div class="text-sm text-sky-700">Irrigation kWh/ha</div>
+              <div class="text-sky-700 text-2xl font-semibold">715</div>
+              <div class="text-xs text-sky-700">▼ 7% YoY</div>
+            </div>
+          </div>
+          <div class="mt-4 grid grid-cols-3 gap-3 text-xs text-gray-700">
+            <div class="bg-gray-50 rounded-lg p-3">
+              <div>N rate</div>
+              <div class="font-semibold">122 kg/ha</div>
+            </div>
+            <div class="bg-gray-50 rounded-lg p-3">
+              <div>CH₄ intensity</div>
+              <div class="font-semibold">0.42 kg/kg milk</div>
+            </div>
+            <div class="bg-gray-50 rounded-lg p-3">
+              <div>Cold loss</div>
+              <div class="font-semibold">3.1%</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Compliance status -->
+        <div class="bg-white p-6 rounded-2xl shadow border border-hertz-light/30" data-hz-aos>
+          <div class="flex items-center justify-between mb-4">
+            <h3 class="font-semibold text-gray-900">Compliance Status</h3>
+            <span class="px-2 py-1 text-xs rounded bg-emerald-100 text-emerald-700"><i class="fa-solid fa-shield"></i> Audit‑ready</span>
+          </div>
+          <ul class="space-y-3 text-sm">
+            <li class="flex items-center justify-between">
+              <span>BRSR Mapping</span>
+              <span class="text-emerald-700 font-semibold">100%</span>
+            </li>
+            <li class="flex items-center justify-between">
+              <span>CSRD ESRS E1</span>
+              <span class="text-emerald-700 font-semibold">88%</span>
+            </li>
+            <li class="flex items-center justify-between">
+              <span>GHG Protocol AFOLU</span>
+              <span class="text-emerald-700 font-semibold">Aligned</span>
+            </li>
+          </ul>
+          <div class="mt-5">
+            <div class="text-xs text-gray-600 mb-1">Supplier data completeness</div>
+            <div class="bar"><span style="width:67%"></span></div>
+          </div>
+        </div>
+
+        <!-- Energy & water -->
+        <div class="bg-white p-6 rounded-2xl shadow border border-hertz-light/30" data-hz-aos>
+          <h3 class="font-semibold text-gray-900 mb-4">Energy & Water</h3>
+          <div class="grid grid-cols-2 gap-4">
+            <div class="bg-amber-50 p-3 rounded-lg">
+              <div class="text-amber-700 text-sm">Grid/Gen</div>
+              <div class="text-amber-700 text-2xl font-semibold">61%</div>
+            </div>
+            <div class="bg-green-50 p-3 rounded-lg">
+              <div class="text-green-700 text-sm">Renewables</div>
+              <div class="text-green-700 text-2xl font-semibold">23%</div>
+            </div>
+            <div class="bg-cyan-50 p-3 rounded-lg">
+              <div class="text-cyan-700 text-sm">Water use (m³/t)</div>
+              <div class="text-cyan-700 text-2xl font-semibold">6.8</div>
+            </div>
+            <div class="bg-indigo-50 p-3 rounded-lg">
+              <div class="text-indigo-700 text-sm">Recirc. rate</div>
+              <div class="text-indigo-700 text-2xl font-semibold">54%</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Soil & biodiversity -->
+        <div class="bg-white p-6 rounded-2xl shadow border border-hertz-light/30" data-hz-aos>
+          <h3 class="font-semibold text-gray-900 mb-4">Soil & Biodiversity</h3>
+          <div class="grid grid-cols-3 gap-3 text-xs text-gray-700">
+            <div class="bg-gray-50 rounded-lg p-3">
+              <div>Soil organic C</div>
+              <div class="font-semibold">+0.6 t/ha·yr</div>
+            </div>
+            <div class="bg-gray-50 rounded-lg p-3">
+              <div>Cover crop area</div>
+              <div class="font-semibold">31%</div>
+            </div>
+            <div class="bg-gray-50 rounded-lg p-3">
+              <div>Buffer strips</div>
+              <div class="font-semibold">18 km</div>
+            </div>
+          </div>
+          <div class="mt-4">
+            <div class="text-xs text-gray-600 mb-1">Deforestation‑risk screened</div>
+            <div class="bar"><span style="width:72%"></span></div>
+          </div>
+        </div>
+
+        <!-- Alerts -->
+        <div class="bg-white p-6 rounded-2xl shadow border border-hertz-light/30" data-hz-aos>
+          <h3 class="font-semibold text-gray-900 mb-4">Operational Alerts</h3>
+          <ul class="space-y-3 text-sm">
+            <li class="flex items-center justify-between">
+              <span><i class="fa-solid fa-triangle-exclamation text-amber-500 mr-2"></i> Cold-room leak rate high</span>
+              <span class="text-amber-600 font-medium">Investigate</span>
+            </li>
+            <li class="flex items-center justify-between">
+              <span><i class="fa-solid fa-triangle-exclamation text-rose-500 mr-2"></i> Manure lagoon CH₄ spike</span>
+              <span class="text-rose-600 font-medium">Action</span>
+            </li>
+            <li class="flex items-center justify-between">
+              <span><i class="fa-solid fa-circle-info text-sky-500 mr-2"></i> Supplier fertilizer data overdue</span>
+              <span class="text-sky-600 font-medium">Reminder</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Back link -->
+  <section class="py-10 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <a href="industries.html" class="inline-flex items-center text-hertz-primary font-semibold hover:underline">
+        <i class="fa-solid fa-arrow-left mr-2"></i>Back to all industries
+      </a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-white py-10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between">
+      <a href="index.html"><img src="/HW-Logo-Light.png" alt="Hertzwave" class="hz-logo-footer"></a>
+      <p class="text-gray-400 text-sm mt-4 md:mt-0">© 2025 Hertzwave. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    // mobile nav
+    const navBtn = document.getElementById('navBtn');
+    const mobileNav = document.getElementById('mobileNav');
+    if (navBtn) navBtn.addEventListener('click', ()=> mobileNav.classList.toggle('hidden'));
+
+    // show-on-scroll for cards
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting){ e.target.classList.add('hz-show'); obs.unobserve(e.target); }
+      });
+    }, {threshold:0.2});
+    document.querySelectorAll('[data-hz-aos]').forEach(el => obs.observe(el));
+
+    // animate simple bars
+    document.querySelectorAll('.bar > span').forEach((el,i)=>{
+      const w = el.style.width || '0%';
+      el.style.width='0%';
+      setTimeout(()=>{ el.style.transition='width 1.2s cubic-bezier(0.22,1,0.36,1)'; el.style.width=w; }, 150 + i*120);
+    });
+  </script>
+</body>
+</html>
