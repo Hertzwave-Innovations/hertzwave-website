@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Scope 2 — Location vs. Market Based</title>
+  <meta name="description" content="Enter consumption and factors to compare emissions by method." />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>body{font-family:'Outfit',sans-serif}</style>
+</head>
+<body class="bg-white text-gray-900">
+<div class="max-w-3xl mx-auto px-4 py-10">
+<a href="/resources/" class="text-emerald-700 underline">&larr; Back to Resources</a>
+
+  <h1 class="text-2xl font-semibold mb-2">Scope 2 — Location vs. Market Based</h1>
+  <p class="text-gray-600 mb-6">Enter consumption and factors to compare emissions by method.</p>
+  <div class="grid gap-4">
+<label class="block">Electricity consumption (kWh)
+  <input id="kwh" type="number" class="mt-1 w-full border rounded p-2" placeholder="e.g., 150000">
+</label>
+<label class="block">Location-based factor (kgCO₂e/kWh)
+  <input id="ef_loc" type="number" class="mt-1 w-full border rounded p-2" placeholder="e.g., 0.82" step="0.0001">
+</label>
+<label class="block">Market-based factor (kgCO₂e/kWh)
+  <input id="ef_mkt" type="number" class="mt-1 w-full border rounded p-2" placeholder="e.g., 0.32" step="0.0001">
+</label>
+<button id="calc" class="bg-emerald-600 text-white px-4 py-2 rounded w-full">Calculate</button>
+<div id="out" class="bg-emerald-50 p-4 rounded hidden"></div>
+</div>
+  <script>
+document.getElementById('calc').onclick = () => {
+  const kwh = parseFloat(document.getElementById('kwh').value||0);
+  const ef_loc = parseFloat(document.getElementById('ef_loc').value||0);
+  const ef_mkt = parseFloat(document.getElementById('ef_mkt').value||0);
+  const lb = kwh * ef_loc / 1000.0;
+  const mb = kwh * ef_mkt / 1000.0;
+  const diff = lb - mb;
+  const p = document.getElementById('out');
+  p.classList.remove('hidden');
+  p.innerHTML = `<div class='font-semibold'>Results</div>
+    <div class='mt-2'>Location-based: <span class='font-semibold'>${lb.toFixed(2)}</span> tCO₂e</div>
+    <div>Market-based: <span class='font-semibold'>${mb.toFixed(2)}</span> tCO₂e</div>
+    <div class='mt-1 text-sm text-gray-700'>Delta (LB - MB): ${diff.toFixed(2)} tCO₂e</div>`;
+};
+</script>
+
+</div>
+</body>
+</html>
