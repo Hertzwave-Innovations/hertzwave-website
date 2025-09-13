@@ -31,88 +31,76 @@
   </nav>
 
   <!-- Hero -->
-  <header class="pt-28 pb-14 bg-gradient-to-br from-green-50 via-white to-hertz-light/20">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-      <p class="text-hertz-primary text-sm font-semibold mb-1">Guide · GHG Protocol</p>
-      <h1 class="text-3xl lg:text-4xl font-semibold mb-3">Carbon Accounting 101</h1>
-      <p class="text-gray-600 text-lg max-w-3xl">
+  <header class="pt-28 pb-16 bg-gradient-to-br from-green-50 via-white to-hertz-light/20">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <p class="text-hertz-primary font-semibold text-sm mb-2">Guide · GHG Protocol</p>
+      <h1 class="text-4xl lg:text-5xl font-semibold mb-4 leading-tight">Carbon Accounting 101</h1>
+      <p class="text-lg text-gray-600 mb-4">
         A complete primer on enterprise carbon accounting — understand Scopes 1, 2, 3, select the right data hierarchy, perform calculations, and prepare audit-ready disclosures.
       </p>
-      <div class="text-sm text-gray-500 mt-3">10 min read · Updated Sep 2025</div>
+      <div class="text-sm text-gray-500">10 min read · Updated Sep 2025</div>
     </div>
   </header>
 
   <!-- Content -->
-  <main class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10 prose prose-emerald">
+  <main class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12 prose prose-lg prose-emerald">
     <h2>What Is Carbon Accounting?</h2>
-    <p>Carbon accounting is the structured process of quantifying greenhouse gas (GHG) emissions across your organization and value chain. It allows enterprises to measure their climate impact, comply with disclosure regulations (BRSR, CSRD, SEC), and design decarbonization strategies.</p>
+    <p>Carbon accounting is the structured process of quantifying greenhouse gas (GHG) emissions...</p>
 
     <h2>Scopes Explained</h2>
-    <p>Most frameworks follow the <strong>GHG Protocol</strong> which divides emissions into three scopes:</p>
+    <p>Most frameworks follow the <strong>GHG Protocol</strong>...</p>
 
     <h3>Scope 1 — Direct Emissions</h3>
     <ul>
       <li>Stationary combustion: boilers, furnaces, gensets</li>
       <li>Mobile combustion: company-owned vehicles, construction equipment</li>
-      <li>Fugitive emissions: refrigerant leaks (R134a, R410a), SF₆ from switchgear</li>
+      <li>Fugitive emissions: refrigerant leaks (R134a, R410a), SF₆</li>
     </ul>
 
     <h3>Scope 2 — Indirect Electricity</h3>
-    <p>Electricity, heat, steam or cooling purchased from utilities. Reported in two ways:</p>
-    <ul>
-      <li><strong>Location-based:</strong> grid average emission factor</li>
-      <li><strong>Market-based:</strong> adjusted for PPAs, RECs, green tariffs</li>
-    </ul>
+    <p>Reported two ways: <strong>location-based</strong> and <strong>market-based</strong>...</p>
 
     <h3>Scope 3 — Value Chain</h3>
-    <p>Upstream + downstream emissions, often 70-90% of a company’s footprint. Key categories:</p>
     <ul>
       <li>Purchased goods & services</li>
       <li>Capital goods</li>
-      <li>Fuel & energy-related activities (not in Scope 1/2)</li>
-      <li>Business travel, employee commuting</li>
-      <li>Upstream transport & distribution</li>
-      <li>Use phase & end-of-life treatment of products</li>
+      <li>Business travel, commuting, transport & distribution</li>
+      <li>Use-phase & end-of-life</li>
     </ul>
 
     <h2>Data Hierarchies</h2>
-    <p>Good practice is to follow a “best available data” hierarchy:</p>
     <ol>
-      <li><strong>Activity data</strong> × <strong>specific EF</strong> (most accurate)</li>
+      <li>Activity data × specific EF</li>
       <li>Supplier-specific emission factors</li>
-      <li>Industry averages from databases (Ecoinvent, DEFRA)</li>
+      <li>Industry averages (Ecoinvent, DEFRA)</li>
       <li>Spend-based estimates (least preferred)</li>
     </ol>
 
     <h2>Sample Calculation</h2>
-    <pre class="bg-gray-50 p-4 rounded-lg text-sm">
-Scope 1 (Diesel)
-Activity data: 12,000 litres
-Emission factor (DEFRA 2024): 2.54 kg CO₂e / litre
-Total emissions = 12,000 × 2.54 = 30.48 tCO₂e
-    </pre>
+    <div class="bg-gray-50 p-4 rounded-lg border text-sm">
+      <pre>Diesel consumed: 12,000 litres
+EF (DEFRA 2024): 2.54 kg CO₂e/litre
+Total = 12,000 × 2.54 = 30.48 tCO₂e</pre>
+    </div>
 
     <h2>Controls & Assurance</h2>
-    <p>To ensure audit readiness:</p>
     <ul>
-      <li>Maintain <strong>versioned emission factors</strong> with sources and year</li>
-      <li>Track <strong>data lineage</strong>: where each number came from</li>
-      <li>Apply <strong>variance analysis</strong> vs prior periods</li>
-      <li>Implement <strong>internal review workflows</strong> before submission</li>
-    </ul>
-
-    <h2>Common Pitfalls</h2>
-    <ul>
-      <li>Mixing location- and market-based Scope 2 figures</li>
-      <li>Ignoring upstream Scope 3 categories (esp. capital goods)</li>
-      <li>Double counting renewable PPAs across scopes</li>
+      <li>Maintain versioned emission factors with sources</li>
+      <li>Track data lineage</li>
+      <li>Variance analysis vs prior periods</li>
     </ul>
 
     <div class="bg-green-50 border border-green-200 p-4 rounded-lg mt-8">
-      <strong>Next step:</strong> Download our <a href="/resources/templates/brsr-data-collection.xlsx" class="text-hertz-primary underline">BRSR Data Collection Template</a> to start gathering site-level activity data.
+      <strong>Next step:</strong> Download our
+      <a href="/resources/templates/brsr-data-collection.xlsx" class="text-hertz-primary underline">BRSR Data Collection Template</a>
+      to start gathering activity data.
     </div>
 
-    <p class="mt-10"><a href="/resources/" class="text-hertz-primary hover:underline"><i class="fa-solid fa-arrow-left mr-1"></i> Back to Resources</a></p>
+    <p class="mt-10">
+      <a href="/resources/" class="inline-flex items-center text-hertz-primary hover:underline">
+        <i class="fa-solid fa-arrow-left mr-2"></i>Back to Resources
+      </a>
+    </p>
   </main>
 
   <!-- Footer -->
