@@ -24,10 +24,26 @@
     .guide-body li{margin:.35rem 0}
     .callout{background:#ecfdf5;border:1px solid #a7f3d0;border-radius:.75rem;padding:1rem}
     /* Keep nav logo consistent everywhere */
-<!-- Navigation -->
-<a href="index.html" class="flex items-center">
-  <img src="/HW-Logo-Light.png" alt="Hertzwave" class="h-8 w-auto">
+
+ <style>
+  /* Force a consistent nav/footer logo size across all pages */
+  #hzNavLogo, #hzFooterLogo {
+    height: 32px !important;   /* same as h-8 */
+    max-height: 32px !important;
+    width: auto !important;
+    aspect-ratio: auto !important;
+    display: block;
+    object-fit: contain;
+    flex-shrink: 0;
+  }
+</style>
+   
+    
+    <!-- Navigation -->
+<a href="/index.html" class="flex items-center">
+  <img id="hzNavLogo" src="/HW-Logo-Light.png" alt="Hertzwave">
 </a>
+
 
 
   </style>
@@ -138,6 +154,10 @@ Total = 12,000 × 2.54 / 1,000 = 30.48 tCO₂e
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between">
       <a href="/index.html"><img src="/HW-Logo-Light.png" alt="Hertzwave" class="hz-logo brightness-0 invert"/></a>
       <p class="text-gray-400 text-sm mt-4 md:mt-0">© 2025 Hertzwave. All rights reserved.</p>
+      <a href="/index.html">
+  <img id="hzFooterLogo" src="/HW-Logo-Light.png" alt="Hertzwave">
+</a>
+
     </div>
   </footer>
 </body>
