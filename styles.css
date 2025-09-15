@@ -57,3 +57,22 @@
   user-select: none;
   pointer-events: none;
 }
+
+/* --- Hertzwave logo: single source of truth --- */
+:root{
+  --hz-logo-h-nav: 20px;   /* header/nav height */
+  --hz-logo-h-foot: 20px;  /* footer height (use same as nav; tweak if you want) */
+}
+.hz-logo{                 /* header logo */
+  height: var(--hz-logo-h-nav) !important;
+  width: auto !important;
+  display: block;
+}
+.hz-logo-footer{          /* footer logo */
+  height: var(--hz-logo-h-foot) !important;
+  width: auto !important;
+  display: block;
+}
+
+/* Guard against opinionated resets that set img { width:100% } */
+img.hz-logo, img.hz-logo-footer { width: auto !important; max-width: none !important; }
