@@ -10,11 +10,14 @@
 }
 
 /* Logo */
-.hz-logo {
+.hz-logo { height: 32px; width: auto; display: block; }
+
+/*.hz-logo {
   width: 70%;
   height: auto;
   max-width: 250px;
-}
+}*/
+
 /* Footer Logo (white version) */
 .hz-logo-footer {
   width: 50%;
