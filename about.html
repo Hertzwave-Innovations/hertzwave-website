@@ -31,12 +31,19 @@
 </head>
 <body class="bg-white text-gray-900">
   <!-- NAV -->
+
   <nav class="fixed top-0 w-full bg-white/95 backdrop-blur-sm border-b border-gray-200 z-50">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex justify-between items-center h-16">
-        <a href="/index.html" class="flex items-center">
-          <img src="/HW-Logo-Light.png" alt="Hertzwave" class="hz-logo">
-        </a>
+
+<a href="/index.html" class="flex items-center">
+  <img src="/HW-Logo-Light.png" alt="Hertzwave" class="hz-logo">
+</a>
+
+
+
+
+        
         <div class="hidden md:flex items-center space-x-8 text-sm">
           <a href="/platform.html"  class="text-gray-700 hover:text-[var(--hz-primary)]">Platform</a>
           <a href="/solutions.html"  class="text-gray-700 hover:text-[var(--hz-primary)]">Solutions</a>
@@ -193,18 +200,47 @@
   </section>
 
   <!-- FOOTER -->
-  <footer class="bg-gray-900 text-white py-12 mt-4">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex flex-col md:flex-row items-center justify-between">
-        <a href="/index.html"><img src="/HW-Logo-Light.png" alt="Hertzwave" class="hz-logo brightness-0 invert"></a>
-        <p class="text-gray-400 text-sm mt-4 md:mt-0">© 2025 Hertzwave. All rights reserved.</p>
-        <div class="flex gap-6 text-gray-400 text-sm mt-4 md:mt-0">
-          <a href="/privacy.html" class="hover:text-white">Privacy</a>
-          <a href="/terms.html" class="hover:text-white">Terms</a>
-          <a href="/contact.html" class="hover:text-white">Contact</a>
+
+  <footer class="bg-gray-900 text-white py-16">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid gap-12 md:grid-cols-2 items-start">
+      <!-- Left block -->
+      <div>
+        <a href="/index.html" class="inline-block">
+          <img src="/HW-Logo-Light.png" alt="Hertzwave"
+               class="hz-logo-footer brightness-0 invert">
+        </a>
+
+        <p class="text-gray-400 mt-6 max-w-md">
+          AI-powered carbon accounting platform for enterprise compliance and net-zero planning.
+        </p>
+
+        <div class="mt-5 flex gap-4 text-gray-400">
+          <a href="#" aria-label="LinkedIn" class="hover:text-white">
+            <i class="fab fa-linkedin text-xl"></i>
+          </a>
+          <a href="#" aria-label="X (Twitter)" class="hover:text-white">
+            <i class="fab fa-twitter text-xl"></i>
+          </a>
+          <a href="#" aria-label="GitHub" class="hover:text-white">
+            <i class="fab fa-github text-xl"></i>
+          </a>
         </div>
       </div>
+
+      <!-- Right block -->
+      <div class="md:text-right">
+        <div class="border-t border-gray-800 pt-6 md:border-none md:pt-0"></div>
+        <p class="text-gray-400 text-sm">© 2025 Hertzwave. All rights reserved.</p>
+        <ul class="mt-3 flex md:justify-end flex-wrap gap-x-6 gap-y-2 text-gray-400 text-sm">
+          <li>SOC 2 Type II</li>
+          <li>ISO 27001</li>
+          <li>GDPR Compliant</li>
+        </ul>
+      </div>
     </div>
-  </footer>
+  </div>
+</footer>
+
 </body>
 </html>
