@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" href="styles.css">
+
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width,initial-scale=1"/>
   <title>About — Hertzwave</title>
   <meta name="description" content="Hertzwave is building the future of carbon intelligence—real-time data, AI analytics, and deep ESG expertise that deliver measurable impact fast."/>
   <!-- Tailwind + Fonts -->
   <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet
+          <link rel="stylesheet" href="styles.css">
   
   <!-- GOOD -->
 <style>
@@ -33,32 +34,30 @@
 <body class="bg-white text-gray-900">
   <!-- NAV -->
 
-  <nav class="fixed top-0 w-full bg-white/95 backdrop-blur-sm border-b border-gray-200 z-50">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex justify-between items-center h-16">
+ <nav class="fixed top-0 w-full bg-white/95 backdrop-blur-sm border-b border-gray-200 z-50">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between items-center h-16">
+      <a href="/index.html" class="flex items-center">
+        <img src="/HW-Logo-Light.png" alt="Hertzwave" class="hz-logo">
+      </a>
 
-<a href="/index.html" class="flex items-center">
-  <img src="/HW-Logo-Light.png" alt="Hertzwave" class="hz-logo">
-</a>
-
-
-
-
-        
-        <div class="hidden md:flex items-center space-x-8 text-sm">
-          <a href="/platform.html"  class="text-gray-700 hover:text-[var(--hz-primary)]">Platform</a>
-          <a href="/solutions.html"  class="text-gray-700 hover:text-[var(--hz-primary)]">Solutions</a>
-          <a href="/industries.html" class="text-gray-700 hover:text-[var(--hz-primary)]">Industries</a>
-          <a href="/resources/"     class="text-gray-700 hover:text-[var(--hz-primary)]">Resources</a>
-          <a href="/about.html"     class="text-[var(--hz-primary)] font-semibold">About</a>
-        </div>
-        <a href="http://netzero.hertzwave.in" target="_blank" rel="noopener"
-           class="px-4 py-2 bg-[var(--hz-primary)] text-white rounded-lg hover:bg-[var(--hz-dark)] font-semibold text-sm">
-          Start Free Trial
-        </a>
+      <!-- no text-sm here -->
+      <div class="hidden md:flex items-center space-x-8">
+        <a href="/platform.html"   class="text-gray-700 hover:text-[var(--hz-primary)] transition-colors font-medium">Platform</a>
+        <a href="/solutions.html"  class="text-gray-700 hover:text-[var(--hz-primary)] transition-colors font-medium">Solutions</a>
+        <a href="/industries.html" class="text-gray-700 hover:text-[var(--hz-primary)] transition-colors font-medium">Industries</a>
+        <a href="/resources/"      class="text-gray-700 hover:text-[var(--hz-primary)] transition-colors font-medium">Resources</a>
+        <a href="/about.html"      class="text-[var(--hz-primary)] font-semibold">About</a>
       </div>
+
+      <a href="http://netzero.hertzwave.in" target="_blank" rel="noopener"
+         class="px-4 py-2 bg-[var(--hz-primary)] text-white rounded-lg hover:bg-[var(--hz-dark)] font-semibold text-sm">
+        Start Free Trial
+      </a>
     </div>
-  </nav>
+  </div>
+</nav>
+
 
   <!-- HERO / INTRO -->
   <header class="pt-28 pb-8 relative overflow-hidden bg-gradient-to-br from-emerald-50 via-white to-[color:var(--hz-light)]/20">
