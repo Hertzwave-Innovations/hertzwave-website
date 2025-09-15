@@ -10,20 +10,14 @@
 }
 
 /* Logo */
-.hz-logo { height: 32px; width: auto; display: block; }
-
-/*.hz-logo {
-  width: 70%;
-  height: auto;
-  max-width: 250px;
-}*/
+.hz-logo 
 
 /* Footer Logo (white version) */
-.hz-logo-footer {
-  width: 50%;
-  height: auto;
-  max-width: 250px;
-  filter: brightness(0) invert(1);
+.hz-logo-footer{
+  height:20px !important;   /* ~= Tailwind h-5 */
+  width:auto !important;
+  display:block;
+  object-fit:contain;
 }
 
 /* Buttons */
