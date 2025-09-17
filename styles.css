@@ -12,14 +12,33 @@
   --hertz-primary: var(--hz-primary);
   --hertz-dark:    var(--hz-dark);
   --hertz-black:   var(--hz-black);
+
+  /* Logo sizes (single source of truth) */
+  --hz-logo-h-nav:  20px; /* header/nav height */
+  --hz-logo-h-foot: 20px; /* footer height */
 }
 
-/* Footer Logo (white version) */
+/* Header logo */
+.hz-logo{
+  height: var(--hz-logo-h-nav) !important;
+  width: auto !important;
+  display: block;
+  object-fit: contain;
+}
+
+/* Footer logo */
 .hz-logo-footer{
-  height:20px !important;
-  width:auto !important;
-  display:block;
-  object-fit:contain;
+  height: var(--hz-logo-h-foot) !important;
+  width: auto !important;
+  display: block;
+  object-fit: contain;
+}
+
+/* Guard against opinionated resets that set img { width:100% } */
+img.hz-logo,
+img.hz-logo-footer {
+  width: auto !important;
+  max-width: none !important;
 }
 
 /* Buttons */
@@ -38,41 +57,38 @@
 
 /* Section Titles */
 .hz-section-title {
-  font-size: 1.875rem; /* 3xl */
+  font-size: 1.875rem; /* ~ text-3xl */
   font-weight: 600;
   color: #1f2937; /* text-gray-900 */
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.5rem; /* mb-6 */
   text-align: center;
 }
 
 /* Consistent Page Padding */
-.hz-section { padding-top: 4rem; padding-bottom: 4rem; }
+.hz-section {
+  padding-top: 4rem;   /* pt-16 */
+  padding-bottom: 4rem;/* pb-16 */
+}
 
 /* Landscape separators */
 .hz-landscape {
   width: 100%;
-  height: 16rem; /* Default 64 */
+  height: 16rem;       /* h-64 */
   object-fit: cover;
   user-select: none;
   pointer-events: none;
 }
 
-/* Logo sizes */
-:root{
-  --hz-logo-h-nav: 20px;
-  --hz-logo-h-foot: 20px;
+/* Reusable pre-title (kicker) used above H1s */
+.hz-pretitle{
+  color: var(--hz-primary);
+  font-weight: 600;
+  letter-spacing: .02em;
+  margin-bottom: .75rem; /* ~ mb-3 */
+  font-size: 1rem;       /* text-base */
+  line-height: 1.25;
 }
-.hz-logo{
-  height: var(--hz-logo-h-nav) !important;
-  width: auto !important;
-  display: block;
+@media (min-width: 768px){
+  .hz-pretitle{ font-size: 1.125rem; } /* md:text-lg */
 }
-.hz-logo-footer{
-  height: var(--hz-logo-h-foot) !important;
-  width: auto !important;
-  display: block;
-}
-
-/* Guard against img { width:100% } */
-img.hz-logo, img.hz-logo-footer { width: auto !important; max-width: none !important; }
 
