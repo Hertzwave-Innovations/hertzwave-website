@@ -9,20 +9,14 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
+  <link rel="stylesheet" href="/styles.css">
+
   <style>
     /* Brand tokens (match your index.html colors) */
     :root { --hz-light:#A8E6A3; --hz-primary:#4A7C59; --hz-dark:#2F4F3F; }
     body { font-family:'Outfit',sans-serif }
 
-    /* Keep nav/footer logo consistent everywhere */
-    .hz-logo {
-      height: 32px !important;     /* same as Tailwind h-8 */
-      max-height: 32px !important;
-      width: auto !important;
-      display: block;
-      object-fit: contain;
-      flex-shrink: 0;
-    }
+
 
     /* Simple article typography (no Tailwind plugins) */
     .guide-body h2 { font-size:1.5rem; line-height:1.35; font-weight:600; margin:2.25rem 0 1rem; color:#111827; }
@@ -140,7 +134,9 @@ Total = 12,000 × 2.54 / 1,000 = 30.48 tCO₂e
   <!-- FOOTER -->
   <footer class="bg-gray-900 text-white py-10 mt-16">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between">
-      <a href="/index.html"><img src="/HW-Logo-Light.png" alt="Hertzwave" class="hz-logo brightness-0 invert"/></a>
+      
+  <img src="/HW-Logo-Light.png" alt="Hertzwave" class="hz-logo-footer brightness-0 invert"/>
+      
       <p class="text-gray-400 text-sm mt-4 md:mt-0">© 2025 Hertzwave. All rights reserved.</p>
     </div>
   </footer>
