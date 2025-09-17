@@ -8,12 +8,12 @@
   <!-- Tailwind + Fonts + Icons -->
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
-  <link rel="stylesheet" href="/styles.css"/>
+  <!-- IMPORTANT: relative path (two levels up) so it loads from /resources/guides/ -->
+  <link rel="stylesheet" href="../../styles.css"/>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
   <style>
     body { font-family:'Outfit',sans-serif }
-
-    /* Simple article typography (kept local, same as Carbon 101) */
+    /* same article typography as Carbon 101 */
     .guide-body h2 { font-size:1.5rem; line-height:1.35; font-weight:600; margin:2.25rem 0 1rem; color:#111827; }
     .guide-body h3 { font-size:1.25rem; line-height:1.4;  font-weight:600; margin:1.5rem 0 .75rem;  color:#1f2937; }
     .guide-body p  { margin:.9rem 0; color:#374151; }
@@ -25,7 +25,7 @@
 </head>
 <body class="bg-white text-gray-900">
 
-  <!-- NAV (consistent across site) -->
+  <!-- NAV -->
   <nav class="fixed top-0 w-full bg-white/95 backdrop-blur-sm border-b border-gray-200 z-50">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex justify-between items-center h-16">
@@ -33,4 +33,89 @@
           <img src="/HW-Logo-Light.png" alt="Hertzwave" class="hz-logo"/>
         </a>
         <div class="hidden md:flex items-center space-x-8">
-          <a href="/platform.html"   class="text
+          <a href="/platform.html"   class="text-gray-700 hover:text-[var(--hz-primary)]">Platform</a>
+          <a href="/solutions.html"  class="text-gray-700 hover:text-[var(--hz-primary)]">Solutions</a>
+          <a href="/industries.html" class="text-gray-700 hover:text-[var(--hz-primary)]">Industries</a>
+          <a href="/resources/"      class="text-[var(--hz-primary)] font-semibold">Resources</a>
+          <a href="/about.html"      class="text-gray-700 hover:text-[var(--hz-primary)]">About</a>
+        </div>
+        <!-- Color fallback so it’s visible even if CSS vars didn’t load -->
+        <a href="http://netzero.hertzwave.in" target="_blank" rel="noopener"
+           class="px-6 py-2 rounded-lg font-semibold bg-[var(--hz-primary)] hover:bg-[var(--hz-dark)] text-white
+                  md:bg-[var(--hz-primary)] md:hover:bg-[var(--hz-dark)] bg-[#4A7C59] hover:bg-[#2F4F3F]">
+          Start Free Trial
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="pt-28 pb-14 bg-gradient-to-br from-green-50 via-white to-[color:var(--hz-light)]/20">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <p class="text-sm font-semibold text-[color:var(--hz-primary)] mb-2">Guide · BRSR → CSRD</p>
+      <h1 class="text-4xl lg:text-5xl font-semibold text-gray-900 leading-tight mb-4">
+        BRSR to CSRD: Mapping
+      </h1>
+      <p class="text-gray-600 text-lg max-w-2xl mx-auto">
+        Bridge Indian BRSR requirements with EU CSRD/ESRS—field-by-field overview and evidence expectations.
+      </p>
+      <div class="text-sm text-gray-500 mt-3">12 min read · Updated Sep 2025</div>
+    </div>
+  </header>
+
+  <!-- BODY -->
+  <main class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-10 guide-body">
+    <h2>What maps cleanly</h2>
+    <ul>
+      <li>Entity and site-level boundaries; organizational structure; reporting year/period.</li>
+      <li>Energy and emissions KPIs (Scope 1 &amp; 2) with intensity metrics (e.g., tCO₂e / unit).</li>
+      <li>Water withdrawal/discharge, waste generated/treated—core volumes and trends.</li>
+    </ul>
+
+    <h2>Where CSRD/ESRS asks for more</h2>
+    <ul>
+      <li><strong>Double materiality</strong> (impact &amp; financial) and a documented methodology.</li>
+      <li><strong>Transition plan</strong> for climate (ESRS&nbsp;E1) including targets, capex alignment, and progress.</li>
+      <li><strong>Scope 3</strong> coverage breadth, data quality statements, and category methodologies.</li>
+      <li><strong>Governance</strong>: roles, responsibilities, policies, and due-diligence procedures.</li>
+      <li><strong>Assurance readiness</strong>: controls, evidence trails, factor versioning, and change logs.</li>
+    </ul>
+
+    <h2>Practical mapping tips</h2>
+    <ol>
+      <li>Start from your BRSR disclosures; add ESRS-specific fields (targets, plans, data-quality notes).</li>
+      <li>Harmonize KPIs: use consistent organizational boundaries and intensity denominators.</li>
+      <li>Version your emission factors and document sources (year, region, library).</li>
+      <li>Create an evidence vault (invoices, meter photos, PPAs/RECs, methodology memos).</li>
+    </ol>
+
+    <div class="callout mt-6">
+      <strong>Next step:</strong> export the
+      <a href="/resources/templates/csrd-e1-checklist.xlsx" class="underline text-[color:var(--hz-primary)]">
+        ESRS E1 Disclosure Checklist
+      </a>
+      and align your BRSR dataset with CSRD fields. For initial data capture, use the
+      <a href="/resources/templates/brsr-data-collection.xlsx" class="underline text-[color:var(--hz-primary)]">
+        BRSR Data Collection template
+      </a>.
+    </div>
+
+    <div class="mt-10">
+      <a href="/resources/" class="inline-flex items-center text-[color:var(--hz-primary)] font-semibold hover:underline">
+        <i class="fa-solid fa-arrow-left mr-2"></i>Back to Resources
+      </a>
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="bg-gray-900 text-white py-10 mt-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between">
+      <a href="/index.html">
+        <img src="/HW-Logo-Light.png" alt="Hertzwave" class="hz-logo-footer brightness-0 invert"/>
+      </a>
+      <p class="text-gray-400 text-sm mt-4 md:mt-0">© 2025 Hertzwave. All rights reserved.</p>
+    </div>
+  </footer>
+</body>
+</html>
+
