@@ -24,7 +24,7 @@
 <body class="bg-white">
 
   <!-- Nav -->
-  <nav class="fixed top-0 w-full bg-white/95 backdrop-blur-sm border-b border-gray-200 z-50">
+ <nav class="fixed top-0 w-full bg-white/95 backdrop-blur-sm border-b border-gray-200 z-50">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex justify-between items-center h-16">
         <a href="index.html" class="flex items-center space-x-3">
@@ -34,11 +34,23 @@
           <a href="platform.html" class="text-gray-700 hover:text-hertz-primary">Platform</a>
           <a href="solutions.html" class="text-gray-700 hover:text-hertz-primary">Solutions</a>
           <a href="industries.html" class="text-hertz-primary font-semibold">Industries</a>
-          <a href="resources.html" class="text-gray-700 hover:text-hertz-primary">Resources</a>
+          <a href="/resources/" class="text-gray-700 hover:text-hertz-primary">Resources</a>
           <a href="about.html" class="text-gray-700 hover:text-hertz-primary">About</a>
           <a href="http://netzero.hertzwave.in" target="_blank" rel="noopener"
              class="bg-hertz-primary text-white px-6 py-2 rounded-lg hover:bg-hertz-dark font-semibold">Start Free Trial</a>
         </div>
+        <button class="md:hidden text-gray-700" id="navBtn"><i class="fas fa-bars text-xl"></i></button>
+      </div>
+    </div>
+    <div id="mobileNav" class="hidden md:hidden bg-white border-t border-gray-200">
+      <div class="px-4 py-3 space-y-2">
+        <a href="platform.html" class="block py-2 text-gray-700">Platform</a>
+        <a href="solutions.html" class="block py-2 text-gray-700">Solutions</a>
+        <a href="industries.html" class="block py-2 text-hertz-primary font-semibold">Industries</a>
+       <a href="/resources/" class="text-gray-700 hover:text-hertz-primary">Resources</a>
+        <a href="about.html" class="block py-2 text-gray-700">About</a>
+        <a href="http://netzero.hertzwave.in" target="_blank" rel="noopener"
+           class="block w-full text-center bg-hertz-primary text-white px-6 py-2 rounded-lg font-semibold mt-2">Start Free Trial</a>
       </div>
     </div>
   </nav>
