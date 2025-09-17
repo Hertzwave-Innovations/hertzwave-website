@@ -1,20 +1,22 @@
-
 /* === Shared Styling for All Pages === */
 
-/* Brand Colors as CSS variables */
+/* Brand colors — canonical names */
 :root {
-  --hertz-light: #A8E6A3;
-  --hertz-primary: #4A7C59;
-  --hertz-dark: #2F4F3F;
-  --hertz-black: #000000;
-}
+  --hz-light:   #A8E6A3;
+  --hz-primary: #4A7C59;
+  --hz-dark:    #2F4F3F;
+  --hz-black:   #000000;
 
-/* Logo */
-.hz-logo 
+  /* Aliases for older code that still uses --hertz-* */
+  --hertz-light:   var(--hz-light);
+  --hertz-primary: var(--hz-primary);
+  --hertz-dark:    var(--hz-dark);
+  --hertz-black:   var(--hz-black);
+}
 
 /* Footer Logo (white version) */
 .hz-logo-footer{
-  height:20px !important;   /* ~= Tailwind h-5 */
+  height:20px !important;
   width:auto !important;
   display:block;
   object-fit:contain;
@@ -22,7 +24,7 @@
 
 /* Buttons */
 .hz-btn-primary {
-  background-color: var(--hertz-primary);
+  background-color: var(--hz-primary);
   color: white;
   padding: 0.75rem 2rem;
   border-radius: 0.5rem;
@@ -30,7 +32,7 @@
   transition: background-color 0.3s ease, transform 0.2s ease;
 }
 .hz-btn-primary:hover {
-  background-color: var(--hertz-dark);
+  background-color: var(--hz-dark);
   transform: translateY(-2px);
 }
 
@@ -44,10 +46,7 @@
 }
 
 /* Consistent Page Padding */
-.hz-section {
-  padding-top: 4rem;
-  padding-bottom: 4rem;
-}
+.hz-section { padding-top: 4rem; padding-bottom: 4rem; }
 
 /* Landscape separators */
 .hz-landscape {
@@ -58,21 +57,22 @@
   pointer-events: none;
 }
 
-/* --- Hertzwave logo: single source of truth --- */
+/* Logo sizes */
 :root{
-  --hz-logo-h-nav: 20px;   /* header/nav height */
-  --hz-logo-h-foot: 20px;  /* footer height (use same as nav; tweak if you want) */
+  --hz-logo-h-nav: 20px;
+  --hz-logo-h-foot: 20px;
 }
-.hz-logo{                 /* header logo */
+.hz-logo{
   height: var(--hz-logo-h-nav) !important;
   width: auto !important;
   display: block;
 }
-.hz-logo-footer{          /* footer logo */
+.hz-logo-footer{
   height: var(--hz-logo-h-foot) !important;
   width: auto !important;
   display: block;
 }
 
-/* Guard against opinionated resets that set img { width:100% } */
+/* Guard against img { width:100% } */
 img.hz-logo, img.hz-logo-footer { width: auto !important; max-width: none !important; }
+
