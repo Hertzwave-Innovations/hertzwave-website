@@ -18,6 +18,10 @@
   --hz-logo-h-foot: 20px; /* footer height */
 }
 
+/* Hide horizontal scrollbar (still scrolls with swipe) */
+.scrollbar-none { -ms-overflow-style: none; scrollbar-width: none; }
+.scrollbar-none::-webkit-scrollbar { display: none; }
+
 /* Header logo */
 .hz-logo{
   height: var(--hz-logo-h-nav) !important;
