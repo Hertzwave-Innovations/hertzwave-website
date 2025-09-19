@@ -24,13 +24,20 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="../styles.css">
+<style>
+  :root { --hz-primary: #4A7C59; } /* fallback for var-based uses */
+  /* Force green for the active nav item on all screens */
+  .hz-nav a[aria-current="page"] { color: var(--hz-primary) !important; font-weight: 600; }
+</style>
+  
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
 
 </head>
 <body class="bg-white text-gray-900">
 
 <!-- Nav -->
-<nav class="fixed top-0 w-full bg-white/95 backdrop-blur-sm border-b border-gray-200 z-50">
+<nav class="fixed top-0 w-full bg-white/95 backdrop-blur-sm border-b border-gray-200 z-50 hz-nav">
+
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex justify-between items-center h-16">
       <!-- Logo -->
@@ -44,7 +51,8 @@
         <a href="/solutions.html"  class="text-gray-700 hover:text-hertz-primary transition-colors font-medium">Solutions</a>
         <a href="/industries.html" class="text-gray-700 hover:text-hertz-primary transition-colors font-medium">Industries</a>
         <!-- Add 'text-hertz-primary font-semibold' to mark the active page -->
-      <a href="./" class="!text-hertz-primary font-semibold">Resources</a>
+        <a href="./" aria-current="page" class="font-semibold">Resources</a>
+
 
         <a href="/about.html"      class="text-gray-700 hover:text-hertz-primary transition-colors font-medium">About</a>
 
@@ -67,7 +75,7 @@
       <a href="/platform.html"   class="block py-2 text-gray-700">Platform</a>
       <a href="/solutions.html"  class="block py-2 text-gray-700">Solutions</a>
       <a href="/industries.html" class="block py-2 text-gray-700">Industries</a>
-      <a href="/resources/"      class="block py-2 text-hertz-primary font-semibold">Resources</a>
+     <a href="./" aria-current="page" class="block py-2 font-semibold">Resources</a>
       <a href="/about.html"      class="block py-2 text-gray-700">About</a>
       <a href="http://netzero.hertzwave.in" target="_blank" rel="noopener"
          class="block w-full text-center bg-hertz-primary text-white px-6 py-2 rounded-lg font-semibold mt-2">
