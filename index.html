@@ -381,6 +381,7 @@
   <!-- Platform Features -->
   <section id="features" class="py-16 bg-gradient-to-br from-gray-50 to-hertz-light/10">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    
       <div class="text-center mb-16">
         <h2 class="text-3xl lg:text-4xl font-semibold text-gray-900 mb-6">
           Complete <span class="text-hertz-primary">Carbon Intelligence</span> Platform
@@ -391,89 +392,59 @@
       </div>
 
       
-    <div
-  class="grid grid-flow-col auto-cols-[85%] gap-4 overflow-x-auto snap-x snap-mandatory px-1 -mx-4 scrollbar-none
-         md:grid-flow-row md:auto-cols-auto md:grid-cols-3 md:gap-8 md:overflow-x-visible md:px-0 md:mx-0"
-  aria-label="Carbon intelligence modules"
->
+<!-- START: scroll wrapper for FEATURES -->
+<div class="relative" data-hz-scroll>
 
+  <!-- left edge fade -->
+  <div class="pointer-events-none absolute inset-y-0 left-0 w-10 bg-gradient-to-r from-white to-transparent md:hidden" aria-hidden="true"></div>
+  <!-- left chevron -->
+  <button type="button"
+          class="hz-left md:hidden absolute left-1 top-1/2 -translate-y-1/2 bg-white/90 backdrop-blur px-2 py-2 rounded-full shadow opacity-0 transition-opacity"
+          aria-label="Scroll left">
+    <i class="fa-solid fa-chevron-left"></i>
+  </button>
 
-        
-       <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow border border-hertz-light/30 snap-start shrink-0">
-          <div class="text-hertz-primary text-3xl mb-4">
-            <i class="fas fa-upload"></i>
-          </div>
-          <h3 class="text-xl font-semibold text-gray-900 mb-4">Ingestion Hub</h3>
-          <p class="text-gray-600 mb-4 font-light">Plug-and-play connectors for SAP Ariba, Concur, CSV & SFTP. Normalize data in minutes, not months.</p>
-          <ul class="text-sm text-gray-500 space-y-2 font-light">
-            <li><i class="fas fa-check text-hertz-primary mr-2"></i>Multi-source integration</li>
-            <li><i class="fas fa-check text-hertz-primary mr-2"></i>Automated data validation</li>
-            <li><i class="fas fa-check text-hertz-primary mr-2"></i>Real-time processing</li>
-          </ul>
-        </div>
-           <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow border border-hertz-light/30 snap-start shrink-0">
-          <div class="text-hertz-primary text-3xl mb-4">
-            <i class="fas fa-brain"></i>
-          </div>
-          <h3 class="text-xl font-semibold text-gray-900 mb-4">Validation AI</h3>
-          <p class="text-gray-600 mb-4 font-light">ML-powered validator that auto-maps schemas, flags duplicates & gaps with ≥90% confidence.</p>
-          <ul class="text-sm text-gray-500 space-y-2 font-light">
-            <li><i class="fas fa-check text-hertz-primary mr-2"></i>Intelligent schema mapping</li>
-            <li><i class="fas fa-check text-hertz-primary mr-2"></i>Duplicate detection</li>
-            <li><i class="fas fa-check text-hertz-primary mr-2"></i>Quality scoring</li>
-          </ul>
-        </div>
-      <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow border border-hertz-light/30 snap-start shrink-0">
-          <div class="text-hertz-primary text-3xl mb-4">
-            <i class="fas fa-calculator"></i>
-          </div>
-          <h3 class="text-xl font-semibold text-gray-900 mb-4">Emissions Engine</h3>
-          <p class="text-gray-600 mb-4 font-light">Scope 1-3 calculator with region-specific factors (DEFRA, EPA, Ecoinvent). Built for scale.</p>
-          <ul class="text-sm text-gray-500 space-y-2 font-light">
-            <li><i class="fas fa-check text-hertz-primary mr-2"></i>All scope calculations</li>
-            <li><i class="fas fa-check text-hertz-primary mr-2"></i>Regional emission factors</li>
-            <li><i class="fas fa-check text-hertz-primary mr-2"></i>High-performance processing</li>
-          </ul>
-        </div>
-            <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow border border-hertz-light/30 snap-start shrink-0">
-          <div class="text-hertz-primary text-3xl mb-4">
-            <i class="fas fa-file-alt"></i>
-          </div>
-          <h3 class="text-xl font-semibold text-gray-900 mb-4">Compliance Mapper</h3>
-          <p class="text-gray-600 mb-4 font-light">"One-click" export to BRSR, CSRD, TCFD & ISSB formats—no spreadsheet wrangling required.</p>
-          <ul class="text-sm text-gray-500 space-y-2 font-light">
-            <li><i class="fas fa-check text-hertz-primary mr-2"></i>Multiple frameworks</li>
-            <li><i class="fas fa-check text-hertz-primary mr-2"></i>Automated formatting</li>
-            <li><i class="fas fa-check text-hertz-primary mr-2"></i>Instant exports</li>
-          </ul>
-        </div>
-      <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow border border-hertz-light/30 snap-start shrink-0">
-          <div class="text-hertz-primary text-3xl mb-4">
-            <i class="fas fa-users"></i>
-          </div>
-          <h3 class="text-xl font-semibold text-gray-900 mb-4">Supplier Evaluation</h3>
-          <p class="text-gray-600 mb-4 font-light">Live supplier leaderboard scoring CO₂e/USD + data completeness. Spot high-impact vendors fast.</p>
-          <ul class="text-sm text-gray-500 space-y-2 font-light">
-            <li><i class="fas fa-check text-hertz-primary mr-2"></i>Real-time scoring</li>
-            <li><i class="fas fa-check text-hertz-primary mr-2"></i>Performance tracking</li>
-            <li><i class="fas fa-check text-hertz-primary mr-2"></i>Risk identification</li>
-          </ul>
-        </div>
-      <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow border border-hertz-light/30 snap-start shrink-0">
-          <div class="text-hertz-primary text-3xl mb-4">
-            <i class="fas fa-route"></i>
-          </div>
-          <h3 class="text-xl font-semibold text-gray-900 mb-4">Net-Zero Pathfinder</h3>
-          <p class="text-gray-600 mb-4 font-light">Scenario modeler that shows your glide-path to net-zero under multiple reduction levers.</p>
-          <ul class="text-sm text-gray-500 space-y-2 font-light">
-            <li><i class="fas fa-check text-hertz-primary mr-2"></i>Multiple scenarios</li>
-            <li><i class="fas fa-check text-hertz-primary mr-2"></i>Investment planning</li>
-            <li><i class="fas fa-check text-hertz-primary mr-2"></i>Progress tracking</li>
-          </ul>
-        </div>
-      </div>
-      
+  <!-- your existing scroller, just add class 'hz-scroller' and 'hz-no-scrollbar' -->
+  <div
+    class="hz-scroller grid grid-flow-col auto-cols-[85%] gap-4 overflow-x-auto snap-x snap-mandatory px-1 -mx-4 hz-no-scrollbar
+           md:grid-flow-row md:auto-cols-auto md:grid-cols-3 md:gap-8 md:overflow-x-visible md:px-0 md:mx-0"
+    aria-label="Carbon intelligence modules">
+
+    <!-- your 6 cards unchanged -->
+    <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow border border-hertz-light/30 snap-start shrink-0">
+      ... Ingestion Hub ...
     </div>
+    <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow border border-hertz-light/30 snap-start shrink-0">
+      ... Validation AI ...
+    </div>
+    <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow border border-hertz-light/30 snap-start shrink-0">
+      ... Emissions Engine ...
+    </div>
+    <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow border border-hertz-light/30 snap-start shrink-0">
+      ... Compliance Mapper ...
+    </div>
+    <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow border border-hertz-light/30 snap-start shrink-0">
+      ... Supplier Evaluation ...
+    </div>
+    <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow border border-hertz-light/30 snap-start shrink-0">
+      ... Net-Zero Pathfinder ...
+    </div>
+  </div>
+
+  <!-- right edge fade -->
+  <div class="pointer-events-none absolute inset-y-0 right-0 w-10 bg-gradient-to-l from-white to-transparent md:hidden" aria-hidden="true"></div>
+  <!-- right chevron -->
+  <button type="button"
+          class="hz-right md:hidden absolute right-1 top-1/2 -translate-y-1/2 bg-white/90 backdrop-blur px-2 py-2 rounded-full shadow transition-opacity"
+          aria-label="Scroll right">
+    <i class="fa-solid fa-chevron-right"></i>
+  </button>
+
+  <!-- mobile hint -->
+  <div class="md:hidden text-center mt-2 text-gray-500 text-xs">Swipe to explore →</div>
+</div>
+<!-- END: scroll wrapper for FEATURES -->
+
   </section>
 
   <!-- Wide Image Separator -->
@@ -1012,6 +983,40 @@
       tick();
     })();
   </script>
+<script>
+(function(){
+  document.querySelectorAll('[data-hz-scroll]').forEach(wrap=>{
+    const scroller = wrap.querySelector('.hz-scroller');
+    const leftBtn  = wrap.querySelector('.hz-left');
+    const rightBtn = wrap.querySelector('.hz-right');
+    if(!scroller) return;
+
+    const update = ()=>{
+      const atStart = scroller.scrollLeft <= 4;
+      const atEnd   = scroller.scrollLeft + scroller.clientWidth >= scroller.scrollWidth - 4;
+      if (leftBtn)  leftBtn.style.opacity  = atStart ? '0' : '1';
+      if (rightBtn) rightBtn.style.opacity = atEnd   ? '0' : '1';
+    };
+
+    let ticking = false;
+    scroller.addEventListener('scroll', ()=>{
+      if(!ticking){
+        requestAnimationFrame(()=>{ update(); ticking=false; });
+        ticking = true;
+      }
+    }, { passive:true });
+
+    const step = () => Math.max(240, Math.min(320, scroller.clientWidth * 0.8));
+    leftBtn?.addEventListener('click', ()=> scroller.scrollBy({ left: -step(), behavior: 'smooth' }));
+    rightBtn?.addEventListener('click', ()=> scroller.scrollBy({ left:  step(), behavior: 'smooth' }));
+
+    window.addEventListener('resize', update);
+    update(); // initial
+  });
+})();
+</script>
+
+  
 </body>
 </html>
 
