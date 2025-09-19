@@ -546,157 +546,136 @@
         </p>
       </div>
 
-      <!-- Industry Grid (16) -->
-     <div class="grid grid-flow-col auto-cols-[72%] gap-4 overflow-x-auto snap-x snap-mandatory -mx-4 px-1 scrollbar-none
-         sm:auto-cols-[55%]
-         md:grid-flow-row md:auto-cols-auto md:grid-cols-2 lg:grid-cols-4 md:gap-6 md:overflow-x-visible md:mx-0 md:px-0"
-  aria-label="Industries"
->
+    <!-- Industry Grid (16) -->
+<div class="relative md:static">
+  <!-- edge fades (mobile only) -->
+  <div class="pointer-events-none absolute inset-y-0 left-0 w-10 bg-gradient-to-r from-white to-transparent md:hidden"></div>
+  <div class="pointer-events-none absolute inset-y-0 right-0 w-10 bg-gradient-to-l from-white to-transparent md:hidden"></div>
 
-        <!-- Steel & Metals -->
-<div class="bg-gradient-to-br from-red-50 to-red-100 p-6 rounded-xl hover:shadow-lg transition-all duration-300 group cursor-pointer snap-start shrink-0">
-          <div class="text-red-600 text-2xl mb-3 group-hover:scale-110 transition-transform">
-            <i class="fas fa-industry"></i>
-          </div>
-          <h3 class="font-semibold text-gray-900 mb-2">Steel & Metals</h3>
-          <p class="text-sm text-gray-600 font-light">High-emission intensity tracking</p>
-        </div>
+  <!-- SCROLLER (keep all grid classes here, not on the wrapper) -->
+  <div
+    class="grid grid-flow-col auto-cols-[72%] gap-4 overflow-x-auto snap-x snap-mandatory -mx-4 px-1 scrollbar-none
+           sm:auto-cols-[55%]
+           md:grid-flow-row md:auto-cols-auto md:grid-cols-2 lg:grid-cols-4 md:gap-6 md:overflow-x-visible md:mx-0 md:px-0"
+    aria-label="Industries">
 
-        <!-- Oil & Gas -->
-<div class="bg-gradient-to-br from-red-50 to-red-100 p-6 rounded-xl hover:shadow-lg transition-all duration-300 group cursor-pointer snap-start shrink-0">
-          <div class="text-blue-600 text-2xl mb-3 group-hover:scale-110 transition-transform">
-            <i class="fas fa-oil-can"></i>
-          </div>
-          <h3 class="font-semibold text-gray-900 mb-2">Oil & Gas</h3>
-          <p class="text-sm text-gray-600 font-light">Upstream/downstream analysis</p>
-        </div>
+    <!-- Steel & Metals -->
+    <div class="bg-gradient-to-br from-red-50 to-red-100 p-6 rounded-xl hover:shadow-lg transition-all duration-300 group cursor-pointer snap-start shrink-0">
+      <div class="text-red-600 text-2xl mb-3 group-hover:scale-110 transition-transform"><i class="fas fa-industry"></i></div>
+      <h3 class="font-semibold text-gray-900 mb-2">Steel & Metals</h3>
+      <p class="text-sm text-gray-600 font-light">High-emission intensity tracking</p>
+    </div>
 
-        <!-- Cement -->
-<div class="bg-gradient-to-br from-red-50 to-red-100 p-6 rounded-xl hover:shadow-lg transition-all duration-300 group cursor-pointer snap-start shrink-0">
-          <div class="text-gray-600 text-2xl mb-3 group-hover:scale-110 transition-transform">
-            <i class="fas fa-building"></i>
-          </div>
-          <h3 class="font-semibold text-gray-900 mb-2">Cement</h3>
-          <p class="text-sm text-gray-600 font-light">Process emission calculations</p>
-        </div>
+    <!-- Oil & Gas -->
+    <div class="bg-gradient-to-br from-blue-50 to-blue-100 p-6 rounded-xl hover:shadow-lg transition-all duration-300 group cursor-pointer snap-start shrink-0">
+      <div class="text-blue-600 text-2xl mb-3 group-hover:scale-110 transition-transform"><i class="fas fa-oil-can"></i></div>
+      <h3 class="font-semibold text-gray-900 mb-2">Oil & Gas</h3>
+      <p class="text-sm text-gray-600 font-light">Upstream/downstream analysis</p>
+    </div>
 
-        <!-- Automotive -->
-<div class="bg-gradient-to-br from-red-50 to-red-100 p-6 rounded-xl hover:shadow-lg transition-all duration-300 group cursor-pointer snap-start shrink-0">
-          <div class="text-green-600 text-2xl mb-3 group-hover:scale-110 transition-transform">
-            <i class="fas fa-car"></i>
-          </div>
-          <h3 class="font-semibold text-gray-900 mb-2">Automotive</h3>
-          <p class="text-sm text-gray-600 font-light">Manufacturing & supply chain</p>
-        </div>
+    <!-- Cement -->
+    <div class="bg-gradient-to-br from-gray-50 to-gray-100 p-6 rounded-xl hover:shadow-lg transition-all duration-300 group cursor-pointer snap-start shrink-0">
+      <div class="text-gray-600 text-2xl mb-3 group-hover:scale-110 transition-transform"><i class="fas fa-building"></i></div>
+      <h3 class="font-semibold text-gray-900 mb-2">Cement</h3>
+      <p class="text-sm text-gray-600 font-light">Process emission calculations</p>
+    </div>
 
-        <!-- Textiles -->
-   <div class="bg-gradient-to-br from-red-50 to-red-100 p-6 rounded-xl hover:shadow-lg transition-all duration-300 group cursor-pointer snap-start shrink-0">
-          <div class="text-pink-600 text-2xl mb-3 group-hover:scale-110 transition-transform">
-            <i class="fas fa-tshirt"></i>
-          </div>
-          <h3 class="font-semibold text-gray-900 mb-2">Textiles</h3>
-          <p class="text-sm text-gray-600 font-light">Scope 3 complexity</p>
-        </div>
+    <!-- Automotive -->
+    <div class="bg-gradient-to-br from-green-50 to-green-100 p-6 rounded-xl hover:shadow-lg transition-all duration-300 group cursor-pointer snap-start shrink-0">
+      <div class="text-green-600 text-2xl mb-3 group-hover:scale-110 transition-transform"><i class="fas fa-car"></i></div>
+      <h3 class="font-semibold text-gray-900 mb-2">Automotive</h3>
+      <p class="text-sm text-gray-600 font-light">Manufacturing & supply chain</p>
+    </div>
 
-        <!-- Food & Agriculture -->
-  <div class="bg-gradient-to-br from-red-50 to-red-100 p-6 rounded-xl hover:shadow-lg transition-all duration-300 group cursor-pointer snap-start shrink-0">
-          <div class="text-orange-600 text-2xl mb-3 group-hover:scale-110 transition-transform">
-            <i class="fas fa-tractor"></i>
-          </div>
-          <h3 class="font-semibold text-gray-900 mb-2">Food & Agriculture</h3>
-          <p class="text-sm text-gray-600 font-light">Process/farm inputs, supplier scope</p>
-        </div>
+    <!-- Textiles -->
+    <div class="bg-gradient-to-br from-pink-50 to-pink-100 p-6 rounded-xl hover:shadow-lg transition-all duration-300 group cursor-pointer snap-start shrink-0">
+      <div class="text-pink-600 text-2xl mb-3 group-hover:scale-110 transition-transform"><i class="fas fa-tshirt"></i></div>
+      <h3 class="font-semibold text-gray-900 mb-2">Textiles</h3>
+      <p class="text-sm text-gray-600 font-light">Scope 3 complexity</p>
+    </div>
 
-        <!-- Power Generation -->
-   <div class="bg-gradient-to-br from-red-50 to-red-100 p-6 rounded-xl hover:shadow-lg transition-all duration-300 group cursor-pointer snap-start shrink-0">
-          <div class="text-yellow-600 text-2xl mb-3 group-hover:scale-110 transition-transform">
-            <i class="fas fa-bolt"></i>
-          </div>
-          <h3 class="font-semibold text-gray-900 mb-2">Power Generation</h3>
-          <p class="text-sm text-gray-600 font-light">Grid emission factors</p>
-        </div>
+    <!-- Food & Agriculture -->
+    <div class="bg-gradient-to-br from-orange-50 to-orange-100 p-6 rounded-xl hover:shadow-lg transition-all duration-300 group cursor-pointer snap-start shrink-0">
+      <div class="text-orange-600 text-2xl mb-3 group-hover:scale-110 transition-transform"><i class="fas fa-tractor"></i></div>
+      <h3 class="font-semibold text-gray-900 mb-2">Food & Agriculture</h3>
+      <p class="text-sm text-gray-600 font-light">Process/farm inputs, supplier scope</p>
+    </div>
 
-        <!-- Mining -->
-       <div class="bg-gradient-to-br from-red-50 to-red-100 p-6 rounded-xl hover:shadow-lg transition-all duration-300 group cursor-pointer snap-start shrink-0">
-          <div class="text-amber-600 text-2xl mb-3 group-hover:scale-110 transition-transform">
-            <i class="fas fa-mountain"></i>
-          </div>
-          <h3 class="font-semibold text-gray-900 mb-2">Mining</h3>
-          <p class="text-sm text-gray-600 font-light">Extraction operations</p>
-        </div>
+    <!-- Power Generation -->
+    <div class="bg-gradient-to-br from-yellow-50 to-yellow-100 p-6 rounded-xl hover:shadow-lg transition-all duration-300 group cursor-pointer snap-start shrink-0">
+      <div class="text-yellow-600 text-2xl mb-3 group-hover:scale-110 transition-transform"><i class="fas fa-bolt"></i></div>
+      <h3 class="font-semibold text-gray-900 mb-2">Power Generation</h3>
+      <p class="text-sm text-gray-600 font-light">Grid emission factors</p>
+    </div>
 
-        <!-- Shipping -->
-       <div class="bg-gradient-to-br from-red-50 to-red-100 p-6 rounded-xl hover:shadow-lg transition-all duration-300 group cursor-pointer snap-start shrink-0">
-          <div class="text-teal-600 text-2xl mb-3 group-hover:scale-110 transition-transform">
-            <i class="fas fa-ship"></i>
-          </div>
-          <h3 class="font-semibold text-gray-900 mb-2">Shipping</h3>
-          <p class="text-sm text-gray-600 font-light">Maritime transport</p>
-        </div>
+    <!-- Mining -->
+    <div class="bg-gradient-to-br from-amber-50 to-amber-100 p-6 rounded-xl hover:shadow-lg transition-all duration-300 group cursor-pointer snap-start shrink-0">
+      <div class="text-amber-600 text-2xl mb-3 group-hover:scale-110 transition-transform"><i class="fas fa-mountain"></i></div>
+      <h3 class="font-semibold text-gray-900 mb-2">Mining</h3>
+      <p class="text-sm text-gray-600 font-light">Extraction operations</p>
+    </div>
 
-        <!-- Healthcare -->
-        <div class="bg-gradient-to-br from-red-50 to-red-100 p-6 rounded-xl hover:shadow-lg transition-all duration-300 group cursor-pointer snap-start shrink-0">
-          <div class="text-cyan-600 text-2xl mb-3 group-hover:scale-110 transition-transform">
-            <i class="fas fa-hospital"></i>
-          </div>
-          <h3 class="font-semibold text-gray-900 mb-2">Healthcare</h3>
-          <p class="text-sm text-gray-600 font-light">Medical facility emissions</p>
-        </div>
+    <!-- Shipping -->
+    <div class="bg-gradient-to-br from-teal-50 to-teal-100 p-6 rounded-xl hover:shadow-lg transition-all duration-300 group cursor-pointer snap-start shrink-0">
+      <div class="text-teal-600 text-2xl mb-3 group-hover:scale-110 transition-transform"><i class="fas fa-ship"></i></div>
+      <h3 class="font-semibold text-gray-900 mb-2">Shipping</h3>
+      <p class="text-sm text-gray-600 font-light">Maritime transport</p>
+    </div>
 
-        <!-- Pharma & Chemicals -->
-        <div class="bg-gradient-to-br from-red-50 to-red-100 p-6 rounded-xl hover:shadow-lg transition-all duration-300 group cursor-pointer snap-start shrink-0">
-          <div class="text-indigo-600 text-2xl mb-3 group-hover:scale-110 transition-transform">
-            <i class="fas fa-pills"></i>
-          </div>
-          <h3 class="font-semibold text-gray-900 mb-2">Pharma & Chemicals</h3>
-          <p class="text-sm text-gray-600 font-light">R&D, production, compliance</p>
-        </div>
+    <!-- Healthcare -->
+    <div class="bg-gradient-to-br from-cyan-50 to-cyan-100 p-6 rounded-xl hover:shadow-lg transition-all duration-300 group cursor-pointer snap-start shrink-0">
+      <div class="text-cyan-600 text-2xl mb-3 group-hover:scale-110 transition-transform"><i class="fas fa-hospital"></i></div>
+      <h3 class="font-semibold text-gray-900 mb-2">Healthcare</h3>
+      <p class="text-sm text-gray-600 font-light">Medical facility emissions</p>
+    </div>
 
-        <!-- Hospitality -->
-        <div class="bg-gradient-to-br from-red-50 to-red-100 p-6 rounded-xl hover:shadow-lg transition-all duration-300 group cursor-pointer snap-start shrink-0">
-          <div class="text-rose-600 text-2xl mb-3 group-hover:scale-110 transition-transform">
-            <i class="fas fa-bed"></i>
-          </div>
-          <h3 class="font-semibold text-gray-900 mb-2">Hospitality</h3>
-          <p class="text-sm text-gray-600 font-light">Hotels and tourism</p>
-        </div>
+    <!-- Pharma & Chemicals -->
+    <div class="bg-gradient-to-br from-indigo-50 to-indigo-100 p-6 rounded-xl hover:shadow-lg transition-all duration-300 group cursor-pointer snap-start shrink-0">
+      <div class="text-indigo-600 text-2xl mb-3 group-hover:scale-110 transition-transform"><i class="fas fa-pills"></i></div>
+      <h3 class="font-semibold text-gray-900 mb-2">Pharma & Chemicals</h3>
+      <p class="text-sm text-gray-600 font-light">R&amp;D, production, compliance</p>
+    </div>
 
-        <!-- Technology / Data Centers -->
-      <div class="bg-gradient-to-br from-red-50 to-red-100 p-6 rounded-xl hover:shadow-lg transition-all duration-300 group cursor-pointer snap-start shrink-0">
-          <div class="text-sky-600 text-2xl mb-3 group-hover:scale-110 transition-transform">
-            <i class="fas fa-server"></i>
-          </div>
-          <h3 class="font-semibold text-gray-900 mb-2">Technology / Data Centers</h3>
-          <p class="text-sm text-gray-600 font-light">Electricity-heavy, location factors</p>
-        </div>
+    <!-- Hospitality -->
+    <div class="bg-gradient-to-br from-rose-50 to-rose-100 p-6 rounded-xl hover:shadow-lg transition-all duration-300 group cursor-pointer snap-start shrink-0">
+      <div class="text-rose-600 text-2xl mb-3 group-hover:scale-110 transition-transform"><i class="fas fa-bed"></i></div>
+      <h3 class="font-semibold text-gray-900 mb-2">Hospitality</h3>
+      <p class="text-sm text-gray-600 font-light">Hotels and tourism</p>
+    </div>
 
-        <!-- Real Estate / Construction -->
-        <div class="bg-gradient-to-br from-red-50 to-red-100 p-6 rounded-xl hover:shadow-lg transition-all duration-300 group cursor-pointer snap-start shrink-0">
-          <div class="text-purple-600 text-2xl mb-3 group-hover:scale-110 transition-transform">
-            <i class="fas fa-city"></i>
-          </div>
-          <h3 class="font-semibold text-gray-900 mb-2">Real Estate / Construction</h3>
-          <p class="text-sm text-gray-600 font-light">Building ops + embodied carbon</p>
-        </div>
+    <!-- Technology / Data Centers -->
+    <div class="bg-gradient-to-br from-sky-50 to-sky-100 p-6 rounded-xl hover:shadow-lg transition-all duration-300 group cursor-pointer snap-start shrink-0">
+      <div class="text-sky-600 text-2xl mb-3 group-hover:scale-110 transition-transform"><i class="fas fa-server"></i></div>
+      <h3 class="font-semibold text-gray-900 mb-2">Technology / Data Centers</h3>
+      <p class="text-sm text-gray-600 font-light">Electricity-heavy, location factors</p>
+    </div>
 
-        <!-- Energy & Utilities -->
-      <div class="bg-gradient-to-br from-red-50 to-red-100 p-6 rounded-xl hover:shadow-lg transition-all duration-300 group cursor-pointer snap-start shrink-0">
-          <div class="text-lime-600 text-2xl mb-3 group-hover:scale-110 transition-transform">
-            <i class="fas fa-battery-full"></i>
-          </div>
-          <h3 class="font-semibold text-gray-900 mb-2">Energy & Utilities</h3>
-          <p class="text-sm text-gray-600 font-light">Emission factors + intensity KPIs</p>
-        </div>
+    <!-- Real Estate / Construction -->
+    <div class="bg-gradient-to-br from-purple-50 to-purple-100 p-6 rounded-xl hover:shadow-lg transition-all duration-300 group cursor-pointer snap-start shrink-0">
+      <div class="text-purple-600 text-2xl mb-3 group-hover:scale-110 transition-transform"><i class="fas fa-city"></i></div>
+      <h3 class="font-semibold text-gray-900 mb-2">Real Estate / Construction</h3>
+      <p class="text-sm text-gray-600 font-light">Building ops + embodied carbon</p>
+    </div>
 
-        <!-- Fertiliser -->
-      <div class="bg-gradient-to-br from-red-50 to-red-100 p-6 rounded-xl hover:shadow-lg transition-all duration-300 group cursor-pointer snap-start shrink-0">
-          <div class="text-green-700 text-2xl mb-3 group-hover:scale-110 transition-transform">
-            <i class="fas fa-seedling"></i>
-          </div>
-          <h3 class="font-semibold text-gray-900 mb-2">Fertiliser</h3>
-          <p class="text-sm text-gray-600 font-light">Ammonia/Urea production emissions</p>
-        </div>
-      </div>
+    <!-- Energy & Utilities -->
+    <div class="bg-gradient-to-br from-lime-50 to-lime-100 p-6 rounded-xl hover:shadow-lg transition-all duration-300 group cursor-pointer snap-start shrink-0">
+      <div class="text-lime-600 text-2xl mb-3 group-hover:scale-110 transition-transform"><i class="fas fa-battery-full"></i></div>
+      <h3 class="font-semibold text-gray-900 mb-2">Energy & Utilities</h3>
+      <p class="text-sm text-gray-600 font-light">Emission factors + intensity KPIs</p>
+    </div>
+
+    <!-- Fertiliser -->
+    <div class="bg-gradient-to-br from-green-50 to-green-100 p-6 rounded-xl hover:shadow-lg transition-all duration-300 group cursor-pointer snap-start shrink-0">
+      <div class="text-green-700 text-2xl mb-3 group-hover:scale-110 transition-transform"><i class="fas fa-seedling"></i></div>
+      <h3 class="font-semibold text-gray-900 mb-2">Fertiliser</h3>
+      <p class="text-sm text-gray-600 font-light">Ammonia/Urea production emissions</p>
+    </div>
+  </div>
+
+  <!-- mobile hint -->
+  <div class="md:hidden text-center mt-2 text-gray-500 text-xs">Swipe to explore →</div>
+</div>
+
 
       
   </section>
