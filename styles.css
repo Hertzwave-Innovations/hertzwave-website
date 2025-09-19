@@ -18,6 +18,9 @@
   --hz-logo-h-foot: 20px; /* footer height */
 }
 
+.scrollbar-none::-webkit-scrollbar { display: none; }
+.scrollbar-none { -ms-overflow-style: none; scrollbar-width: none; }
+
 /* Hide horizontal scrollbar (still scrolls with swipe) */
 .scrollbar-none { -ms-overflow-style: none; scrollbar-width: none; }
 .scrollbar-none::-webkit-scrollbar { display: none; }
