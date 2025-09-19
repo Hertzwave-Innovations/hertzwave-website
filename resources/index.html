@@ -285,6 +285,17 @@
     </div>
   </div>
 </footer>
+<script>
+    // mobile nav toggle
+    const navBtn = document.getElementById('navBtn');
+    const mobileNav = document.getElementById('mobileNav');
+    navBtn?.addEventListener('click', () => mobileNav?.classList.toggle('hidden'));
+
+    // close drawer after tapping a link
+    mobileNav?.addEventListener('click', (e) => {
+      if (e.target.closest('a')) mobileNav.classList.add('hidden');
+    });
+  </script>
 
 
 </body>
