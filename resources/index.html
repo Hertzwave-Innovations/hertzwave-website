@@ -14,27 +14,47 @@
 </head>
 <body class="bg-white text-gray-900">
 
-  <!-- Nav -->
+<!-- Nav -->
 <nav class="fixed top-0 w-full bg-white/95 backdrop-blur-sm border-b border-gray-200 z-50">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex justify-between items-center h-16">
+      <!-- Logo -->
       <a href="/index.html" class="flex items-center">
         <img src="/HW-Logo-Light.png" alt="Hertzwave" class="hz-logo">
       </a>
 
+      <!-- Desktop menu -->
       <div class="hidden md:flex items-center space-x-8">
-        <a href="/platform.html"   class="text-gray-700 hover:text-[var(--hz-primary)] transition-colors font-medium">Platform</a>
-        <a href="/solutions.html"  class="text-gray-700 hover:text-[var(--hz-primary)] transition-colors font-medium">Solutions</a>
-        <a href="/industries.html" class="text-gray-700 hover:text-[var(--hz-primary)] transition-colors font-medium">Industries</a>
+        <a href="/platform.html"   class="text-gray-700 hover:text-hertz-primary transition-colors font-medium">Platform</a>
+        <a href="/solutions.html"  class="text-gray-700 hover:text-hertz-primary transition-colors font-medium">Solutions</a>
+        <a href="/industries.html" class="text-gray-700 hover:text-hertz-primary transition-colors font-medium">Industries</a>
+        <!-- Add 'text-hertz-primary font-semibold' to mark the active page -->
+        <a href="/resources/"      class="text-hertz-primary font-semibold">Resources</a>
+        <a href="/about.html"      class="text-gray-700 hover:text-hertz-primary transition-colors font-medium">About</a>
 
-        <!-- ACTIVE PAGE -->
-        <a href="/resources/"      class="text-[var(--hz-primary)] font-semibold">Resources</a>
-
-        <a href="/about.html"      class="text-gray-700 hover:text-[var(--hz-primary)] transition-colors font-medium">About</a>
+        <a href="http://netzero.hertzwave.in" target="_blank" rel="noopener"
+           class="px-4 py-2 bg-hertz-primary text-white rounded-lg hover:bg-hertz-dark font-semibold text-sm">
+          Start Free Trial
+        </a>
       </div>
 
+      <!-- Mobile hamburger -->
+      <button class="md:hidden text-gray-700" id="navBtn" aria-label="Open menu">
+        <i class="fas fa-bars text-xl"></i>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile drawer -->
+  <div id="mobileNav" class="hidden md:hidden bg-white border-t border-gray-200">
+    <div class="px-4 py-3 space-y-2">
+      <a href="/platform.html"   class="block py-2 text-gray-700">Platform</a>
+      <a href="/solutions.html"  class="block py-2 text-gray-700">Solutions</a>
+      <a href="/industries.html" class="block py-2 text-gray-700">Industries</a>
+      <a href="/resources/"      class="block py-2 text-hertz-primary font-semibold">Resources</a>
+      <a href="/about.html"      class="block py-2 text-gray-700">About</a>
       <a href="http://netzero.hertzwave.in" target="_blank" rel="noopener"
-         class="px-4 py-2 bg-[var(--hz-primary)] text-white rounded-lg hover:bg-[var(--hz-dark)] font-semibold text-sm">
+         class="block w-full text-center bg-hertz-primary text-white px-6 py-2 rounded-lg font-semibold mt-2">
         Start Free Trial
       </a>
     </div>
