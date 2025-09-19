@@ -22,6 +22,15 @@
 .scrollbar-none { -ms-overflow-style: none; scrollbar-width: none; }
 .scrollbar-none::-webkit-scrollbar { display: none; }
 
+
+/* hide scrollbars (mobile) */
+.scrollbar-none::-webkit-scrollbar{display:none}
+.scrollbar-none{-ms-overflow-style:none;scrollbar-width:none}
+
+/* gentle nudge for the chevrons */
+@keyframes hz-nudge {0%,100%{transform:translateX(0)}50%{transform:translateX(4px)}}
+.hz-nudge{animation:hz-nudge 1.2s ease-in-out infinite}
+
 /* Header logo */
 .hz-logo{
   height: var(--hz-logo-h-nav) !important;
