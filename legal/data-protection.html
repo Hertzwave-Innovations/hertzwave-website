@@ -9,19 +9,16 @@
 </head>
 <body class="bg-white font-outfit">
 
-  <!-- Back bar (identical structure/styles across legal pages) -->
-  <div class="bg-white border-b border-gray-200">
-    <div class="max-w-3xl mx-auto px-4">
-      <!-- default href is the fallback; JS will switch to history.back() when safe -->
-      <a id="hzBackBtn"
+  <!-- Back bar (identical to Security & Legal) -->
+  <div class="bg-hertz-light/20 border-b border-hertz-light/40">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
+      <a id="legal-back-btn"
          href="/legal/index.html"
-         class="inline-flex items-center gap-2 py-3 text-gray-600 hover:text-hertz-primary"
-         aria-label="Go back to previous page">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
-             class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2">
-          <path d="M15 18l-6-6 6-6"/>
+         class="inline-flex items-center text-hertz-primary hover:text-hertz-dark font-semibold">
+        <svg aria-hidden="true" viewBox="0 0 20 20" class="w-4 h-4 mr-2">
+          <path fill="currentColor" d="M12.78 3.22a.75.75 0 0 1 0 1.06L7.06 10l5.72 5.72a.75.75 0 1 1-1.06 1.06l-6.25-6.25a.75.75 0 0 1 0-1.06l6.25-6.25a.75.75 0 0 1 1.06 0Z"/>
         </svg>
-        <span>Back to previous page</span>
+        <span id="legal-back-text">Back</span>
       </a>
     </div>
   </div>
@@ -30,45 +27,43 @@
     <h1 class="text-3xl font-semibold mb-4">Data Protection</h1>
     <p class="text-gray-600 mb-6">Our approach to safeguarding customer data.</p>
 
-    <div class="space-y-4 text-gray-700 leading-relaxed">
+    <div class="space-y-4 text-gray-700">
       <p><strong>Lawful Basis:</strong> Contract performance, legitimate interests, and consent where applicable.</p>
-      <p><strong>Subprocessors:</strong> Disclosed on request; all subprocessors are bound by security and confidentiality obligations.</p>
+      <p><strong>Subprocessors:</strong> Disclosed on request; all subprocessors are bound by security and confidentiality terms.</p>
       <p><strong>International Transfers:</strong> Appropriate safeguards (e.g., Standard Contractual Clauses) where required.</p>
       <p><strong>Incident Response:</strong> A defined plan with timely notifications aligned to legal obligations.</p>
-      <p><strong>DPO/Contact:</strong>
-        <a href="mailto:dpo@hertzwave.in" class="text-hertz-primary underline-offset-2 hover:underline">
-          dpo@hertzwave.in
-        </a>
-      </p>
+      <p><strong>DPO/Contact:</strong> <a href="mailto:dpo@hertzwave.in" class="text-hertz-primary">dpo@hertzwave.in</a></p>
 
       <p class="text-sm text-gray-500">This page may be updated; the latest version will be posted here.</p>
     </div>
   </main>
 
-  <!-- Back-link behavior: prefer history.back() when referrer is same-origin -->
+  <!-- Smart back behavior (same as Security & Legal) -->
   <script>
     (function () {
-      const link = document.getElementById('hzBackBtn');
-      if (!link) return;
-      link.addEventListener('click', function (e) {
-        try {
-          const r = document.referrer;
-          if (r && new URL(r).origin === location.origin) {
-            e.preventDefault();
-            history.back();
-          }
-        } catch (_) { /* fall through to default href */ }
-      });
-    })();
-
-    // (Optional) GA4 click tracking for legal links
-    document.addEventListener('click', (e) => {
-      const a = e.target.closest('a');
+      const a = document.getElementById('legal-back-btn');
+      const label = document.getElementById('legal-back-text');
       if (!a) return;
-      if (a.href && a.href.includes('/legal/')) {
-        window.gtag && gtag('event', 'legal_link_click', { label: a.pathname });
+
+      const ref = document.referrer || '';
+      let sameOrigin = false;
+      try {
+        sameOrigin = ref && new URL(ref, location.origin).origin === location.origin;
+      } catch (_) {}
+
+      if (sameOrigin) {
+        a.href = ref;
+        label.textContent = 'Back to previous page';
+        a.addEventListener('click', function (e) {
+          e.preventDefault();
+          history.back();
+        });
+      } else {
+        a.href = '/legal/index.html';
+        label.textContent = 'Back to Security & Legal';
       }
-    });
+    })();
   </script>
 </body>
 </html>
+
