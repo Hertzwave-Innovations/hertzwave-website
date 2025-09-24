@@ -1190,6 +1190,20 @@
   });
 })();
 </script>
+<!-- Track clicks on legal links in GA4 -->
+<script>
+  document.addEventListener('click', (e) => {
+    const a = e.target.closest('a');
+    if (!a) return;
+    if (a.href && a.href.indexOf('/legal/') !== -1) {
+      if (typeof gtag === 'function') {
+        gtag('event', 'legal_link_click', { label: a.pathname });
+      }
+    }
+  });
+</script>
+</body>
+</html>
 
   
 </body>
