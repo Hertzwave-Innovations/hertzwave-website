@@ -1,21 +1,72 @@
-<!doctype html><html lang="en"><head>
-<meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>Privacy Policy | Hertzwave</title>
-<link rel="stylesheet" href="/styles.css">
-<script src="https://cdn.tailwindcss.com"></script>
-</head><body class="bg-white font-outfit">
-<main class="max-w-3xl mx-auto px-4 py-16">
-  <h1 class="text-3xl font-semibold mb-4">Privacy Policy</h1>
-  <p class="text-gray-600 mb-6">How we collect, use and protect personal data.</p>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Privacy Policy | Hertzwave</title>
+  <link rel="stylesheet" href="/styles.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-white font-outfit">
 
-  <div class="space-y-4 text-gray-700">
-    <p><strong>Scope:</strong> Website visitors, prospects and customers.</p>
-    <p><strong>Data we collect:</strong> Contact details, usage analytics, and information you submit in forms.</p>
-    <p><strong>Use of data:</strong> Provide services, support, product improvement, security and legal compliance.</p>
-    <p><strong>Sharing:</strong> Limited to subprocessors under contract, or as required by law.</p>
-    <p><strong>Retention:</strong> For as long as needed to provide services or meet legal obligations.</p>
-    <p><strong>Your rights:</strong> Access, rectify, delete or object as applicable. Contact <a href="mailto:privacy@hertzwave.in" class="text-hertz-primary">privacy@hertzwave.in</a>.</p>
-    <p class="text-sm text-gray-500">This policy may be updated; the latest version will be posted here.</p>
+  <!-- Back bar -->
+  <div class="bg-hertz-light/20 border-b border-hertz-light/40">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
+      <a id="legal-back-btn"
+         href="/"
+         class="inline-flex items-center text-hertz-primary hover:text-hertz-dark font-semibold">
+        <!-- inline chevron-left -->
+        <svg aria-hidden="true" viewBox="0 0 20 20" class="w-4 h-4 mr-2">
+          <path fill="currentColor" d="M12.78 3.22a.75.75 0 0 1 0 1.06L7.06 10l5.72 5.72a.75.75 0 1 1-1.06 1.06l-6.25-6.25a.75.75 0 0 1 0-1.06l6.25-6.25a.75.75 0 0 1 1.06 0Z"/>
+        </svg>
+        <span id="legal-back-text">Back</span>
+      </a>
+    </div>
   </div>
-</main>
-</body></html>
+
+  <main class="max-w-3xl mx-auto px-4 py-16">
+    <h1 class="text-3xl font-semibold mb-4">Privacy Policy</h1>
+    <p class="text-gray-600 mb-6">How we collect, use and protect personal data.</p>
+
+    <div class="space-y-4 text-gray-700">
+      <p><strong>Scope:</strong> Website visitors, prospects and customers.</p>
+      <p><strong>Data we collect:</strong> Contact details, usage analytics, and information you submit in forms.</p>
+      <p><strong>Use of data:</strong> Provide services, support, product improvement, security and legal compliance.</p>
+      <p><strong>Sharing:</strong> Limited to subprocessors under contract, or as required by law.</p>
+      <p><strong>Retention:</strong> For as long as needed to provide services or meet legal obligations.</p>
+      <p><strong>Your rights:</strong> Access, rectify, delete or object as applicable. Contact
+        <a href="mailto:privacy@hertzwave.in" class="text-hertz-primary">privacy@hertzwave.in</a>.
+      </p>
+      <p class="text-sm text-gray-500">This policy may be updated; the latest version will be posted here.</p>
+    </div>
+  </main>
+
+  <!-- Smart back behavior -->
+  <script>
+    (function () {
+      const a = document.getElementById('legal-back-btn');
+      const label = document.getElementById('legal-back-text');
+      if (!a) return;
+
+      const ref = document.referrer || '';
+      let sameOrigin = false;
+      try {
+        sameOrigin = ref && new URL(ref, location.origin).origin === location.origin;
+      } catch (_) {}
+
+      if (sameOrigin) {
+        a.href = ref;
+        label.textContent = 'Back to previous page';
+        a.addEventListener('click', function (e) {
+          e.preventDefault();
+          history.back();
+        });
+      } else {
+        a.href = '/';
+        label.textContent = 'Back to home';
+      }
+    })();
+  </script>
+</body>
+</html>
+
