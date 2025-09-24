@@ -773,12 +773,131 @@
   <!-- mobile hint -->
   <div class="md:hidden text-center mt-2 text-gray-500 text-xs">Swipe to explore →</div>
 </div>
-
-
-      
   </section>
 
-  
+  <!-- ===== Frameworks by Geography ===== -->
+<section id="frameworks-geo" class="py-16 bg-gradient-to-br from-gray-50 to-hertz-light/10">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-10">
+      <h2 class="text-3xl lg:text-4xl font-semibold text-gray-900">
+        Make Compliance Easier by <span class="text-hertz-primary">Geography</span>
+      </h2>
+      <p class="text-gray-600 max-w-3xl mx-auto mt-3">
+        Mapped exports and ready-to-file formats, with regional nuances handled out of the box.
+      </p>
+    </div>
+
+    <!-- Alphabetical tabs: European Union, Global, India, United Kingdom, United States -->
+    <div class="flex flex-wrap justify-center gap-2 mb-8" role="tablist" aria-label="Regions">
+      <button class="hz-pill" data-region="eu"     role="tab" aria-selected="false" aria-controls="p-eu">European&nbsp;Union</button>
+      <button class="hz-pill" data-region="global" role="tab" aria-selected="false" aria-controls="p-global">Global</button>
+      <button class="hz-pill" data-region="india"  role="tab" aria-selected="false" aria-controls="p-india">India</button>
+      <button class="hz-pill" data-region="uk"     role="tab" aria-selected="false" aria-controls="p-uk">United&nbsp;Kingdom</button>
+      <button class="hz-pill" data-region="us"     role="tab" aria-selected="false" aria-controls="p-us">United&nbsp;States</button>
+    </div>
+
+    <!-- Panels -->
+    <div class="bg-white rounded-2xl shadow p-6">
+      <!-- EU -->
+      <div id="p-eu" data-panel="eu" class="hidden" role="tabpanel">
+        <ul class="grid md:grid-cols-2 gap-3">
+          <li class="hz-row"><span class="hz-k">CSRD / ESRS&nbsp;E1 (Climate)</span><span class="hz-note">Double materiality + value-chain</span></li>
+          <li class="hz-row"><span class="hz-k">ISSB&nbsp;S2</span><span class="hz-note">Interoperable guidance</span></li>
+          <li class="hz-row"><span class="hz-k">CDP Climate 2025</span><span class="hz-note">Investor coverage</span></li>
+          <li class="hz-row"><span class="hz-k">GRESB</span><span class="hz-note">RE/infra portfolios</span></li>
+        </ul>
+      </div>
+
+      <!-- GLOBAL (covers Middle East & Rest of Asia, including HKEX via ISSB alignment) -->
+      <div id="p-global" data-panel="global" class="hidden" role="tabpanel" aria-labelledby="tab-global">
+        <div class="text-sm text-hertz-dark font-medium mb-2">
+          Covers Middle East &amp; Rest of Asia (incl. HKEX climate via ISSB alignment)
+        </div>
+        <ul class="grid md:grid-cols-2 gap-3">
+          <li class="hz-row"><span class="hz-k">ISSB&nbsp;S2</span><span class="hz-note">Global baseline</span></li>
+          <li class="hz-row"><span class="hz-k">CDP Climate 2025</span><span class="hz-note">Cross-market signaling</span></li>
+          <li class="hz-row"><span class="hz-k">HKEX Climate (via ISSB)</span><span class="hz-note">Lift-and-shift from S2 where applicable</span></li>
+          <li class="hz-row"><span class="hz-k">CSRD / ESRS&nbsp;E1</span><span class="hz-note">For EU-operating groups</span></li>
+        </ul>
+      </div>
+
+      <!-- INDIA -->
+      <div id="p-india" data-panel="india" class="hidden" role="tabpanel">
+        <ul class="grid md:grid-cols-2 gap-3">
+          <li class="hz-row"><span class="hz-k">SEBI BRSR &amp; BRSR&nbsp;Core</span><span class="hz-note">Native exports + assurance-ready fields</span></li>
+          <li class="hz-row"><span class="hz-k">GreenCo (CII)</span><span class="hz-note">Complements BRSR for certification</span></li>
+          <li class="hz-row"><span class="hz-k">ISSB&nbsp;S2 (Climate)</span><span class="hz-note">Future-proof global baseline</span></li>
+          <li class="hz-row"><span class="hz-k">CDP Climate 2025</span><span class="hz-note">Investor/customer questionnaires</span></li>
+          <li class="hz-row"><span class="hz-k">CSRD / ESRS&nbsp;E1</span><span class="hz-note">For EU-linked Indian entities</span></li>
+          <li class="hz-row"><span class="hz-k">GRESB</span><span class="hz-note">If RE/infra assets are in scope</span></li>
+        </ul>
+      </div>
+
+      <!-- UNITED KINGDOM -->
+      <div id="p-uk" data-panel="uk" class="hidden" role="tabpanel">
+        <ul class="grid md:grid-cols-2 gap-3">
+          <li class="hz-row"><span class="hz-k">UK SECR</span><span class="hz-note">Energy &amp; carbon disclosures</span></li>
+          <li class="hz-row"><span class="hz-k">ISSB&nbsp;S2</span><span class="hz-note">UK alignment path</span></li>
+          <li class="hz-row"><span class="hz-k">CDP Climate 2025</span><span class="hz-note">Common UK investor ask</span></li>
+          <li class="hz-row"><span class="hz-k">CSRD / ESRS&nbsp;E1</span><span class="hz-note">If EU nexus</span></li>
+          <li class="hz-row"><span class="hz-k">GRESB</span><span class="hz-note">RE/infra where relevant</span></li>
+        </ul>
+      </div>
+
+      <!-- UNITED STATES -->
+      <div id="p-us" data-panel="us" class="hidden" role="tabpanel">
+        <ul class="grid md:grid-cols-2 gap-3">
+          <li class="hz-row"><span class="hz-k">ISSB&nbsp;S2</span><span class="hz-note">Investor-recognized baseline</span></li>
+          <li class="hz-row"><span class="hz-k">CDP Climate 2025</span><span class="hz-note">Widely used across US corporates</span></li>
+          <li class="hz-row"><span class="hz-k">CSRD / ESRS&nbsp;E1</span><span class="hz-note">If EU subsidiaries/listings</span></li>
+          <li class="hz-row"><span class="hz-k">GRESB</span><span class="hz-note">For real estate / infrastructure portfolios</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <p class="text-xs text-gray-500 mt-3 text-center">
+      Need something else? Additional frameworks can be taken up as customization.
+    </p>
+  </div>
+</section>
+
+<!-- Styles for uniform pills & rows -->
+<style>
+  .hz-pill{
+    --hz:#4A7C59;
+    border:1px solid var(--hz); color:var(--hz); background:#fff;
+    border-radius:9999px; padding:.5rem 1rem; font-weight:600;
+    min-width:9.75rem; text-align:center; white-space:nowrap;
+    transition:transform .15s ease, box-shadow .15s ease, background .15s ease, color .15s ease;
+  }
+  .hz-pill[aria-selected="true"]{ background:var(--hz); color:#fff; box-shadow:0 6px 14px rgba(74,124,89,.18); }
+  .hz-row{ display:flex; flex-direction:column; padding:.75rem .875rem; border:1px solid rgba(74,124,89,.20); border-radius:.75rem; background:#fff; }
+  .hz-k{ font-weight:600; color:#111827; }
+  .hz-note{ font-size:.85rem; color:#6b7280; }
+</style>
+
+<!-- Tiny tab switcher (defaults to India) -->
+<script>
+(function(){
+  const root = document.getElementById('frameworks-geo');
+  if(!root) return;
+  const pills  = root.querySelectorAll('.hz-pill');
+  const panels = root.querySelectorAll('[data-panel]');
+  function show(key){
+    panels.forEach(p => {
+      const on = p.getAttribute('data-panel') === key;
+      p.classList.toggle('hidden', !on);
+      if(on){ p.removeAttribute('hidden'); p.setAttribute('aria-hidden','false'); }
+      else  { p.setAttribute('hidden','');  p.setAttribute('aria-hidden','true'); }
+    });
+    pills.forEach(b => b.setAttribute('aria-selected', b.getAttribute('data-region') === key ? 'true':'false'));
+  }
+  pills.forEach(b => b.addEventListener('click', ()=> show(b.getAttribute('data-region'))));
+  show('india'); // default view
+})();
+</script>
+
+ 
   <!-- Wide Image Separator -->
   <section aria-label="decorative separator" class="w-full">
     <img src="./landscape2.jpg" alt="" loading="lazy" class="w-full h-56 md:h-72 lg:h-96 object-cover select-none pointer-events-none">
