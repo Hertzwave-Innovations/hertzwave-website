@@ -1,23 +1,29 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8"/>
-<meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>Data Protection | Hertzwave</title>
-<link rel="stylesheet" href="/styles.css">
-<script src="https://cdn.tailwindcss.com"></script>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Data Protection | Hertzwave</title>
+  <link rel="stylesheet" href="/styles.css">
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-white font-outfit">
 
-  <!-- Back bar (Part 1) -->
-  <div class="bg-hertz-light/20 border-b border-hertz-light/40">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
-      <a id="legal-back-btn"
-         href="/"
-         class="inline-flex items-center text-hertz-primary hover:text-hertz-dark font-semibold">
-        <i class="fa-solid fa-arrow-left mr-2"></i>
-        <span id="legal-back-text">Back</span>
-      </a>
+  <!-- Back bar (consistent with other legal pages) -->
+  <div class="border-b border-gray-200">
+    <div class="max-w-3xl mx-auto px-4">
+      <button
+        type="button"
+        class="inline-flex items-center gap-2 py-3 text-gray-600 hover:text-hertz-primary"
+        aria-label="Go back to previous page"
+        onclick="(function(){ if(document.referrer && new URL(document.referrer).origin===location.origin){ history.back(); } else { location.href='/legal/index.html'; } })();"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+             class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M15 18l-6-6 6-6"/>
+        </svg>
+        <span>Back to previous page</span>
+      </button>
     </div>
   </div>
 
@@ -25,40 +31,32 @@
     <h1 class="text-3xl font-semibold mb-4">Data Protection</h1>
     <p class="text-gray-600 mb-6">Our approach to safeguarding customer data.</p>
 
-    <div class="space-y-4 text-gray-700">
-      <p><strong>Lawful Basis:</strong> Contract performance, legitimate interests and consent where applicable.</p>
-      <p><strong>Subprocessors:</strong> Disclosed on request; all bound by security and confidentiality terms.</p>
-      <p><strong>International Transfers:</strong> Appropriate safeguards (e.g., SCCs) where required.</p>
-      <p><strong>Incident Response:</strong> Defined plan with timely notifications aligned to legal obligations.</p>
-      <p><strong>DPO/Contact:</strong> <a href="mailto:dpo@hertzwave.in" class="text-hertz-primary">dpo@hertzwave.in</a></p>
+    <div class="space-y-4 text-gray-700 leading-relaxed">
+      <p><strong>Lawful Basis:</strong> Contract performance, legitimate interests, and consent where applicable.</p>
+      <p><strong>Subprocessors:</strong> Disclosed on request; all subprocessors are bound by security and confidentiality obligations.</p>
+      <p><strong>International Transfers:</strong> Appropriate safeguards (e.g., Standard Contractual Clauses) where required.</p>
+      <p><strong>Incident Response:</strong> A defined plan with timely notifications aligned to legal obligations.</p>
+      <p><strong>DPO/Contact:</strong>
+        <a href="mailto:dpo@hertzwave.in" class="text-hertz-primary underline-offset-2 hover:underline">
+          dpo@hertzwave.in
+        </a>
+      </p>
+
+      <p class="text-sm text-gray-500">This page may be updated; the latest version will be posted here.</p>
     </div>
   </main>
 
-  <!-- Part 2: smart “Back to previous” behavior -->
+  <!-- (Optional) GA4 click tracking for legal links -->
   <script>
-    (function () {
-      const a = document.getElementById('legal-back-btn');
-      const label = document.getElementById('legal-back-text');
+    document.addEventListener('click', (e) => {
+      const a = e.target.closest('a');
       if (!a) return;
-
-      const ref = document.referrer || '';
-      const sameOrigin = ref && new URL(ref, location.origin).origin === location.origin;
-
-      if (sameOrigin) {
-        a.href = ref;
-        label.textContent = 'Back to previous page';
-        a.addEventListener('click', function (e) {
-          e.preventDefault();
-          history.back();
-        });
-      } else {
-        // Fallback to home
-        a.href = '/';
-        label.textContent = 'Back to home';
+      if (a.href && a.href.includes('/legal/')) {
+        window.gtag && gtag('event', 'legal_link_click', { label: a.pathname });
       }
-    })();
+    });
   </script>
-  <!-- (Optional) GA4 click tracking for legal links site-wide could go in your main layout/footer -->
 </body>
 </html>
+
 
