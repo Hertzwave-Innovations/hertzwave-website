@@ -9,21 +9,20 @@
 </head>
 <body class="bg-white font-outfit">
 
-  <!-- Back bar (consistent with other legal pages) -->
-  <div class="border-b border-gray-200">
+  <!-- Back bar (identical structure/styles across legal pages) -->
+  <div class="bg-white border-b border-gray-200">
     <div class="max-w-3xl mx-auto px-4">
-      <button
-        type="button"
-        class="inline-flex items-center gap-2 py-3 text-gray-600 hover:text-hertz-primary"
-        aria-label="Go back to previous page"
-        onclick="(function(){ if(document.referrer && new URL(document.referrer).origin===location.origin){ history.back(); } else { location.href='/legal/index.html'; } })();"
-      >
+      <!-- default href is the fallback; JS will switch to history.back() when safe -->
+      <a id="hzBackBtn"
+         href="/legal/index.html"
+         class="inline-flex items-center gap-2 py-3 text-gray-600 hover:text-hertz-primary"
+         aria-label="Go back to previous page">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
              class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2">
           <path d="M15 18l-6-6 6-6"/>
         </svg>
         <span>Back to previous page</span>
-      </button>
+      </a>
     </div>
   </div>
 
@@ -46,8 +45,23 @@
     </div>
   </main>
 
-  <!-- (Optional) GA4 click tracking for legal links -->
+  <!-- Back-link behavior: prefer history.back() when referrer is same-origin -->
   <script>
+    (function () {
+      const link = document.getElementById('hzBackBtn');
+      if (!link) return;
+      link.addEventListener('click', function (e) {
+        try {
+          const r = document.referrer;
+          if (r && new URL(r).origin === location.origin) {
+            e.preventDefault();
+            history.back();
+          }
+        } catch (_) { /* fall through to default href */ }
+      });
+    })();
+
+    // (Optional) GA4 click tracking for legal links
     document.addEventListener('click', (e) => {
       const a = e.target.closest('a');
       if (!a) return;
@@ -58,5 +72,3 @@
   </script>
 </body>
 </html>
-
-
