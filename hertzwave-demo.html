@@ -1,0 +1,1081 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Hertzwave – Interactive Demo (v3 Fixed)</title>
+
+  <!-- Tailwind + Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet"/>
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    // Tailwind config must be set immediately after loading
+    if (typeof tailwind !== 'undefined') {
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              'hertz-light':  '#A8E6A3',
+              'hertz-primary':'#4A7C59',
+              'hertz-dark':   '#2F4F3F',
+              'hertz-black':  '#000000'
+            },
+            fontFamily: {
+              'outfit': ['Outfit','ui-sans-serif','system-ui','-apple-system','Segoe UI','Roboto','Helvetica','Arial']
+            }
+          }
+        }
+      };
+    }
+  </script>
+
+  <style>
+    :root {
+      --bg:#f9fafb; --card:#ffffff; --text:#111827; --muted:#6b7280;
+      --primary:#4A7C59; --primary-dark:#2F4F3F; --accent:#A8E6A3; --border:#e5e7eb;
+      --good:#16a34a; --warn:#eab308; --bad:#ef4444;
+    }
+    body { margin:0; background:#fff; color:var(--text); font-family: Outfit, ui-sans-serif, system-ui; }
+    .container-demo { max-width: 1120px; margin: 0 auto; padding: 16px; }
+    .row { display:flex; justify-content:space-between; align-items:center; gap:12px; flex-wrap:wrap; }
+    .section { padding: 24px 0; }
+    .grid { display:grid; gap:16px; }
+    @media (max-width:767px){ 
+      .grid { gap:12px; }
+      .container-demo { padding: 12px; }
+      .section { padding: 16px 0; }
+    }
+    @media (min-width:768px){ .grid-2{grid-template-columns:repeat(2,minmax(0,1fr));} }
+    @media (min-width:1024px){ .grid-3{grid-template-columns:repeat(3,minmax(0,1fr));} .grid-4{grid-template-columns:repeat(4,minmax(0,1fr));} }
+    @media (max-width:1023px){ .grid-3{grid-template-columns:repeat(2,minmax(0,1fr));} }
+    @media (max-width:767px){ .grid-2,.grid-3,.grid-4{grid-template-columns:1fr;} }
+
+    .card { background:#fff; border:1px solid var(--border); border-radius:14px; padding:20px; transition:.2s; cursor:pointer; }
+    .card:hover{ border-color:#d1d5db; transform: translateY(-1px); box-shadow:0 10px 20px rgba(0,0,0,.04); }
+    .card.selected{ border-color:var(--primary); background:rgba(74,124,89,.06); }
+    @media (max-width:767px){ .card { padding: 16px; } }
+    .muted{ color:var(--muted); }
+    .btn{ display:inline-block; border:none; border-radius:10px; padding:12px 18px; background:var(--primary); color:#fff; font-weight:600; cursor:pointer; white-space:nowrap; }
+    .btn:hover{ background:var(--primary-dark); }
+    .btn.secondary{ background:#111827; }
+    .btn.secondary:hover{ background:#0b1220; }
+    .btn.ghost{ background:transparent; color:var(--primary); border:1px solid var(--primary); }
+    .btn.small{ padding:8px 12px; font-size:14px; border-radius:8px; }
+    @media (max-width:767px){ .btn { padding: 10px 14px; font-size: 14px; } .btn.small { padding: 6px 10px; font-size: 13px; } }
+    .progress{ background:#e5e7eb; height:8px; border-radius:999px; overflow:hidden; }
+    .progress > div{ height:100%; background:var(--primary); }
+    .pill{ display:inline-block; padding:4px 10px; font-size:12px; border-radius:999px; }
+    .pill.blue{ background: rgba(168,230,163,.35); color:#2F4F3F; }
+    .pill.green{ background:#dcfce7; color:#166534; }
+    .pill.red{ background:#fee2e2; color:#991b1b; }
+    .note{ background:rgba(168,230,163,.25); color:#2F4F3F; padding:12px; border-radius:10px; font-size:13px; border:1px dashed rgba(74,124,89,.35); }
+    .alert{ background:#eef2ff; color:#1e3a8a; padding:14px; border-radius:10px; border:1px solid #e0e7ff; }
+    .chart{ width:100%; height:300px; background:#fff; border:1px solid var(--border); border-radius:12px; padding:16px; }
+    .chart svg{ width:100%; height:100%; }
+    @media (max-width:767px){ .chart { height: 240px; padding: 12px; } }
+    .demo-subheader{ position:sticky; top:64px; z-index:40; background:#fff; border-bottom:1px solid var(--border); }
+    @media (max-width:767px){ .demo-subheader { top: 56px; } }
+    nav.hz-nav{ position:sticky; top:0; z-index:50; }
+    .scope-tab{ padding:8px 16px; border:1px solid var(--border); border-radius:8px; cursor:pointer; transition:.2s; font-size:14px; }
+    .scope-tab.active{ background:var(--primary); color:#fff; border-color:var(--primary); }
+    @media (max-width:767px){ .scope-tab { padding: 6px 12px; font-size: 13px; } }
+    
+    /* Mobile-specific styles */
+    @media (max-width:767px){
+      h1 { font-size: 1.75rem !important; }
+      h2 { font-size: 1.5rem !important; }
+      h3 { font-size: 1.25rem !important; }
+      .text-3xl { font-size: 1.75rem; }
+      .text-2xl { font-size: 1.5rem; }
+      .text-xl { font-size: 1.25rem; }
+    }
+  </style>
+</head>
+<body class="bg-white font-outfit">
+
+  <!-- Site Nav -->
+  <nav class="hz-nav bg-white/95 backdrop-blur-sm border-b border-gray-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-16">
+        <a href="/index.html" class="flex items-center gap-2">
+          <img src="/HW-Logo-Light.png" alt="Hertzwave" class="h-9 w-auto" />
+        </a>
+        <div class="hidden md:flex items-center space-x-8">
+          <a href="/platform.html" class="text-gray-700 hover:text-hertz-primary transition-colors font-medium">Platform</a>
+          <a href="/solutions.html" class="text-gray-700 hover:text-hertz-primary transition-colors font-medium">Solutions</a>
+          <a href="/industries.html" class="text-gray-700 hover:text-hertz-primary transition-colors font-medium">Industries</a>
+          <a href="/resources/index.html" class="text-gray-700 hover:text-hertz-primary transition-colors font-medium">Resources</a>
+          <a href="/about.html" class="text-gray-700 hover:text-hertz-primary transition-colors font-medium">About</a>
+          <a href="/legal/index.html" class="text-gray-700 hover:text-hertz-primary transition-colors font-medium">Security & Legal</a>
+        </div>
+        <div class="md:hidden">
+          <button id="mobile-menu-btn" class="text-gray-700">
+            <i class="fas fa-bars text-xl"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div id="mobile-menu" class="md:hidden hidden bg-white border-t border-gray-200">
+      <div class="px-4 pt-2 pb-4 space-y-2">
+        <a href="/platform.html" class="block py-2 text-gray-700 font-medium">Platform</a>
+        <a href="/solutions.html" class="block py-2 text-gray-700 font-medium">Solutions</a>
+        <a href="/industries.html" class="block py-2 text-gray-700 font-medium">Industries</a>
+        <a href="/resources/index.html" class="block py-2 text-gray-700 font-medium">Resources</a>
+        <a href="/about.html" class="block py-2 text-gray-700 font-medium">About</a>
+        <a href="/legal/index.html" class="block py-2 text-gray-700 font-medium">Security & Legal</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Demo secondary header -->
+  <div class="demo-subheader">
+    <div class="container-demo">
+      <div class="row">
+        <div class="flex items-center gap-3">
+          <button id="backBtn" class="text-hertz-primary hover:text-hertz-dark transition-colors font-semibold flex items-center gap-2" style="display:none;" title="Go back">
+            <i class="fas fa-arrow-left text-xl"></i>
+            <span class="hidden md:inline">Back</span>
+          </button>
+          <img src="/HW-Logo-Light.png" alt="Hertzwave" class="h-8 w-auto" />
+          <div class="text-[18px] font-semibold">Hertzwave Demo</div>
+        </div>
+        <div id="stepTitle" class="muted text-sm">Welcome</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Demo App Root -->
+  <div class="container-demo" id="app" style="min-height: 60vh;"></div>
+
+  <!-- Back link at bottom (hidden by default) -->
+  <div id="backLink" class="text-center py-4 bg-gray-50" style="display:none;">
+    <button id="backLinkBtn" class="text-hertz-primary hover:text-hertz-dark font-semibold inline-flex items-center gap-2 text-lg">
+      <i class="fas fa-arrow-left"></i>
+      <span class="hidden sm:inline">Back to Previous Page</span>
+      <span class="sm:hidden">Back</span>
+    </button>
+  </div>
+
+  <!-- Footer -->
+  <div class="bg-white border-t border-gray-200 mt-8">
+    <div class="container-demo text-center py-6 text-sm text-gray-500">
+      Interactive demo of Hertzwave Carbon Accounting Platform • <a href="https://hertzwave.in" target="_blank" rel="noreferrer" class="text-hertz-primary">hertzwave.in</a>
+    </div>
+  </div>
+
+  <script>
+  (function(){
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    if (mobileMenuBtn && mobileMenu) {
+      mobileMenuBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+    }
+  })();
+  </script>
+
+  <!-- Demo App Logic -->
+  <script>
+  (function(){
+    const state = {
+      step: 0,
+      mode: "",
+      selectedIndustry: "",
+      selectedFrameworks: [],
+      selectedClient: "acme-steel",
+      selectedBranch: "blr",
+      selectedScope: "scope1",
+      enterpriseFrameworks: ['BRSR (SEBI)', 'ISSB S2'],
+      inputData: {}
+    };
+
+    const industries = [
+      { id:'steel', name:'Steel Manufacturing', emoji:'🏭', description:'High Scope 1 process emissions' },
+      { id:'pharma', name:'Pharmaceuticals', emoji:'⚗️', description:'Complex supply chains & packaging' },
+      { id:'cement', name:'Cement', emoji:'🧱', description:'Clinker process emissions (Scope 1.4)' },
+      { id:'datacenter', name:'Data Centers', emoji:'🗄️', description:'Energy intensive operations (Scope 2)' },
+      { id:'textiles', name:'Textiles', emoji:'🧵', description:'Dyeing/finishing energy & water load' },
+      { id:'food', name:'Food & Agriculture', emoji:'🌾', description:'Process heat and logistics' },
+      { id:'power', name:'Power Generation', emoji:'⚡', description:'Generation mix, T&D losses' }
+    ];
+
+    const clients = [
+      { id:'acme-steel', name:'ACME Steel Ltd', industry:'steel', emissions:45200, target:25000, progress:18, status:'on-track' },
+      { id:'green-pharma', name:'GreenPharma Inc', industry:'pharma', emissions:12800, target:8000, progress:32, status:'ahead' },
+      { id:'eco-fertilizer', name:'EcoFertilizer Co', industry:'food', emissions:28500, target:18000, progress:12, status:'behind' },
+      { id:'data-hub', name:'DataHub Corp', industry:'datacenter', emissions:8900, target:6000, progress:28, status:'on-track' }
+    ];
+
+    const emissionsByIndustry = {
+      steel: [
+        { scope:'Scope 1', value:28500, subsections:[
+          {name:'Coal Combustion', value:18500, unit:'tonnes', ef:2.42, efUnit:'tCO₂e/tonne'},
+          {name:'Natural Gas', value:6200, unit:'m³', ef:2.03, efUnit:'kgCO₂e/m³'},
+          {name:'Process Emissions', value:3800, unit:'tonnes steel', ef:0.45, efUnit:'tCO₂e/tonne'}
+        ]},
+        { scope:'Scope 2', value:12800, subsections:[
+          {name:'Electricity', value:66321, unit:'MWh', ef:0.193, efUnit:'kgCO₂e/kWh'}
+        ]},
+        { scope:'Scope 3', value:3900, subsections:[
+          {name:'Raw Materials Transport', value:3900, unit:'tCO₂e', ef:1, efUnit:'tCO₂e/tCO₂e'}
+        ]}
+      ],
+      pharma: [
+        { scope:'Scope 1', value:2100, subsections:[
+          {name:'Natural Gas', value:1034, unit:'m³', ef:2.03, efUnit:'kgCO₂e/m³'}
+        ]},
+        { scope:'Scope 2', value:3800, subsections:[
+          {name:'Electricity', value:19689, unit:'MWh', ef:0.193, efUnit:'kgCO₂e/kWh'}
+        ]},
+        { scope:'Scope 3', value:6900, subsections:[
+          {name:'Packaging Materials', value:6900, unit:'tCO₂e', ef:1, efUnit:'tCO₂e/tCO₂e'}
+        ]}
+      ],
+      food: [
+        { scope:'Scope 1', value:18500, subsections:[
+          {name:'LPG', value:6167, unit:'kg', ef:3.00, efUnit:'kgCO₂e/kg'},
+          {name:'Process Heat', value:329, unit:'GJ', ef:56.1, efUnit:'kgCO₂e/GJ'}
+        ]},
+        { scope:'Scope 2', value:7200, subsections:[
+          {name:'Electricity', value:37306, unit:'MWh', ef:0.193, efUnit:'kgCO₂e/kWh'}
+        ]},
+        { scope:'Scope 3', value:2800, subsections:[
+          {name:'Logistics', value:2800, unit:'tCO₂e', ef:1, efUnit:'tCO₂e/tCO₂e'}
+        ]}
+      ],
+      datacenter: [
+        { scope:'Scope 1', value:800, subsections:[
+          {name:'Backup Generators', value:394, unit:'m³ diesel', ef:2.03, efUnit:'kgCO₂e/m³'}
+        ]},
+        { scope:'Scope 2', value:7200, subsections:[
+          {name:'Electricity', value:37306, unit:'MWh', ef:0.193, efUnit:'kgCO₂e/kWh'}
+        ]},
+        { scope:'Scope 3', value:900, subsections:[
+          {name:'Hardware Embodied', value:900, unit:'tCO₂e', ef:1, efUnit:'tCO₂e/tCO₂e'}
+        ]}
+      ],
+      cement: [
+        { scope:'Scope 1', value:24500, subsections:[
+          {name:'Clinker Process', value:28488, unit:'tonnes clinker', ef:0.86, efUnit:'tCO₂e/t'}
+        ]},
+        { scope:'Scope 2', value:6400, subsections:[
+          {name:'Electricity', value:33161, unit:'MWh', ef:0.193, efUnit:'kgCO₂e/kWh'}
+        ]},
+        { scope:'Scope 3', value:4100, subsections:[
+          {name:'Raw Materials', value:4100, unit:'tCO₂e', ef:1, efUnit:'tCO₂e/tCO₂e'}
+        ]}
+      ],
+      textiles: [
+        { scope:'Scope 1', value:5200, subsections:[
+          {name:'Steam Generation', value:93, unit:'GJ', ef:56.1, efUnit:'kgCO₂e/GJ'}
+        ]},
+        { scope:'Scope 2', value:8100, subsections:[
+          {name:'Electricity', value:41968, unit:'MWh', ef:0.193, efUnit:'kgCO₂e/kWh'}
+        ]},
+        { scope:'Scope 3', value:3900, subsections:[
+          {name:'Cotton/Fiber Supply', value:3900, unit:'tCO₂e', ef:1, efUnit:'tCO₂e/tCO₂e'}
+        ]}
+      ],
+      power: [
+        { scope:'Scope 1', value:40500, subsections:[
+          {name:'Coal Combustion', value:41327, unit:'MWh generated', ef:0.98, efUnit:'tCO₂e/MWh'}
+        ]},
+        { scope:'Scope 2', value:12500, subsections:[
+          {name:'Auxiliary Power', value:64767, unit:'MWh', ef:0.193, efUnit:'kgCO₂e/kWh'}
+        ]},
+        { scope:'Scope 3', value:5200, subsections:[
+          {name:'Coal Transport', value:5200, unit:'tCO₂e', ef:1, efUnit:'tCO₂e/tCO₂e'}
+        ]}
+      ]
+    };
+
+    const enterprise = {
+      name: 'Acme Group (Enterprise)',
+      country: 'India',
+      industry: 'datacenter',
+      frameworks: ['BRSR (SEBI)','ISSB S2'],
+      branches: [
+        { id:'blr', city:'Bengaluru', electricityMWh: 7200, ef: 0.193 },
+        { id:'mum', city:'Mumbai', electricityMWh: 5200, ef: 0.193 },
+        { id:'del', city:'Delhi NCR', electricityMWh: 6100, ef: 0.193 },
+        { id:'chn', city:'Chennai', electricityMWh: 4300, ef: 0.193 }
+      ]
+    };
+
+    function setStepTitle(txt){ document.getElementById('stepTitle').textContent = txt; }
+    function $(sel, el=document){ return el.querySelector(sel); }
+    function $all(sel, el=document){ return Array.from(el.querySelectorAll(sel)); }
+    function formatNum(n){ return (Math.round(n*100)/100).toLocaleString(); }
+
+    function updateBackButton(){
+      const backBtn = document.getElementById('backBtn');
+      const backLink = document.getElementById('backLink');
+      
+      if(!backBtn) return;
+      
+      // Show back button on all screens except welcome (step 0)
+      if(state.step === 0){
+        backBtn.style.display = 'none';
+        if(backLink) backLink.style.display = 'none';
+      } else {
+        backBtn.style.display = 'flex';
+        if(backLink) backLink.style.display = 'block';
+      }
+    }
+
+    function goBack(){
+      // Define back navigation logic based on current step
+      const backMap = {
+        // Consultant flow
+        10: 0,  // Consultant clients -> Welcome
+        11: 10, // Data input -> Clients
+        12: 11, // Frameworks -> Data input
+        13: 12, // Analytics -> Frameworks
+        14: 13, // Compliance -> Analytics
+        
+        // Corporate flow
+        20: 0,  // Industry select -> Welcome
+        21: 20, // Frameworks -> Industry
+        22: 21, // Data input -> Frameworks
+        23: 22, // Analytics -> Data input
+        24: 23, // Compliance -> Analytics
+        
+        // Enterprise flow
+        30: 0,  // Enterprise overview -> Welcome
+        31: 30, // Enterprise data -> Overview
+        32: 31, // Analytics -> Data
+        33: 32  // Compliance -> Analytics
+      };
+      
+      const prevStep = backMap[state.step];
+      if(prevStep !== undefined){
+        state.step = prevStep;
+        render();
+      }
+    }
+
+    function render(){
+      const root = document.getElementById('app');
+      root.innerHTML = "";
+      
+      switch(state.step){
+        case 0: renderRole(root); break;
+        case 10: renderConsultantClients(root); break;
+        case 11: renderDataInput(root, { mode:'consultant' }); break;
+        case 12: renderFrameworks(root, { nextStep:13 }); break;
+        case 13: renderAnalytics(root, { nextStep:14 }); break;
+        case 14: renderCompliance(root); break;
+        case 20: renderIndustrySelect(root); break;
+        case 21: renderFrameworks(root, { nextStep:22 }); break;
+        case 22: renderDataInput(root, { mode:'corporate' }); break;
+        case 23: renderAnalytics(root, { nextStep:24 }); break;
+        case 24: renderCompliance(root); break;
+        case 30: renderEnterpriseOverview(root); break;
+        case 31: renderEnterpriseData(root); break;
+        case 32: renderAnalytics(root, { nextStep:33, enterprise:true }); break;
+        case 33: renderCompliance(root, { enterprise:true }); break;
+        default: renderRole(root); break;
+      }
+      
+      // Update back button after render
+      setTimeout(updateBackButton, 0);
+    }
+
+    function renderRole(root){
+      setStepTitle("Welcome");
+      const wrap = document.createElement('div');
+      wrap.className = "section";
+      wrap.innerHTML = `
+        <div class="text-center mb-7">
+          <h1 class="text-3xl md:text-4xl font-extrabold">Hertzwave Carbon Accounting Platform</h1>
+          <p class="muted mt-2 text-lg">Choose how you want to explore the demo</p>
+        </div>
+        <div class="grid grid-3 gap-4">
+          <div class="card" data-mode="consultant" role="button">
+            <div class="text-3xl mb-2">👥</div>
+            <h3 class="text-lg md:text-xl font-semibold mt-2">Professional Tier – ESG Consultant</h3>
+            <p class="muted mt-1 text-sm">Manage multiple clients across industries</p>
+          </div>
+          <div class="card" data-mode="corporate" role="button">
+            <div class="text-3xl mb-2">🏢</div>
+            <h3 class="text-lg md:text-xl font-semibold mt-2">Carbon Essentials / Professional</h3>
+            <p class="muted mt-1 text-sm">Single company operations</p>
+          </div>
+          <div class="card" data-mode="enterprise" role="button">
+            <div class="text-3xl mb-2">🏙️</div>
+            <h3 class="text-lg md:text-xl font-semibold mt-2">Enterprise</h3>
+            <p class="muted mt-1 text-sm">Multiple branches, aggregated view</p>
+          </div>
+        </div>
+      `;
+      root.appendChild(wrap);
+      $all('.card[data-mode]').forEach(el => {
+        el.addEventListener('click', ()=>{
+          state.mode = el.getAttribute('data-mode');
+          if (state.mode==='consultant') state.step = 10;
+          else if (state.mode==='corporate') state.step = 20;
+          else state.step = 30;
+          render();
+        });
+      });
+    }
+
+    function renderConsultantClients(root){
+      setStepTitle("Consultant Portfolio");
+      const list = clients.map(c => {
+        const pill = c.status==='ahead' ? '<span class="pill green">ahead</span>' :
+                    c.status==='on-track' ? '<span class="pill blue">on-track</span>' :
+                    '<span class="pill red">behind</span>';
+        return `
+          <div class="card ${state.selectedClient===c.id?'selected':''}" data-client="${c.id}">
+            <div class="row mb-2">
+              <div class="font-semibold">${c.name}</div>
+              ${pill}
+            </div>
+            <div class="muted text-sm mb-2">${industries.find(i=>i.id===c.industry)?.name || c.industry}</div>
+            <div class="text-sm flex justify-between"><span>Current:</span><strong>${c.emissions.toLocaleString()} tCO₂e</strong></div>
+            <div class="text-sm flex justify-between"><span>Target:</span><strong>${c.target.toLocaleString()} tCO₂e</strong></div>
+            <div class="progress mt-2"><div style="width:${Math.min(c.progress*2,100)}%"></div></div>
+            <div class="muted text-xs mt-1">${c.progress}% reduction achieved</div>
+          </div>
+        `;
+      }).join('');
+
+      const wrap = document.createElement('div');
+      wrap.className = "section";
+      wrap.innerHTML = `
+        <div class="row mb-4">
+          <div>
+            <h2 class="text-2xl font-extrabold mb-1">Your Clients</h2>
+            <div class="muted">Select a client to view dashboard</div>
+          </div>
+        </div>
+        <div class="grid grid-4 mb-4">${list}</div>
+        <div class="text-center">
+          <button id="manageClient" class="btn">Open Client Dashboard</button>
+        </div>
+      `;
+      root.appendChild(wrap);
+
+      $all('.card[data-client]').forEach(el => {
+        el.addEventListener('click', ()=>{ state.selectedClient = el.getAttribute('data-client'); render(); });
+      });
+      $('#manageClient').addEventListener('click', ()=>{ state.step = 11; render(); });
+    }
+
+    function renderIndustrySelect(root){
+      setStepTitle("Industry Selection");
+      const cards = industries.map(ind => `
+        <div class="card ${state.selectedIndustry===ind.id?'selected':''}" data-ind="${ind.id}">
+          <div class="text-2xl">${ind.emoji}</div>
+          <div class="font-semibold mt-2">${ind.name}</div>
+          <div class="muted text-sm">${ind.description}</div>
+        </div>
+      `).join('');
+
+      const wrap = document.createElement('div');
+      wrap.className = "section";
+      wrap.innerHTML = `
+        <div class="text-center mb-5">
+          <h2 class="text-2xl font-extrabold">Select Industry</h2>
+        </div>
+        <div class="grid grid-4 gap-4">${cards}</div>
+        <div class="text-center mt-4">
+          <button id="continueIndustry" class="btn">Continue</button>
+        </div>
+      `;
+      root.appendChild(wrap);
+      $all('.card[data-ind]').forEach(el=> el.addEventListener('click', ()=>{ state.selectedIndustry = el.getAttribute('data-ind'); render(); }));
+      $('#continueIndustry').addEventListener('click', ()=>{ if(!state.selectedIndustry) return; state.step = 21; render(); });
+    }
+
+    function renderFrameworks(root, opts){
+      setStepTitle("Reporting Frameworks");
+      const frameworks = [
+        { id: 'brsr', name: 'India SEBI BRSR & BRSR Core' },
+        { id: 'issb', name: 'ISSB S2 Climate-Related Disclosures' },
+        { id: 'csrd', name: 'EU CSRD/ESRS E1 (Climate)' },
+        { id: 'cdp', name: 'CDP Climate Change Questionnaire' },
+        { id: 'secr', name: 'UK SECR' },
+        { id: 'hkex', name: 'Hong Kong HKEX Climate' },
+        { id: 'gresb', name: 'GRESB' }
+      ];
+      const items = frameworks.map(f => {
+        const sel = state.selectedFrameworks.includes(f.id);
+        return `
+          <div class="card ${sel?'selected':''}" data-fw="${f.id}">
+            <div class="row items-start">
+              <div class="font-semibold">${f.name}</div>
+              ${sel?'<div>✅</div>':''}
+            </div>
+          </div>
+        `;
+      }).join('');
+
+      const wrap = document.createElement('div');
+      wrap.className = "section";
+      wrap.innerHTML = `
+        <div class="text-center mb-5">
+          <h2 class="text-2xl font-extrabold">Select Reporting Frameworks</h2>
+        </div>
+        <div class="grid grid-3">${items}</div>
+        <div class="text-center mt-4">
+          <button id="continueFw" class="btn">Continue (${state.selectedFrameworks.length} selected)</button>
+        </div>
+      `;
+      root.appendChild(wrap);
+      $all('.card[data-fw]').forEach(el=>{
+        el.addEventListener('click', ()=>{
+          const id = el.getAttribute('data-fw');
+          const i = state.selectedFrameworks.indexOf(id);
+          if (i>=0) state.selectedFrameworks.splice(i,1); else state.selectedFrameworks.push(id);
+          render();
+        });
+      });
+      $('#continueFw').addEventListener('click', ()=>{ state.step = (opts?.nextStep ?? 22); render(); });
+    }
+
+    function renderDataInput(root, { mode }){
+      const ctx = (mode==='consultant')
+        ? (function(){ const c = clients.find(x=>x.id===state.selectedClient); return { industry:c.industry, title: c.name, kind:'Client' }; })()
+        : (function(){ const ind = state.selectedIndustry || 'steel'; return { industry: ind, title: industries.find(i=>i.id===ind)?.name, kind:'Company' }; })();
+
+      setStepTitle(`${ctx.kind} Data Input & Validation`);
+
+      const emissionScopes = emissionsByIndustry[ctx.industry] || emissionsByIndustry['steel'];
+      const currentScopeData = emissionScopes.find(s => s.scope.toLowerCase().replace(' ','') === state.selectedScope) || emissionScopes[0];
+      const subsections = currentScopeData.subsections || [];
+
+      const wrap = document.createElement('div');
+      wrap.className = "section";
+      wrap.innerHTML = `
+        <div class="mb-4">
+          <h2 class="text-2xl font-extrabold">${ctx.title}</h2>
+          <div class="muted">Industry: ${industries.find(i=>i.id===ctx.industry)?.name}</div>
+        </div>
+
+        <div class="flex gap-2 mb-4">
+          <div class="scope-tab ${state.selectedScope==='scope1'?'active':''}" data-scope="scope1">Scope 1</div>
+          <div class="scope-tab ${state.selectedScope==='scope2'?'active':''}" data-scope="scope2">Scope 2</div>
+          <div class="scope-tab ${state.selectedScope==='scope3'?'active':''}" data-scope="scope3">Scope 3</div>
+        </div>
+
+        <div class="grid grid-2 gap-6">
+          <div class="space-y-4" id="subsectionInputs"></div>
+          <div class="space-y-4">
+            <div class="card">
+              <div class="font-semibold mb-2">Emissions Breakdown</div>
+              <div id="chartBar" class="chart"></div>
+            </div>
+            <div class="card">
+              <div class="font-semibold mb-2">Trend Analysis</div>
+              <div id="chartLine" class="chart"></div>
+            </div>
+            <div class="flex flex-wrap justify-center gap-2">
+              <button id="recalc" class="btn small">Recalculate</button>
+              <button id="nextBtn" class="btn small">${mode==='consultant' ? 'Select Frameworks' : 'Analytics & Goals'}</button>
+            </div>
+          </div>
+        </div>
+      `;
+      root.appendChild(wrap);
+
+      // Scope tab switching
+      $all('.scope-tab').forEach(tab => {
+        tab.addEventListener('click', ()=>{
+          state.selectedScope = tab.getAttribute('data-scope');
+          render();
+        });
+      });
+
+      // Build subsection inputs
+      const inputsContainer = $('#subsectionInputs');
+      subsections.forEach((sub, idx) => {
+        const key = `${ctx.industry}_${state.selectedScope}_${idx}`;
+        if (!state.inputData[key]) {
+          state.inputData[key] = { value: sub.value, ef: sub.ef };
+        }
+        const div = document.createElement('div');
+        div.innerHTML = `
+          <label class="font-medium text-sm">${sub.name}</label>
+          <div class="flex gap-2 mt-1">
+            <input type="number" class="flex-1 px-3 py-2 border border-gray-300 rounded-lg" 
+                   data-key="${key}" data-field="value" value="${state.inputData[key].value}" 
+                   placeholder="${sub.unit}">
+            <span class="text-xs text-gray-500 self-center">${sub.unit}</span>
+          </div>
+          <div class="mt-2 text-xs">
+            <span class="text-gray-600">EF: </span>
+            <input type="number" step="0.0001" class="w-24 px-2 py-1 border border-gray-300 rounded" 
+                   data-key="${key}" data-field="ef" value="${state.inputData[key].ef}">
+            <span class="text-gray-500 ml-1">${sub.efUnit}</span>
+          </div>
+        `;
+        inputsContainer.appendChild(div);
+      });
+
+      // Update input values
+      $all('input[data-key]').forEach(inp => {
+        inp.addEventListener('input', ()=>{
+          const key = inp.getAttribute('data-key');
+          const field = inp.getAttribute('data-field');
+          state.inputData[key][field] = Number(inp.value);
+        });
+      });
+
+      function calculateEmissions() {
+        const results = [];
+        subsections.forEach((sub, idx) => {
+          const key = `${ctx.industry}_${state.selectedScope}_${idx}`;
+          const data = state.inputData[key];
+          let emission = 0;
+          
+          // Calculate based on unit type
+          if (sub.efUnit.includes('kg') && !sub.efUnit.includes('tCO')) {
+            emission = (data.value * data.ef) / 1000; // kg to tonnes
+          } else if (sub.efUnit.includes('tCO')) {
+            emission = data.value * data.ef;
+          } else {
+            emission = (data.value * data.ef) / 1000;
+          }
+          
+          results.push({ name: sub.name, value: emission });
+        });
+        return results;
+      }
+
+      function drawBarChart(data) {
+        const container = $('#chartBar');
+        container.innerHTML = '';
+        const svg = document.createElementNS('http://www.w3.org/2000/svg','svg');
+        container.appendChild(svg);
+        const width = container.clientWidth, height = container.clientHeight;
+        svg.setAttribute('viewBox', `0 0 ${width} ${height}`);
+        const m = { top:20,right:20,bottom:60,left:50 }, w = width-m.left-m.right, h = height-m.top-m.bottom;
+        
+        const max = Math.max(...data.map(d=>d.value), 1);
+        const gap=10, n=data.length, bw=Math.max((w-gap*(n+1))/n, 40);
+        
+        data.forEach((d,i)=>{
+          const x=m.left+gap+i*(bw+gap), barH=(d.value/max)*h, y=m.top+h-barH;
+          const rect=document.createElementNS(svg.namespaceURI,'rect');
+          rect.setAttribute('x',x); rect.setAttribute('y',y); 
+          rect.setAttribute('width',bw); rect.setAttribute('height',barH);
+          rect.setAttribute('fill','#4A7C59');
+          svg.appendChild(rect);
+          
+          const text=document.createElementNS(svg.namespaceURI,'text');
+          text.setAttribute('x',x+bw/2); text.setAttribute('y',m.top+h+14);
+          text.setAttribute('text-anchor','middle'); text.setAttribute('font-size','10');
+          text.setAttribute('fill','#374151');
+          text.textContent=d.name.substring(0,15);
+          svg.appendChild(text);
+          
+          const val=document.createElementNS(svg.namespaceURI,'text');
+          val.setAttribute('x',x+bw/2); val.setAttribute('y',y-5);
+          val.setAttribute('text-anchor','middle'); val.setAttribute('font-size','10');
+          val.setAttribute('fill','#374151'); val.setAttribute('font-weight','600');
+          val.textContent=formatNum(d.value);
+          svg.appendChild(val);
+        });
+      }
+
+      function drawLineChart(data) {
+        const container = $('#chartLine');
+        container.innerHTML = '';
+        const svg = document.createElementNS('http://www.w3.org/2000/svg','svg');
+        container.appendChild(svg);
+        const width = container.clientWidth, height = container.clientHeight;
+        svg.setAttribute('viewBox', `0 0 ${width} ${height}`);
+        const m = { top:20,right:20,bottom:40,left:50 }, w = width-m.left-m.right, h = height-m.top-m.bottom;
+        
+        // Generate trend data (mock historical)
+        const months = ['Jan','Feb','Mar','Apr','May','Jun'];
+        const total = data.reduce((s,d)=>s+d.value,0);
+        const trend = months.map((mo,i)=>({
+          month:mo, 
+          value: total * (1 - i*0.05) // 5% reduction per month
+        }));
+        
+        const max = Math.max(...trend.map(d=>d.value), 1);
+        const stepX = w / (trend.length - 1);
+        
+        let pathD = '';
+        trend.forEach((d,i)=>{
+          const x = m.left + i*stepX;
+          const y = m.top + h - (d.value/max)*h;
+          pathD += (i===0?'M':'L') + x + ',' + y;
+          
+          const circle=document.createElementNS(svg.namespaceURI,'circle');
+          circle.setAttribute('cx',x); circle.setAttribute('cy',y); circle.setAttribute('r','4');
+          circle.setAttribute('fill','#4A7C59');
+          svg.appendChild(circle);
+          
+          const label=document.createElementNS(svg.namespaceURI,'text');
+          label.setAttribute('x',x); label.setAttribute('y',m.top+h+14);
+          label.setAttribute('text-anchor','middle'); label.setAttribute('font-size','10');
+          label.setAttribute('fill','#6b7280');
+          label.textContent=d.month;
+          svg.appendChild(label);
+        });
+        
+        const path=document.createElementNS(svg.namespaceURI,'path');
+        path.setAttribute('d',pathD); path.setAttribute('fill','none');
+        path.setAttribute('stroke','#4A7C59'); path.setAttribute('stroke-width','2');
+        svg.insertBefore(path, svg.firstChild);
+      }
+
+      const emissions = calculateEmissions();
+      drawBarChart(emissions);
+      drawLineChart(emissions);
+
+      $('#recalc').addEventListener('click', ()=>{
+        const e = calculateEmissions();
+        drawBarChart(e);
+        drawLineChart(e);
+      });
+
+      $('#nextBtn').addEventListener('click', ()=>{
+        if (mode==='consultant') state.step = 12;
+        else state.step = 23;
+        render();
+      });
+    }
+
+    function renderAnalytics(root, opts){
+      setStepTitle("Emissions Analytics & Goals");
+      
+      const ctx = opts?.enterprise 
+        ? { industry: enterprise.industry, name: enterprise.name }
+        : state.mode === 'consultant'
+          ? (function(){ const c = clients.find(x=>x.id===state.selectedClient); return { industry:c.industry, name:c.name }; })()
+          : { industry: state.selectedIndustry, name: industries.find(i=>i.id===state.selectedIndustry)?.name };
+
+      const emissionScopes = emissionsByIndustry[ctx.industry] || emissionsByIndustry['steel'];
+      const totalEmissions = emissionScopes.reduce((s,scope)=>s+scope.value, 0);
+      const target = Math.round(totalEmissions * 0.5);
+      const progress = 18;
+      
+      const wrap = document.createElement('div');
+      wrap.className = "section";
+      wrap.innerHTML = `
+        <div class="mb-6">
+          <h2 class="text-2xl font-extrabold">Analytics & Goals</h2>
+          <p class="muted">AI-powered insights for ${ctx.name}</p>
+        </div>
+
+        <div class="grid grid-2 mb-6">
+          <div class="card">
+            <h3 class="text-lg font-semibold mb-4">Scope Breakdown</h3>
+            <div id="analyticsBar" class="chart"></div>
+          </div>
+          <div class="card">
+            <h3 class="text-lg font-semibold mb-4">Industry Benchmarks</h3>
+            <div class="space-y-3">
+              <div class="flex justify-between">
+                <span class="text-sm">Your Total</span>
+                <span class="font-semibold">${formatNum(totalEmissions)} tCO₂e</span>
+              </div>
+              <div class="flex justify-between">
+                <span class="text-sm">Industry Average</span>
+                <span class="text-gray-600">${formatNum(totalEmissions * 1.15)} tCO₂e</span>
+              </div>
+              <div class="flex justify-between">
+                <span class="text-sm">Best in Class</span>
+                <span class="text-green-600">${formatNum(totalEmissions * 0.7)} tCO₂e</span>
+              </div>
+              <div class="mt-4">
+                <div class="flex justify-between mb-2">
+                  <span class="text-sm font-medium">Net-Zero Progress</span>
+                  <span class="font-semibold text-hertz-primary">${progress}%</span>
+                </div>
+                <div class="progress">
+                  <div style="width:${Math.min(progress*2,100)}%"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="text-center">
+          <button id="toCompliance" class="btn">Generate Compliance Reports</button>
+        </div>
+      `;
+      root.appendChild(wrap);
+
+      // Draw analytics bar chart
+      const container = $('#analyticsBar');
+      const svg = document.createElementNS('http://www.w3.org/2000/svg','svg');
+      container.appendChild(svg);
+      const width = container.clientWidth, height = container.clientHeight;
+      svg.setAttribute('viewBox', `0 0 ${width} ${height}`);
+      const m = { top:20,right:20,bottom:40,left:50 }, w = width-m.left-m.right, h = height-m.top-m.bottom;
+      
+      const max = Math.max(...emissionScopes.map(d=>d.value));
+      const gap=20, n=emissionScopes.length, bw=(w-gap*(n+1))/n;
+      
+      emissionScopes.forEach((d,i)=>{
+        const x=m.left+gap+i*(bw+gap), barH=(d.value/max)*h, y=m.top+h-barH;
+        const rect=document.createElementNS(svg.namespaceURI,'rect');
+        rect.setAttribute('x',x); rect.setAttribute('y',y);
+        rect.setAttribute('width',bw); rect.setAttribute('height',barH);
+        rect.setAttribute('fill','#4A7C59');
+        svg.appendChild(rect);
+        
+        const label=document.createElementNS(svg.namespaceURI,'text');
+        label.setAttribute('x',x+bw/2); label.setAttribute('y',m.top+h+14);
+        label.setAttribute('text-anchor','middle'); label.setAttribute('font-size','12');
+        label.setAttribute('fill','#374151');
+        label.textContent=d.scope;
+        svg.appendChild(label);
+      });
+
+      $('#toCompliance').addEventListener('click', ()=>{ state.step = (opts?.nextStep ?? 14); render(); });
+    }
+
+    function renderCompliance(root, opts){
+      setStepTitle("Compliance & Exports");
+      const wrap = document.createElement('div');
+      wrap.className = "section";
+      
+      if (opts?.enterprise){
+        const list = state.enterpriseFrameworks.map(n=>`<li class="mb-1">${n} <span class="pill blue ml-2">preselected</span></li>`).join('');
+        wrap.innerHTML = `
+          <div class="grid grid-2">
+            <div class="card">
+              <div class="font-semibold mb-2">Frameworks (Locked)</div>
+              <ul class="muted">${list}</ul>
+            </div>
+            <div class="card">
+              <div class="font-semibold mb-2">One-Click Exports</div>
+              <div class="muted text-sm">Export BRSR & ISSB S2 in branded templates</div>
+              <div class="mt-3 flex gap-2">
+                <button class="btn small">Export BRSR</button>
+                <button class="btn small">Export ISSB</button>
+              </div>
+            </div>
+          </div>
+          <div class="text-center mt-4">
+            <button id="restart" class="btn ghost small">Start New Demo</button>
+          </div>
+        `;
+      } else if (state.selectedFrameworks.length===0){
+        wrap.innerHTML = `
+          <div class="text-center p-8">
+            <div class="text-4xl">⚠️</div>
+            <h3 class="text-lg font-semibold mt-2">No Frameworks Selected</h3>
+            <p class="muted">Please go back and select at least one reporting framework</p>
+          </div>
+        `;
+      } else {
+        const names = {
+          brsr:'BRSR & BRSR Core', issb:'ISSB S2', csrd:'CSRD/ESRS E1', 
+          cdp:'CDP', secr:'UK SECR', hkex:'HKEX', gresb:'GRESB'
+        };
+        const list = state.selectedFrameworks.map(id=>`<li class="mb-1">${names[id] || id}</li>`).join('');
+        wrap.innerHTML = `
+          <div class="grid grid-2">
+            <div class="card">
+              <div class="font-semibold mb-2">Selected Frameworks</div>
+              <ul class="muted">${list}</ul>
+            </div>
+            <div class="card">
+              <div class="font-semibold mb-2">One-Click Exports</div>
+              <div class="muted text-sm">Export aligned reports in branded templates</div>
+              <div class="mt-3 flex flex-wrap gap-2">
+                ${state.selectedFrameworks.map(id=>`<button class="btn small">Export ${names[id] || id}</button>`).join('')}
+              </div>
+            </div>
+          </div>
+          <div class="text-center mt-4">
+            <button id="restart" class="btn ghost small">Start New Demo</button>
+          </div>
+        `;
+      }
+      root.appendChild(wrap);
+      
+      $('#restart')?.addEventListener('click', ()=>{ 
+        state.step = 0; 
+        state.mode=''; 
+        state.selectedFrameworks=[]; 
+        state.selectedIndustry=''; 
+        state.inputData={};
+        render(); 
+      });
+    }
+
+    function renderEnterpriseOverview(root){
+      setStepTitle("Enterprise Overview");
+      
+      // Calculate totals using datacenter industry data
+      const dcData = emissionsByIndustry['datacenter'];
+      const branchTotals = enterprise.branches.map(b => {
+        const scope1 = dcData[0].value / 4; // Distribute evenly
+        const scope2 = (b.electricityMWh * 1000 * b.ef) / 1000; // MWh to tCO2e
+        const scope3 = dcData[2].value / 4;
+        return { ...b, scope1, scope2, scope3, total: scope1 + scope2 + scope3 };
+      });
+      const grandTotal = branchTotals.reduce((s,b)=>s+b.total, 0);
+      
+      const cards = branchTotals.map(b=>{
+        return `
+          <div class="card ${state.selectedBranch===b.id?'selected':''}" data-branch="${b.id}">
+            <div class="row mb-1">
+              <div class="font-semibold">${b.city}</div>
+              <div class="pill blue">branch</div>
+            </div>
+            <div class="text-sm flex justify-between"><span>Electricity</span><strong>${b.electricityMWh.toLocaleString()} MWh</strong></div>
+            <div class="text-sm flex justify-between"><span>Total</span><strong>${formatNum(b.total)} tCO₂e</strong></div>
+            <div class="progress mt-2"><div style="width:${Math.min((b.total/grandTotal)*100,100)}%"></div></div>
+            <div class="muted text-xs mt-1">Share: ${((b.total/grandTotal)*100).toFixed(1)}%</div>
+          </div>
+        `;
+      }).join('');
+
+      const wrap = document.createElement('div');
+      wrap.className = "section";
+      wrap.innerHTML = `
+        <div class="row mb-2">
+          <div>
+            <h2 class="text-2xl font-extrabold">${enterprise.name}</h2>
+            <div class="muted">${enterprise.country} • Industry: Data Centers</div>
+          </div>
+          <div class="text-right">
+            <div class="text-sm"><span class="muted">Frameworks:</span> <strong>${state.enterpriseFrameworks.join(', ')}</strong></div>
+            <div class="text-sm"><span class="muted">Total:</span> <strong>${formatNum(grandTotal)} tCO₂e</strong></div>
+          </div>
+        </div>
+        <div class="grid grid-4 mb-4">${cards}</div>
+        <div class="text-center">
+          <button id="adjustBranch" class="btn">Adjust Branch Data</button>
+          <button id="toAnalytics" class="btn ghost ml-2">Analytics & Goals</button>
+        </div>
+      `;
+      root.appendChild(wrap);
+      
+      $all('.card[data-branch]').forEach(el => el.addEventListener('click', ()=>{ 
+        state.selectedBranch = el.getAttribute('data-branch'); 
+        render(); 
+      }));
+      $('#adjustBranch').addEventListener('click', ()=>{ state.step = 31; render(); });
+      $('#toAnalytics').addEventListener('click', ()=>{ state.step = 32; render(); });
+    }
+
+    function renderEnterpriseData(root){
+      const branch = enterprise.branches.find(b=>b.id===state.selectedBranch) || enterprise.branches[0];
+      setStepTitle(`Branch Data – ${branch.city}`);
+
+      const dcData = emissionsByIndustry['datacenter'];
+      
+      const wrap = document.createElement('div');
+      wrap.className = "section";
+      wrap.innerHTML = `
+        <div class="mb-4">
+          <h2 class="text-2xl font-extrabold">${enterprise.name}</h2>
+          <div class="muted">Adjust inputs for <strong>${branch.city}</strong> (Data Center)</div>
+        </div>
+        
+        <div class="grid grid-2">
+          <div class="space-y-4">
+            <div>
+              <label class="muted text-sm">Electricity (MWh)</label>
+              <input id="entMWh" type="number" value="${branch.electricityMWh}" 
+                     class="w-full px-3 py-2 border border-gray-300 rounded-lg"/>
+            </div>
+            <div>
+              <label class="muted text-sm">EF (kgCO₂e/kWh)</label>
+              <input id="entEF" type="number" step="0.0001" value="${branch.ef}" 
+                     class="w-full px-3 py-2 border border-gray-300 rounded-lg"/>
+            </div>
+            <div class="note text-sm">
+              EF is preselected for India grid average. Override to simulate location-specific factors.
+            </div>
+          </div>
+          
+          <div class="space-y-4">
+            <div class="card">
+              <div class="font-semibold mb-2">Emissions (tCO₂e)</div>
+              <div id="entChart" class="chart"></div>
+              <div class="text-right text-sm mt-2">
+                <span class="muted">Branch Total:</span> <strong id="entTotal">—</strong> tCO₂e
+              </div>
+            </div>
+            <div class="flex justify-center gap-2">
+              <button id="entRecalc" class="btn small">Recalculate</button>
+              <button id="entBack" class="btn small">Back to Overview</button>
+              <button id="entNext" class="btn small">Analytics</button>
+            </div>
+          </div>
+        </div>
+      `;
+      root.appendChild(wrap);
+
+      function draw(){
+        const mwh = Number($('#entMWh').value || branch.electricityMWh);
+        const ef = Number($('#entEF').value || branch.ef);
+        const s1 = dcData[0].value / 4;
+        const s2 = (mwh * 1000 * ef) / 1000;
+        const s3 = dcData[2].value / 4;
+        const scopes = [
+          { scope:'Scope 1', value:s1 },
+          { scope:'Scope 2', value:s2 },
+          { scope:'Scope 3', value:s3 }
+        ];
+
+        const container = $('#entChart');
+        container.innerHTML='';
+        const svg = document.createElementNS('http://www.w3.org/2000/svg','svg');
+        container.appendChild(svg);
+        const width = container.clientWidth, height = container.clientHeight;
+        svg.setAttribute('viewBox', `0 0 ${width} ${height}`);
+        const m = { top:20,right:20,bottom:40,left:50 }, w = width-m.left-m.right, h = height-m.top-m.bottom;
+        
+        const max = Math.max(...scopes.map(d=>d.value));
+        const gap=20, n=scopes.length, bw=(w-gap*(n+1))/n;
+        
+        scopes.forEach((d,i)=>{
+          const x=m.left+gap+i*(bw+gap), barH=(d.value/max)*h, y=m.top+h-barH;
+          const rect=document.createElementNS(svg.namespaceURI,'rect');
+          rect.setAttribute('x',x); rect.setAttribute('y',y);
+          rect.setAttribute('width',bw); rect.setAttribute('height',barH);
+          rect.setAttribute('fill','#4A7C59');
+          svg.appendChild(rect);
+          
+          const label=document.createElementNS(svg.namespaceURI,'text');
+          label.setAttribute('x',x+bw/2); label.setAttribute('y',m.top+h+14);
+          label.setAttribute('text-anchor','middle'); label.setAttribute('font-size','12');
+          label.setAttribute('fill','#374151');
+          label.textContent=d.scope;
+          svg.appendChild(label);
+        });
+        
+        const total = scopes.reduce((s,d)=>s+d.value,0);
+        $('#entTotal').textContent = formatNum(total);
+        
+        branch.electricityMWh = mwh;
+        branch.ef = ef;
+      }
+      
+      draw();
+      $('#entRecalc').addEventListener('click', draw);
+      $('#entBack').addEventListener('click', ()=>{ state.step = 30; render(); });
+      $('#entNext').addEventListener('click', ()=>{ state.step = 32; render(); });
+    }
+
+    render();
+    
+    // Set up back button listeners
+    const backBtn = document.getElementById('backBtn');
+    const backLinkBtn = document.getElementById('backLinkBtn');
+    
+    if(backBtn){
+      backBtn.addEventListener('click', goBack);
+    }
+    if(backLinkBtn){
+      backLinkBtn.addEventListener('click', goBack);
+    }
+  })();
+  </script>
+</body>
+</html>
