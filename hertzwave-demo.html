@@ -330,36 +330,42 @@
       }
     }
 
-    function goBack(){
-      // Define back navigation logic based on current step
-      const backMap = {
-        // Consultant flow
-        10: 0,  // Consultant clients -> Welcome
-        11: 10, // Data input -> Clients
-        12: 11, // Frameworks -> Data input
-        13: 12, // Analytics -> Frameworks
-        14: 13, // Compliance -> Analytics
-        
-        // Corporate flow
-        20: 0,  // Industry select -> Welcome
-        21: 20, // Frameworks -> Industry
-        22: 21, // Data input -> Frameworks
-        23: 22, // Analytics -> Data input
-        24: 23, // Compliance -> Analytics
-        
-        // Enterprise flow
-        30: 0,  // Enterprise overview -> Welcome
-        31: 30, // Enterprise data -> Overview
-        32: 31, // Analytics -> Data
-        33: 32  // Compliance -> Analytics
-      };
-      
-      const prevStep = backMap[state.step];
-      if(prevStep !== undefined){
-        state.step = prevStep;
-        render();
-      }
+function goBack(){
+  // Define back navigation logic based on current step
+  const backMap = {
+    // Consultant flow
+    10: 0,  // Consultant clients -> Welcome
+    11: 10, // Data input -> Clients
+    12: 11, // Frameworks -> Data input
+    13: 12, // Analytics -> Frameworks
+    14: 13, // Compliance -> Analytics
+    
+    // Corporate flow
+    20: 0,  // Industry select -> Welcome
+    21: 20, // Frameworks -> Industry
+    22: 21, // Data input -> Frameworks
+    23: 22, // Analytics -> Data input
+    24: 23, // Compliance -> Analytics
+    
+    // Enterprise flow
+    30: 0,  // Enterprise overview -> Welcome
+    31: 30, // Enterprise data -> Overview
+    32: 31, // Analytics -> Data
+    33: 32  // Compliance -> Analytics
+  };
+  
+  const prevStep = backMap[state.step];
+  if(prevStep !== undefined){
+    state.step = prevStep;
+    
+    // Clear framework selections when going back to industry/mode selection
+    if(prevStep === 0 || prevStep === 20){
+      state.selectedFrameworks = [];
     }
+    
+    render();
+  }
+}
 
     function render(){
       const root = document.getElementById('app');
