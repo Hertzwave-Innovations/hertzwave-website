@@ -394,40 +394,39 @@ function goBack(){
       setTimeout(updateBackButton, 0);
     }
 
-        function renderRole(root){
-          setStepTitle("Welcome");
-          const wrap = document.createElement('div');
-          wrap.className = "section";
-          wrap.innerHTML = `
-            <div class="text-center mb-7">
-              <h1 class="text-3xl md:text-4xl font-extrabold">Hertzwave Carbon Accounting Platform</h1>
-              <p class="muted mt-2 text-lg">Choose how you want to explore the demo</p>
-            </div>
-               <div class="card" data-mode="corporate" role="button">
-                <div class="text-3xl mb-2">🏢</div>
-                <h3 class="text-lg md:text-xl font-semibold mt-2">Carbon Essentials / Professional</h3>
-                <p class="muted mt-1 text-sm">Single company operations</p>
-              </div>
-            <div class="grid grid-3 gap-4">
-              <div class="card" data-mode="consultant" role="button">
-                <div class="text-3xl mb-2">👥</div>
-                <h3 class="text-lg md:text-xl font-semibold mt-2">Professional Tier – ESG Consultant</h3>
-                <p class="muted mt-1 text-sm">Manage multiple clients across industries</p>
-              </div>
-
-              <div class="card" data-mode="enterprise" role="button">
-                <div class="text-3xl mb-2">🏙️</div>
-                <h3 class="text-lg md:text-xl font-semibold mt-2">Enterprise</h3>
-                <p class="muted mt-1 text-sm">Multiple branches, aggregated view</p>
-              </div>
-            </div>
-            <div class="text-center mt-6">
-              <a href="index.html" class="text-hertz-primary hover:text-hertz-dark font-semibold inline-flex items-center gap-2">
-                <i class="fas fa-arrow-left"></i>
-                Back to Home
-              </a>
-            </div>
-      `;
+   function renderRole(root){
+  setStepTitle("Welcome");
+  const wrap = document.createElement('div');
+  wrap.className = "section";
+  wrap.innerHTML = `
+    <div class="text-center mb-7">
+      <h1 class="text-3xl md:text-4xl font-extrabold">Hertzwave Carbon Accounting Platform</h1>
+      <p class="muted mt-2 text-lg">Choose how you want to explore the demo</p>
+    </div>
+    <div class="grid grid-3 gap-4">
+      <div class="card" data-mode="corporate" role="button">
+        <div class="text-3xl mb-2">🏢</div>
+        <h3 class="text-lg md:text-xl font-semibold mt-2">Carbon Essentials / Professional</h3>
+        <p class="muted mt-1 text-sm">Single company operations</p>
+      </div>
+      <div class="card" data-mode="consultant" role="button">
+        <div class="text-3xl mb-2">👥</div>
+        <h3 class="text-lg md:text-xl font-semibold mt-2">Professional Tier – ESG Consultant</h3>
+        <p class="muted mt-1 text-sm">Manage multiple clients across industries</p>
+      </div>
+      <div class="card" data-mode="enterprise" role="button">
+        <div class="text-3xl mb-2">🏙️</div>
+        <h3 class="text-lg md:text-xl font-semibold mt-2">Enterprise</h3>
+        <p class="muted mt-1 text-sm">Multiple branches, aggregated view</p>
+      </div>
+    </div>
+    <div class="text-center mt-6">
+      <a href="index.html" class="text-hertz-primary hover:text-hertz-dark font-semibold inline-flex items-center gap-2">
+        <i class="fas fa-arrow-left"></i>
+        Back to Home
+      </a>
+    </div>
+  `;
           
       root.appendChild(wrap);
       $all('.card[data-mode]').forEach(el => {
