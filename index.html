@@ -1192,40 +1192,71 @@
       }
     }
 
-    form.addEventListener('submit', async (e) => {
-      e.preventDefault();
+   // Set up fallback button handlers once (outside form submit)
+document.getElementById('fallback-ok')?.addEventListener('click', () => {
+  form.reset();
+  closeModal();
+});
 
-      const fd   = new FormData(form);
-      const data = Object.fromEntries(fd.entries());
-
-      // GA event (optional)
-      if (typeof gtag === 'function') {
-        gtag('event', 'generate_lead', { form: 'demo', location: 'index' });
-      }
-
-      // 1) Open user's email client with prefilled subject/body
-      const subject = `Hertzwave demo request — ${data.company || data.name || ''}`;
-      const body    = buildMailtoBody(data);
-      const params  = new URLSearchParams({ subject, body });
-      window.location.href = `mailto:info@hertzwave.in?${params.toString()}`;
-
-      // 2) Background send to Formspree (silent)
-      const original = submitBtn ? submitBtn.textContent : null;
-      try {
-        if (submitBtn) { submitBtn.disabled = true; submitBtn.textContent = 'Sending…'; }
-        await fetch(form.action, {
-          method: 'POST',
-          headers: { 'Accept': 'application/json' },
-          body: new FormData(form)
-        });
-      } catch (err) {
-        console.error('Background Formspree send failed:', err);
-      } finally {
-        if (submitBtn) { submitBtn.disabled = false; submitBtn.textContent = original || 'Request Demo'; }
-        form.reset();
-        closeModal();
-      }
+document.getElementById('fallback-send')?.addEventListener('click', async () => {
+  const fallbackNotice = document.getElementById('email-fallback');
+  const original = submitBtn ? submitBtn.textContent : null;
+  
+  try {
+    if (submitBtn) { 
+      submitBtn.disabled = true; 
+      submitBtn.textContent = 'Sending…'; 
+    }
+    
+    const response = await fetch(form.action, {
+      method: 'POST',
+      headers: { 'Accept': 'application/json' },
+      body: new FormData(form)
     });
+
+    if (response.ok) {
+      alert('Thank you! Your demo request has been sent successfully.');
+    } else {
+      alert('There was an issue. Please email us directly at info@hertzwave.in');
+    }
+  } catch (err) {
+    console.error('Formspree send failed:', err);
+    alert('There was an issue. Please email us directly at info@hertzwave.in');
+  } finally {
+    if (submitBtn) { 
+      submitBtn.disabled = false; 
+      submitBtn.textContent = original || 'Request Demo'; 
+    }
+    if (fallbackNotice) fallbackNotice.classList.add('hidden');
+    form.reset();
+    closeModal();
+  }
+});
+
+// Main form submit handler
+form.addEventListener('submit', async (e) => {
+  e.preventDefault();
+
+  const fd   = new FormData(form);
+  const data = Object.fromEntries(fd.entries());
+
+  // GA event
+  if (typeof gtag === 'function') {
+    gtag('event', 'generate_lead', { form: 'demo', location: 'index' });
+  }
+
+  // Try to open email client
+  const subject = `Hertzwave demo request — ${data.company || data.name || ''}`;
+  const body    = buildMailtoBody(data);
+  const params  = new URLSearchParams({ subject, body });
+  window.location.href = `mailto:info@hertzwave.in?${params.toString()}`;
+
+  // Show fallback notice
+  const fallbackNotice = document.getElementById('email-fallback');
+  if (fallbackNotice) {
+    fallbackNotice.classList.remove('hidden');
+  }
+});
   })();
 </script>
 
