@@ -21,7 +21,7 @@
   </script>
 
   
-  <meta name="description" content="Explore Hertzwave’s SaaS modules, plan tiers, and our microservices-cloud architecture." />
+  <meta name="description" content="Explore Hertzwave’s SaaS modules, plan tiers, and our secure cloud architecture." />
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <script>
@@ -226,7 +226,7 @@
             The Hertzwave <span class="text-hertz-primary">Platform</span>
           </h1>
           <p class="text-lg lg:text-xl text-gray-600 mb-6">
-            Modular, AI-powered carbon intelligence—from data ingestion to net-zero planning—built on a secure, scalable microservices cloud.
+            Modular, AI-powered carbon intelligence—from data ingestion to net-zero planning—built on a secure, scalable cloud-native platform.
           </p>
           <div class="flex flex-wrap gap-4">
             <a href="#modules" class="bg-hertz-primary text-white px-6 py-3 rounded-lg hover:bg-hertz-dark font-semibold">Explore Modules</a>
@@ -238,7 +238,7 @@
           <div class="relative bg-white p-8 rounded-3xl shadow-2xl border border-hertz-light/50">
             <h3 class="text-xl font-semibold text-gray-900 mb-4">At-a-glance</h3>
             <ul class="space-y-3 text-gray-700">
-              <li><i class="fa-solid fa-cloud mr-2 text-hertz-primary"></i> SaaS, multi-tenant, microservices</li>
+              <li><i class="fa-solid fa-cloud mr-2 text-hertz-primary"></i> SaaS, multi-tenant, cloud-native app</li>
               <li><i class="fa-solid fa-shield-halved mr-2 text-hertz-primary"></i> Enterprise security & RBAC</li>
               <li><i class="fa-solid fa-diagram-project mr-2 text-hertz-primary"></i> API-first integrations</li>
               <li><i class="fa-solid fa-gauge-high mr-2 text-hertz-primary"></i> Scales from SME to enterprise</li>
@@ -257,87 +257,101 @@
 
   <!-- Modules -->
   <section id="modules" class="py-16 bg-gradient-to-br from-gray-50 to-hertz-light/10 scroll-mt-24">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-12">
-        <h2 class="text-3xl lg:text-4xl font-semibold text-gray-900">SaaS Modules</h2>
-        <p class="text-lg text-gray-600">Everything you need for comprehensive carbon management.</p>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-12">
+      <h2 class="text-3xl lg:text-4xl font-semibold text-gray-900">SaaS Modules</h2>
+      <p class="text-lg text-gray-600">
+        From data ingestion to GreenCo, BRSR Lite/Core and CBAM-ready reporting—India-first, global-ready carbon management.
+      </p>
+    </div>
+
+    <div class="grid lg:grid-cols-3 gap-8">
+      <!-- Ingestion Hub -->
+      <div class="bg-white p-7 rounded-2xl shadow border border-hertz-light/30">
+        <div class="text-hertz-primary text-3xl mb-3"><i class="fas fa-upload"></i></div>
+        <h3 class="text-xl font-semibold text-gray-900 mb-2">Ingestion Hub</h3>
+        <p class="text-gray-600 mb-3">
+          Plug-and-play connectors for ERPs, GST / e-way bills, CSV &amp; SFTP, utility data and IoT sources—so Indian and global facilities land on one data fabric.
+        </p>
+        <ul class="text-sm text-gray-500 space-y-2">
+          <li><i class="fas fa-check text-hertz-primary mr-2"></i>Multi-source, multi-entity integration</li>
+          <li><i class="fas fa-check text-hertz-primary mr-2"></i>Automated data validation &amp; deduplication</li>
+          <li><i class="fas fa-check text-hertz-primary mr-2"></i>Regulation-ready data structures</li>
+        </ul>
       </div>
 
-      <div class="grid lg:grid-cols-3 gap-8">
-        <!-- Ingestion Hub -->
-        <div class="bg-white p-7 rounded-2xl shadow border border-hertz-light/30">
-          <div class="text-hertz-primary text-3xl mb-3"><i class="fas fa-upload"></i></div>
-          <h3 class="text-xl font-semibold text-gray-900 mb-2">Ingestion Hub</h3>
-          <p class="text-gray-600 mb-3">Connect SAP Ariba, Concur, CSV/SFTP, and more. Normalize multi-source data rapidly.</p>
-          <ul class="text-sm text-gray-500 space-y-2">
-            <li><i class="fas fa-check text-hertz-primary mr-2"></i> Connectors & pipelines</li>
-            <li><i class="fas fa-check text-hertz-primary mr-2"></i> Schema mapping</li>
-            <li><i class="fas fa-check text-hertz-primary mr-2"></i> Live monitoring</li>
-          </ul>
-        </div>
+      <!-- Validation AI -->
+      <div class="bg-white p-7 rounded-2xl shadow border border-hertz-light/30">
+        <div class="text-hertz-primary text-3xl mb-3"><i class="fas fa-brain"></i></div>
+        <h3 class="text-xl font-semibold text-gray-900 mb-2">Validation AI</h3>
+        <p class="text-gray-600 mb-3">
+          ML-powered engine that auto-maps schemas, flags gaps and scores data quality across plants, suppliers and exports.
+        </p>
+        <ul class="text-sm text-gray-500 space-y-2">
+          <li><i class="fas fa-check text-hertz-primary mr-2"></i>Intelligent schema mapping</li>
+          <li><i class="fas fa-check text-hertz-primary mr-2"></i>Confidence scoring &amp; anomaly detection</li>
+          <li><i class="fas fa-check text-hertz-primary mr-2"></i>Consultant-friendly review workflows</li>
+        </ul>
+      </div>
 
-        <!-- Validation AI -->
-        <div class="bg-white p-7 rounded-2xl shadow border border-hertz-light/30">
-          <div class="text-hertz-primary text-3xl mb-3"><i class="fas fa-brain"></i></div>
-          <h3 class="text-xl font-semibold text-gray-900 mb-2">Validation AI</h3>
-          <p class="text-gray-600 mb-3">Auto-validate, dedupe, and quality-score records with high confidence.</p>
-          <ul class="text-sm text-gray-500 space-y-2">
-            <li><i class="fas fa-check text-hertz-primary mr-2"></i> Outlier & gap detection</li>
-            <li><i class="fas fa-check text-hertz-primary mr-2"></i> Confidence scoring</li>
-            <li><i class="fas fa-check text-hertz-primary mr-2"></i> Explainable rules</li>
-          </ul>
-        </div>
+      <!-- Emissions Engine -->
+      <div class="bg-white p-7 rounded-2xl shadow border border-hertz-light/30">
+        <div class="text-hertz-primary text-3xl mb-3"><i class="fas fa-calculator"></i></div>
+        <h3 class="text-xl font-semibold text-gray-900 mb-2">Emissions Engine</h3>
+        <p class="text-gray-600 mb-3">
+          Full Scope 1, 2 &amp; 3 measurement using global libraries (DEFRA, EPA, Ecoinvent) plus India-specific factors, ready for CBAM, CCTS and value-chain disclosures.
+        </p>
+        <ul class="text-sm text-gray-500 space-y-2">
+          <li><i class="fas fa-check text-hertz-primary mr-2"></i>Plant-level &amp; supplier-level calculations</li>
+          <li><i class="fas fa-check text-hertz-primary mr-2"></i>Region &amp; fuel-specific factors</li>
+          <li><i class="fas fa-check text-hertz-primary mr-2"></i>High-volume, export-grade processing</li>
+        </ul>
+      </div>
 
-        <!-- Emissions Engine -->
-        <div class="bg-white p-7 rounded-2xl shadow border border-hertz-light/30">
-          <div class="text-hertz-primary text-3xl mb-3"><i class="fas fa-calculator"></i></div>
-          <h3 class="text-xl font-semibold text-gray-900 mb-2">Emissions Engine</h3>
-          <p class="text-gray-600 mb-3">Scope 1–3 with regional factors (DEFRA, EPA, Ecoinvent). Built for scale.</p>
-          <ul class="text-sm text-gray-500 space-y-2">
-            <li><i class="fas fa-check text-hertz-primary mr-2"></i> Activity- & spend-based</li>
-            <li><i class="fas fa-check text-hertz-primary mr-2"></i> Factor versioning</li>
-            <li><i class="fas fa-check text-hertz-primary mr-2"></i> Batch & realtime</li>
-          </ul>
-        </div>
+      <!-- Compliance & Certification Mapper -->
+      <div class="bg-white p-7 rounded-2xl shadow border border-hertz-light/30">
+        <div class="text-hertz-primary text-3xl mb-3"><i class="fas fa-file-alt"></i></div>
+        <h3 class="text-xl font-semibold text-gray-900 mb-2">Compliance &amp; Certification Mapper</h3>
+        <p class="text-gray-600 mb-3">
+          “One-click” export to SEBI BRSR Lite/Core, GreenCo templates, CSRD / ESRS, ISSB, TCFD, GRESB and more—no spreadsheet gymnastics.
+        </p>
+        <ul class="text-sm text-gray-500 space-y-2">
+          <li><i class="fas fa-check text-hertz-primary mr-2"></i>Pre-mapped fields for India regulations</li>
+          <li><i class="fas fa-check text-hertz-primary mr-2"></i>Global formats for groups &amp; investors</li>
+          <li><i class="fas fa-check text-hertz-primary mr-2"></i>Assurance-ready audit trail</li>
+        </ul>
+      </div>
 
-        <!-- Compliance Mapper -->
-        <div class="bg-white p-7 rounded-2xl shadow border border-hertz-light/30">
-          <div class="text-hertz-primary text-3xl mb-3"><i class="fas fa-file-alt"></i></div>
-          <h3 class="text-xl font-semibold text-gray-900 mb-2">Compliance Mapper</h3>
-          <p class="text-gray-600 mb-3">“One-click” export to BRSR, CSRD, TCFD, ISSB and more.</p>
-          <ul class="text-sm text-gray-500 space-y-2">
-            <li><i class="fas fa-check text-hertz-primary mr-2"></i> Multi-framework mapping</li>
-            <li><i class="fas fa-check text-hertz-primary mr-2"></i> Template automation</li>
-            <li><i class="fas fa-check text-hertz-primary mr-2"></i> Audit-ready exports</li>
-          </ul>
-        </div>
+      <!-- Supplier & Export Readiness -->
+      <div class="bg-white p-7 rounded-2xl shadow border border-hertz-light/30">
+        <div class="text-hertz-primary text-3xl mb-3"><i class="fas fa-users"></i></div>
+        <h3 class="text-xl font-semibold text-gray-900 mb-2">Supplier &amp; Export Readiness</h3>
+        <p class="text-gray-600 mb-3">
+          Live supplier leaderboard and export views that highlight CBAM, UK-FTA and large buyer requirements, with CO₂e per tonne or per ₹/USD visibility.
+        </p>
+        <ul class="text-sm text-gray-500 space-y-2">
+          <li><i class="fas fa-check text-hertz-primary mr-2"></i>Supplier &amp; lane-level benchmarking</li>
+          <li><i class="fas fa-check text-hertz-primary mr-2"></i>Data completeness &amp; quality scoring</li>
+          <li><i class="fas fa-check text-hertz-primary mr-2"></i>Export customer-ready dashboards</li>
+        </ul>
+      </div>
 
-        <!-- Supplier Evaluation -->
-        <div class="bg-white p-7 rounded-2xl shadow border border-hertz-light/30">
-          <div class="text-hertz-primary text-3xl mb-3"><i class="fas fa-users"></i></div>
-          <h3 class="text-xl font-semibold text-gray-900 mb-2">Supplier Evaluation</h3>
-          <p class="text-gray-600 mb-3">Live leaderboard: CO₂e/USD, completeness, risk.</p>
-          <ul class="text-sm text-gray-500 space-y-2">
-            <li><i class="fas fa-check text-hertz-primary mr-2"></i> Vendor scoring</li>
-            <li><i class="fas fa-check text-hertz-primary mr-2"></i> Benchmarks & alerts</li>
-            <li><i class="fas fa-check text-hertz-primary mr-2"></i> Collaboration portal</li>
-          </ul>
-        </div>
-
-        <!-- Net-Zero Pathfinder -->
-        <div class="bg-white p-7 rounded-2xl shadow border border-hertz-light/30">
-          <div class="text-hertz-primary text-3xl mb-3"><i class="fas fa-route"></i></div>
-          <h3 class="text-xl font-semibold text-gray-900 mb-2">Net-Zero Pathfinder</h3>
-          <p class="text-gray-600 mb-3">Scenario modeling with reduction levers & ROI views.</p>
-          <ul class="text-sm text-gray-500 space-y-2">
-            <li><i class="fas fa-check text-hertz-primary mr-2"></i> What-if scenarios</li>
-            <li><i class="fas fa-check text-hertz-primary mr-2"></i> CAPEX/OPEX planning</li>
-            <li><i class="fas fa-check text-hertz-primary mr-2"></i> Targets & tracking</li>
-          </ul>
-        </div>
+      <!-- Net-Zero Pathfinder -->
+      <div class="bg-white p-7 rounded-2xl shadow border border-hertz-light/30">
+        <div class="text-hertz-primary text-3xl mb-3"><i class="fas fa-route"></i></div>
+        <h3 class="text-xl font-semibold text-gray-900 mb-2">Net-Zero Pathfinder</h3>
+        <p class="text-gray-600 mb-3">
+          Scenario modeller to plan reduction levers, carbon credits and sequestration projects—aligned with India CCTS and global net-zero commitments.
+        </p>
+        <ul class="text-sm text-gray-500 space-y-2">
+          <li><i class="fas fa-check text-hertz-primary mr-2"></i>Multiple capex / opex scenarios</li>
+          <li><i class="fas fa-check text-hertz-primary mr-2"></i>Carbon credit &amp; offset tracking</li>
+          <li><i class="fas fa-check text-hertz-primary mr-2"></i>Board-ready, regulator-ready visuals</li>
+        </ul>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
   <!-- Landscape break -->
   <section aria-label="decorative separator" class="w-full">
@@ -346,62 +360,160 @@
   </section>
 
   <!-- Tiers (no pricing) -->
-
-
 <section id="tiers" class="bg-gradient-to-br from-green-50 via-white to-hertz-light/20 scroll-mt-24">
-
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <h2 class="hz-section-title">Choose Your Tier</h2>
+    <h2 class="text-3xl lg:text-4xl font-semibold text-center text-gray-900 mb-4">Choose Your Tier</h2>
     <p class="text-center text-gray-600 max-w-2xl mx-auto mb-12">
-      Scale from a fast start to enterprise-grade carbon intelligence with flexible SaaS tiers.
+      Two simple tiers, plus modular add-ons—aligned to how Indian manufacturers and consultants actually use the platform.
     </p>
 
-    <div class="grid md:grid-cols-3 gap-8">
-      <!-- Essential Tier -->
+    <div class="grid md:grid-cols-2 gap-8">
+      <!-- Essentials Tier -->
       <div class="bg-white border border-hertz-light/40 rounded-2xl shadow-md hover:shadow-lg transition-shadow p-8 flex flex-col">
-        <h3 class="text-2xl font-semibold text-hertz-primary mb-4 text-center">Essential</h3>
-        <p class="text-gray-600 mb-6 text-center">Perfect for quick compliance readiness and core carbon reporting.</p>
+        <h3 class="text-2xl font-semibold text-hertz-primary mb-4 text-center">Essentials</h3>
+        <p class="text-gray-600 mb-6 text-center">
+          Designed for SMEs and mid-cap manufacturers who need fast BRSR Lite compliance and core carbon coverage.
+        </p>
         <ul class="space-y-3 text-gray-700 flex-1">
-          <li><i class="fas fa-check text-hertz-primary mr-2"></i>Scope 1 & 2 Calculations</li>
-            <li><i class="fas fa-check text-hertz-primary mr-2"></i>Scope 3 Category Mapping & Calculations</li>
-          <li><i class="fas fa-check text-hertz-primary mr-2"></i>Standard Emission Libraries Support (DEFRA, EPA...)</li>
-          <li><i class="fas fa-check text-hertz-primary mr-2"></i>Data Validation Engine</li>
-          <li><i class="fas fa-check text-hertz-primary mr-2"></i>SSO & Role-Based Access Control</li>
-
+          <li><i class="fas fa-check text-hertz-primary mr-2"></i>Scope 1, 2 &amp; 3 emissions engine</li>
+          <li><i class="fas fa-check text-hertz-primary mr-2"></i>BRSR Lite compliance-ready reports</li>
+          <li><i class="fas fa-check text-hertz-primary mr-2"></i>Up to 5 facilities; single-entity reporting</li>
+          <li><i class="fas fa-check text-hertz-primary mr-2"></i>Standard dashboards + custom report builder</li>
+          <li><i class="fas fa-check text-hertz-primary mr-2"></i>Data ingestion via manual upload, CSV, SFTP &amp; select plug-and-play connectors</li>
+          <li><i class="fas fa-check text-hertz-primary mr-2"></i>Standard emission libraries (DEFRA, EPA, Ecoinvent)</li>
         </ul>
       </div>
 
       <!-- Professional Tier -->
       <div class="bg-white border-2 border-hertz-primary rounded-2xl shadow-lg hover:shadow-xl transition-shadow p-8 flex flex-col relative">
-        <span class="absolute -top-3 right-4 bg-hertz-primary text-white text-xs px-3 py-1 rounded-full uppercase tracking-wider">Most Popular</span>
+        <span class="absolute -top-3 right-4 bg-hertz-primary text-white text-xs px-3 py-1 rounded-full uppercase tracking-wider">For Consultants &amp; Large Enterprises</span>
         <h3 class="text-2xl font-semibold text-hertz-primary mb-4 text-center">Professional</h3>
-        <p class="text-gray-600 mb-6 text-center">Ideal for mid-sized businesses managing supply-chain complexity.</p>
+        <p class="text-gray-600 mb-6 text-center">
+          Built for consultants and large enterprises managing multi-entity, multi-facility and export-heavy portfolios.
+        </p>
         <ul class="space-y-3 text-gray-700 flex-1">
-          <li><i class="fas fa-check text-hertz-primary mr-2"></i>Everything in Essential</li>
-          <li><i class="fas fa-check text-hertz-primary mr-2"></i>Supplier Evaluation Module</li>
-          <li><i class="fas fa-check text-hertz-primary mr-2"></i>Compliance Mapper & Reporting Studio</li>
-          <li><i class="fas fa-check text-hertz-primary mr-2"></i>Materiality Assessment Module</li>
-           <li><i class="fas fa-check text-hertz-primary mr-2"></i>Carbon Offset Engine</li>
-        
-        </ul>
-      </div>
-
-      <!-- Enterprise Tier -->
-      <div class="bg-white border border-hertz-light/40 rounded-2xl shadow-md hover:shadow-lg transition-shadow p-8 flex flex-col">
-        <h3 class="text-2xl font-semibold text-hertz-primary mb-4 text-center">Enterprise</h3>
-        <p class="text-gray-600 mb-6 text-center">Built for global enterprises with advanced compliance needs.</p>
-        <ul class="space-y-3 text-gray-700 flex-1">
-          <li><i class="fas fa-check text-hertz-primary mr-2"></i>Everything in Professional</li>
-          <li><i class="fas fa-check text-hertz-primary mr-2"></i>Multi-Entity / Multi-Region Consolidation</li>
-           <li><i class="fa-regular fa-circle-check text-hertz-primary mr-2"></i> Net-Zero Pathfinder & scenarios</li>
-          <li><i class="fas fa-check text-hertz-primary mr-2"></i>Carbon Credits Module</li>
-           <li><i class="fas fa-check text-hertz-primary mr-2"></i>Auditor Assurance Pack</li>
+          <li><i class="fas fa-check text-hertz-primary mr-2"></i>Everything in Essentials</li>
+          <li><i class="fas fa-check text-hertz-primary mr-2"></i>All modular add-ons included (Full Compliance, AI Suite, Supplier Evaluation, NetZero, Carbon Marketplace, Auditor Pack)</li>
+          <li><i class="fas fa-check text-hertz-primary mr-2"></i>Multi-entity &amp; multi-facility consolidation</li>
+          <li><i class="fas fa-check text-hertz-primary mr-2"></i>Unlimited facilities and advanced user management</li>
+          <li><i class="fas fa-check text-hertz-primary mr-2"></i>Consultant mode for managing multiple client accounts</li>
+          <li><i class="fas fa-check text-hertz-primary mr-2"></i>Advanced RBAC, SSO options and audit logging</li>
         </ul>
       </div>
     </div>
-    <p class="text-xs text-gray-400 text-center mt-6">
-        Tier naming aligned with internal strategy (Essential / Professional / Enterprise)
+
+    <!-- Modular Add-ons -->
+    <div class="mt-16">
+      <div class="text-center mb-6">
+        <h3 class="text-2xl font-semibold text-gray-900 mb-2">Modular Add-ons</h3>
+        <p class="text-sm text-gray-600 max-w-2xl mx-auto">
+          Start with <span class="font-semibold">Essentials</span> and light up more power as you grow.
+          All add-ons are <span class="font-semibold">included</span> in <span class="font-semibold">Professional</span>.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-6">
+        <!-- Full Compliance -->
+        <div class="bg-white/90 rounded-2xl border border-hertz-light/60 shadow-sm hover:shadow-md transition-shadow p-5 flex flex-col">
+          <div class="flex items-center mb-3">
+            <div class="w-9 h-9 rounded-full bg-hertz-light/70 flex items-center justify-center mr-3">
+              <i class="fas fa-file-alt text-hertz-dark text-sm"></i>
+            </div>
+            <h4 class="font-semibold text-hertz-primary">Full Compliance</h4>
+          </div>
+          <p class="text-sm text-gray-600 flex-1">
+            1-click packs for BRSR Core, extended ESG disclosures and multi-format packs for boards, investors and regulators.
+          </p>
+          <p class="mt-3 text-xs text-gray-500 italic">
+            Turn your emissions data into ready-to-send compliance artefacts.
+          </p>
+        </div>
+
+        <!-- AI Suite -->
+        <div class="bg-white/90 rounded-2xl border border-hertz-light/60 shadow-sm hover:shadow-md transition-shadow p-5 flex flex-col">
+          <div class="flex items-center mb-3">
+            <div class="w-9 h-9 rounded-full bg-hertz-light/70 flex items-center justify-center mr-3">
+              <i class="fas fa-brain text-hertz-dark text-sm"></i>
+            </div>
+            <h4 class="font-semibold text-hertz-primary">AI Suite</h4>
+          </div>
+          <p class="text-sm text-gray-600 flex-1">
+            AI-assisted validation, anomaly detection and draft narratives for sustainability reports and management commentary.
+          </p>
+          <p class="mt-3 text-xs text-gray-500 italic">
+            Less manual number-crunching, more time for strategy.
+          </p>
+        </div>
+
+        <!-- Supplier Evaluation -->
+        <div class="bg-white/90 rounded-2xl border border-hertz-light/60 shadow-sm hover:shadow-md transition-shadow p-5 flex flex-col">
+          <div class="flex items-center mb-3">
+            <div class="w-9 h-9 rounded-full bg-hertz-light/70 flex items-center justify-center mr-3">
+              <i class="fas fa-users text-hertz-dark text-sm"></i>
+            </div>
+            <h4 class="font-semibold text-hertz-primary">Supplier Evaluation</h4>
+          </div>
+          <p class="text-sm text-gray-600 flex-1">
+            Scope 3 supplier scoring, benchmarking and readiness views for CBAM, CCTS and large buyer programs.
+          </p>
+          <p class="mt-3 text-xs text-gray-500 italic">
+            See which suppliers lift—or drag—your decarbonisation story.
+          </p>
+        </div>
+
+        <!-- NetZero -->
+        <div class="bg-white/90 rounded-2xl border border-hertz-light/60 shadow-sm hover:shadow-md transition-shadow p-5 flex flex-col">
+          <div class="flex items-center mb-3">
+            <div class="w-9 h-9 rounded-full bg-hertz-light/70 flex items-center justify-center mr-3">
+              <i class="fas fa-route text-hertz-dark text-sm"></i>
+            </div>
+            <h4 class="font-semibold text-hertz-primary">NetZero</h4>
+          </div>
+          <p class="text-sm text-gray-600 flex-1">
+            Scenario modelling for reduction levers, targets and pathways aligned with India CCTS and global commitments.
+          </p>
+          <p class="mt-3 text-xs text-gray-500 italic">
+            Translate ambition into quantified, sequenced action.
+          </p>
+        </div>
+
+        <!-- Carbon Marketplace -->
+        <div class="bg-white/90 rounded-2xl border border-hertz-light/60 shadow-sm hover:shadow-md transition-shadow p-5 flex flex-col">
+          <div class="flex items-center mb-3">
+            <div class="w-9 h-9 rounded-full bg-hertz-light/70 flex items-center justify-center mr-3">
+              <i class="fas fa-store text-hertz-dark text-sm"></i>
+            </div>
+            <h4 class="font-semibold text-hertz-primary">Carbon Marketplace</h4>
+          </div>
+          <p class="text-sm text-gray-600 flex-1">
+            Integrated view of carbon credits, projects and transactions for portfolio planning and long-term procurement.
+          </p>
+          <p class="mt-3 text-xs text-gray-500 italic">
+            Bring credits, projects and impact into a single pane of glass.
+          </p>
+        </div>
+
+        <!-- Auditor Pack -->
+        <div class="bg-white/90 rounded-2xl border border-hertz-light/60 shadow-sm hover:shadow-md transition-shadow p-5 flex flex-col">
+          <div class="flex items-center mb-3">
+            <div class="w-9 h-9 rounded-full bg-hertz-light/70 flex items-center justify-center mr-3">
+              <i class="fas fa-search text-hertz-dark text-sm"></i>
+            </div>
+            <h4 class="font-semibold text-hertz-primary">Auditor Pack</h4>
+          </div>
+          <p class="text-sm text-gray-600 flex-1">
+            Evidence trails, sampling support and exports curated for independent assurance and regulator review.
+          </p>
+          <p class="mt-3 text-xs text-gray-500 italic">
+            Reduce audit friction with clean, structured evidence.
+          </p>
+        </div>
+      </div>
+
+      <p class="text-xs text-gray-400 text-center mt-6">
+        Tier structure aligned with pitch deck (Essentials / Professional) and modular add-ons designed for land-and-expand growth.
       </p>
+    </div>
   </div>
 </section>
 
@@ -412,86 +524,91 @@
   </section>
   
   <!-- Architecture -->
-  <section id="architecture" class="py-16 bg-gradient-to-br from-hertz-light/20 to-green-50">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-12">
-        <h2 class="text-3xl lg:text-4xl font-semibold text-gray-900">Microservices Cloud Architecture</h2>
-        <p class="text-lg text-gray-600">Composable services, independent scaling, resilient by design.</p>
+<section id="architecture" class="py-16 bg-gradient-to-br from-hertz-light/20 to-green-50">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-12">
+      <h2 class="text-3xl lg:text-4xl font-semibold text-gray-900">Secure Cloud Architecture</h2>
+      <p class="text-lg text-gray-600">
+        A cloud-native, multi-tenant application with clear separation between API, modules and data—simpler to operate,
+        while ready for enterprise scale.
+      </p>
+    </div>
+
+    <div class="grid lg:grid-cols-2 gap-10 items-center">
+      <!-- Logical architecture sketch -->
+      <div class="bg-white rounded-2xl shadow border border-hertz-light/30 p-6">
+        <svg viewBox="0 0 900 520" class="w-full h-auto" aria-hidden="true">
+          <!-- Edge/API -->
+          <rect x="40" y="30" width="820" height="80" rx="12" fill="#E9F7E8" stroke="#4A7C59"/>
+          <text x="450" y="65" text-anchor="middle" fill="#2F4F3F" font-size="18" font-family="Outfit">
+            Web / API Gateway · Auth · Rate Limiting
+          </text>
+          <text x="450" y="90" text-anchor="middle" fill="#2F4F3F" font-size="12" font-family="Outfit">
+            WAF · TLS termination · Routing
+          </text>
+
+          <!-- Modules row 1 -->
+          <rect x="40" y="140" width="250" height="90" rx="10" fill="#FFFFFF" stroke="#4A7C59"/>
+          <text x="165" y="175" text-anchor="middle" fill="#2F4F3F" font-size="16" font-family="Outfit">Ingestion Hub</text>
+          <text x="165" y="200" text-anchor="middle" fill="#2F4F3F" font-size="12" font-family="Outfit">Connectors · Pipelines</text>
+
+          <rect x="325" y="140" width="250" height="90" rx="10" fill="#FFFFFF" stroke="#4A7C59"/>
+          <text x="450" y="175" text-anchor="middle" fill="#2F4F3F" font-size="16" font-family="Outfit">Validation AI</text>
+          <text x="450" y="200" text-anchor="middle" fill="#2F4F3F" font-size="12" font-family="Outfit">Rules · ML scoring</text>
+
+          <rect x="610" y="140" width="250" height="90" rx="10" fill="#FFFFFF" stroke="#4A7C59"/>
+          <text x="735" y="175" text-anchor="middle" fill="#2F4F3F" font-size="16" font-family="Outfit">Emissions Engine</text>
+          <text x="735" y="200" text-anchor="middle" fill="#2F4F3F" font-size="12" font-family="Outfit">Scope 1 / 2 / 3</text>
+
+          <!-- Modules row 2 -->
+          <rect x="40" y="250" width="250" height="90" rx="10" fill="#FFFFFF" stroke="#4A7C59"/>
+          <text x="165" y="285" text-anchor="middle" fill="#2F4F3F" font-size="16" font-family="Outfit">Compliance &amp; Frameworks</text>
+          <text x="165" y="310" text-anchor="middle" fill="#2F4F3F" font-size="12" font-family="Outfit">BRSR · GreenCo · CSRD</text>
+
+          <rect x="325" y="250" width="250" height="90" rx="10" fill="#FFFFFF" stroke="#4A7C59"/>
+          <text x="450" y="285" text-anchor="middle" fill="#2F4F3F" font-size="16" font-family="Outfit">Supplier &amp; Export</text>
+          <text x="450" y="310" text-anchor="middle" fill="#2F4F3F" font-size="12" font-family="Outfit">CBAM · UK-FTA</text>
+
+          <rect x="610" y="250" width="250" height="90" rx="10" fill="#FFFFFF" stroke="#4A7C59"/>
+          <text x="735" y="285" text-anchor="middle" fill="#2F4F3F" font-size="16" font-family="Outfit">Net-Zero Pathfinder</text>
+          <text x="735" y="310" text-anchor="middle" fill="#2F4F3F" font-size="12" font-family="Outfit">Scenarios · Credits</text>
+
+          <!-- Data layer -->
+          <rect x="40" y="370" width="820" height="100" rx="12" fill="#E9F7E8" stroke="#4A7C59"/>
+          <text x="450" y="405" text-anchor="middle" fill="#2F4F3F" font-size="18" font-family="Outfit">
+            Data Store: Relational DB · Object Storage · Cache
+          </text>
+          <text x="450" y="430" text-anchor="middle" fill="#2F4F3F" font-size="12" font-family="Outfit">
+            Multi-tenant schema · Encryption at rest · Backups &amp; retention
+          </text>
+        </svg>
       </div>
 
-      <div class="grid lg:grid-cols-2 gap-10 items-center">
-        <!-- Simple SVG architecture sketch -->
-        <div class="bg-white rounded-2xl shadow border border-hertz-light/30 p-6">
-          <svg viewBox="0 0 900 520" class="w-full h-auto" aria-hidden="true">
-            <!-- Edge/API -->
-            <rect x="40" y="30" width="820" height="80" rx="12" fill="#E9F7E8" stroke="#4A7C59"/>
-            <text x="450" y="80" text-anchor="middle" fill="#2F4F3F" font-size="18" font-family="Outfit">API Gateway / Auth & Rate Limiting</text>
+      <!-- Architecture copy -->
+      <div>
+        <h3 class="text-xl font-semibold text-gray-900 mb-3">Cloud deployment &amp; security</h3>
+        <ul class="space-y-2 text-gray-700">
+          <li><i class="fa-solid fa-check text-hertz-primary mr-2"></i>Single codebase with modular layers for simpler operations and upgrades</li>
+          <li><i class="fa-solid fa-check text-hertz-primary mr-2"></i>Hardened edge with WAF, auth, rate limiting and API gateway</li>
+          <li><i class="fa-solid fa-check text-hertz-primary mr-2"></i>Encryption in transit &amp; at rest; role-based access and audit logs</li>
+          <li><i class="fa-solid fa-check text-hertz-primary mr-2"></i>Data partitioning to support multi-entity and multi-region reporting</li>
+        </ul>
 
-            <!-- Services row 1 -->
-            <rect x="40" y="140" width="250" height="90" rx="10" fill="#FFFFFF" stroke="#4A7C59"/>
-            <text x="165" y="195" text-anchor="middle" fill="#2F4F3F" font-size="16" font-family="Outfit">Ingestion</text>
+        <h4 class="mt-6 font-semibold text-gray-900">Designed for India &amp; global workflows</h4>
+        <ul class="space-y-2 text-gray-700">
+          <li><i class="fa-solid fa-check text-hertz-primary mr-2"></i>Built to handle plant, supplier and export flows for CBAM / CCTS</li>
+          <li><i class="fa-solid fa-check text-hertz-primary mr-2"></i>Ready for independent assurance and regulator / investor reviews</li>
+        </ul>
 
-            <rect x="325" y="140" width="250" height="90" rx="10" fill="#FFFFFF" stroke="#4A7C59"/>
-            <text x="450" y="195" text-anchor="middle" fill="#2F4F3F" font-size="16" font-family="Outfit">Validation AI</text>
-
-            <rect x="610" y="140" width="250" height="90" rx="10" fill="#FFFFFF" stroke="#4A7C59"/>
-            <text x="735" y="195" text-anchor="middle" fill="#2F4F3F" font-size="16" font-family="Outfit">Emissions Engine</text>
-
-            <!-- Services row 2 -->
-            <rect x="40" y="250" width="250" height="90" rx="10" fill="#FFFFFF" stroke="#4A7C59"/>
-            <text x="165" y="305" text-anchor="middle" fill="#2F4F3F" font-size="16" font-family="Outfit">Compliance Mapper</text>
-
-            <rect x="325" y="250" width="250" height="90" rx="10" fill="#FFFFFF" stroke="#4A7C59"/>
-            <text x="450" y="305" text-anchor="middle" fill="#2F4F3F" font-size="16" font-family="Outfit">Supplier Evaluation</text>
-
-            <rect x="610" y="250" width="250" height="90" rx="10" fill="#FFFFFF" stroke="#4A7C59"/>
-            <text x="735" y="305" text-anchor="middle" fill="#2F4F3F" font-size="16" font-family="Outfit">Net-Zero Pathfinder</text>
-
-            <!-- Data layer -->
-            <rect x="40" y="370" width="820" height="100" rx="12" fill="#E9F7E8" stroke="#4A7C59"/>
-            <text x="450" y="420" text-anchor="middle" fill="#2F4F3F" font-size="18" font-family="Outfit">Data Lake / Warehouse + Message Bus</text>
-            <text x="450" y="445" text-anchor="middle" fill="#2F4F3F" font-size="14" font-family="Outfit">Object storage • Relational DB • Queues/Streams • Caching</text>
-
-            <!-- Arrows -->
-            <line x1="450" y1="110" x2="450" y2="140" stroke="#4A7C59" stroke-width="2"/>
-<!-- NEW: small gap between row-1 and row-2 -->
-<line x1="165" y1="230" x2="165" y2="250" stroke="#4A7C59" stroke-width="1.5" stroke-linecap="round"/>
-<line x1="450" y1="230" x2="450" y2="250" stroke="#4A7C59" stroke-width="1.5" stroke-linecap="round"/>
-<line x1="735" y1="230" x2="735" y2="250" stroke="#4A7C59" stroke-width="1.5" stroke-linecap="round"/>
-
-<!-- NEW: from bottom of row-2 to the data layer -->
-<line x1="165" y1="340" x2="165" y2="370" stroke="#4A7C59" stroke-width="1.5" stroke-linecap="round"/>
-<line x1="450" y1="340" x2="450" y2="370" stroke="#4A7C59" stroke-width="1.5" stroke-linecap="round"/>
-<line x1="735" y1="340" x2="735" y2="370" stroke="#4A7C59" stroke-width="1.5" stroke-linecap="round"/>
-
-            
-          </svg>
-        </div>
-
-        <!-- Pros / Cons -->
-        <div>
-          <h3 class="text-xl font-semibold text-gray-900 mb-3">Why microservices?</h3>
-          <ul class="space-y-2 text-gray-700">
-            <li><i class="fa-solid fa-check text-hertz-primary mr-2"></i> Independent scaling (e.g., Emissions Engine under load)</li>
-            <li><i class="fa-solid fa-check text-hertz-primary mr-2"></i> Fault isolation for higher resilience</li>
-            <li><i class="fa-solid fa-check text-hertz-primary mr-2"></i> Faster, team-level deploys (service ownership)</li>
-            <li><i class="fa-solid fa-check text-hertz-primary mr-2"></i> API-first integrations across the stack</li>
-          </ul>
-          <h4 class="mt-6 font-semibold text-gray-900">Trade-offs</h4>
-          <ul class="space-y-2 text-gray-700">
-            <li><i class="fa-solid fa-circle-exclamation text-amber-500 mr-2"></i> Operational complexity (observability, tracing)</li>
-            <li><i class="fa-solid fa-circle-exclamation text-amber-500 mr-2"></i> Network overhead vs. monolith</li>
-            <li><i class="fa-solid fa-circle-exclamation text-amber-500 mr-2"></i> Requires strong DevOps (CI/CD, IaC)</li>
-          </ul>
-          <div class="mt-6">
-            <a href="#tiers" class="inline-flex items-center bg-hertz-primary text-white px-6 py-3 rounded-lg hover:bg-hertz-dark font-semibold">
-              See what’s included by tier<i class="fa-solid fa-arrow-right ml-2"></i>
-            </a>
-          </div>
+        <div class="mt-6">
+          <a href="#tiers" class="inline-flex items-center bg-hertz-primary text-white px-6 py-3 rounded-lg hover:bg-hertz-dark font-semibold">
+            See what’s included by tier<i class="fa-solid fa-arrow-right ml-2"></i>
+          </a>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
   <!-- CTA -->
   <section class="py-16 bg-gradient-to-r from-hertz-primary to-hertz-dark">
@@ -670,4 +787,5 @@
   
 </body>
 </html>
+
 
