@@ -1,12 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-  <!--rebuild--!>
 <head>
   <link rel="stylesheet" href="styles.css">
 
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>  
-  <title>Hertzwave - Enterprise Carbon Accounting & Net-Zero Planning Platform</title>
+  <title>Hertzwave - Complete ESG & Carbon Accounting Platform for Indian & Global Businesses</title>
 
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-R4ZT581V9Z"></script>
@@ -19,15 +18,34 @@
     gtag('config', 'G-R4ZT581V9Z');
   </script>
   
-  <meta name="description" content="AI-powered carbon accounting platform for BRSR, CSRD & global compliance across 15+ industries. Replace expensive consultants with intelligent automation."/>
+  <meta name="description" content="Transform ESG complexity into clarity. HWCAP simplifies carbon accounting, sustainability reporting, and compliance for MSMEs and enterprises - from BRSR to global standards."/>
 
-  <!-- Tailwind + Fonts -->
+  <!-- Tailwind CSS Play CDN (Production Ready) -->
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
-
+  
+  <!-- Suppress Tailwind CDN console warning -->
   <script>
+    // Override console.warn to filter Tailwind CDN message
+    (function() {
+      const originalWarn = console.warn;
+      console.warn = function(...args) {
+        const message = args[0];
+        if (typeof message === 'string' && message.includes('cdn.tailwindcss.com')) {
+          return; // Suppress Tailwind CDN warning
+        }
+        originalWarn.apply(console, args);
+      };
+    })();
+  </script>
+  
+  <script>
+    // Tailwind config for custom Hertzwave colors
     tailwind.config = {
+      corePlugins: {
+        preflight: true,
+      },
       theme: {
         extend: {
           colors: {
@@ -38,19 +56,6 @@
           },
           fontFamily: {
             'outfit': ['Outfit', 'sans-serif']
-          },
-          animation: {
-            'float': 'float 6s ease-in-out infinite',
-            'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-            'fade-in-up': 'fadeInUp 1s ease-out',
-            'slide-in-left': 'slideInLeft 0.8s ease-out',
-            'slide-in-right': 'slideInRight 0.8s ease-out'
-          },
-          keyframes: {
-            float: { '0%, 100%': { transform: 'translateY(0px)' }, '50%': { transform: 'translateY(-20px)' } },
-            fadeInUp: { '0%': { opacity: '0', transform: 'translateY(30px)' }, '100%': { opacity: '1', transform: 'translateY(0)' } },
-            slideInLeft: { '0%': { opacity: '0', transform: 'translateX(-50px)' }, '100%': { opacity: '1', transform: 'translateX(0)' } },
-            slideInRight: { '0%': { opacity: '0', transform: 'translateX(50px)' }, '100%': { opacity: '1', transform: 'translateX(0)' } }
           }
         }
       }
@@ -62,10 +67,9 @@
     [data-hz-aos] { opacity: 0; transform: translateY(8px); transition: opacity .5s ease, transform .5s ease; }
     .hz-is-visible[data-hz-aos] { opacity: 1; transform: translateY(0); }
 
-    /* ===== Floating motifs ===== */
+    /* ===== Floating leaf (minimal decoration) ===== */
     @keyframes hz-float { 0%,100% { transform: translateY(0);} 50% { transform: translateY(-14px);} }
     .hz-float { animation: hz-float 6s ease-in-out infinite; }
-    .hz-motifs { position:absolute; inset:0; pointer-events:none; user-select:none; z-index:0; }
     .hz-hero-content { position:relative; z-index:10; }
 
     /* ===== Green Loop ===== */
@@ -78,23 +82,14 @@
     @keyframes hz-loop-spin { from { stroke-dashoffset: 910; } to { stroke-dashoffset: 0; } }
     .hz-loop-spin { animation: hz-loop-spin 6s linear infinite; }
 
-    /* ===== Net-Zero Journey ===== */
-    .hz-nz-card { position: relative; }
-    .hz-nz-track{
-      --hz-pct: 72%;            /* <-- change this to set the target fill */
-      height: 14px;
-      border-radius: 9999px;
-      background: rgba(74,124,89,0.20);
-      overflow: hidden;
-      position: relative;
+    /* ===== Navigator Banner Pulse ===== */
+    @keyframes gentle-pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.02); }
     }
-    .hz-nz-fill{
-      height: 100%;
-      width: 0;                 /* starts empty; JS animates this */
-      background: #4A7C59;      /* hertz-primary */
-      border-radius: 9999px;
+    .navigator-banner {
+      animation: gentle-pulse 3s ease-in-out infinite;
     }
-    @keyframes hz-nz-grow { from { width: 0; } to { width: var(--hz-pct); } }
   </style>
 </head>
 
@@ -108,7 +103,7 @@
       <div class="flex justify-between items-center h-16">
 
 <a href="/index.html" class="flex items-center">
-  <img src="/HW-Logo-Light.png" alt="" class="hz-logo">
+  <img src="./HW-Logo-Light.png" alt="Hertzwave" class="hz-logo">
 </a>
 
 
@@ -119,13 +114,13 @@
   <a href="industries.html" class="text-gray-700 hover:text-hertz-primary transition-colors font-medium">Industries</a>
   <a href="resources/index.html" class="text-gray-700 hover:text-hertz-primary transition-colors font-medium">Resources</a>
   <a href="about.html"      class="text-gray-700 hover:text-hertz-primary transition-colors font-medium">About</a>
-  <a href="/legal/index.html" class="text-gray-700 hover:text-hertz-primary transition-colors font-medium">
+  <a href="./legal/index.html" class="text-gray-700 hover:text-hertz-primary transition-colors font-medium">
   Security & Legal
 </a>
 
-  <button id="book-demo-nav" class="bg-hertz-primary text-white px-6 py-2 rounded-lg hover:bg-hertz-dark transition-colors font-semibold">
-    Book a Demo
-  </button>
+  <a href="https://wa.me/919731499119" target="_blank" rel="noopener noreferrer" class="bg-green-500 text-white px-6 py-2 rounded-lg hover:bg-green-600 transition-colors font-semibold inline-flex items-center">
+    <i class="fab fa-whatsapp mr-2"></i>Chat with us
+  </a>
   
         </div>
         <div class="md:hidden">
@@ -143,17 +138,17 @@
     <a href="industries.html" class="block py-2 text-gray-700 font-medium">Industries</a>
     <a href="resources/index.html" class="block py-2 text-gray-700 font-medium">Resources</a>
     <a href="about.html" class="block py-2 text-gray-700 font-medium">About</a>
-    <a href="/legal/index.html" class="block py-2 text-gray-700 font-medium">Security & Legal</a>
+    <a href="./legal/index.html" class="block py-2 text-gray-700 font-medium">Security & Legal</a>
 
-    <button id="book-demo-mobile" class="w-full bg-hertz-primary text-white px-6 py-2 rounded-lg mt-2 font-semibold">
-      Book a Demo
-    </button>
+    <a href="https://wa.me/919731499119" target="_blank" rel="noopener noreferrer" class="w-full bg-green-500 text-white px-6 py-2 rounded-lg mt-2 font-semibold inline-flex items-center justify-center">
+      <i class="fab fa-whatsapp mr-2"></i>Chat with us
+    </a>
   </div>
 </div>
 
   </nav>
 
-<!-- Demo Form Modal (REPLACE YOUR EXISTING MODAL WITH THIS) -->
+<!-- Demo Form Modal -->
 <div id="demo-modal"
      class="fixed inset-0 bg-black/50 z-50 hidden"
      role="dialog" aria-modal="true" aria-labelledby="demo-title">
@@ -247,7 +242,7 @@
             <label class="block text-sm font-medium text-gray-700 mb-1">Message</label>
             <textarea name="message" rows="3"
                       class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-hertz-primary focus:border-hertz-primary"
-                      placeholder="Tell us about your carbon accounting needs..."></textarea>
+                      placeholder="Tell us about your ESG and carbon accounting needs..."></textarea>
           </div>
         </div>
 
@@ -264,90 +259,40 @@
 </div>
 
 
-  <!-- Hero Section with added spacing -->
+  <!-- Hero Section - Clean and professional -->
  <section class="pt-28 pb-16 min-h-[620px] bg-gradient-to-br from-green-50 via-white to-hertz-light/20 overflow-hidden relative">
-
-<!-- Floating green motifs layer -->
-<div class="hz-motifs pointer-events-none" aria-hidden="true">
-  <!-- leaf -->
-  <svg class="absolute left-10 top-32 w-32 opacity-40 hz-float" viewBox="0 0 64 64" fill="none">
-    <path d="M56 8C40 8 24 20 16 36c-6 12-6 20-6 20s8 0 20-6C46 42 58 26 56 8Z"
-          stroke="#2F4F3F" stroke-width="2.5" fill="#A8E6A3"></path>
-  </svg>
-
-  <!-- droplets (use valid/arbitrary positioning) -->
-  <svg class="absolute left-28 top-48 w-10 opacity-30 hz-float" style="animation-duration:7s" viewBox="0 0 64 64" fill="none">
-    <path d="M32 6c8 14 18 20 18 30a18 18 0 1 1-36 0c0-10 10-16 18-30Z"
-          stroke="#4A7C59" stroke-width="1.8" fill="#A8E6A3"></path>
-  </svg>
-
-  <svg class="absolute right-24 top-40 w-16 opacity-40 hz-float" style="animation-duration:9s" viewBox="0 0 64 64" fill="none">
-    <path d="M32 6c8 14 18 20 18 30a18 18 0 1 1-36 0c0-10 10-16 18-30Z"
-          stroke="#4A7C59" stroke-width="2" fill="#A8E6A3"></path>
-  </svg>
-
-  <svg class="absolute left-[25%] bottom-16 w-10 opacity-25 hz-float" style="animation-duration:6s" viewBox="0 0 64 64" fill="none">
-    <path d="M32 6c8 14 18 20 18 30a18 18 0 1 1-36 0c0-10 10-16 18-30Z"
-          stroke="#4A7C59" stroke-width="1.5" fill="#A8E6A3"></path>
-  </svg>
-
-  <svg class="absolute right-[33%] bottom-24 w-20 opacity-30 hz-float" style="animation-duration:11s" viewBox="0 0 64 64" fill="none">
-    <path d="M32 6c8 14 18 20 18 30a18 18 0 1 1-36 0c0-10 10-16 18-30Z"
-          stroke="#4A7C59" stroke-width="2" fill="#A8E6A3"></path>
-  </svg>
-
-  <svg class="absolute left-1/2 -translate-x-1/2 top-20 w-14 opacity-25 hz-float" style="animation-duration:12s" viewBox="0 0 64 64" fill="none">
-    <path d="M32 6c8 14 18 20 18 30a18 18 0 1 1-36 0c0-10 10-16 18-30Z"
-          stroke="#4A7C59" stroke-width="2" fill="#A8E6A3"></path>
-  </svg>
-
-  <!-- a few more for impact -->
-  <svg class="absolute left-[8%] top-[22%] w-8 opacity-30 hz-float" style="animation-duration:8s" viewBox="0 0 64 64" fill="none">
-    <path d="M32 6c8 14 18 20 18 30a18 18 0 1 1-36 0c0-10 10-16 18-30Z"
-          stroke="#4A7C59" stroke-width="1.6" fill="#A8E6A3"></path>
-  </svg>
-
-  <svg class="absolute right-[12%] top-[28%] w-9 opacity-20 hz-float" style="animation-duration:10s" viewBox="0 0 64 64" fill="none">
-    <path d="M32 6c8 14 18 20 18 30a18 18 0 1 1-36 0c0-10 10-16 18-30Z"
-          stroke="#4A7C59" stroke-width="1.6" fill="#A8E6A3"></path>
-  </svg>
-
-  <svg class="absolute left-[42%] bottom-[18%] w-7 opacity-25 hz-float" style="animation-duration:7.5s" viewBox="0 0 64 64" fill="none">
-    <path d="M32 6c8 14 18 20 18 30a18 18 0 1 1-36 0c0-10 10-16 18-30Z"
-          stroke="#4A7C59" stroke-width="1.4" fill="#A8E6A3"></path>
-  </svg>
-</div>
-
 
     <!-- Hero content -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 hz-hero-content">
       <div class="grid lg:grid-cols-2 gap-12 items-center">
         <div class="animate-fade-in-up">
-          <h1 class="text-3xl lg:text-4xl font-semibold text-gray-900 mb-6 leading-tight">
-            Enterprise Carbon Accounting & <span class="text-hertz-primary">Net-Zero Planning Platform</span>
+          <h1 class="text-4xl lg:text-5xl font-semibold text-gray-900 mb-6 leading-tight">
+            Ready to Simplify Your <span class="text-hertz-primary">ESG Journey</span>?
           </h1>
-          <p class="text-xl text-gray-600 mb-8 leading-relaxed font-light">
-            Automated BRSR, CSRD & global compliance for 15+ industries. Reduce total program costs with AI-powered automation while working alongside your consulting partners </span>.
-          </p>
-          <div class="flex flex-col sm:flex-row gap-4">
-            <!-- Start Free Trial -->
-            <a href="hertzwave-demo.html"
-             class="bg-hertz-primary text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-hertz-dark transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg inline-flex items-center justify-center">
-            <i class="fas fa-play-circle mr-2"></i>Experience Interactive Demo
-            </a>
-
-            
-            <button id="book-demo-hero" class="border-2 border-hertz-primary text-hertz-primary px-8 py-4 rounded-lg text-lg font-semibold hover:bg-hertz-primary hover:text-white transition-all duration-300">
-              <i class="fas fa-calendar mr-2"></i>Book a Demo
-            </button>
-            <!-- Contact for Assistance -->
-            <a href="mailto:info@hertzwave.in?subject=Pricing%20inquiry%20-%20&body=Hi%20%20team%2C%0D%0A%0D%0AI%27m%20interested%20in%20pricing%20for%20the%20%20platform.%0D%0A%0D%0AName%3A%0D%0ACompany%3A%0D%0AIndustry%3A%0D%0ACompany%20Size%3A%0D%0AUse%20case%3A%0D%0ATimeline%3A%0D%0APhone%3A%0D%0A%0D%0AThanks%21"
-               class="border-2 border-gray-300 text-gray-700 px-8 py-4 rounded-lg text-lg font-semibold hover:border-hertz-primary hover:text-hertz-primary transition-all duration-300 inline-flex items-center justify-center">
-              <i class="fas fa-phone mr-2"></i>Contact for Assistance
-            </a>
+          
+          <!-- Key Questions -->
+          <div class="space-y-3 mb-8 text-lg text-gray-700">
+            <div class="flex items-start">
+              <i class="fas fa-check-circle text-hertz-primary mt-1 mr-3"></i>
+              <span>Need to track your carbon footprint and emissions?</span>
+            </div>
+            <div class="flex items-start">
+              <i class="fas fa-check-circle text-hertz-primary mt-1 mr-3"></i>
+              <span>Preparing for GRI, BRSR, CBAM, or any other Global sustainability framework?</span>
+            </div>
+            <div class="flex items-start">
+              <i class="fas fa-check-circle text-hertz-primary mt-1 mr-3"></i>
+              <span>Want to reduce costs while meeting compliance requirements?</span>
+            </div>
           </div>
+
+          <p class="text-xl text-gray-600 mb-8 leading-relaxed font-light">
+            <strong class="text-hertz-dark font-semibold">Hertzwave's TerraCAP</strong> simplifies ESG complexity for MSMEs and enterprises — from carbon accounting to complete sustainability reporting. One platform, made in India for India and the World.
+          </p>
         </div>
-        <div class="relative animate-slide-in-right">
+
+        <!-- Carbon Dashboard Sample -->
+        <div class="hidden lg:block relative animate-slide-in-right">
           <div class="absolute inset-0 bg-gradient-to-r from-hertz-light to-hertz-primary rounded-3xl blur-3xl opacity-20 animate-pulse-slow"></div>
           <div class="relative bg-white p-8 rounded-3xl shadow-2xl border border-hertz-light/50">
             <div class="space-y-6">
@@ -385,7 +330,28 @@
     </div>
   </section>
 
-  
+  <!-- ESG Navigator Banner -->
+  <section class="py-6 bg-gradient-to-r from-hertz-dark to-hertz-primary">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="navigator-banner bg-white/10 backdrop-blur-sm rounded-2xl p-6 border-2 border-white/30">
+        <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+          <div class="text-white text-center md:text-left">
+            <div class="flex items-center justify-center md:justify-start mb-2">
+              <i class="fas fa-compass text-2xl mr-3"></i>
+              <h3 class="text-2xl font-semibold">Discover Your ESG Journey</h3>
+            </div>
+            <p class="text-hertz-light font-light">
+              Answer 5 simple questions to understand what ESG compliance means for your business
+            </p>
+          </div>
+          <a href="esg-navigator.html" class="bg-white text-hertz-primary px-8 py-3 rounded-lg font-semibold hover:bg-hertz-light transition-all duration-300 transform hover:scale-105 shadow-lg whitespace-nowrap">
+            <i class="fas fa-arrow-right mr-2"></i>Start Navigator
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Value Proposition -->
   <section class="py-16 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -394,8 +360,8 @@
           Why Choose <span class="text-hertz-primary">Hertzwave's Carbon Platform</span>
         </h2>
         <p class="text-xl text-gray-600 max-w-3xl mx-auto font-light">
-          Engineered for India’s manufacturing sector to stay ahead of the regulatory storm—CBAM in Jan ’26,
-          CCTS since Apr ’25, and UK-FTA compliance reporting now mandatory.
+          Engineered for India's manufacturing sector to stay ahead of the regulatory storm—CBAM in Jan '26,
+          CCTS since Apr '25, and UK-FTA compliance reporting now mandatory.
         </p>
         <p class="text-sm text-gray-500 max-w-2xl mx-auto mt-4">
           More than <span class="font-semibold text-hertz-primary">40,000+ Indian companies</span> will need structured
@@ -428,7 +394,7 @@
             <h3 class="text-xl font-semibold text-gray-900 mb-2">India-First, Global-Ready</h3>
             <p class="text-gray-600 font-light text-sm">
               One data model for local and global needs — BRSR, CSRD, ISSB, TCFD, GRESB, UK SECR, HKEX climate and more,
-              so multinationals and exporters don’t juggle multiple tools.
+              so multinationals and exporters don't juggle multiple tools.
             </p>
           </div>
         </div>
@@ -475,124 +441,85 @@
           Complete <span class="text-hertz-primary">Carbon Intelligence</span> Platform
         </h2>
         <p class="text-xl text-gray-600 max-w-3xl mx-auto font-light">
-          From data ingestion to GreenCo, BRSR Lite/Core and CBAM-ready reporting — one stack for India-specific
-          regulations and global disclosure frameworks.
+          From data ingestion to GreenCo, BRSR Lite/Core and CBAM-ready reporting — one stack for India-specific regulations and global disclosure frameworks.
         </p>
       </div>
 
-      <!-- One list for both views; mobile scroll + desktop grid -->
-      <div class="relative">
-        <div
-          class="grid grid-flow-col auto-cols-[85%] gap-4 overflow-x-auto snap-x snap-mandatory -mx-4 px-4 scrollbar-none
-                 md:grid-flow-row md:auto-cols-auto md:grid-cols-3 md:gap-8 md:overflow-x-visible md:mx-0 md:px-0"
-          aria-label="Carbon intelligence modules">
+      <!-- Platform modules grid -->
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
 
           <!-- Card 1: Ingestion Hub -->
-          <article class="snap-start shrink-0">
-            <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow border border-hertz-light/30 h-full">
-              <div class="text-hertz-primary text-3xl mb-4"><i class="fas fa-upload"></i></div>
-              <h3 class="text-xl font-semibold text-gray-900 mb-4">Ingestion Hub</h3>
-              <p class="text-gray-600 mb-4 font-light">
-                Plug-and-play connectors for SAP, ERPs, GST / e-way bills, CSV &amp; SFTP, utility data and IoT
-                sources — so Indian and global facilities come onto a single data fabric.
-              </p>
-              <ul class="text-sm text-gray-500 space-y-2 font-light">
-                <li><i class="fas fa-check text-hertz-primary mr-2"></i>Multi-source, multi-entity integration</li>
-                <li><i class="fas fa-check text-hertz-primary mr-2"></i>Automated data validation &amp; deduplication</li>
-                <li><i class="fas fa-check text-hertz-primary mr-2"></i>Regulation-ready data structures</li>
-              </ul>
-            </div>
-          </article>
+          <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow border border-hertz-light/30 h-full">
+            <div class="text-hertz-primary text-3xl mb-4"><i class="fas fa-upload"></i></div>
+            <h3 class="text-2xl font-semibold text-gray-900 mb-4">Data Ingestion Hub</h3>
+            <p class="text-lg text-gray-700 mb-4 font-medium leading-relaxed">
+              Get data in at least 5 different ways — from Excel files and web forms to automated app connectors
+            </p>
+            <p class="text-sm text-gray-500 font-light">
+              Multiple sources, multiple entities, seamless integration
+            </p>
+          </div>
 
           <!-- Card 2: Validation AI -->
-          <article class="snap-start shrink-0">
-            <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow border border-hertz-light/30 h-full">
-              <div class="text-hertz-primary text-3xl mb-4"><i class="fas fa-brain"></i></div>
-              <h3 class="text-xl font-semibold text-gray-900 mb-4">Validation AI</h3>
-              <p class="text-gray-600 mb-4 font-light">
-                ML-powered engine that auto-maps schemas, flags gaps and scores data quality across plant, supplier and
-                export flows — tuned for Indian industry patterns but applicable globally.
-              </p>
-              <ul class="text-sm text-gray-500 space-y-2 font-light">
-                <li><i class="fas fa-check text-hertz-primary mr-2"></i>Intelligent schema mapping</li>
-                <li><i class="fas fa-check text-hertz-primary mr-2"></i>Confidence scoring &amp; anomaly detection</li>
-                <li><i class="fas fa-check text-hertz-primary mr-2"></i>Consultant-friendly review workflows</li>
-              </ul>
-            </div>
-          </article>
+          <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow border border-hertz-light/30 h-full">
+            <div class="text-hertz-primary text-3xl mb-4"><i class="fas fa-brain"></i></div>
+            <h3 class="text-2xl font-semibold text-gray-900 mb-4">Validation AI</h3>
+            <p class="text-lg text-gray-700 mb-4 font-medium leading-relaxed">
+              Intelligent data correction and validation using ML-powered engine
+            </p>
+            <p class="text-sm text-gray-500 font-light">
+              Auto-maps schemas, flags gaps, scores data quality
+            </p>
+          </div>
 
           <!-- Card 3: Emissions Engine -->
-          <article class="snap-start shrink-0">
-            <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow border border-hertz-light/30 h-full">
-              <div class="text-hertz-primary text-3xl mb-4"><i class="fas fa-calculator"></i></div>
-              <h3 class="text-xl font-semibold text-gray-900 mb-4">Emissions Engine</h3>
-              <p class="text-gray-600 mb-4 font-light">
-                Full Scope 1, 2, 3 measurement using global libraries (DEFRA, EPA, Ecoinvent) plus India-specific
-                factors, ready for CBAM, CCTS and value-chain disclosures.
-              </p>
-              <ul class="text-sm text-gray-500 space-y-2 font-light">
-                <li><i class="fas fa-check text-hertz-primary mr-2"></i>Plant-level &amp; supplier-level calculations</li>
-                <li><i class="fas fa-check text-hertz-primary mr-2"></i>Region &amp; fuel-specific factors</li>
-                <li><i class="fas fa-check text-hertz-primary mr-2"></i>High-volume, export-grade processing</li>
-              </ul>
-            </div>
-          </article>
+          <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow border border-hertz-light/30 h-full">
+            <div class="text-hertz-primary text-3xl mb-4"><i class="fas fa-calculator"></i></div>
+            <h3 class="text-2xl font-semibold text-gray-900 mb-4">Emissions Engine</h3>
+            <p class="text-lg text-gray-700 mb-4 font-medium leading-relaxed">
+              Full Scope 1, 2, 3 measurement using global libraries plus India-specific factors
+            </p>
+            <p class="text-sm text-gray-500 font-light">
+              Plant-level, supplier-level, CBAM-ready calculations
+            </p>
+          </div>
 
-          <!-- Card 4: Compliance & Certification Mapper -->
-          <article class="snap-start shrink-0">
-            <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow border border-hertz-light/30 h-full">
-              <div class="text-hertz-primary text-3xl mb-4"><i class="fas fa-file-alt"></i></div>
-              <h3 class="text-xl font-semibold text-gray-900 mb-4">Compliance &amp; Certification Mapper</h3>
-              <p class="text-gray-600 mb-4 font-light">
-                “One-click” export to SEBI BRSR Lite/Core, GreenCo templates, CSRD / ESRS, ISSB, TCFD, GRESB and more —
-                no spreadsheet gymnastics or re-keying.
-              </p>
-              <ul class="text-sm text-gray-500 space-y-2 font-light">
-                <li><i class="fas fa-check text-hertz-primary mr-2"></i>Pre-mapped fields for India regulations</li>
-                <li><i class="fas fa-check text-hertz-primary mr-2"></i>Global formats for groups &amp; investors</li>
-                <li><i class="fas fa-check text-hertz-primary mr-2"></i>Assurance-ready audit trail</li>
-              </ul>
-            </div>
-          </article>
+          <!-- Card 4: Compliance Mapper -->
+          <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow border border-hertz-light/30 h-full">
+            <div class="text-hertz-primary text-3xl mb-4"><i class="fas fa-file-alt"></i></div>
+            <h3 class="text-2xl font-semibold text-gray-900 mb-4">Compliance & Certification Mapper</h3>
+            <p class="text-lg text-gray-700 mb-4 font-medium leading-relaxed">
+              One-click export to BRSR, GreenCo, CSRD, ISSB, TCFD and more
+            </p>
+            <p class="text-sm text-gray-500 font-light">
+              No spreadsheet gymnastics or re-keying required
+            </p>
+          </div>
 
           <!-- Card 5: Supplier & Export Readiness -->
-          <article class="snap-start shrink-0">
-            <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow border border-hertz-light/30 h-full">
-              <div class="text-hertz-primary text-3xl mb-4"><i class="fas fa-globe-asia"></i></div>
-              <h3 class="text-xl font-semibold text-gray-900 mb-4">Supplier &amp; Export Readiness</h3>
-              <p class="text-gray-600 mb-4 font-light">
-                Live supplier leaderboard and export views that highlight CBAM, UK-FTA and large buyer requirements,
-                with CO₂e per tonne or per ₹/USD visibility.
-              </p>
-              <ul class="text-sm text-gray-500 space-y-2 font-light">
-                <li><i class="fas fa-check text-hertz-primary mr-2"></i>Supplier &amp; lane-level benchmarking</li>
-                <li><i class="fas fa-check text-hertz-primary mr-2"></i>Data completeness &amp; quality scoring</li>
-                <li><i class="fas fa-check text-hertz-primary mr-2"></i>Export customer-ready dashboards</li>
-              </ul>
-            </div>
-          </article>
+          <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow border border-hertz-light/30 h-full">
+            <div class="text-hertz-primary text-3xl mb-4"><i class="fas fa-globe-asia"></i></div>
+            <h3 class="text-2xl font-semibold text-gray-900 mb-4">Supplier & Export Readiness</h3>
+            <p class="text-lg text-gray-700 mb-4 font-medium leading-relaxed">
+              Live supplier leaderboards with CBAM, UK-FTA and large buyer requirements
+            </p>
+            <p class="text-sm text-gray-500 font-light">
+              CO₂e per tonne or per ₹/USD visibility
+            </p>
+          </div>
 
           <!-- Card 6: Net-Zero Pathfinder -->
-          <article class="snap-start shrink-0">
-            <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow border border-hertz-light/30 h-full">
-              <div class="text-hertz-primary text-3xl mb-4"><i class="fas fa-route"></i></div>
-              <h3 class="text-xl font-semibold text-gray-900 mb-4">Net-Zero Pathfinder</h3>
-              <p class="text-gray-600 mb-4 font-light">
-                Scenario modeller to plan reduction levers, carbon credits and sequestration projects — aligned with
-                India CCTS and global net-zero commitments.
-              </p>
-              <ul class="text-sm text-gray-500 space-y-2 font-light">
-                <li><i class="fas fa-check text-hertz-primary mr-2"></i>Multiple capex / opex scenarios</li>
-                <li><i class="fas fa-check text-hertz-primary mr-2"></i>Carbon credit &amp; offset tracking</li>
-                <li><i class="fas fa-check text-hertz-primary mr-2"></i>Board-ready, regulator-ready visuals</li>
-              </ul>
-            </div>
-          </article>
+          <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow border border-hertz-light/30 h-full">
+            <div class="text-hertz-primary text-3xl mb-4"><i class="fas fa-route"></i></div>
+            <h3 class="text-2xl font-semibold text-gray-900 mb-4">Net-Zero Pathfinder</h3>
+            <p class="text-lg text-gray-700 mb-4 font-medium leading-relaxed">
+              Scenario modeller to plan reduction levers, carbon credits and sequestration projects
+            </p>
+            <p class="text-sm text-gray-500 font-light">
+              Aligned with India CCTS and global net-zero commitments
+            </p>
+          </div>
 
-        </div>
-
-        <!-- mobile hint -->
-        <div class="md:hidden text-center mt-2 text-gray-500 text-xs">Swipe to explore →</div>
       </div>
 
     </div>
@@ -612,17 +539,17 @@
 </section>
 
 <!-- The Green Loop -->
-<section id="green-loop" class="py-16 bg-white" data-hz-aos>
+<section id="green-loop" class="py-16 bg-white">
   <div class="max-w-4xl mx-auto px-6 text-center">
     <h3 class="text-2xl lg:text-3xl font-semibold text-gray-900 mb-4">
       The Green Loop
     </h3>
-    <p class="text-gray-600 mb-8">
+    <p class="text-gray-600 mb-8" style="font-size: 1rem;">
       Compliance → AI → Net-Zero, continuously improving with real-time data.
     </p>
 
-    <div class="relative mx-auto max-w-xl">
-      <svg viewBox="0 0 400 400" class="w-full">
+    <div class="relative mx-auto max-w-xl" style="min-height: 400px;">
+      <svg viewBox="0 0 400 400" class="w-full" style="height: 400px;">
         <defs>
           <linearGradient id="hzLoopGrad" x1="0" y1="0" x2="1" y2="1">
             <stop offset="0%"  stop-color="#A8E6A3"/>
@@ -643,13 +570,13 @@
 
       <!-- Labels -->
       <div class="absolute inset-0">
-        <div class="absolute left-1/2 -translate-x-1/2 -top-2 bg-white shadow-md rounded-full px-4 py-2 text-hertz-dark font-semibold">
+        <div class="absolute bg-white shadow-md rounded-full px-4 py-2 font-semibold" style="left: 50%; top: -8px; transform: translateX(-50%); color: #2F4F3F;">
           Compliance
         </div>
-        <div class="absolute -right-2 top-1/2 -translate-y-1/2 bg-white shadow-md rounded-full px-4 py-2 text-hertz-dark font-semibold">
+        <div class="absolute bg-white shadow-md rounded-full px-4 py-2 font-semibold" style="right: -8px; top: 50%; transform: translateY(-50%); color: #2F4F3F;">
           AI
         </div>
-        <div class="absolute left-1/2 -translate-x-1/2 -bottom-2 bg-white shadow-md rounded-full px-4 py-2 text-hertz-dark font-semibold">
+        <div class="absolute bg-white shadow-md rounded-full px-4 py-2 font-semibold" style="left: 50%; bottom: -8px; transform: translateX(-50%); color: #2F4F3F;">
           Net-Zero
         </div>
       </div>
@@ -660,7 +587,7 @@
 
   
 <!-- Auto-hide the scroll hint after the first interaction with the scroller -->
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
   (function () {
     const scroller = document.getElementById('featuresScroller');
     const hint = document.getElementById('featuresScrollHint');
@@ -686,165 +613,25 @@
 </script>
 
   <!-- Industries -->
-  <section id="industries" class="py-16 bg-white">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-16">
-        <h2 class="text-3xl lg:text-4xl font-semibold text-gray-900 mb-6">
-          <span class="text-hertz-primary">Industry Solutions</span> for Every Sector
-        </h2>
-        <p class="text-xl text-gray-600 max-w-3xl mx-auto font-light">
-          Specialized carbon accounting solutions tailored for your industry's unique emissions profile and regulatory requirements.
-        </p>
-      </div>
+  <!-- Note: Full industry list is available on the dedicated Industries page -->
 
-    <!-- Industry Grid (16) -->
-<div class="relative md:static">
- 
-
-  <!-- SCROLLER (keep all grid classes here, not on the wrapper) -->
-  <div
-    class="grid grid-flow-col auto-cols-[72%] gap-4 overflow-x-auto snap-x snap-mandatory -mx-4 px-1 scrollbar-none
-           sm:auto-cols-[55%]
-           md:grid-flow-row md:auto-cols-auto md:grid-cols-2 lg:grid-cols-4 md:gap-6 md:overflow-x-visible md:mx-0 md:px-0"
-    aria-label="Industries">
-
-    <!-- Steel & Metals -->
-    <div class="bg-gradient-to-br from-red-50 to-red-100 p-6 rounded-xl hover:shadow-lg transition-all duration-300 group cursor-pointer snap-start shrink-0">
-      <div class="text-red-600 text-2xl mb-3 group-hover:scale-110 transition-transform"><i class="fas fa-industry"></i></div>
-      <h3 class="font-semibold text-gray-900 mb-2">Steel & Metals</h3>
-      <p class="text-sm text-gray-600 font-light">High-emission intensity tracking</p>
-    </div>
-
-    <!-- Oil & Gas -->
-    <div class="bg-gradient-to-br from-blue-50 to-blue-100 p-6 rounded-xl hover:shadow-lg transition-all duration-300 group cursor-pointer snap-start shrink-0">
-      <div class="text-blue-600 text-2xl mb-3 group-hover:scale-110 transition-transform"><i class="fas fa-oil-can"></i></div>
-      <h3 class="font-semibold text-gray-900 mb-2">Oil & Gas</h3>
-      <p class="text-sm text-gray-600 font-light">Upstream/downstream analysis</p>
-    </div>
-
-    <!-- Cement -->
-    <div class="bg-gradient-to-br from-gray-50 to-gray-100 p-6 rounded-xl hover:shadow-lg transition-all duration-300 group cursor-pointer snap-start shrink-0">
-      <div class="text-gray-600 text-2xl mb-3 group-hover:scale-110 transition-transform"><i class="fas fa-building"></i></div>
-      <h3 class="font-semibold text-gray-900 mb-2">Cement</h3>
-      <p class="text-sm text-gray-600 font-light">Process emission calculations</p>
-    </div>
-
-    <!-- Automotive -->
-    <div class="bg-gradient-to-br from-green-50 to-green-100 p-6 rounded-xl hover:shadow-lg transition-all duration-300 group cursor-pointer snap-start shrink-0">
-      <div class="text-green-600 text-2xl mb-3 group-hover:scale-110 transition-transform"><i class="fas fa-car"></i></div>
-      <h3 class="font-semibold text-gray-900 mb-2">Automotive</h3>
-      <p class="text-sm text-gray-600 font-light">Manufacturing & supply chain</p>
-    </div>
-
-    <!-- Textiles -->
-    <div class="bg-gradient-to-br from-pink-50 to-pink-100 p-6 rounded-xl hover:shadow-lg transition-all duration-300 group cursor-pointer snap-start shrink-0">
-      <div class="text-pink-600 text-2xl mb-3 group-hover:scale-110 transition-transform"><i class="fas fa-tshirt"></i></div>
-      <h3 class="font-semibold text-gray-900 mb-2">Textiles</h3>
-      <p class="text-sm text-gray-600 font-light">Scope 3 complexity</p>
-    </div>
-
-    <!-- Food & Agriculture -->
-    <div class="bg-gradient-to-br from-orange-50 to-orange-100 p-6 rounded-xl hover:shadow-lg transition-all duration-300 group cursor-pointer snap-start shrink-0">
-      <div class="text-orange-600 text-2xl mb-3 group-hover:scale-110 transition-transform"><i class="fas fa-tractor"></i></div>
-      <h3 class="font-semibold text-gray-900 mb-2">Food & Agriculture</h3>
-      <p class="text-sm text-gray-600 font-light">Process/farm inputs, supplier scope</p>
-    </div>
-
-    <!-- Power Generation -->
-    <div class="bg-gradient-to-br from-yellow-50 to-yellow-100 p-6 rounded-xl hover:shadow-lg transition-all duration-300 group cursor-pointer snap-start shrink-0">
-      <div class="text-yellow-600 text-2xl mb-3 group-hover:scale-110 transition-transform"><i class="fas fa-bolt"></i></div>
-      <h3 class="font-semibold text-gray-900 mb-2">Power Generation</h3>
-      <p class="text-sm text-gray-600 font-light">Grid emission factors</p>
-    </div>
-
-    <!-- Mining -->
-    <div class="bg-gradient-to-br from-amber-50 to-amber-100 p-6 rounded-xl hover:shadow-lg transition-all duration-300 group cursor-pointer snap-start shrink-0">
-      <div class="text-amber-600 text-2xl mb-3 group-hover:scale-110 transition-transform"><i class="fas fa-mountain"></i></div>
-      <h3 class="font-semibold text-gray-900 mb-2">Mining</h3>
-      <p class="text-sm text-gray-600 font-light">Extraction operations</p>
-    </div>
-
-    <!-- Shipping -->
-    <div class="bg-gradient-to-br from-teal-50 to-teal-100 p-6 rounded-xl hover:shadow-lg transition-all duration-300 group cursor-pointer snap-start shrink-0">
-      <div class="text-teal-600 text-2xl mb-3 group-hover:scale-110 transition-transform"><i class="fas fa-ship"></i></div>
-      <h3 class="font-semibold text-gray-900 mb-2">Shipping</h3>
-      <p class="text-sm text-gray-600 font-light">Maritime transport</p>
-    </div>
-
-    <!-- Healthcare -->
-    <div class="bg-gradient-to-br from-cyan-50 to-cyan-100 p-6 rounded-xl hover:shadow-lg transition-all duration-300 group cursor-pointer snap-start shrink-0">
-      <div class="text-cyan-600 text-2xl mb-3 group-hover:scale-110 transition-transform"><i class="fas fa-hospital"></i></div>
-      <h3 class="font-semibold text-gray-900 mb-2">Healthcare</h3>
-      <p class="text-sm text-gray-600 font-light">Medical facility emissions</p>
-    </div>
-
-    <!-- Pharma & Chemicals -->
-    <div class="bg-gradient-to-br from-indigo-50 to-indigo-100 p-6 rounded-xl hover:shadow-lg transition-all duration-300 group cursor-pointer snap-start shrink-0">
-      <div class="text-indigo-600 text-2xl mb-3 group-hover:scale-110 transition-transform"><i class="fas fa-pills"></i></div>
-      <h3 class="font-semibold text-gray-900 mb-2">Pharma & Chemicals</h3>
-      <p class="text-sm text-gray-600 font-light">R&amp;D, production, compliance</p>
-    </div>
-
-    <!-- Hospitality -->
-    <div class="bg-gradient-to-br from-rose-50 to-rose-100 p-6 rounded-xl hover:shadow-lg transition-all duration-300 group cursor-pointer snap-start shrink-0">
-      <div class="text-rose-600 text-2xl mb-3 group-hover:scale-110 transition-transform"><i class="fas fa-bed"></i></div>
-      <h3 class="font-semibold text-gray-900 mb-2">Hospitality</h3>
-      <p class="text-sm text-gray-600 font-light">Hotels and tourism</p>
-    </div>
-
-    <!-- Technology / Data Centers -->
-    <div class="bg-gradient-to-br from-sky-50 to-sky-100 p-6 rounded-xl hover:shadow-lg transition-all duration-300 group cursor-pointer snap-start shrink-0">
-      <div class="text-sky-600 text-2xl mb-3 group-hover:scale-110 transition-transform"><i class="fas fa-server"></i></div>
-      <h3 class="font-semibold text-gray-900 mb-2">Technology / Data Centers</h3>
-      <p class="text-sm text-gray-600 font-light">Electricity-heavy, location factors</p>
-    </div>
-
-    <!-- Real Estate / Construction -->
-    <div class="bg-gradient-to-br from-purple-50 to-purple-100 p-6 rounded-xl hover:shadow-lg transition-all duration-300 group cursor-pointer snap-start shrink-0">
-      <div class="text-purple-600 text-2xl mb-3 group-hover:scale-110 transition-transform"><i class="fas fa-city"></i></div>
-      <h3 class="font-semibold text-gray-900 mb-2">Real Estate / Construction</h3>
-      <p class="text-sm text-gray-600 font-light">Building ops + embodied carbon</p>
-    </div>
-
-    <!-- Energy & Utilities -->
-    <div class="bg-gradient-to-br from-lime-50 to-lime-100 p-6 rounded-xl hover:shadow-lg transition-all duration-300 group cursor-pointer snap-start shrink-0">
-      <div class="text-lime-600 text-2xl mb-3 group-hover:scale-110 transition-transform"><i class="fas fa-battery-full"></i></div>
-      <h3 class="font-semibold text-gray-900 mb-2">Energy & Utilities</h3>
-      <p class="text-sm text-gray-600 font-light">Emission factors + intensity KPIs</p>
-    </div>
-
-    <!-- Fertiliser -->
-    <div class="bg-gradient-to-br from-green-50 to-green-100 p-6 rounded-xl hover:shadow-lg transition-all duration-300 group cursor-pointer snap-start shrink-0">
-      <div class="text-green-700 text-2xl mb-3 group-hover:scale-110 transition-transform"><i class="fas fa-seedling"></i></div>
-      <h3 class="font-semibold text-gray-900 mb-2">Fertiliser</h3>
-      <p class="text-sm text-gray-600 font-light">Ammonia/Urea production emissions</p>
-    </div>
-  </div>
-
-  <!-- mobile hint -->
-  <div class="md:hidden text-center mt-2 text-gray-500 text-xs">Swipe to explore →</div>
-</div>
-  </section>
-
-  <!-- ===== Frameworks by Geography ===== -->
+<!-- Frameworks by Geography (Updated with clearer context) -->
 <section id="frameworks-geo" class="py-16 bg-gradient-to-br from-gray-50 to-hertz-light/10">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="text-center mb-10">
-      <h2 class="text-3xl lg:text-4xl font-semibold text-gray-900">
-        Make Compliance Easier by <span class="text-hertz-primary">Geography</span>
-      </h2>
-      <p class="text-gray-600 max-w-3xl mx-auto mt-3">
-        Mapped exports and ready-to-file formats, with regional nuances handled out of the box.
-      </p>
-    </div>
+  <div class="max-w-6xl mx-auto px-4">
+    <h2 class="text-2xl lg:text-3xl font-semibold text-gray-900 mb-2 text-center">
+      Global Framework Coverage
+    </h2>
+    <p class="text-gray-600 text-center mb-8">
+      Supporting regional and international ESG reporting standards
+    </p>
 
-    <!-- Alphabetical tabs: European Union, Global, India, United Kingdom, United States -->
-    <div class="flex flex-wrap justify-center gap-2 mb-8" role="tablist" aria-label="Regions">
-      <button class="hz-pill" data-region="eu"     role="tab" aria-selected="false" aria-controls="p-eu">European&nbsp;Union</button>
-      <button class="hz-pill" data-region="global" role="tab" aria-selected="false" aria-controls="p-global">Global</button>
-      <button class="hz-pill" data-region="india"  role="tab" aria-selected="false" aria-controls="p-india">India</button>
-      <button class="hz-pill" data-region="uk"     role="tab" aria-selected="false" aria-controls="p-uk">United&nbsp;Kingdom</button>
-      <button class="hz-pill" data-region="us"     role="tab" aria-selected="false" aria-controls="p-us">United&nbsp;States</button>
+    <!-- Geo-selector pills -->
+    <div class="flex flex-wrap items-center justify-center gap-3 mb-8">
+      <button class="hz-pill" data-region="india" role="tab" aria-selected="false">India</button>
+      <button class="hz-pill" data-region="eu" role="tab" aria-selected="false">EU</button>
+      <button class="hz-pill" data-region="uk" role="tab" aria-selected="false">UK</button>
+      <button class="hz-pill" data-region="us" role="tab" aria-selected="false">US</button>
+      <button class="hz-pill" data-region="global" role="tab" aria-selected="false">Middle East & Asia</button>
     </div>
 
     <!-- Panels -->
@@ -852,62 +639,62 @@
       <!-- EU -->
       <div id="p-eu" data-panel="eu" class="hidden" role="tabpanel">
         <ul class="grid md:grid-cols-2 gap-3">
-          <li class="hz-row"><span class="hz-k">CSRD / ESRS&nbsp;E1 (Climate)</span><span class="hz-note">Double materiality + value-chain</span></li>
-          <li class="hz-row"><span class="hz-k">ISSB&nbsp;S2</span><span class="hz-note">Interoperable guidance</span></li>
+          <li class="hz-row"><span class="hz-k">CSRD / ESRS E1 (Climate)</span><span class="hz-note">Double materiality + value-chain</span></li>
+          <li class="hz-row"><span class="hz-k">ISSB S2</span><span class="hz-note">Interoperable guidance</span></li>
           <li class="hz-row"><span class="hz-k">CDP Climate 2025</span><span class="hz-note">Investor coverage</span></li>
-          <li class="hz-row"><span class="hz-k">GRESB</span><span class="hz-note">RE/infra portfolios</span></li>
+          <li class="hz-row"><span class="hz-k">GRESB</span><span class="hz-note">Real estate portfolios</span></li>
         </ul>
       </div>
 
       <!-- GLOBAL (covers Middle East & Rest of Asia, including HKEX via ISSB alignment) -->
       <div id="p-global" data-panel="global" class="hidden" role="tabpanel" aria-labelledby="tab-global">
         <div class="text-sm text-hertz-dark font-medium mb-2">
-          Covers Middle East &amp; Rest of Asia (incl. HKEX climate via ISSB alignment)
+          Covers Middle East & Rest of Asia (incl. HKEX climate via ISSB alignment)
         </div>
         <ul class="grid md:grid-cols-2 gap-3">
-          <li class="hz-row"><span class="hz-k">ISSB&nbsp;S2</span><span class="hz-note">Global baseline</span></li>
+          <li class="hz-row"><span class="hz-k">ISSB S2</span><span class="hz-note">Global baseline</span></li>
           <li class="hz-row"><span class="hz-k">CDP Climate 2025</span><span class="hz-note">Cross-market signaling</span></li>
-          <li class="hz-row"><span class="hz-k">HKEX Climate (via ISSB)</span><span class="hz-note">Lift-and-shift from S2 where applicable</span></li>
-          <li class="hz-row"><span class="hz-k">CSRD / ESRS&nbsp;E1</span><span class="hz-note">For EU-operating groups</span></li>
+          <li class="hz-row"><span class="hz-k">HKEX Climate (via ISSB)</span><span class="hz-note">Alignment with S2</span></li>
+          <li class="hz-row"><span class="hz-k">CSRD / ESRS E1</span><span class="hz-note">For EU-operating groups</span></li>
         </ul>
       </div>
 
       <!-- INDIA -->
       <div id="p-india" data-panel="india" class="hidden" role="tabpanel">
         <ul class="grid md:grid-cols-2 gap-3">
-          <li class="hz-row"><span class="hz-k">SEBI BRSR &amp; BRSR&nbsp;Core</span><span class="hz-note">Native exports + assurance-ready fields</span></li>
-          <li class="hz-row"><span class="hz-k">GreenCo (CII)</span><span class="hz-note">Complements BRSR for certification</span></li>
-          <li class="hz-row"><span class="hz-k">ISSB&nbsp;S2 (Climate)</span><span class="hz-note">Future-proof global baseline</span></li>
-          <li class="hz-row"><span class="hz-k">CDP Climate 2025</span><span class="hz-note">Investor/customer questionnaires</span></li>
-          <li class="hz-row"><span class="hz-k">CSRD / ESRS&nbsp;E1</span><span class="hz-note">For EU-linked Indian entities</span></li>
-          <li class="hz-row"><span class="hz-k">GRESB</span><span class="hz-note">If RE/infra assets are in scope</span></li>
+          <li class="hz-row"><span class="hz-k">SEBI BRSR & BRSR Core</span><span class="hz-note">Native exports + assurance-ready</span></li>
+          <li class="hz-row"><span class="hz-k">GreenCo (CII)</span><span class="hz-note">Certification support</span></li>
+          <li class="hz-row"><span class="hz-k">CBAM (EU Carbon Border)</span><span class="hz-note">Export readiness</span></li>
+          <li class="hz-row"><span class="hz-k">ISSB S2 (Climate)</span><span class="hz-note">Future-proof baseline</span></li>
+          <li class="hz-row"><span class="hz-k">CDP Climate 2025</span><span class="hz-note">Investor questionnaires</span></li>
+          <li class="hz-row"><span class="hz-k">CSRD / ESRS E1</span><span class="hz-note">For EU-linked entities</span></li>
         </ul>
       </div>
 
       <!-- UNITED KINGDOM -->
       <div id="p-uk" data-panel="uk" class="hidden" role="tabpanel">
         <ul class="grid md:grid-cols-2 gap-3">
-          <li class="hz-row"><span class="hz-k">UK SECR</span><span class="hz-note">Energy &amp; carbon disclosures</span></li>
-          <li class="hz-row"><span class="hz-k">ISSB&nbsp;S2</span><span class="hz-note">UK alignment path</span></li>
+          <li class="hz-row"><span class="hz-k">UK SECR</span><span class="hz-note">Energy & carbon disclosures</span></li>
+          <li class="hz-row"><span class="hz-k">ISSB S2</span><span class="hz-note">UK alignment path</span></li>
           <li class="hz-row"><span class="hz-k">CDP Climate 2025</span><span class="hz-note">Common UK investor ask</span></li>
-          <li class="hz-row"><span class="hz-k">CSRD / ESRS&nbsp;E1</span><span class="hz-note">If EU nexus</span></li>
-          <li class="hz-row"><span class="hz-k">GRESB</span><span class="hz-note">RE/infra where relevant</span></li>
+          <li class="hz-row"><span class="hz-k">CSRD / ESRS E1</span><span class="hz-note">If EU nexus</span></li>
+          <li class="hz-row"><span class="hz-k">GRESB</span><span class="hz-note">Real estate where relevant</span></li>
         </ul>
       </div>
 
       <!-- UNITED STATES -->
       <div id="p-us" data-panel="us" class="hidden" role="tabpanel">
         <ul class="grid md:grid-cols-2 gap-3">
-          <li class="hz-row"><span class="hz-k">ISSB&nbsp;S2</span><span class="hz-note">Investor-recognized baseline</span></li>
-          <li class="hz-row"><span class="hz-k">CDP Climate 2025</span><span class="hz-note">Widely used across US corporates</span></li>
-          <li class="hz-row"><span class="hz-k">CSRD / ESRS&nbsp;E1</span><span class="hz-note">If EU subsidiaries/listings</span></li>
-          <li class="hz-row"><span class="hz-k">GRESB</span><span class="hz-note">For real estate / infrastructure portfolios</span></li>
+          <li class="hz-row"><span class="hz-k">ISSB S2</span><span class="hz-note">Investor-recognized baseline</span></li>
+          <li class="hz-row"><span class="hz-k">CDP Climate 2025</span><span class="hz-note">Widely used by corporates</span></li>
+          <li class="hz-row"><span class="hz-k">CSRD / ESRS E1</span><span class="hz-note">If EU subsidiaries/listings</span></li>
+          <li class="hz-row"><span class="hz-k">GRESB</span><span class="hz-note">For infrastructure portfolios</span></li>
         </ul>
       </div>
     </div>
 
     <p class="text-xs text-gray-500 mt-3 text-center">
-      Need something else? Additional frameworks can be taken up as customization.
+      Need additional frameworks? Custom integrations available.
     </p>
   </div>
 </section>
@@ -959,10 +746,10 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-16">
         <h2 class="text-3xl lg:text-4xl font-semibold text-gray-900 mb-6">
-          Trusted by Leading <span class="text-hertz-primary">Enterprises</span>
+          Trusted by Leading <span class="text-hertz-primary">Organizations</span>
         </h2>
         <p class="text-xl text-gray-600 max-w-3xl mx-auto font-light">
-          Enterprise-grade security, compliance, and reliability for your carbon management needs.
+          Enterprise-grade security, compliance, and reliability for your ESG management needs.
         </p>
       </div>
       <div class="grid md:grid-cols-3 gap-8">
@@ -989,8 +776,8 @@
             </div>
             <h3 class="text-xl font-semibold text-gray-900 mb-4">Growing Customer Base</h3>
             <div class="space-y-2 text-gray-600 font-light">
-              <div><i class="fas fa-check text-hertz-primary mr-2"></i>50+ Companies Served</div>
-              <div><i class="fas fa-check text-hertz-primary mr-2"></i>Global Presence</div>
+              <div><i class="fas fa-check text-hertz-primary mr-2"></i>50+ Organizations Served</div>
+              <div><i class="fas fa-check text-hertz-primary mr-2"></i>India & Global Presence</div>
               <div><i class="fas fa-check text-hertz-primary mr-2"></i>99.9% Uptime SLA</div>
             </div>
           </div>
@@ -1002,7 +789,7 @@
             </div>
             <h3 class="text-xl font-semibold text-gray-900 mb-4">Partner Ecosystem</h3>
             <div class="space-y-2 text-gray-600 font-light">
-              <div><i class="fas fa-check text-hertz-primary mr-2"></i>Big 4 Partnerships</div>
+              <div><i class="fas fa-check text-hertz-primary mr-2"></i>Consulting Partnerships</div>
               <div><i class="fas fa-check text-hertz-primary mr-2"></i>Technology Integrations</div>
               <div><i class="fas fa-check text-hertz-primary mr-2"></i>Expert Support</div>
             </div>
@@ -1020,13 +807,13 @@
         <i class="fas fa-leaf text-hertz-primary mr-2"></i> Your Net-Zero Journey
       </h2>
       <p class="text-gray-600 text-center mb-8">
-        Track tangible progress from baseline to target with live, auditable data.
+        Track real progress from baseline to target with live, auditable data.
       </p>
 
       <div class="hz-nz-card bg-white rounded-xl shadow p-6">
         <div class="flex justify-between items-center text-sm font-medium text-gray-700 mb-4">
           <span>Baseline</span>
-          <span class="text-hertz-dark font-semibold"><span id="hzNzLabel">72%</span> to Target</span>
+          <span class="font-semibold" style="color: #2F4F3F;"><span id="hzNzLabel">72%</span> to Target</span>
         </div>
 
         <!-- Track + Fill -->
@@ -1037,15 +824,15 @@
         <!-- Scope breakdown -->
         <div class="grid grid-cols-3 gap-4 mt-5 text-sm">
           <div class="text-center">
-            <div class="font-bold text-hertz-dark">-18%</div>
+            <div class="font-bold" style="color: #2F4F3F;">-18%</div>
             <div class="text-gray-500">Scope 1</div>
           </div>
           <div class="text-center">
-            <div class="font-bold text-hertz-dark">-36%</div>
+            <div class="font-bold" style="color: #2F4F3F;">-36%</div>
             <div class="text-gray-500">Scope 2</div>
           </div>
           <div class="text-center">
-            <div class="font-bold text-hertz-dark">-9%</div>
+            <div class="font-bold" style="color: #2F4F3F;">-9%</div>
             <div class="text-gray-500">Scope 3</div>
           </div>
         </div>
@@ -1057,25 +844,15 @@
   <section class="py-16 bg-gradient-to-r from-hertz-primary to-hertz-dark">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
       <h2 class="text-3xl lg:text-4xl font-semibold text-white mb-6">
-        Ready to Transform Your Carbon Management?
+        Ready to Simplify Your ESG Journey?
       </h2>
       <p class="text-xl text-hertz-light mb-8 font-light">
-        Join leading enterprises using AI-powered carbon accounting to achieve compliance and net-zero goals.
+        Join growing businesses using Hertzwave's TerraCAP to achieve compliance, reduce costs, and reach their sustainability goals.
       </p>
       <div class="flex flex-col sm:flex-row gap-4 justify-center">
-        <!-- Start Free Trial -->
-        <a href="hertzwave-demo.html"
-         class="bg-white text-hertz-primary px-8 py-4 rounded-lg text-lg font-semibold hover:bg-gray-100 transition-colors inline-flex items-center justify-center">
-        <i class="fas fa-play-circle mr-2"></i>Experience Interactive Demo
-        </a>
-        
-        <button id="book-demo-cta" class="border-2 border-white text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-white hover:text-hertz-primary transition-colors">
-          <i class="fas fa-calendar mr-2"></i>Book a Demo
-        </button>
-        <!-- Contact for Pricing -->
-        <a href="mailto:info@hertzwave.in?subject=Pricing%20inquiry%20-%20Hertzwave&body=Hi%20Hertzwave%20team%2C%0D%0A%0D%0AI%27m%20interested%20in%20pricing%20for%20the%20Hertzwave%20platform.%0D%0A%0D%0AName%3A%0D%0ACompany%3A%0D%0AIndustry%3A%0D%0ACompany%20Size%3A%0D%0AUse%20case%3A%0D%0ATimeline%3A%0D%0APhone%3A%0D%0A%0D%0AThanks%21"
-           class="border-2 border-white text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-white hover:text-hertz-primary transition-colors inline-flex items-center justify-center">
-          <i class="fas fa-phone mr-2"></i>Contact for Assistance
+        <!-- WhatsApp Contact -->
+        <a href="https://wa.me/919731499119" target="_blank" rel="noopener noreferrer" class="bg-white text-green-500 px-10 py-5 rounded-lg text-xl font-semibold hover:bg-green-50 transition-colors inline-flex items-center justify-center shadow-lg">
+          <i class="fab fa-whatsapp text-3xl mr-3"></i>Chat with us on WhatsApp
         </a>
       </div>
     </div>
@@ -1094,7 +871,7 @@
     <!-- QR Code Image -->
     <div class="inline-block bg-white p-6 rounded-2xl shadow-lg border-2 border-hertz-light/30 hover:shadow-xl transition-shadow duration-300">
       <img 
-        src="/Brochure-QR-Code.png" 
+        src="./Brochure-QR-Code.png" 
         alt="Scan to download Hertzwave company brochure" 
         class="w-48 h-48 sm:w-56 sm:h-56 md:w-64 md:h-64 mx-auto"
         loading="lazy"
@@ -1114,11 +891,11 @@
       <!-- Left block -->
       <div>
         <a href="/index.html" class="inline-block">
-  <img src="/HW-Logo-Light.png" alt="Hertzwave" class="hz-logo-footer brightness-0 invert">
+  <img src="./HW-Logo-Light.png" alt="Hertzwave" class="hz-logo-footer" style="filter: brightness(0) invert(1);">
 </a>
 
         <p class="text-gray-400 mt-6 max-w-md">
-          AI-powered carbon accounting platform for enterprise compliance and net-zero planning.
+          AI-powered ESG and carbon accounting platform for Indian and global businesses.
         </p>
 
         <div class="mt-5 flex gap-4 text-gray-400">
@@ -1138,7 +915,7 @@
 <div class="md:text-right">
   <div class="border-t border-gray-800 pt-6 md:border-none md:pt-0"></div>
 
-  <p class="text-gray-400 text-sm">© 2025 Hertzwave. All rights reserved.</p>
+  <p class="text-gray-400 text-sm">© 2025 Hertzwave Innovations Pvt Ltd. All rights reserved.</p>
 
   <!-- Policy links -->
   <ul class="mt-3 flex md:justify-end flex-wrap gap-x-6 gap-y-2 text-gray-400 text-sm">
@@ -1158,7 +935,7 @@
   </div>
 </footer>
 <!-- ===== Scripts ===== -->
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
   // ---------- Mobile menu toggle ----------
   const mobileMenuBtn = document.getElementById('mobile-menu-btn');
   const mobileMenu = document.getElementById('mobile-menu');
@@ -1169,12 +946,7 @@
   // ---------- Demo modal open/close ----------
   const demoModal = document.getElementById('demo-modal');
   const closeModalBtn = document.getElementById('close-modal');
-  const demoButtons = [
-    document.getElementById('book-demo-nav'),
-    document.getElementById('book-demo-mobile'),
-    document.getElementById('book-demo-hero'),
-    document.getElementById('book-demo-cta')
-  ].filter(Boolean);
+  const demoButtons = [].filter(Boolean); // No demo buttons anymore
 
   if (demoButtons.length && demoModal) {
     demoButtons.forEach(btn => {
@@ -1321,28 +1093,42 @@ form.addEventListener('submit', async (e) => {
   });
 
   // ---------- Net-Zero Journey animation ----------
-  (function(){
+  document.addEventListener('DOMContentLoaded', function () {
     const section = document.getElementById('netzero-journey');
     if (!section) return;
+
     const fill = section.querySelector('.hz-nz-fill');
-    function animateBar(){
-      if (!fill) return;
-      fill.style.animation = 'none';
-      fill.style.width = '0';
+    if (!fill) return;
+
+    function animateBar() {
+      // restart transition if needed
+      fill.classList.remove('animate');
       void fill.offsetWidth;
-      fill.style.animation = 'hz-nz-grow 1.6s ease-out forwards';
+      fill.classList.add('animate');
     }
-    const io = new IntersectionObserver((entries)=>{
-      entries.forEach(e=>{
-        if (e.isIntersecting) animateBar();
-        else {
-          fill.style.animation = 'none';
-          fill.style.width = '0';
-        }
-      });
-    }, { threshold: 0.45 });
-    io.observe(section);
-  })();
+
+    // Animate immediately if already in view
+    const rect = section.getBoundingClientRect();
+    if (rect.top < (window.innerHeight || document.documentElement.clientHeight) && rect.bottom > 0) {
+      setTimeout(animateBar, 150);
+    }
+
+    // Animate when section comes into view
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            animateBar();
+            observer.disconnect();
+          }
+        });
+      }, { threshold: 0.3 });
+      observer.observe(section);
+    } else {
+      // Fallback: animate after a short delay
+      setTimeout(animateBar, 800);
+    }
+  });
 
   // ---------- Fade-in helper ----------
   (function () {
@@ -1401,37 +1187,15 @@ form.addEventListener('submit', async (e) => {
       scroller.addEventListener('scroll', ()=>{
         if(!ticking){
           requestAnimationFrame(()=>{ update(); ticking=false; });
-          ticking = true;
+          ticking=true;
         }
-      }, { passive:true });
-
-      const step = () => Math.max(240, Math.min(320, scroller.clientWidth * 0.8));
-      leftBtn?.addEventListener('click', ()=> scroller.scrollBy({ left: -step(), behavior: 'smooth' }));
-      rightBtn?.addEventListener('click', ()=> scroller.scrollBy({ left:  step(), behavior: 'smooth' }));
-
-      window.addEventListener('resize', update);
-      update(); // initial
+      });
+      if (leftBtn)  leftBtn.addEventListener('click',  ()=> scroller.scrollBy({left:-300, behavior:'smooth'}));
+      if (rightBtn) rightBtn.addEventListener('click', ()=> scroller.scrollBy({left:300, behavior:'smooth'}));
+      // run once on load
+      update();
     });
   })();
-
-  // ---------- GA: track clicks on legal links ----------
-  document.addEventListener('click', (e) => {
-    const a = e.target.closest('a');
-    if (!a) return;
-    if (a.href && a.href.indexOf('/legal/') !== -1) {
-      if (typeof gtag === 'function') {
-        gtag('event', 'legal_link_click', { label: a.pathname });
-      }
-    }
-  });
 </script>
-
-
-
 </body>
 </html>
-
-  
-</body>
-</html>
-
