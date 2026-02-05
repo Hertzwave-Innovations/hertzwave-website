@@ -1,294 +1,613 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
+  <link rel="stylesheet" href="../styles.css">
+  
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Hertzwave — Resources</title>
+  <title>Hertzwave TerraCAP — Resources</title>
 
- <!-- Google tag (gtag.js) -->
+  <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-R4ZT581V9Z"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){ dataLayer.push(arguments); }
     gtag('js', new Date());
-
-    // Basic config
     gtag('config', 'G-R4ZT581V9Z');
   </script>
   
-  <meta name="description" content="Guides, templates, calculators, webinars and case studies for credible carbon accounting." />
-<!-- Tailwind config (place BEFORE the CDN script) -->
-<script>
-  tailwind.config = {
-    theme: {
-      extend: {
-        colors: {
-          'hertz-light': '#A8E6A3',
-          'hertz-primary': '#4A7C59',
-          'hertz-dark': '#2F4F3F'
-        }
-      }
-    }
-  }
-</script>
+  <meta name="description" content="Guides, templates, calculators, webinars and case studies for ESG and carbon accounting with TerraCAP." />
 
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="../styles.css">
-<style>
-  :root { --hz-primary: #4A7C59; } /* fallback for var-based uses */
-  /* Force green for the active nav item on all screens */
-  .hz-nav a[aria-current="page"] { color: var(--hz-primary) !important; font-weight: 600; }
-</style>
-  
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'hertz-light': '#A8E6A3',
+            'hertz-primary': '#4A7C59',
+            'hertz-dark': '#2F4F3F'
+          }
+        }
+      }
+    }
+  </script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+  <style>
+    body { font-family: 'Outfit', sans-serif; }
+    :root { --hz-primary: #4A7C59; }
+    
+    /* Resource card hover effects */
+    .resource-card {
+      transition: all 0.3s ease;
+      border: 2px solid transparent;
+      cursor: pointer;
+    }
+    .resource-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 25px rgba(74, 124, 89, 0.15);
+      border-color: #A8E6A3;
+    }
+    
+    /* Category badges */
+    .badge-guide { background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%); }
+    .badge-calculator { background: linear-gradient(135deg, #f59e0b 0%, #ef4444 100%); }
+    .badge-template { background: linear-gradient(135deg, #10b981 0%, #14b8a6 100%); }
+    .badge-case-study { background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%); }
+    .badge-webinar { background: linear-gradient(135deg, #ec4899 0%, #f43f5e 100%); }
+    
+    /* Icon backgrounds */
+    .icon-wrapper {
+      width: 48px;
+      height: 48px;
+      display: flex;
+      align-items: center;
+      justify-center;
+      border-radius: 12px;
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+    }
+    
+    .icon-guide { background: linear-gradient(135deg, #ede9fe 0%, #ddd6fe 100%); color: #6366f1; }
+    .icon-calculator { background: linear-gradient(135deg, #fed7aa 0%, #fecaca 100%); color: #f59e0b; }
+    .icon-template { background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%); color: #10b981; }
+    .icon-case-study { background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%); color: #3b82f6; }
+    .icon-webinar { background: linear-gradient(135deg, #fce7f3 0%, #fbcfe8 100%); color: #ec4899; }
+
+    /* Modal styles */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.7);
+      z-index: 9999;
+      overflow-y: auto;
+    }
+    .modal.active { display: flex; }
+    .modal-content {
+      background: white;
+      border-radius: 16px;
+      max-width: 900px;
+      width: 90%;
+      margin: auto;
+      padding: 2rem;
+      position: relative;
+      max-height: 90vh;
+      overflow-y: auto;
+    }
+    .modal-close {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: #666;
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      transition: all 0.2s;
+    }
+    .modal-close:hover {
+      background: #f3f4f6;
+      color: #000;
+    }
+  </style>
 
 </head>
-<body class="bg-white text-gray-900">
+<body class="bg-gradient-to-br from-emerald-50/30 via-white to-blue-50/20">
 
 <!-- Nav -->
-<nav class="fixed top-0 w-full bg-white/95 backdrop-blur-sm border-b border-gray-200 z-50 hz-nav">
-
+<nav class="fixed top-0 w-full bg-white/95 backdrop-blur-sm border-b border-gray-200 z-50">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex justify-between items-center h-16">
-      <!-- Logo -->
-      <a href="/index.html" class="flex items-center">
-        <img src="/HW-Logo-Light.png" alt="Hertzwave" class="hz-logo">
+      <a href="../index.html" class="flex items-center">
+        <img src="../HW-Logo-Light.png" alt="Hertzwave" class="hz-logo">
       </a>
 
-      <!-- Desktop menu -->
       <div class="hidden md:flex items-center space-x-8">
-        <a href="/platform.html"   class="text-gray-700 hover:text-hertz-primary transition-colors font-medium">Platform</a>
-        <a href="/solutions.html"  class="text-gray-700 hover:text-hertz-primary transition-colors font-medium">Solutions</a>
-        <a href="/industries.html" class="text-gray-700 hover:text-hertz-primary transition-colors font-medium">Industries</a>
-        <!-- Add 'text-hertz-primary font-semibold' to mark the active page -->
-        <a href="./" aria-current="page" class="font-semibold">Resources</a>
-        <a href="/about.html"      class="text-gray-700 hover:text-hertz-primary transition-colors font-medium">About</a>
-        <a href="/legal/index.html" class="text-gray-700 hover:text-hertz-primary transition-colors font-medium">Security & Legal</a>
-
+        <a href="../platform.html" class="text-gray-700 hover:text-hertz-primary transition-colors font-medium">Platform</a>
+        <a href="../solutions.html" class="text-gray-700 hover:text-hertz-primary transition-colors font-medium">Solutions</a>
+        <a href="../industries.html" class="text-gray-700 hover:text-hertz-primary transition-colors font-medium">Industries</a>
+        <a href="./" aria-current="page" class="text-hertz-primary font-semibold">Resources</a>
+        <a href="../about.html" class="text-gray-700 hover:text-hertz-primary transition-colors font-medium">About</a>
+        <a href="../legal/index.html" class="text-gray-700 hover:text-hertz-primary transition-colors font-medium">Security & Legal</a>
         
-        <a href="http://netzero.hertzwave.in" target="_blank" rel="noopener"
-           class="px-4 py-2 bg-hertz-primary text-white rounded-lg hover:bg-hertz-dark font-semibold text-sm">
-          Start Free Trial
+        <a href="https://wa.me/919731499119" target="_blank" rel="noopener noreferrer" class="bg-green-500 text-white px-6 py-2 rounded-lg hover:bg-green-600 transition-colors font-semibold inline-flex items-center">
+          <i class="fab fa-whatsapp mr-2"></i>Chat with us
         </a>
       </div>
 
-      <!-- Mobile hamburger -->
       <button class="md:hidden text-gray-700" id="navBtn" aria-label="Open menu">
         <i class="fas fa-bars text-xl"></i>
       </button>
     </div>
   </div>
 
-  <!-- Mobile drawer -->
   <div id="mobileNav" class="hidden md:hidden bg-white border-t border-gray-200">
     <div class="px-4 py-3 space-y-2">
-      <a href="/platform.html"   class="block py-2 text-gray-700">Platform</a>
-      <a href="/solutions.html"  class="block py-2 text-gray-700">Solutions</a>
-      <a href="/industries.html" class="block py-2 text-gray-700">Industries</a>
-     <a href="./" aria-current="page" class="block py-2 font-semibold">Resources</a>
-      <a href="/about.html"      class="block py-2 text-gray-700">About</a>
-     <a href="/legal/index.html" class="block py-2 text-gray-700 font-medium">Security & Legal</a>
- 
-      <a href="http://netzero.hertzwave.in" target="_blank" rel="noopener"
-         class="block w-full text-center bg-hertz-primary text-white px-6 py-2 rounded-lg font-semibold mt-2">
-        Start Free Trial
+      <a href="../platform.html" class="block py-2 text-gray-700">Platform</a>
+      <a href="../solutions.html" class="block py-2 text-gray-700">Solutions</a>
+      <a href="../industries.html" class="block py-2 text-gray-700">Industries</a>
+      <a href="./" aria-current="page" class="block py-2 text-hertz-primary font-semibold">Resources</a>
+      <a href="../about.html" class="block py-2 text-gray-700">About</a>
+      <a href="../legal/index.html" class="block py-2 text-gray-700">Security & Legal</a>
+      
+      <a href="https://wa.me/919731499119" target="_blank" rel="noopener noreferrer" class="block w-full text-center bg-green-500 text-white px-6 py-2 rounded-lg font-semibold mt-2">
+        <i class="fab fa-whatsapp mr-2"></i>Chat with us
       </a>
     </div>
   </div>
 </nav>
 
-  <!-- Hero -->
-<header class="pt-28 bg-gradient-to-br from-emerald-50 via-white to-emerald-100/30">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
-    <p class="hz-pretitle">Resources</p>
-    <h1 class="text-3xl lg:text-4xl font-semibold">Level up your carbon accounting</h1>
-    <p class="text-gray-600 mt-2 max-w-2xl">Guides, templates, and calculators…</p>
+<!-- Hero -->
+<header class="pt-28 pb-16 bg-gradient-to-br from-hertz-light/20 via-white to-blue-50">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center">
+      <div class="inline-block px-4 py-2 bg-hertz-primary/10 rounded-full text-hertz-primary font-semibold text-sm mb-4">
+        <i class="fas fa-book-open mr-2"></i>TerraCAP Resource Hub
+      </div>
+      <h1 class="text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
+        Master <span class="text-hertz-primary">ESG & Carbon Accounting</span>
+      </h1>
+      <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+        Comprehensive guides, calculators, and templates to help you achieve ESG compliance and net-zero goals
+      </p>
+    </div>
   </div>
 </header>
 
+<main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
 
-  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
-
-    <!-- Featured Guides -->
-    <section class="mb-10">
-      <div class="flex items-center justify-between mb-4">
-        <h2 class="text-2xl font-semibold">Featured Guides</h2>
-        <!-- removed 'View all' -->
+  <!-- Featured Guides -->
+  <section class="mb-16">
+    <div class="flex items-center justify-between mb-8">
+      <div>
+        <h2 class="text-3xl font-bold text-gray-900 mb-2">
+          <i class="fas fa-bookmark text-hertz-primary mr-3"></i>Essential Guides
+        </h2>
+        <p class="text-gray-600">Click to read comprehensive guides on key ESG topics</p>
       </div>
-      <div class="grid md:grid-cols-3 gap-6">
-        <a href="/resources/guides/carbon-accounting-101.html" class="block p-5 border rounded-xl hover:shadow">
-          <div class="text-sm text-gray-500">Guide · GHG Protocol</div>
-          <div class="font-semibold mt-1">Carbon Accounting 101</div>
-          <p class="text-sm text-gray-600 mt-2">Core methods, data hierarchies, and audit-ready controls—no fluff.</p>
-          <div class="mt-4 text-xs text-gray-500">10 min read · Updated Sep 2025</div>
-        </a>
-        <a href="/resources/guides/brsr-to-csrd-mapping.html" class="block p-5 border rounded-xl hover:shadow">
-          <div class="text-sm text-gray-500">Guide · BRSR → CSRD</div>
-          <div class="font-semibold mt-1">BRSR to CSRD: Mapping</div>
-          <p class="text-sm text-gray-600 mt-2">Where BRSR fields map to ESRS E1–E5; evidence expectations.</p>
-          <div class="mt-4 text-xs text-gray-500">12 min read · Updated Sep 2025</div>
-        </a>
-        <a href="/resources/guides/scope-3-prioritization.html" class="block p-5 border rounded-xl hover:shadow">
-          <div class="text-sm text-gray-500">Guide · Scope 3</div>
-          <div class="font-semibold mt-1">Scope 3 Prioritization</div>
-          <p class="text-sm text-gray-600 mt-2">Focus on the largest, most influenceable categories first.</p>
-          <div class="mt-4 text-xs text-gray-500">9 min read · Updated Sep 2025</div>
-        </a>
-      </div>
-    </section>
-
-    <!-- Calculators -->
-    <section class="mb-10">
-      <div class="flex items-center justify-between mb-4">
-        <h2 class="text-2xl font-semibold">Calculators</h2>
-      </div>
-      <div class="grid md:grid-cols-4 gap-6">
-        <a href="/resources/calculators/scope2-lb-vs-mb.html" class="block p-5 border rounded-xl hover:shadow">
-          <div class="text-sm text-gray-500">Calculator</div>
-          <div class="font-semibold mt-1">Scope 2: LB vs MB</div>
-          <p class="text-sm text-gray-600 mt-2">Compare location vs market-based emissions.</p>
-        </a>
-        <a href="/resources/calculators/refrigerant-co2e.html" class="block p-5 border rounded-xl hover:shadow">
-          <div class="text-sm text-gray-500">Calculator</div>
-          <div class="font-semibold mt-1">Refrigerant → CO₂e</div>
-          <p class="text-sm text-gray-600 mt-2">Convert leaks to tCO₂e using GWP.</p>
-        </a>
-        <a href="/resources/calculators/pue-wue-cue-impact.html" class="block p-5 border rounded-xl hover:shadow">
-          <div class="text-sm text-gray-500">Calculator</div>
-          <div class="font-semibold mt-1">PUE/WUE/CUE</div>
-          <p class="text-sm text-gray-600 mt-2">Estimate efficiency & footprint.</p>
-        </a>
-        <a href="/resources/calculators/td-loss-intensity.html" class="block p-5 border rounded-xl hover:shadow">
-          <div class="text-sm text-gray-500">Calculator</div>
-          <div class="font-semibold mt-1">T&amp;D Loss → Intensity</div>
-          <p class="text-sm text-gray-600 mt-2">Impact of losses on delivered intensity.</p>
-        </a>
-      </div>
-    </section>
-
-    <!-- Templates & Checklists -->
-    <section class="mb-10">
-      <div class="flex items-center justify-between mb-4">
-        <h2 class="text-2xl font-semibold">Templates & Checklists</h2>
-      </div>
-      <div class="grid md:grid-cols-3 gap-6">
-        <a href="/resources/templates/brsr-data-collection.xlsx" class="block p-5 border rounded-xl hover:shadow">
-          <div class="text-sm text-gray-500">Template · BRSR</div>
-          <div class="font-semibold mt-1">BRSR Data Collection (XLSX)</div>
-          <p class="text-sm text-gray-600 mt-2">Site/entity energy, emissions, water & waste with audit trails.</p>
-        </a>
-        <a href="/resources/templates/csrd-e1-checklist.xlsx" class="block p-5 border rounded-xl hover:shadow">
-          <div class="text-sm text-gray-500">Checklist · CSRD</div>
-          <div class="font-semibold mt-1">ESRS E1 Disclosure Checklist</div>
-          <p class="text-sm text-gray-600 mt-2">Track owners, systems, frequency & evidence.</p>
-        </a>
-        <a href="/resources/templates/scope3-supplier-survey-short.docx" class="block p-5 border rounded-xl hover:shadow">
-          <div class="text-sm text-gray-500">Template · Scope 3</div>
-          <div class="font-semibold mt-1">Supplier Survey – Short (DOCX)</div>
-          <p class="text-sm text-gray-600 mt-2">Minimal fields for low-materiality suppliers.</p>
-        </a>
-        <a href="/resources/templates/scope3-supplier-survey-long.docx" class="block p-5 border rounded-xl hover:shadow">
-          <div class="text-sm text-gray-500">Template · Scope 3</div>
-          <div class="font-semibold mt-1">Supplier Survey – Long (DOCX)</div>
-          <p class="text-sm text-gray-600 mt-2">Detailed capture: energy, LCAs, certifications.</p>
-        </a>
-        <a href="/resources/templates/cbam-readiness-checklist.docx" class="block p-5 border rounded-xl hover:shadow">
-          <div class="text-sm text-gray-500">Checklist · CBAM</div>
-          <div class="font-semibold mt-1">CBAM Readiness Pack (DOCX)</div>
-          <p class="text-sm text-gray-600 mt-2">Data capture, verification, reporting, mitigation.</p>
-        </a>
-      </div>
-    </section>
-
-    <!-- Case Studies -->
-    <section class="mb-10">
-      <div class="flex items-center justify-between mb-4">
-        <h2 class="text-2xl font-semibold">Case Studies</h2>
-      </div>
-      <div class="grid md:grid-cols-3 gap-6">
-        <a href="/resources/case-studies/steel-eaf-transition.html" class="block p-5 border rounded-xl hover:shadow">
-          <div class="text-sm text-gray-500">Steel &amp; Metals</div>
-          <div class="font-semibold mt-1">EAF Shift Cuts Scope 1+2 by 22%</div>
-          <p class="text-sm text-gray-600 mt-2">How an integrated steel plant used our platform to track route mix, coke/PCI and RE power to hit YoY intensity targets.</p>
-          <div class="mt-4 text-xs text-gray-500">India · 9 sites · 2024–25</div>
-        </a>
-        <a href="/resources/case-studies/data-center-scope2-ppas.html" class="block p-5 border rounded-xl hover:shadow">
-          <div class="text-sm text-gray-500">Technology / Data Centers</div>
-          <div class="font-semibold mt-1">18% Scope 2 Drop with PPAs</div>
-          <p class="text-sm text-gray-600 mt-2">PUE monitoring + REC/PPAs attribution across 5 regions; automated market-based reporting with residual mix.</p>
-          <div class="mt-4 text-xs text-gray-500">APAC · 12 DCs · 2025</div>
-        </a>
-        <a href="/resources/case-studies/hospitality-bsr-csrd.html" class="block p-5 border rounded-xl hover:shadow">
-          <div class="text-sm text-gray-500">Hospitality</div>
-          <div class="font-semibold mt-1">From BRSR to CSRD in 90 Days</div>
-          <p class="text-sm text-gray-600 mt-2">Global hotel chain standardized entity data, aligned KPIs to ESRS E1, and produced audit-ready exports.</p>
-          <div class="mt-4 text-xs text-gray-500">Global · 60+ properties</div>
-        </a>
-      </div>
-    </section>
-
-    <!-- Webinars -->
-    <section class="mb-10">
-      <div class="flex items-center justify-between mb-4">
-        <h2 class="text-2xl font-semibold">Webinars</h2>
-      </div>
-      <div class="grid md:grid-cols-3 gap-6">
-        <a href="/resources/webinars/cbam-readiness.html" class="block p-5 border rounded-xl hover:shadow">
-          <div class="text-sm text-gray-500">Policy · CBAM</div>
-          <div class="font-semibold mt-1">CBAM Readiness: Practical Steps</div>
-          <p class="text-sm text-gray-600 mt-2">For Indian exporters: data capture, supplier engagement, verifying emissions and preparing quarterly reports.</p>
-          <div class="mt-4 text-xs text-gray-500">On-demand · 45 min</div>
-        </a>
-        <a href="/resources/webinars/scope3-supplier-data.html" class="block p-5 border rounded-xl hover:shadow">
-          <div class="text-sm text-gray-500">Scope 3</div>
-          <div class="font-semibold mt-1">Supplier Data that Works</div>
-          <p class="text-sm text-gray-600 mt-2">Designing short/long surveys, response nudges, and mapping to categories with real ROI.</p>
-          <div class="mt-4 text-xs text-gray-500">Live &amp; recording</div>
-        </a>
-        <a href="/resources/webinars/csrd-e1-deep-dive.html" class="block p-5 border rounded-xl hover:shadow">
-          <div class="text-sm text-gray-500">CSRD / ESRS</div>
-          <div class="font-semibold mt-1">ESRS E1 Deep Dive</div>
-          <p class="text-sm text-gray-600 mt-2">Evidence expectations, intensity KPIs, and common audit findings—what to fix early.</p>
-          <div class="mt-4 text-xs text-gray-500">On-demand · 60 min</div>
-        </a>
-      </div>
-    </section>
-
-    <!-- Glossary promo -->
-    <section class="mb-10">
-      <div class="p-6 rounded-xl border bg-gray-50">
-        <div class="font-semibold">Glossary</div>
-        <p class="text-gray-700 mt-1 text-sm">Bite-sized definitions linked across the hub. Try <em>“Residual mix”</em> or <em>“Allocation”.</em></p>
-        <div class="mt-2"><a href="/resources/guides/electricity-factors.html" class="text-emerald-700 underline">Electricity Factors: India &amp; Global →</a></div>
-      </div>
-    </section>
-
-    <!-- Newsletter CTA -->
-    <section class="mb-16">
-      <div class="p-6 rounded-xl border bg-emerald-50">
-        <div class="font-semibold">Get monthly updates</div>
-        <p class="text-gray-700 text-sm mt-1">New tools, standards, and templates—no spam.</p>
-        <div class="mt-3 flex gap-2">
-          <input placeholder="Your email" class="border rounded p-2 w-full max-w-sm" />
-          <button class="px-4 py-2 bg-emerald-600 text-white rounded">Subscribe</button>
+    </div>
+    <div class="grid md:grid-cols-3 gap-6">
+      
+      <!-- Guide 1: Carbon Accounting 101 -->
+      <div class="resource-card block p-6 bg-white rounded-2xl shadow-md" onclick="openModal('carbon-101')">
+        <div class="icon-wrapper icon-guide">
+          <i class="fas fa-graduation-cap"></i>
+        </div>
+        <div class="inline-block px-3 py-1 badge-guide text-white text-xs font-semibold rounded-full mb-3">
+          GHG Protocol
+        </div>
+        <h3 class="text-xl font-bold text-gray-900 mb-2">Carbon Accounting 101</h3>
+        <p class="text-gray-600 mb-4">Core methods, data hierarchies, and audit-ready controls for measuring emissions.</p>
+        <div class="flex items-center text-sm text-gray-500">
+          <i class="far fa-clock mr-2"></i>12 min read
         </div>
       </div>
-    </section>
-  </main>
 
-  <!-- Footer -->
+      <!-- Guide 2: What is CBAM -->
+      <div class="resource-card block p-6 bg-white rounded-2xl shadow-md" onclick="openModal('cbam-guide')">
+        <div class="icon-wrapper icon-guide">
+          <i class="fas fa-globe-europe"></i>
+        </div>
+        <div class="inline-block px-3 py-1 badge-guide text-white text-xs font-semibold rounded-full mb-3">
+          EU CBAM
+        </div>
+        <h3 class="text-xl font-bold text-gray-900 mb-2">What is CBAM & Implications</h3>
+        <p class="text-gray-600 mb-4">Understanding the Carbon Border Adjustment Mechanism and its impact on Indian exporters.</p>
+        <div class="flex items-center text-sm text-gray-500">
+          <i class="far fa-clock mr-2"></i>15 min read
+        </div>
+      </div>
+
+      <!-- Guide 3: GreenCo -->
+      <div class="resource-card block p-6 bg-white rounded-2xl shadow-md" onclick="openModal('greenco-guide')">
+        <div class="icon-wrapper icon-guide">
+          <i class="fas fa-award"></i>
+        </div>
+        <div class="inline-block px-3 py-1 badge-guide text-white text-xs font-semibold rounded-full mb-3">
+          GreenCo Rating
+        </div>
+        <h3 class="text-xl font-bold text-gray-900 mb-2">GreenCo Fundamentals</h3>
+        <p class="text-gray-600 mb-4">Who needs GreenCo certification and how TerraCAP helps you prepare.</p>
+        <div class="flex items-center text-sm text-gray-500">
+          <i class="far fa-clock mr-2"></i>10 min read
+        </div>
+      </div>
+
+      <!-- Guide 4: What is LCA -->
+      <div class="resource-card block p-6 bg-white rounded-2xl shadow-md" onclick="openModal('lca-guide')">
+        <div class="icon-wrapper icon-guide">
+          <i class="fas fa-recycle"></i>
+        </div>
+        <div class="inline-block px-3 py-1 badge-guide text-white text-xs font-semibold rounded-full mb-3">
+          Life Cycle Assessment
+        </div>
+        <h3 class="text-xl font-bold text-gray-900 mb-2">What is LCA?</h3>
+        <p class="text-gray-600 mb-4">Introduction to Life Cycle Assessment and its role in product sustainability.</p>
+        <div class="flex items-center text-sm text-gray-500">
+          <i class="far fa-clock mr-2"></i>8 min read
+        </div>
+      </div>
+
+      <!-- Guide 5: CCTS -->
+      <div class="resource-card block p-6 bg-white rounded-2xl shadow-md" onclick="openModal('ccts-guide')">
+        <div class="icon-wrapper icon-guide">
+          <i class="fas fa-file-invoice"></i>
+        </div>
+        <div class="inline-block px-3 py-1 badge-guide text-white text-xs font-semibold rounded-full mb-3">
+          Indian Regulation
+        </div>
+        <h3 class="text-xl font-bold text-gray-900 mb-2">CCTS & Its Impact</h3>
+        <p class="text-gray-600 mb-4">Understanding India's Carbon Credit Trading Scheme and compliance requirements.</p>
+        <div class="flex items-center text-sm text-gray-500">
+          <i class="far fa-clock mr-2"></i>11 min read
+        </div>
+      </div>
+
+      <!-- Guide 6: Carbon Credits -->
+      <div class="resource-card block p-6 bg-white rounded-2xl shadow-md" onclick="openModal('carbon-credits')">
+        <div class="icon-wrapper icon-guide">
+          <i class="fas fa-coins"></i>
+        </div>
+        <div class="inline-block px-3 py-1 badge-guide text-white text-xs font-semibold rounded-full mb-3">
+          Carbon Markets
+        </div>
+        <h3 class="text-xl font-bold text-gray-900 mb-2">Carbon Credits Fundamentals</h3>
+        <p class="text-gray-600 mb-4">What are carbon credits, how to generate or buy them, and approved global agencies.</p>
+        <div class="flex items-center text-sm text-gray-500">
+          <i class="far fa-clock mr-2"></i>18 min read
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Calculators -->
+  <section class="mb-16">
+    <div class="flex items-center justify-between mb-8">
+      <div>
+        <h2 class="text-3xl font-bold text-gray-900 mb-2">
+          <i class="fas fa-calculator text-orange-500 mr-3"></i>TerraCAP Calculators
+        </h2>
+        <p class="text-gray-600">Interactive tools powered by TerraCAP methodology</p>
+      </div>
+    </div>
+    <div class="grid md:grid-cols-4 gap-6">
+      
+      <!-- Calculator 1: Scope 1 Emissions -->
+      <div class="resource-card block p-6 bg-white rounded-2xl shadow-md" onclick="openModal('calc-scope1')">
+        <div class="icon-wrapper icon-calculator">
+          <i class="fas fa-fire"></i>
+        </div>
+        <div class="inline-block px-3 py-1 badge-calculator text-white text-xs font-semibold rounded-full mb-3">
+          Scope 1
+        </div>
+        <h3 class="text-lg font-bold text-gray-900 mb-2">Scope 1 Calculator</h3>
+        <p class="text-sm text-gray-600">Calculate direct emissions from fuel combustion and processes.</p>
+      </div>
+
+      <!-- Calculator 2: Scope 2 Emissions -->
+      <div class="resource-card block p-6 bg-white rounded-2xl shadow-md" onclick="openModal('calc-scope2')">
+        <div class="icon-wrapper icon-calculator">
+          <i class="fas fa-bolt"></i>
+        </div>
+        <div class="inline-block px-3 py-1 badge-calculator text-white text-xs font-semibold rounded-full mb-3">
+          Scope 2
+        </div>
+        <h3 class="text-lg font-bold text-gray-900 mb-2">Scope 2: LB vs MB</h3>
+        <p class="text-sm text-gray-600">Compare location-based and market-based electricity emissions.</p>
+      </div>
+
+      <!-- Calculator 3: Carbon Intensity -->
+      <div class="resource-card block p-6 bg-white rounded-2xl shadow-md" onclick="openModal('calc-intensity')">
+        <div class="icon-wrapper icon-calculator">
+          <i class="fas fa-chart-line"></i>
+        </div>
+        <div class="inline-block px-3 py-1 badge-calculator text-white text-xs font-semibold rounded-full mb-3">
+          Intensity
+        </div>
+        <h3 class="text-lg font-bold text-gray-900 mb-2">Carbon Intensity</h3>
+        <p class="text-sm text-gray-600">Calculate emissions per unit of revenue or production.</p>
+      </div>
+
+      <!-- Calculator 4: Supplier Emissions -->
+      <div class="resource-card block p-6 bg-white rounded-2xl shadow-md" onclick="openModal('calc-scope3')">
+        <div class="icon-wrapper icon-calculator">
+          <i class="fas fa-truck"></i>
+        </div>
+        <div class="inline-block px-3 py-1 badge-calculator text-white text-xs font-semibold rounded-full mb-3">
+          Scope 3
+        </div>
+        <h3 class="text-lg font-bold text-gray-900 mb-2">Supplier Emissions</h3>
+        <p class="text-sm text-gray-600">Estimate Scope 3 emissions from purchased goods.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Templates & Checklists -->
+  <section class="mb-16">
+    <div class="flex items-center justify-between mb-8">
+      <div>
+        <h2 class="text-3xl font-bold text-gray-900 mb-2">
+          <i class="fas fa-file-alt text-green-500 mr-3"></i>Templates & Checklists
+        </h2>
+        <p class="text-gray-600">Ready-to-use Excel and Word templates for ESG reporting</p>
+      </div>
+    </div>
+    <div class="grid md:grid-cols-3 gap-6">
+      
+      <!-- Template 1: BRSR Lite -->
+      <div class="resource-card block p-6 bg-white rounded-2xl shadow-md" onclick="openModal('template-brsr')">
+        <div class="icon-wrapper icon-template">
+          <i class="fas fa-file-excel"></i>
+        </div>
+        <div class="inline-block px-3 py-1 badge-template text-white text-xs font-semibold rounded-full mb-3">
+          BRSR Lite · XLSX
+        </div>
+        <h3 class="text-lg font-bold text-gray-900 mb-2">BRSR Lite Template</h3>
+        <p class="text-sm text-gray-600 mb-3">Simplified BRSR reporting template for unlisted companies with data collection sheets.</p>
+        <div class="text-xs text-hertz-primary font-semibold">
+          <i class="fas fa-eye mr-1"></i>Preview & Download
+        </div>
+      </div>
+
+      <!-- Template 2: GRI Checklist -->
+      <div class="resource-card block p-6 bg-white rounded-2xl shadow-md" onclick="openModal('template-gri')">
+        <div class="icon-wrapper icon-template">
+          <i class="fas fa-tasks"></i>
+        </div>
+        <div class="inline-block px-3 py-1 badge-template text-white text-xs font-semibold rounded-full mb-3">
+          GRI · XLSX
+        </div>
+        <h3 class="text-lg font-bold text-gray-900 mb-2">GRI Standards Checklist</h3>
+        <p class="text-sm text-gray-600 mb-3">Comprehensive checklist for GRI Universal and Topic-specific Standards compliance.</p>
+        <div class="text-xs text-hertz-primary font-semibold">
+          <i class="fas fa-eye mr-1"></i>Preview & Download
+        </div>
+      </div>
+
+      <!-- Template 3: ESG Reporting -->
+      <div class="resource-card block p-6 bg-white rounded-2xl shadow-md" onclick="openModal('template-esg')">
+        <div class="icon-wrapper icon-template">
+          <i class="fas fa-clipboard-list"></i>
+        </div>
+        <div class="inline-block px-3 py-1 badge-template text-white text-xs font-semibold rounded-full mb-3">
+          ESG Starter · XLSX
+        </div>
+        <h3 class="text-lg font-bold text-gray-900 mb-2">ESG Reporting Template</h3>
+        <p class="text-sm text-gray-600 mb-3">Standard ESG reporting template for organizations starting their sustainability journey.</p>
+        <div class="text-xs text-hertz-primary font-semibold">
+          <i class="fas fa-eye mr-1"></i>Preview & Download
+        </div>
+      </div>
+
+      <!-- Template 4: CBAM Readiness -->
+      <div class="resource-card block p-6 bg-white rounded-2xl shadow-md" onclick="openModal('template-cbam')">
+        <div class="icon-wrapper icon-template">
+          <i class="fas fa-shield-alt"></i>
+        </div>
+        <div class="inline-block px-3 py-1 badge-template text-white text-xs font-semibold rounded-full mb-3">
+          CBAM · XLSX
+        </div>
+        <h3 class="text-lg font-bold text-gray-900 mb-2">CBAM Readiness Pack</h3>
+        <p class="text-sm text-gray-600 mb-3">Complete toolkit for EU CBAM compliance including product carbon footprint calculations.</p>
+        <div class="text-xs text-hertz-primary font-semibold">
+          <i class="fas fa-eye mr-1"></i>Preview & Download
+        </div>
+      </div>
+
+      <!-- Template 5: GreenCo -->
+      <div class="resource-card block p-6 bg-white rounded-2xl shadow-md" onclick="openModal('template-greenco')">
+        <div class="icon-wrapper icon-template">
+          <i class="fas fa-leaf"></i>
+        </div>
+        <div class="inline-block px-3 py-1 badge-template text-white text-xs font-semibold rounded-full mb-3">
+          GreenCo · XLSX
+        </div>
+        <h3 class="text-lg font-bold text-gray-900 mb-2">GreenCo Certification Template</h3>
+        <p class="text-sm text-gray-600 mb-3">Data collection and compliance tracker for GreenCo rating system requirements.</p>
+        <div class="text-xs text-hertz-primary font-semibold">
+          <i class="fas fa-eye mr-1"></i>Preview & Download
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Case Studies -->
+  <section class="mb-16">
+    <div class="flex items-center justify-between mb-8">
+      <div>
+        <h2 class="text-3xl font-bold text-gray-900 mb-2">
+          <i class="fas fa-chart-line text-blue-500 mr-3"></i>Success Stories
+        </h2>
+        <p class="text-gray-600">Real results achieved with TerraCAP platform</p>
+      </div>
+    </div>
+    <div class="grid md:grid-cols-3 gap-6">
+      
+      <!-- Case Study 1: Indian Pharma -->
+      <div class="resource-card block p-6 bg-white rounded-2xl shadow-md" onclick="openModal('case-pharma')">
+        <div class="icon-wrapper icon-case-study">
+          <i class="fas fa-pills"></i>
+        </div>
+        <div class="inline-block px-3 py-1 badge-case-study text-white text-xs font-semibold rounded-full mb-3">
+          Pharmaceuticals · India
+        </div>
+        <h3 class="text-lg font-bold text-gray-900 mb-3">28% Scope 1+2 Reduction in 18 Months</h3>
+        <p class="text-sm text-gray-600 mb-4">Leading Indian pharma company achieved BRSR Core compliance and significant emissions reduction using TerraCAP.</p>
+        <div class="text-xs text-gray-500">
+          <i class="fas fa-map-marker-alt mr-1"></i>India · 14 manufacturing sites · 2024-25
+        </div>
+      </div>
+
+      <!-- Case Study 2: Indian Manufacturing -->
+      <div class="resource-card block p-6 bg-white rounded-2xl shadow-md" onclick="openModal('case-auto')">
+        <div class="icon-wrapper icon-case-study">
+          <i class="fas fa-car"></i>
+        </div>
+        <div class="inline-block px-3 py-1 badge-case-study text-white text-xs font-semibold rounded-full mb-3">
+          Auto Components · India
+        </div>
+        <h3 class="text-lg font-bold text-gray-900 mb-3">GreenCo Platinum Achievement</h3>
+        <p class="text-sm text-gray-600 mb-4">Tier-1 auto components supplier achieved GreenCo Platinum rating with comprehensive ESG data management.</p>
+        <div class="text-xs text-gray-500">
+          <i class="fas fa-map-marker-alt mr-1"></i>India · 8 plants · 2025
+        </div>
+      </div>
+
+      <!-- Case Study 3: European FMCG -->
+      <div class="resource-card block p-6 bg-white rounded-2xl shadow-md" onclick="openModal('case-fmcg')">
+        <div class="icon-wrapper icon-case-study">
+          <i class="fas fa-shopping-basket"></i>
+        </div>
+        <div class="inline-block px-3 py-1 badge-case-study text-white text-xs font-semibold rounded-full mb-3">
+          FMCG · Europe
+        </div>
+        <h3 class="text-lg font-bold text-gray-900 mb-3">CSRD-Ready in 6 Months</h3>
+        <p class="text-sm text-gray-600 mb-4">European FMCG company prepared complete ESRS E1-E5 disclosures ahead of CSRD mandate.</p>
+        <div class="text-xs text-gray-500">
+          <i class="fas fa-map-marker-alt mr-1"></i>EU · 25 facilities · 2025
+        </div>
+      </div>
+
+      <!-- Case Study 4: US Tech -->
+      <div class="resource-card block p-6 bg-white rounded-2xl shadow-md" onclick="openModal('case-tech')">
+        <div class="icon-wrapper icon-case-study">
+          <i class="fas fa-microchip"></i>
+        </div>
+        <div class="inline-block px-3 py-1 badge-case-study text-white text-xs font-semibold rounded-full mb-3">
+          Technology · USA
+        </div>
+        <h3 class="text-lg font-bold text-gray-900 mb-3">Scope 3 Transparency Across 500+ Suppliers</h3>
+        <p class="text-sm text-gray-600 mb-4">Tech company achieved 85% Scope 3 data coverage through automated supplier engagement platform.</p>
+        <div class="text-xs text-gray-500">
+          <i class="fas fa-map-marker-alt mr-1"></i>USA · Global supply chain · 2024-25
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Webinars -->
+  <section class="mb-16">
+    <div class="flex items-center justify-between mb-8">
+      <div>
+        <h2 class="text-3xl font-bold text-gray-900 mb-2">
+          <i class="fas fa-video text-pink-500 mr-3"></i>Expert Webinars
+        </h2>
+        <p class="text-gray-600">Learn from industry experts and TerraCAP specialists</p>
+      </div>
+    </div>
+    <div class="grid md:grid-cols-3 gap-6">
+      
+      <!-- Webinar 1 -->
+      <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank" class="resource-card block p-6 bg-white rounded-2xl shadow-md">
+        <div class="icon-wrapper icon-webinar">
+          <i class="fas fa-globe-europe"></i>
+        </div>
+        <div class="inline-block px-3 py-1 badge-webinar text-white text-xs font-semibold rounded-full mb-3">
+          Policy · CBAM
+        </div>
+        <h3 class="text-lg font-bold text-gray-900 mb-2">CBAM Readiness for Indian Exporters</h3>
+        <p class="text-sm text-gray-600 mb-4">Practical guide to EU CBAM compliance, quarterly reporting, and supplier engagement strategies.</p>
+        <div class="text-xs text-pink-600 font-semibold flex items-center">
+          <i class="fab fa-youtube mr-2"></i>Watch on YouTube · 52 min
+        </div>
+      </a>
+
+      <!-- Webinar 2 -->
+      <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank" class="resource-card block p-6 bg-white rounded-2xl shadow-md">
+        <div class="icon-wrapper icon-webinar">
+          <i class="fas fa-handshake"></i>
+        </div>
+        <div class="inline-block px-3 py-1 badge-webinar text-white text-xs font-semibold rounded-full mb-3">
+          Scope 3
+        </div>
+        <h3 class="text-lg font-bold text-gray-900 mb-2">Mastering Scope 3 Data Collection</h3>
+        <p class="text-sm text-gray-600 mb-4">Designing effective supplier surveys, improving response rates, and using spend-based methods.</p>
+        <div class="text-xs text-pink-600 font-semibold flex items-center">
+          <i class="fab fa-youtube mr-2"></i>Watch on YouTube · 45 min
+        </div>
+      </a>
+
+      <!-- Webinar 3 -->
+      <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank" class="resource-card block p-6 bg-white rounded-2xl shadow-md">
+        <div class="icon-wrapper icon-webinar">
+          <i class="fas fa-search-dollar"></i>
+        </div>
+        <div class="inline-block px-3 py-1 badge-webinar text-white text-xs font-semibold rounded-full mb-3">
+          BRSR / CSRD
+        </div>
+        <h3 class="text-lg font-bold text-gray-900 mb-2">From BRSR to CSRD: The Journey</h3>
+        <p class="text-sm text-gray-600 mb-4">Mapping BRSR disclosures to ESRS requirements and preparing for global sustainability standards.</p>
+        <div class="text-xs text-pink-600 font-semibold flex items-center">
+          <i class="fab fa-youtube mr-2"></i>Watch on YouTube · 58 min
+        </div>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- Newsletter CTA -->
+  <div class="mb-16">
+    <div class="p-8 rounded-2xl border-2 border-hertz-light bg-gradient-to-br from-hertz-light/10 to-white">
+      <div class="flex items-center mb-3">
+        <i class="fas fa-envelope text-hertz-primary text-2xl mr-3"></i>
+        <h3 class="text-2xl font-bold text-gray-900">Stay Updated</h3>
+      </div>
+      <p class="text-gray-700 mb-4">Get monthly updates on new ESG regulations, tools, and best practices—no spam.</p>
+      <div class="flex gap-2">
+        <input type="email" placeholder="Your email" class="flex-1 border-2 border-gray-300 rounded-lg p-3 focus:border-hertz-primary focus:outline-none" />
+        <button class="px-6 py-3 bg-hertz-primary text-white rounded-lg font-semibold hover:bg-hertz-dark transition-colors">
+          Subscribe
+        </button>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<!-- Footer -->
 <footer class="bg-gray-900 text-white py-16">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="grid gap-12 md:grid-cols-2 items-start">
       <div>
-        <a href="/index.html" class="inline-block">
-          <img src="/HW-Logo-Light.png" alt="Hertzwave"
-               class="hz-logo-footer brightness-0 invert">
+        <a href="../index.html" class="inline-block">
+          <img src="../HW-Logo-Light.png" alt="Hertzwave" class="hz-logo-footer brightness-0 invert">
         </a>
         <p class="text-gray-400 mt-6 max-w-md">
-          AI-powered carbon accounting platform for enterprise compliance and net-zero planning.
+          AI-powered ESG and carbon accounting platform for Indian and global businesses.
         </p>
         <div class="mt-5 flex gap-4 text-gray-400">
           <a href="#" aria-label="LinkedIn" class="hover:text-white"><i class="fab fa-linkedin text-xl"></i></a>
@@ -297,43 +616,253 @@
         </div>
       </div>
       
-    <!-- Right block -->
-<div class="md:text-right">
-  <div class="border-t border-gray-800 pt-6 md:border-none md:pt-0"></div>
-
-  <p class="text-gray-400 text-sm">© 2025 Hertzwave. All rights reserved.</p>
-
-  <!-- Policy links -->
-  <ul class="mt-3 flex md:justify-end flex-wrap gap-x-6 gap-y-2 text-gray-400 text-sm">
-    <li><a href="/legal/security.html" class="hover:text-white">Security</a></li>
-    <li><a href="/legal/privacy.html" class="hover:text-white">Privacy Policy</a></li>
-    <li><a href="/legal/data-protection.html" class="hover:text-white">Data Protection</a></li>
-    <li><a href="/legal/terms.html" class="hover:text-white">Terms of Use</a></li>
-  </ul>
-
-  <!-- Honest status note -->
-  <p class="mt-2 text-xs text-gray-500">
-    ISO 27001, SOC 2 Type II and GDPR compliance are in progress.
-  </p>
-</div>
-
-      
+      <div class="md:text-right">
+        <div class="border-t border-gray-800 pt-6 md:border-none md:pt-0"></div>
+        
+        <p class="text-gray-400 text-sm">© 2025 Hertzwave Innovations Pvt Ltd. All rights reserved.</p>
+        
+        <ul class="mt-3 flex md:justify-end flex-wrap gap-x-6 gap-y-2 text-gray-400 text-sm">
+          <li><a href="../legal/security.html" class="hover:text-white">Security</a></li>
+          <li><a href="../legal/privacy.html" class="hover:text-white">Privacy Policy</a></li>
+          <li><a href="../legal/data-protection.html" class="hover:text-white">Data Protection</a></li>
+          <li><a href="../legal/terms.html" class="hover:text-white">Terms of Use</a></li>
+        </ul>
+        
+        <p class="mt-2 text-xs text-gray-500">
+          ISO 27001, SOC 2 Type II and GDPR compliance are in progress.
+        </p>
+      </div>
     </div>
   </div>
 </footer>
+
+<!-- Modal Container -->
+<div id="modalContainer"></div>
+
+<!-- Modal Container -->
+<div id="modalContainer"></div>
+
 <script>
-    // mobile nav toggle
-    const navBtn = document.getElementById('navBtn');
-    const mobileNav = document.getElementById('mobileNav');
-    navBtn?.addEventListener('click', () => mobileNav?.classList.toggle('hidden'));
+// All 19 modals - Guides, Calculators, Case Studies, Templates
+const modalContent = {
+  // === GUIDES (6) ===
+  'carbon-101': {
+    title: 'Carbon Accounting 101',
+    subtitle: 'GHG Protocol Fundamentals',
+    icon: 'fas fa-graduation-cap',
+    content: '<div class="space-y-6">  <h2 class="text-2xl font-bold text-gray-900">Carbon Accounting 101 — a true, audit-ready starter</h2>  <p class="text-gray-700 leading-relaxed">    Carbon accounting is the systematic process of measuring, reporting, and verifying greenhouse gas (GHG) emissions from an organization’s activities.    Most companies use the <strong>GHG Protocol Corporate Standard</strong> so results are comparable, credible, and ready for customer or auditor review.  </p>  <div class="bg-blue-50 p-5 rounded-lg border-l-4 border-blue-500">    <h3 class="text-xl font-bold text-gray-900 mb-3">Why companies do this (practical reasons)</h3>    <ul class="space-y-2 text-gray-700">      <li><strong>Customer & supplier scorecards:</strong> buyers increasingly require footprints and ESG KPIs for onboarding and renewals.</li>      <li><strong>Export readiness:</strong> disclosures (e.g., CBAM-style product embedded emissions) need consistent methods and evidence trails.</li>      <li><strong>Finance & assurance:</strong> lenders/investors want repeatable KPIs with defensible boundaries and factors.</li>      <li><strong>Cost reduction:</strong> emissions hotspots often map directly to energy and process losses.</li>    </ul>  </div>  <h3 class="text-xl font-bold text-gray-900">Scopes 1, 2, 3 — what belongs where</h3>  <div class="grid md:grid-cols-3 gap-4">    <div class="bg-white p-5 rounded-lg border border-gray-200 shadow-sm">      <div class="flex items-center gap-3 mb-2">        <span class="w-9 h-9 rounded-full bg-red-500 text-white flex items-center justify-center font-bold">1</span>        <h4 class="text-lg font-bold text-gray-900">Scope 1</h4>      </div>      <p class="text-sm text-gray-700">Direct emissions you control.</p>      <ul class="list-disc ml-5 text-sm text-gray-700 mt-2 space-y-1">        <li>Fuels burned on-site (boilers, furnaces, DG sets)</li>        <li>Company vehicles</li>        <li>Process emissions (industry-specific)</li>        <li>Refrigerants (HVAC/chillers)</li>      </ul>    </div>    <div class="bg-white p-5 rounded-lg border border-gray-200 shadow-sm">      <div class="flex items-center gap-3 mb-2">        <span class="w-9 h-9 rounded-full bg-yellow-500 text-white flex items-center justify-center font-bold">2</span>        <h4 class="text-lg font-bold text-gray-900">Scope 2</h4>      </div>      <p class="text-sm text-gray-700">Purchased electricity / steam / heat.</p>      <ul class="list-disc ml-5 text-sm text-gray-700 mt-2 space-y-1">        <li>Location-based (grid average)</li>        <li>Market-based (PPAs/RECs/green tariffs)</li>        <li>Evidence: bills + certificates</li>      </ul>    </div>    <div class="bg-white p-5 rounded-lg border border-gray-200 shadow-sm">      <div class="flex items-center gap-3 mb-2">        <span class="w-9 h-9 rounded-full bg-green-600 text-white flex items-center justify-center font-bold">3</span>        <h4 class="text-lg font-bold text-gray-900">Scope 3</h4>      </div>      <p class="text-sm text-gray-700">Value chain emissions (often largest).</p>      <ul class="list-disc ml-5 text-sm text-gray-700 mt-2 space-y-1">        <li>Purchased goods & services</li>        <li>Logistics and distribution</li>        <li>Business travel / commuting</li>        <li>Use & end-of-life (where relevant)</li>      </ul>    </div>  </div>  <div class="bg-gray-50 p-5 rounded-lg border border-gray-200">    <h3 class="text-xl font-bold text-gray-900 mb-3">Step-by-step workflow auditors expect</h3>    <ol class="list-decimal ml-6 text-gray-700 space-y-2">      <li><strong>Define boundary:</strong> entity list, sites, control approach (operational/financial).</li>      <li><strong>Set reporting period & baseline:</strong> FY, baseline year, and any recalculation policy.</li>      <li><strong>Collect activity data:</strong> monthly bills/logs; document sources and owners.</li>      <li><strong>Select emission factors:</strong> fuel-specific + geography-specific, with version control.</li>      <li><strong>Calculate & validate:</strong> unit conversions, outlier checks, completeness checks.</li>      <li><strong>Publish outputs:</strong> scope totals, intensity KPIs, hotspot breakdowns, and narratives.</li>      <li><strong>Evidence pack:</strong> attach bills, registers, assumptions, and sign-off trail.</li>    </ol>  </div>  <div class="bg-red-50 p-5 rounded-lg border border-red-200">    <h3 class="text-xl font-bold text-gray-900 mb-2">Common pitfalls (and how to avoid)</h3>    <ul class="list-disc ml-6 text-gray-700 space-y-1">      <li><strong>Unit chaos:</strong> liters vs kL, kg vs tonnes → lock a unit convention early.</li>      <li><strong>Missing months:</strong> make data monthly; don’t estimate annually at year-end.</li>      <li><strong>Refrigerants ignored:</strong> track top-ups and gas type; use correct GWP.</li>      <li><strong>No audit trail:</strong> keep evidence links, factor sources, and approvals.</li>    </ul>  </div>  <div class="bg-white p-5 rounded-lg border border-gray-200 shadow-sm">    <h3 class="text-xl font-bold text-gray-900 mb-3">Quick reference: what data you need (minimum viable)</h3>    <div class="grid md:grid-cols-2 gap-4 text-sm text-gray-700">      <div>        <h4 class="font-bold mb-2">Scope 1</h4>        <ul class="list-disc ml-6 space-y-1">          <li>Fuel consumption (diesel, FO, NG, LPG, coal) — monthly</li>          <li>DG runtime (optional), fuel purchase/stock changes</li>          <li>Refrigerant top-ups by gas type</li>        </ul>      </div>      <div>        <h4 class="font-bold mb-2">Scope 2</h4>        <ul class="list-disc ml-6 space-y-1">          <li>Electricity bills / meter reads (kWh) — monthly</li>          <li>Renewables (solar gen, PPAs/RECs) + evidence</li>        </ul>      </div>    </div>  </div>  <div class="bg-gradient-to-r from-green-50 to-emerald-50 border-2 border-green-300 p-5 rounded-lg">    <h3 class="text-xl font-bold text-gray-900 mb-3"><i class="fas fa-lightbulb text-green-600 mr-2"></i>How TerraCAP helps</h3>    <ul class="list-disc ml-6 text-gray-700 space-y-1">      <li>Monthly ingestion + validation checks (missing months, outliers, duplicates)</li>      <li>Emission factor library with version control</li>      <li>Evidence attachments + approvals for audit readiness</li>      <li>Framework-aligned exports so one dataset serves multiple reports</li>    </ul>  </div>  <div class="bg-gray-50 p-5 rounded-lg border border-gray-200">    <h3 class="text-xl font-bold text-gray-900 mb-3">FAQ</h3>    <div class="space-y-3 text-gray-700">      <p><strong>Do we need Scope 3 from day 1?</strong> Start with material categories (top suppliers/logistics) and improve quality over time.</p>      <p><strong>How fast can we publish a credible baseline?</strong> If monthly bills exist, many MSMEs can baseline Scopes 1–2 in weeks.</p>      <p><strong>What makes it “audit-ready”?</strong> Consistent boundary + documented factors + evidence trail + approvals.</p>    </div>  </div></div>'
+  },
+  'cbam-guide': {
+    title: 'What is CBAM & Implications',
+    subtitle: 'EU Carbon Border Adjustment Mechanism',
+    icon: 'fas fa-globe-europe',
+    content: '<div class="space-y-6"><h2 class="text-2xl font-bold text-gray-900">CBAM — what exporters need to prepare</h2><p class="text-gray-700 leading-relaxed">The EU’s Carbon Border Adjustment Mechanism (CBAM) prices the embedded emissions of certain imported goods, aligning them with the EU ETS. For exporters, the main challenge is not paperwork — it’s producing credible, product-level embedded emissions with evidence.</p><div class="bg-white p-5 rounded-lg border border-gray-200 shadow-sm"><h3 class="text-xl font-bold text-gray-900 mb-3">What typically changes for suppliers</h3><ul class="list-disc ml-6 text-gray-700 space-y-1"><li>Buyers request product-level embedded emissions (not just corporate totals).</li><li>Allocation methods (energy/process → product) must be documented and repeatable.</li><li>Evidence becomes mandatory: bills, production logs, method notes, factor sources.</li></ul></div><div class="bg-white p-5 rounded-lg border border-gray-200 shadow-sm"><h3 class="text-xl font-bold text-gray-900 mb-3">Minimum data pack to start (practical)</h3><div class="grid md:grid-cols-2 gap-4 text-sm text-gray-700"><div><h4 class="font-bold mb-2">Operations</h4><ul class="list-disc ml-6 space-y-1"><li>Monthly electricity/fuels by facility</li><li>Production quantities by product line</li><li>Process inputs/outputs (where relevant)</li><li>Scrap/rework rates</li></ul></div><div><h4 class="font-bold mb-2">Governance</h4><ul class="list-disc ml-6 space-y-1"><li>Allocation logic + version control</li><li>Emission factor sources + update cadence</li><li>Evidence folder structure</li><li>Approvals and internal review</li></ul></div></div></div><div class="bg-white p-5 rounded-lg border border-gray-200 shadow-sm"><h3 class="text-xl font-bold text-gray-900 mb-3">A simple 30–60 day readiness plan</h3><ol class="list-decimal ml-6 text-gray-700 space-y-2"><li>Pick 1–3 priority products and define boundaries (cradle-to-gate or gate-to-gate).</li><li>Implement monthly capture of energy and output; fix unit conventions.</li><li>Document allocation method and run sensitivity checks (what drives the result?).</li><li>Build an evidence pack and do an internal “mock audit”.</li></ol></div><div class="bg-gradient-to-r from-green-50 to-emerald-50 border-2 border-green-300 p-5 rounded-lg"><h3 class="text-xl font-bold text-gray-900 mb-3"><i class="fas fa-lightbulb text-green-600 mr-2"></i>How TerraCAP helps</h3><ul class="list-disc ml-6 text-gray-700 space-y-1"><li>Product-level calculation workflows with documented allocation logic</li><li>Evidence attachments and approvals (verifier-ready audit trail)</li><li>Supplier engagement workflows to improve upstream data quality</li><li>Dashboards for embedded emissions hotspots and reduction scenarios</li></ul></div><div class="bg-gray-50 p-5 rounded-lg border border-gray-200"><h3 class="text-xl font-bold text-gray-900 mb-3">FAQ</h3><div class="space-y-3 text-gray-700"><p><strong>Do we need perfect data to start?</strong> No. Start with priority products and improve data quality iteratively — but document assumptions.</p><p><strong>Will renewables help CBAM exposure?</strong> Often yes, because lower electricity emission factors can reduce embedded emissions where electricity dominates.</p><p><strong>What is the biggest risk?</strong> Inconsistent allocation or missing evidence — both can invalidate results under scrutiny.</p></div></div></div>'
+  },
+  'greenco-guide': {
+    title: 'GreenCo Fundamentals',
+    subtitle: 'Who Needs It & How to Prepare',
+    icon: 'fas fa-award',
+    content: '<div class="space-y-6"><h2 class="text-2xl font-bold text-gray-900">GreenCo — readiness fundamentals for plants</h2><p class="text-gray-700 leading-relaxed">GreenCo is a facility sustainability rating used widely in Indian manufacturing supply chains. The fastest way to prepare is to run a disciplined monthly cadence across energy, water, waste, and emissions with evidence and ownership.</p><div class="bg-white p-5 rounded-lg border border-gray-200 shadow-sm"><h3 class="text-xl font-bold text-gray-900 mb-3">Who typically pursues GreenCo</h3><ul class="list-disc ml-6 text-gray-700 space-y-1"><li>Plants supplying to large OEMs / export supply chains</li><li>Energy- and water-intensive facilities (metals, cement, chemicals, textiles)</li><li>Sites needing a structured improvement roadmap with measurable KPIs</li></ul></div><div class="bg-white p-5 rounded-lg border border-gray-200 shadow-sm"><h3 class="text-xl font-bold text-gray-900 mb-3">What “good readiness” looks like</h3><ul class="list-disc ml-6 text-gray-700 space-y-1"><li>12–24 months of KPI time series normalized by production</li><li>Clear boundary: plant vs township vs offices, and shared utilities</li><li>Top consumers identified (compressed air, boilers, chillers, furnaces)</li><li>Waste mapped by type and disposal route with vendor evidence</li></ul></div><div class="bg-white p-5 rounded-lg border border-gray-200 shadow-sm"><h3 class="text-xl font-bold text-gray-900 mb-3">90-day preparation roadmap</h3><ol class="list-decimal ml-6 text-gray-700 space-y-2"><li>Baseline KPIs and meter map; fix missing data and unit conventions.</li><li>Set targets and create an action register (projects, owners, timelines).</li><li>Build an evidence library and run internal audits.</li><li>Publish a plant sustainability scorecard monthly.</li></ol></div><div class="bg-gradient-to-r from-green-50 to-emerald-50 border-2 border-green-300 p-5 rounded-lg"><h3 class="text-xl font-bold text-gray-900 mb-3"><i class="fas fa-lightbulb text-green-600 mr-2"></i>How TerraCAP helps</h3><ul class="list-disc ml-6 text-gray-700 space-y-1"><li>Monthly plant scorecards (energy/water/waste/emissions) with trends and intensity KPIs</li><li>Exception alerts for spikes and missing data</li><li>Evidence packs and audit trails to reduce certification friction</li><li>Action register to track initiatives and realized savings</li></ul></div><div class="bg-gray-50 p-5 rounded-lg border border-gray-200"><h3 class="text-xl font-bold text-gray-900 mb-3">FAQ</h3><div class="space-y-3 text-gray-700"><p><strong>Is GreenCo only for large enterprises?</strong> No. MSMEs can use GreenCo discipline to become preferred suppliers, especially in OEM chains.</p><p><strong>What data gaps hurt the most?</strong> Missing monthly records, unclear boundaries, and lack of evidence attachments.</p><p><strong>How quickly can we become assessment-ready?</strong> Often within 8–12 weeks if bills and logs exist and ownership is assigned.</p></div></div></div>'
+  },
+  'lca-guide': {
+    title: 'What is LCA?',
+    subtitle: 'Life Cycle Assessment Introduction',
+    icon: 'fas fa-recycle',
+    content: '<div class="space-y-6"><h2 class="text-2xl font-bold text-gray-900">LCA (Life Cycle Assessment) — product footprint basics</h2><p class="text-gray-700 leading-relaxed">Life Cycle Assessment evaluates impacts across a product’s life cycle. It underpins Product Carbon Footprints (PCF), eco-design decisions, and many customer product disclosures. The key is defining functional unit, boundary, and inventory quality.</p><div class="bg-white p-5 rounded-lg border border-gray-200 shadow-sm"><h3 class="text-xl font-bold text-gray-900 mb-3">Core concepts you must define</h3><div class="grid md:grid-cols-2 gap-4 text-sm text-gray-700"><div><h4 class="font-bold mb-2">Functional unit</h4><p>What you are measuring (e.g., 1 tonne of product, 1,000 units, 1 m²).</p></div><div><h4 class="font-bold mb-2">System boundary</h4><p>Cradle-to-gate / cradle-to-grave / gate-to-gate; which stages are included.</p></div></div></div><div class="bg-white p-5 rounded-lg border border-gray-200 shadow-sm"><h3 class="text-xl font-bold text-gray-900 mb-3">Inventory checklist (LCI) — what data is needed</h3><ul class="list-disc ml-6 text-gray-700 space-y-1"><li>Bill of materials (BOM), supplier and recycled content where relevant</li><li>Plant energy and fuels allocated to product lines</li><li>Yields, scrap, rework, and co-products allocation</li><li>Transport legs, packaging, and end-of-life assumptions (if in scope)</li></ul></div><div class="bg-white p-5 rounded-lg border border-gray-200 shadow-sm"><h3 class="text-xl font-bold text-gray-900 mb-3">A workable LCA rollout plan</h3><ol class="list-decimal ml-6 text-gray-700 space-y-2"><li>Start with one flagship product; define functional unit and boundary.</li><li>Collect BOM and plant energy; establish allocation rules.</li><li>Run hotspot analysis and sensitivity checks; document assumptions.</li><li>Version and refresh PCF when materials/energy mix changes.</li></ol></div><div class="bg-gradient-to-r from-green-50 to-emerald-50 border-2 border-green-300 p-5 rounded-lg"><h3 class="text-xl font-bold text-gray-900 mb-3"><i class="fas fa-lightbulb text-green-600 mr-2"></i>How TerraCAP helps</h3><ul class="list-disc ml-6 text-gray-700 space-y-1"><li>Structured BOM and supplier data capture, with versioning</li><li>Allocation workflows tying utilities and processes to product lines</li><li>Supplier engagement to improve upstream footprint data quality</li><li>Evidence and change control for PCF updates over time</li></ul></div><div class="bg-gray-50 p-5 rounded-lg border border-gray-200"><h3 class="text-xl font-bold text-gray-900 mb-3">FAQ</h3><div class="space-y-3 text-gray-700"><p><strong>Is LCA the same as corporate carbon accounting?</strong> No. Corporate is organization-wide; LCA is product life-cycle focused.</p><p><strong>Do we need specialist software?</strong> Not always to start; but you need disciplined inventory data and documented assumptions.</p><p><strong>What makes LCA credible?</strong> Transparent boundary, high-quality inventory, and documented allocation & sensitivity checks.</p></div></div></div>'
+  },
+  'ccts-guide': {
+    title: 'CCTS & Its Impact',
+    subtitle: 'India Carbon Credit Trading Scheme',
+    icon: 'fas fa-file-invoice',
+    content: '<div class="space-y-6"><h2 class="text-2xl font-bold text-gray-900">CCTS — India Carbon Credit Trading Scheme (readiness)</h2><p class="text-gray-700 leading-relaxed">India’s Carbon Credit Trading Scheme (CCTS) is expected to increase the value of verified baselines and measurable reductions. The practical starting point is strong monthly energy and emissions accounting, governance, and an abatement register.</p><div class="bg-white p-5 rounded-lg border border-gray-200 shadow-sm"><h3 class="text-xl font-bold text-gray-900 mb-3">What preparedness really means</h3><ul class="list-disc ml-6 text-gray-700 space-y-1"><li>Facility-level baselines and intensity KPIs you can defend</li><li>Defined methodologies and factor versioning</li><li>Projects pipeline with measurable reductions and ownership</li><li>Audit trail for claims and performance reporting</li></ul></div><div class="bg-white p-5 rounded-lg border border-gray-200 shadow-sm"><h3 class="text-xl font-bold text-gray-900 mb-3">30–45 day action plan</h3><ol class="list-decimal ml-6 text-gray-700 space-y-2"><li>Choose baseline year and define boundaries (sites + utilities).</li><li>Implement monthly ingestion and validation checks.</li><li>Identify top 5 hotspots and define reduction initiatives.</li><li>Build evidence repository and run internal QA.</li></ol></div><div class="bg-white p-5 rounded-lg border border-gray-200 shadow-sm"><h3 class="text-xl font-bold text-gray-900 mb-3">Data checklist (minimum viable)</h3><div class="grid md:grid-cols-2 gap-4 text-sm text-gray-700"><div><h4 class="font-bold mb-2">Energy & fuels</h4><ul class="list-disc ml-6 space-y-1"><li>kWh by meter/site</li><li>Diesel/FO/NG/LPG/coal monthly</li><li>Steam/heat purchases</li></ul></div><div><h4 class="font-bold mb-2">Operations</h4><ul class="list-disc ml-6 space-y-1"><li>Production volumes</li><li>Run hours for major equipment (optional)</li><li>Capex/opex for projects</li></ul></div></div></div><div class="bg-gradient-to-r from-green-50 to-emerald-50 border-2 border-green-300 p-5 rounded-lg"><h3 class="text-xl font-bold text-gray-900 mb-3"><i class="fas fa-lightbulb text-green-600 mr-2"></i>How TerraCAP helps</h3><ul class="list-disc ml-6 text-gray-700 space-y-1"><li>Monthly cadence ingestion (files/SFTP/connectors) with validation checks</li><li>Factor library and methodology notes with approvals</li><li>Abatement register to track initiatives and realized reductions</li><li>Dashboards for hotspot identification and plant comparisons</li></ul></div><div class="bg-gray-50 p-5 rounded-lg border border-gray-200"><h3 class="text-xl font-bold text-gray-900 mb-3">FAQ</h3><div class="space-y-3 text-gray-700"><p><strong>Will CCTS apply to all companies?</strong> Coverage may evolve; readiness is valuable regardless because buyers and finance already ask for defensible KPIs.</p><p><strong>Do we need offsets to participate?</strong> Start with baselines and reductions; offsets/credits come after credible measurement.</p><p><strong>What is the biggest early win?</strong> Fixing monthly cadence and hotspots—most reductions come from a few energy/process drivers.</p></div></div></div>'
+  },
+  'carbon-credits': {
+    title: 'Carbon Credits Fundamentals',
+    subtitle: 'Understanding Carbon Markets',
+    icon: 'fas fa-coins',
+    content: '<div class="space-y-6"><h2 class="text-2xl font-bold text-gray-900">Carbon Credits — fundamentals, quality, and claims</h2><p class="text-gray-700 leading-relaxed">Carbon credits usually represent 1 tonne of CO₂e reduced or removed, verified under recognized standards. A safe approach is: reduce first, then offset residuals with high-integrity credits and transparent claims.</p><div class="bg-white p-5 rounded-lg border border-gray-200 shadow-sm"><h3 class="text-xl font-bold text-gray-900 mb-3">Types of credits (simple view)</h3><ul class="list-disc ml-6 text-gray-700 space-y-1"><li><strong>Reduction/avoidance:</strong> renewables, efficiency, methane capture</li><li><strong>Removals:</strong> afforestation, biochar, direct air capture (DAC)</li><li><strong>Compliance vs voluntary:</strong> different rules and claim expectations</li></ul></div><div class="bg-white p-5 rounded-lg border border-gray-200 shadow-sm"><h3 class="text-xl font-bold text-gray-900 mb-3">Credit quality checklist (use this before buying)</h3><ul class="list-disc ml-6 text-gray-700 space-y-1"><li>Additionality (would it happen anyway?)</li><li>Permanence (how durable is the reduction/removal?)</li><li>Leakage risk (does it shift emissions elsewhere?)</li><li>Independent validation & verification (MRV)</li><li>Transparent registry listing and retirement record</li></ul></div><div class="bg-white p-5 rounded-lg border border-gray-200 shadow-sm"><h3 class="text-xl font-bold text-gray-900 mb-3">How to communicate claims safely</h3><ol class="list-decimal ml-6 text-gray-700 space-y-2"><li>Define the boundary (company vs product vs event).</li><li>State what was reduced vs what was offset.</li><li>Disclose credit type, standard, vintage, and retirement IDs.</li><li>Avoid misleading “carbon neutral” claims without robust evidence.</li></ol></div><div class="bg-gradient-to-r from-green-50 to-emerald-50 border-2 border-green-300 p-5 rounded-lg"><h3 class="text-xl font-bold text-gray-900 mb-3"><i class="fas fa-lightbulb text-green-600 mr-2"></i>How TerraCAP helps</h3><ul class="list-disc ml-6 text-gray-700 space-y-1"><li>Inventory integrity first: accurate baseline and evidence trail</li><li>Reduction roadmap and initiative tracking with measured outcomes</li><li>Offset ledger: purchases, vintages, registry IDs, and retirements</li><li>Reporting exports for stakeholder-ready disclosures</li></ul></div><div class="bg-gray-50 p-5 rounded-lg border border-gray-200"><h3 class="text-xl font-bold text-gray-900 mb-3">FAQ</h3><div class="space-y-3 text-gray-700"><p><strong>Can credits replace reductions?</strong> No. Most credible strategies prioritize direct reductions and use credits for residuals.</p><p><strong>What is the biggest buying mistake?</strong> Buying low-integrity credits without registry verification or permanence assessment.</p><p><strong>How do we track credits internally?</strong> Maintain a ledger with project details, quantities, vintages, and retirement proof.</p></div></div></div>'
+  },
+  // === CALCULATORS (4) ===
+  'calc-scope1': {
+    title: 'Scope 1 Calculator',
+    subtitle: 'Direct Emissions from Your Operations',
+    icon: 'fas fa-fire',
+    content: '<div class="space-y-6"><h2 class="text-2xl font-bold text-gray-900">Scope 1 Calculator — fuels, process emissions & refrigerants</h2><p class="text-gray-700 leading-relaxed">Scope 1 covers emissions from sources you own or control: fuel combustion, certain industrial processes, and fugitive releases (refrigerants). A strong estimate relies on monthly activity data and correct factors/GWP values.</p><div class="bg-white p-5 rounded-lg border border-gray-200 shadow-sm"><h3 class="text-xl font-bold text-gray-900 mb-3">Inputs you need</h3><ul class="list-disc ml-6 text-gray-700 space-y-1"><li>Fuel consumption by type (diesel/FO/NG/LPG/coal) — monthly</li><li>Any process drivers (e.g., clinker/lime/chemical conversion) if applicable</li><li>Refrigerant top-ups (kg) by gas type (R-134a, R-410A, etc.)</li><li>Evidence references (bills, fuel logs, maintenance records)</li></ul></div><div class="bg-gray-50 p-5 rounded-lg border border-gray-200"><h3 class="text-xl font-bold text-gray-900 mb-3">Calculation method (step-by-step)</h3><ol class="list-decimal ml-6 text-gray-700 space-y-2"><li>Standardize units (liters, kg, SCM) and convert to consistent base units.</li><li>Select appropriate emission factors (fuel-specific, country/standard source).</li><li>Compute combustion emissions: Activity × EF (and oxidation factor if used).</li><li>Compute refrigerant emissions: leaked mass × GWP for that refrigerant.</li><li>Validate: compare to last year/month and investigate spikes.</li></ol></div><div class="bg-red-50 p-5 rounded-lg border border-red-200"><h3 class="text-xl font-bold text-gray-900 mb-2">Common pitfalls</h3><ul class="list-disc ml-6 text-gray-700 space-y-1"><li>Using purchase quantity instead of consumption (stock changes ignored)</li><li>Mixing L/kL, kg/tonnes without conversions</li><li>Ignoring refrigerant leakage (can dominate Scope 1 in HVAC-heavy sites)</li><li>Using generic factors for all fuels/sites without documenting source</li></ul></div><div class="bg-gradient-to-r from-green-50 to-emerald-50 border-2 border-green-300 p-5 rounded-lg"><h3 class="text-xl font-bold text-gray-900 mb-3"><i class="fas fa-lightbulb text-green-600 mr-2"></i>Tips for better accuracy</h3><ul class="list-disc ml-6 text-gray-700 space-y-1"><li>Capture data monthly; annual back-calculation increases errors</li><li>Record factor source + version + date for assurance</li><li>Track DG runtime and load factors if fuel data is noisy</li><li>Maintain refrigerant register: gas type, top-up date, service vendor</li></ul></div></div>'
+  },
+  'calc-scope2': {
+    title: 'Scope 2: Location vs Market-Based',
+    subtitle: 'Electricity Emissions',
+    icon: 'fas fa-bolt',
+    content: '<div class="space-y-6"><h2 class="text-2xl font-bold text-gray-900">Scope 2 Calculator — Location-based vs Market-based</h2><p class="text-gray-700 leading-relaxed">Scope 2 is emissions from purchased electricity (and sometimes steam/heat). Most disclosures require location-based (grid-average) and may also require market-based when you hold contractual instruments (PPAs/RECs).</p><div class="bg-white p-5 rounded-lg border border-gray-200 shadow-sm"><h3 class="text-xl font-bold text-gray-900 mb-3">Inputs you need</h3><ul class="list-disc ml-6 text-gray-700 space-y-1"><li>Monthly kWh by meter/site (bills or AMI/meter logs)</li><li>Grid emission factor for your region/year (for location-based)</li><li>Contracts/certificates: PPAs, RECs, green tariffs (for market-based)</li><li>Evidence: bills, certificates, retirement records (where applicable)</li></ul></div><div class="bg-gray-50 p-5 rounded-lg border border-gray-200"><h3 class="text-xl font-bold text-gray-900 mb-3">Calculation method (step-by-step)</h3><ol class="list-decimal ml-6 text-gray-700 space-y-2"><li>Sum monthly kWh for each site and the organization total.</li><li>Compute Location-based: kWh × grid EF (by region/year).</li><li>Compute Market-based: apply contractual instrument factors per guidance, with evidence.</li><li>Report both totals and intensity KPI (e.g., tCO₂e/tonne product).</li><li>Validate: compare with last year and reconcile unusual deviations.</li></ol></div><div class="bg-red-50 p-5 rounded-lg border border-red-200"><h3 class="text-xl font-bold text-gray-900 mb-2">Common pitfalls</h3><ul class="list-disc ml-6 text-gray-700 space-y-1"><li>Using an outdated grid factor or wrong region factor</li><li>Claiming green energy without proper evidence/attributes</li><li>Mixing LB and MB concepts in one number without explanation</li><li>Not documenting boundary (which meters/sites included)</li></ul></div><div class="bg-gradient-to-r from-green-50 to-emerald-50 border-2 border-green-300 p-5 rounded-lg"><h3 class="text-xl font-bold text-gray-900 mb-3"><i class="fas fa-lightbulb text-green-600 mr-2"></i>Tips for better accuracy</h3><ul class="list-disc ml-6 text-gray-700 space-y-1"><li>Keep a meter map and tag each bill to a site and cost center</li><li>Separate LB vs MB in reports and disclose instruments clearly</li><li>Track rooftop solar generation separately and define treatment</li><li>Use intensity KPIs to control for production variation</li></ul></div></div>'
+  },
+  'calc-intensity': {
+    title: 'Carbon Intensity Calculator',
+    subtitle: 'Emissions per Unit Output',
+    icon: 'fas fa-chart-line',
+    content: '<div class="space-y-6"><h2 class="text-2xl font-bold text-gray-900">Carbon Intensity Calculator — emissions per unit of output</h2><p class="text-gray-700 leading-relaxed">Intensity KPIs normalize emissions by output (tonnes, units) or business measures (revenue). They are widely used by buyers and internal teams to track improvements independent of scale changes.</p><div class="bg-white p-5 rounded-lg border border-gray-200 shadow-sm"><h3 class="text-xl font-bold text-gray-900 mb-3">Inputs you need</h3><ul class="list-disc ml-6 text-gray-700 space-y-1"><li>Total emissions for the period (Scope 1+2, or 1+2+3 — define clearly)</li><li>Output denominator (tonnes, units, m², km, revenue) with consistent definition</li><li>Production mix notes (if multiple product lines)</li></ul></div><div class="bg-gray-50 p-5 rounded-lg border border-gray-200"><h3 class="text-xl font-bold text-gray-900 mb-3">Calculation method (step-by-step)</h3><ol class="list-decimal ml-6 text-gray-700 space-y-2"><li>Choose the numerator scope: e.g., Scope 1+2 for operational intensity.</li><li>Choose denominator and lock definition (e.g., tonnes of finished goods).</li><li>Compute: Intensity = Total emissions / Output.</li><li>Track monthly/quarterly and compare across plants and periods.</li><li>Add context: explain product mix changes or major operational shifts.</li></ol></div><div class="bg-red-50 p-5 rounded-lg border border-red-200"><h3 class="text-xl font-bold text-gray-900 mb-2">Common pitfalls</h3><ul class="list-disc ml-6 text-gray-700 space-y-1"><li>Changing denominator definition mid-year (breaks comparability)</li><li>Comparing plants with different product mix without normalization</li><li>Using revenue intensity alone (sensitive to price swings)</li></ul></div><div class="bg-gradient-to-r from-green-50 to-emerald-50 border-2 border-green-300 p-5 rounded-lg"><h3 class="text-xl font-bold text-gray-900 mb-3"><i class="fas fa-lightbulb text-green-600 mr-2"></i>Tips for better accuracy</h3><ul class="list-disc ml-6 text-gray-700 space-y-1"><li>Use both absolute and intensity metrics together</li><li>Maintain a production normalization note for multi-product plants</li><li>Track intensity for key lines (top 80% volume) to drive action</li><li>Use intensity trendlines for early anomaly detection</li></ul></div></div>'
+  },
+  'calc-scope3': {
+    title: 'Supplier Emissions Estimator',
+    subtitle: 'Scope 3 Category 1',
+    icon: 'fas fa-truck',
+    content: '<div class="space-y-6"><h2 class="text-2xl font-bold text-gray-900">Scope 3 Starter — supplier & value-chain emissions</h2><p class="text-gray-700 leading-relaxed">Scope 3 estimation typically starts with prioritization and improves over time. Begin with the largest categories (purchases, logistics) using spend-based factors, then shift to supplier-specific or activity-based data for accuracy.</p><div class="bg-white p-5 rounded-lg border border-gray-200 shadow-sm"><h3 class="text-xl font-bold text-gray-900 mb-3">Inputs you need</h3><ul class="list-disc ml-6 text-gray-700 space-y-1"><li>Top suppliers/materials list (spend or mass) — start with top 20</li><li>Category spend or quantities (materials, services, packaging)</li><li>Logistics: tonne-km or shipment data (if available)</li><li>Any supplier-provided footprints (PCF/EPD)</li></ul></div><div class="bg-gray-50 p-5 rounded-lg border border-gray-200"><h3 class="text-xl font-bold text-gray-900 mb-3">Calculation method (step-by-step)</h3><ol class="list-decimal ml-6 text-gray-700 space-y-2"><li>Prioritize categories by materiality: top spend/material groups.</li><li>Build baseline using spend-based or category factors (document sources).</li><li>Engage suppliers for activity data or product footprints to improve accuracy.</li><li>Introduce data quality scoring and versioning.</li><li>Report estimates with boundaries and improvement plan for next cycles.</li></ol></div><div class="bg-red-50 p-5 rounded-lg border border-red-200"><h3 class="text-xl font-bold text-gray-900 mb-2">Common pitfalls</h3><ul class="list-disc ml-6 text-gray-700 space-y-1"><li>Treating early estimates as final truth (without quality scoring)</li><li>Double counting (e.g., counting both purchase spend and supplier PCF for same goods)</li><li>Ignoring logistics or packaging where they are material</li><li>No assumptions documentation (hard to defend later)</li></ul></div><div class="bg-gradient-to-r from-green-50 to-emerald-50 border-2 border-green-300 p-5 rounded-lg"><h3 class="text-xl font-bold text-gray-900 mb-3"><i class="fas fa-lightbulb text-green-600 mr-2"></i>Tips for better accuracy</h3><ul class="list-disc ml-6 text-gray-700 space-y-1"><li>Use a phased approach: baseline → improve quality → verify for key items</li><li>Standardize supplier questionnaires and evidence requirements</li><li>Start with categories that buyers ask for most (materials + logistics)</li><li>Maintain a change log so numbers remain explainable year-to-year</li></ul></div></div>'
+  },
+  // === CASE STUDIES (4) ===
+  'case-pharma': {
+    title: '28% Scope 1+2 Reduction',
+    subtitle: 'Indian Pharmaceutical Company',
+    icon: 'fas fa-pills',
+    content: '<div class="space-y-6"><h2 class="text-2xl font-bold text-gray-900">Case Study: 28% Scope 1+2 Reduction in 18 Months (Pharma)</h2><div class="bg-blue-50 p-4 rounded-lg"><p class="text-gray-700"><strong>Profile:</strong> Multi-site pharma manufacturer with strict customer audits and energy-intensive utilities (HVAC, steam, clean rooms).</p></div><div class="bg-white p-5 rounded-lg border border-gray-200 shadow-sm"><h3 class="text-xl font-bold text-gray-900 mb-3">Challenge</h3><ul class="list-disc ml-6 text-gray-700 space-y-1"><li>Fragmented energy/fuel records across 14 sites; inconsistent units and missing months</li><li>Low confidence in emission factor sources and version control</li><li>No single evidence repository; audits consumed weeks of manual effort</li><li>Hotspot identification was guesswork without plant comparisons</li></ul></div><div class="bg-white p-5 rounded-lg border border-gray-200 shadow-sm"><h3 class="text-xl font-bold text-gray-900 mb-3">Approach</h3><ol class="list-decimal ml-6 text-gray-700 space-y-2"><li>Standardized monthly ingestion and validation checks across all sites</li><li>Locked boundary and methodology note; created factor library with approvals</li><li>Built plant-wise dashboards (absolute + intensity) to highlight top drivers</li><li>Created an abatement register and tracked initiative impact monthly</li><li>Prepared assurance pack with evidence links and sign-offs</li></ol></div><div class="bg-gray-50 p-5 rounded-lg border border-gray-200"><h3 class="text-xl font-bold text-gray-900 mb-3">Outcomes</h3><div class="grid md:grid-cols-3 gap-3"><div class="bg-white p-3 rounded border text-center"><div class="text-2xl font-bold text-green-600">28%</div><div class="text-sm text-gray-600">Scope 1+2 reduction</div></div><div class="bg-white p-3 rounded border text-center"><div class="text-2xl font-bold text-green-600">14</div><div class="text-sm text-gray-600">Sites harmonized</div></div><div class="bg-white p-3 rounded border text-center"><div class="text-2xl font-bold text-green-600">18 mo</div><div class="text-sm text-gray-600">Measured program</div></div></div></div><div class="bg-white p-5 rounded-lg border border-gray-200 shadow-sm"><h3 class="text-xl font-bold text-gray-900 mb-3">Artifacts produced (what made it repeatable)</h3><ul class="list-disc ml-6 text-gray-700 space-y-1"><li>Meter map and monthly capture SOP for all facilities</li><li>Evidence folder structure and approvals workflow</li><li>Executive KPI dashboard + plant benchmarking views</li><li>Initiative tracker linking projects to measured reductions</li></ul></div><div class="bg-yellow-50 p-4 rounded-lg border border-yellow-200"><p class="text-gray-700"><strong>Key lesson:</strong> Once every site reported consistently, the top 3 utility drivers were obvious—and fixes moved from debate to execution.</p></div></div>'
+  },
+  'case-auto': {
+    title: 'GreenCo Platinum Achievement',
+    subtitle: 'Tier-1 Auto Components Supplier',
+    icon: 'fas fa-car',
+    content: '<div class="space-y-6"><h2 class="text-2xl font-bold text-gray-900">Case Study: GreenCo Platinum Achievement (Auto Components)</h2><div class="bg-blue-50 p-4 rounded-lg"><p class="text-gray-700"><strong>Profile:</strong> Tier-1 supplier with 8 plants; OEM scorecards demanded measurable energy/water/waste KPIs and improvement proof.</p></div><div class="bg-white p-5 rounded-lg border border-gray-200 shadow-sm"><h3 class="text-xl font-bold text-gray-900 mb-3">Challenge</h3><ul class="list-disc ml-6 text-gray-700 space-y-1"><li>Data was available but scattered across departments with no single cadence</li><li>Evidence was not organized; internal audits were reactive</li><li>Intensity KPIs were not normalized by production, causing misleading trends</li></ul></div><div class="bg-white p-5 rounded-lg border border-gray-200 shadow-sm"><h3 class="text-xl font-bold text-gray-900 mb-3">Approach</h3><ol class="list-decimal ml-6 text-gray-700 space-y-2"><li>Implemented a monthly KPI cadence across energy, water, waste, and emissions</li><li>Built evidence packs and a readiness tracker aligned to certification requirements</li><li>Introduced exception alerts for spikes and missing data</li><li>Tracked improvement projects and verified savings with pre/post baselines</li></ol></div><div class="bg-gray-50 p-5 rounded-lg border border-gray-200"><h3 class="text-xl font-bold text-gray-900 mb-3">Outcomes</h3><div class="grid md:grid-cols-3 gap-3"><div class="bg-white p-3 rounded border text-center"><div class="text-2xl font-bold text-green-600">Platinum</div><div class="text-sm text-gray-600">GreenCo rating</div></div><div class="bg-white p-3 rounded border text-center"><div class="text-2xl font-bold text-green-600">8</div><div class="text-sm text-gray-600">Plants in scope</div></div><div class="bg-white p-3 rounded border text-center"><div class="text-2xl font-bold text-green-600">12 mo</div><div class="text-sm text-gray-600">Cadence established</div></div></div></div><div class="bg-white p-5 rounded-lg border border-gray-200 shadow-sm"><h3 class="text-xl font-bold text-gray-900 mb-3">Artifacts produced (what made it repeatable)</h3><ul class="list-disc ml-6 text-gray-700 space-y-1"><li>Monthly scorecards per plant with production-normalized intensity KPIs</li><li>Evidence pack templates with checklists per KPI</li><li>Project register with savings validation</li><li>Management review dashboard for supplier scorecards</li></ul></div><div class="bg-yellow-50 p-4 rounded-lg border border-yellow-200"><p class="text-gray-700"><strong>Key lesson:</strong> Certification became a by-product of disciplined monthly operations data, not a one-time scramble.</p></div></div>'
+  },
+  'case-fmcg': {
+    title: 'CSRD-Ready in 6 Months',
+    subtitle: 'European FMCG Company',
+    icon: 'fas fa-shopping-basket',
+    content: '<div class="space-y-6"><h2 class="text-2xl font-bold text-gray-900">Case Study: CSRD-Ready in 6 Months (EU FMCG)</h2><div class="bg-blue-50 p-4 rounded-lg"><p class="text-gray-700"><strong>Profile:</strong> European FMCG company (25 facilities) preparing ESRS disclosures with assurance expectations and tight timelines.</p></div><div class="bg-white p-5 rounded-lg border border-gray-200 shadow-sm"><h3 class="text-xl font-bold text-gray-900 mb-3">Challenge</h3><ul class="list-disc ml-6 text-gray-700 space-y-1"><li>Multiple facilities with differing data maturity and reporting conventions</li><li>Need to align to ESRS E1–E5 with clear ownership and evidence</li><li>Scope 3 data quality varied significantly across categories</li></ul></div><div class="bg-white p-5 rounded-lg border border-gray-200 shadow-sm"><h3 class="text-xl font-bold text-gray-900 mb-3">Approach</h3><ol class="list-decimal ml-6 text-gray-700 space-y-2"><li>Performed a structured gap assessment and created a unified data model</li><li>Rolled out facility-wise templates with governance, owners, and evidence fields</li><li>Improved Scope 3 coverage via supplier engagement and data quality scoring</li><li>Built assurance-ready exports and narrative packs for management sign-off</li></ol></div><div class="bg-gray-50 p-5 rounded-lg border border-gray-200"><h3 class="text-xl font-bold text-gray-900 mb-3">Outcomes</h3><div class="grid md:grid-cols-3 gap-3"><div class="bg-white p-3 rounded border text-center"><div class="text-2xl font-bold text-green-600">100%</div><div class="text-sm text-gray-600">ESRS coverage</div></div><div class="bg-white p-3 rounded border text-center"><div class="text-2xl font-bold text-green-600">95%</div><div class="text-sm text-gray-600">Scope 3 quality for key categories</div></div><div class="bg-white p-3 rounded border text-center"><div class="text-2xl font-bold text-green-600">6 mo</div><div class="text-sm text-gray-600">To audit-ready pack</div></div></div></div><div class="bg-white p-5 rounded-lg border border-gray-200 shadow-sm"><h3 class="text-xl font-bold text-gray-900 mb-3">Artifacts produced (what made it repeatable)</h3><ul class="list-disc ml-6 text-gray-700 space-y-1"><li>ESRS-aligned tracker with owners and evidence links</li><li>Supplier engagement workflow + scoring rubric</li><li>Assurance pack exports and audit trail</li><li>Executive dashboards with material topic views</li></ul></div><div class="bg-yellow-50 p-4 rounded-lg border border-yellow-200"><p class="text-gray-700"><strong>Key lesson:</strong> Speed came from one consistent data backbone and governance—not from writing reports faster.</p></div></div>'
+  },
+  'case-tech': {
+    title: 'Scope 3 Transparency: 500+ Suppliers',
+    subtitle: 'US Technology Company',
+    icon: 'fas fa-microchip',
+    content: '<div class="space-y-6"><h2 class="text-2xl font-bold text-gray-900">Case Study: Scope 3 Transparency for 500+ Suppliers (Tech)</h2><div class="bg-blue-50 p-4 rounded-lg"><p class="text-gray-700"><strong>Profile:</strong> Global technology company with a large supply chain footprint and investor disclosure needs.</p></div><div class="bg-white p-5 rounded-lg border border-gray-200 shadow-sm"><h3 class="text-xl font-bold text-gray-900 mb-3">Challenge</h3><ul class="list-disc ml-6 text-gray-700 space-y-1"><li>Supplier emissions data was incomplete and inconsistent</li><li>Different formats and methodologies created comparability issues</li><li>Follow-ups were manual and not scalable</li></ul></div><div class="bg-white p-5 rounded-lg border border-gray-200 shadow-sm"><h3 class="text-xl font-bold text-gray-900 mb-3">Approach</h3><ol class="list-decimal ml-6 text-gray-700 space-y-2"><li>Segmented suppliers (top impact first) and launched phased engagement</li><li>Standardized questionnaires and introduced validation rules</li><li>Added data quality scoring and automated reminders and follow-ups</li><li>Built rollups and category dashboards to drive improvement cycles</li></ol></div><div class="bg-gray-50 p-5 rounded-lg border border-gray-200"><h3 class="text-xl font-bold text-gray-900 mb-3">Outcomes</h3><div class="grid md:grid-cols-3 gap-3"><div class="bg-white p-3 rounded border text-center"><div class="text-2xl font-bold text-green-600">500+</div><div class="text-sm text-gray-600">Suppliers engaged</div></div><div class="bg-white p-3 rounded border text-center"><div class="text-2xl font-bold text-green-600">85%</div><div class="text-sm text-gray-600">Coverage achieved</div></div><div class="bg-white p-3 rounded border text-center"><div class="text-2xl font-bold text-green-600">Q-by-Q</div><div class="text-sm text-gray-600">Continuous improvement loop</div></div></div></div><div class="bg-white p-5 rounded-lg border border-gray-200 shadow-sm"><h3 class="text-xl font-bold text-gray-900 mb-3">Artifacts produced (what made it repeatable)</h3><ul class="list-disc ml-6 text-gray-700 space-y-1"><li>Supplier questionnaires + evidence requirements playbook</li><li>Validation rules and scoring rubric</li><li>Dashboards for category and supplier-level rollups</li><li>Governance workflow for sign-off and reporting exports</li></ul></div><div class="bg-yellow-50 p-4 rounded-lg border border-yellow-200"><p class="text-gray-700"><strong>Key lesson:</strong> Scale was possible only when supplier engagement was treated like an operations workflow, not a one-time survey.</p></div></div>'
+  },
+  // === TEMPLATES (5) ===
+  'template-brsr': {
+    title: 'BRSR Lite Template',
+    subtitle: 'Simplified Reporting for Unlisted Companies',
+    icon: 'fas fa-file-excel',
+    content: '<div class="space-y-6"><h2 class="text-2xl font-bold text-gray-900">BRSR Lite Template — a usable starter pack</h2><p class="text-gray-700 leading-relaxed">A meaningful BRSR Lite template is not a one-page checklist. It is a structured data capture pack with definitions, owners, evidence fields, QA checks, and rollups so you can produce disclosures confidently.</p><div class="bg-white p-5 rounded-lg border border-gray-200 shadow-sm"><h3 class="text-xl font-bold text-gray-900 mb-3">What the template should contain</h3><ul class="list-disc ml-6 text-gray-700 space-y-1"><li>Entity & boundary sheet (sites, facilities, reporting period, baseline year)</li><li>Energy sheet (electricity, fuels, renewables) with monthly capture</li><li>Emissions sheet (Scopes 1–2 and key Scope 3 where applicable) with factor sources</li><li>Water sheet (intake, discharge, reuse/recycling, stress-area notes)</li><li>Waste sheet (haz/non-haz, diversion routes, vendor evidence fields)</li><li>Governance & policies tracker (owners, approvals, evidence links)</li></ul></div><div class="bg-white p-5 rounded-lg border border-gray-200 shadow-sm"><h3 class="text-xl font-bold text-gray-900 mb-3">How to run it (cadence that works)</h3><ul class="list-disc ml-6 text-gray-700 space-y-1"><li>Monthly data capture per site/plant</li><li>Quarterly QA review: missing months, outliers, unit consistency</li><li>Year-end consolidation + management sign-off</li><li>Maintain evidence folder structure aligned to each metric</li></ul></div><div class="bg-gradient-to-r from-green-50 to-emerald-50 border-2 border-green-300 p-5 rounded-lg"><h3 class="text-xl font-bold text-gray-900 mb-3"><i class="fas fa-lightbulb text-green-600 mr-2"></i>How TerraCAP helps</h3><ul class="list-disc ml-6 text-gray-700 space-y-1"><li>Template-to-workflow: owners, evidence, approvals and audit trail</li><li>Automated checks for missing months, unit issues, and anomalies</li><li>Dashboards for BRSR-friendly KPIs and narratives</li><li>Exports that reuse the same dataset for multiple reporting formats</li></ul></div></div>'
+  },
+  'template-gri': {
+    title: 'GRI Standards Checklist',
+    subtitle: 'Comprehensive Compliance Tracker',
+    icon: 'fas fa-tasks',
+    content: '<div class="space-y-6"><h2 class="text-2xl font-bold text-gray-900">GRI Standards Checklist — turn standards into execution</h2><p class="text-gray-700 leading-relaxed">GRI reporting becomes manageable when disclosures are converted into a tracker that assigns ownership, defines data sources, captures evidence, and maintains version control.</p><div class="bg-white p-5 rounded-lg border border-gray-200 shadow-sm"><h3 class="text-xl font-bold text-gray-900 mb-3">A practical GRI tracker should include</h3><ul class="list-disc ml-6 text-gray-700 space-y-1"><li>Disclosure ID, interpretation notes, and reporting guidance</li><li>Data owner and collection method (system/source)</li><li>Frequency (monthly/quarterly/annual) and due dates</li><li>Evidence links/attachments and approval status</li><li>Comments log for assumptions and changes</li></ul></div><div class="bg-white p-5 rounded-lg border border-gray-200 shadow-sm"><h3 class="text-xl font-bold text-gray-900 mb-3">How to start without overwhelm</h3><ul class="list-disc ml-6 text-gray-700 space-y-1"><li>Begin with material topics and the disclosures stakeholders actually use</li><li>Create a ‘data dictionary’ for each KPI (definition, unit, boundary)</li><li>Run a mock assurance review early to identify gaps</li></ul></div><div class="bg-gradient-to-r from-green-50 to-emerald-50 border-2 border-green-300 p-5 rounded-lg"><h3 class="text-xl font-bold text-gray-900 mb-3"><i class="fas fa-lightbulb text-green-600 mr-2"></i>How TerraCAP helps</h3><ul class="list-disc ml-6 text-gray-700 space-y-1"><li>One data backbone reused across frameworks; avoid duplicated reporting effort</li><li>Evidence repository and sign-off workflow for assurance readiness</li><li>Dashboards and exports for stakeholder communication</li><li>Tracking of material topics and progress over time</li></ul></div></div>'
+  },
+  'template-esg': {
+    title: 'ESG Reporting Template',
+    subtitle: 'Starter Template for Any Organization',
+    icon: 'fas fa-clipboard-list',
+    content: '<div class="space-y-6"><h2 class="text-2xl font-bold text-gray-900">ESG Reporting Template — baseline KPIs + cadence</h2><p class="text-gray-700 leading-relaxed">For first-time ESG reporting, the goal is establishing baseline KPIs and a repeatable cadence. This template focuses on ownership, definitions, evidence, and time series so reporting stays sustainable.</p><div class="bg-white p-5 rounded-lg border border-gray-200 shadow-sm"><h3 class="text-xl font-bold text-gray-900 mb-3">Baseline KPI groups (starter)</h3><ul class="list-disc ml-6 text-gray-700 space-y-1"><li>Energy & emissions (Scopes 1–2, intensity KPIs)</li><li>Water (intake, discharge, recycling, stress risk notes)</li><li>Waste (haz/non-haz, diversion, vendors and manifests)</li><li>People & safety (LTIFR, training, attrition, compliance)</li></ul></div><div class="bg-white p-5 rounded-lg border border-gray-200 shadow-sm"><h3 class="text-xl font-bold text-gray-900 mb-3">Make it durable</h3><ul class="list-disc ml-6 text-gray-700 space-y-1"><li>Define KPI owners and sources (billing, meters, ERP, vendor invoices)</li><li>Lock unit conventions and conversion rules</li><li>Maintain a change log for methodology and factors</li><li>Run quarterly QA for completeness and anomalies</li></ul></div><div class="bg-gradient-to-r from-green-50 to-emerald-50 border-2 border-green-300 p-5 rounded-lg"><h3 class="text-xl font-bold text-gray-900 mb-3"><i class="fas fa-lightbulb text-green-600 mr-2"></i>How TerraCAP helps</h3><ul class="list-disc ml-6 text-gray-700 space-y-1"><li>Monthly capture with validation and exception alerts</li><li>Central evidence store and audit-ready trails</li><li>Dashboards for plant/site benchmarking and leadership views</li><li>Framework mapping and exports when you need to publish</li></ul></div></div>'
+  },
+  'template-cbam': {
+    title: 'CBAM Readiness Pack',
+    subtitle: 'EU Carbon Border Adjustment',
+    icon: 'fas fa-shield-alt',
+    content: '<div class="space-y-6"><h2 class="text-2xl font-bold text-gray-900">CBAM Readiness Pack — product-level data + evidence</h2><p class="text-gray-700 leading-relaxed">CBAM readiness is product-level embedded emissions readiness. This pack helps you structure product, production, allocation, and evidence so you can respond to buyers and verification needs confidently.</p><div class="bg-white p-5 rounded-lg border border-gray-200 shadow-sm"><h3 class="text-xl font-bold text-gray-900 mb-3">Product-level essentials</h3><ul class="list-disc ml-6 text-gray-700 space-y-1"><li>Product list mapped to production lines and facilities</li><li>Monthly energy/fuels and production outputs</li><li>Allocation method note (utilities/process → products)</li><li>Scrap/rework and co-product treatment</li></ul></div><div class="bg-white p-5 rounded-lg border border-gray-200 shadow-sm"><h3 class="text-xl font-bold text-gray-900 mb-3">Evidence & governance</h3><ul class="list-disc ml-6 text-gray-700 space-y-1"><li>Bills, meter logs, and production records linked to periods</li><li>Factor sources with versioning and update cadence</li><li>Approvals/sign-off trail and internal QA checklist</li></ul></div><div class="bg-gradient-to-r from-green-50 to-emerald-50 border-2 border-green-300 p-5 rounded-lg"><h3 class="text-xl font-bold text-gray-900 mb-3"><i class="fas fa-lightbulb text-green-600 mr-2"></i>How TerraCAP helps</h3><ul class="list-disc ml-6 text-gray-700 space-y-1"><li>Product-level allocation workflows with audit trail</li><li>Supplier engagement to improve upstream footprint inputs</li><li>Dashboards to identify embedded emissions hotspots</li><li>Exports and packs to respond quickly to buyer requests</li></ul></div></div>'
+  },
+  'template-greenco': {
+    title: 'GreenCo Certification Template',
+    subtitle: 'CII GreenCo Rating System',
+    icon: 'fas fa-leaf',
+    content: '<div class="space-y-6"><h2 class="text-2xl font-bold text-gray-900">GreenCo Certification Template — data & readiness tracker</h2><p class="text-gray-700 leading-relaxed">This template turns GreenCo preparation into a monthly discipline: capture, validate, review, and attach evidence. It also provides a readiness tracker so gaps are visible early.</p><div class="bg-white p-5 rounded-lg border border-gray-200 shadow-sm"><h3 class="text-xl font-bold text-gray-900 mb-3">Suggested sections</h3><ul class="list-disc ml-6 text-gray-700 space-y-1"><li>Energy: kWh, fuels, intensity, major consumer breakdown</li><li>Water: sources, discharge, reuse, risk notes</li><li>Waste: type-wise, vendor-wise, diversion KPIs</li><li>Emissions: Scopes 1–2 baseline, key Scope 3 where relevant</li><li>Action register: projects, owners, savings, timelines</li></ul></div><div class="bg-white p-5 rounded-lg border border-gray-200 shadow-sm"><h3 class="text-xl font-bold text-gray-900 mb-3">Readiness tracker items</h3><ul class="list-disc ml-6 text-gray-700 space-y-1"><li>Meter map completeness and missing data checks</li><li>Evidence pack completeness by KPI</li><li>Internal audit schedule and findings closure</li><li>Management review cadence and sign-off</li></ul></div><div class="bg-gradient-to-r from-green-50 to-emerald-50 border-2 border-green-300 p-5 rounded-lg"><h3 class="text-xl font-bold text-gray-900 mb-3"><i class="fas fa-lightbulb text-green-600 mr-2"></i>How TerraCAP helps</h3><ul class="list-disc ml-6 text-gray-700 space-y-1"><li>Monthly plant dashboards and exception alerts</li><li>Evidence packs aligned to certification requirements</li><li>Action register tracking savings and improvements</li><li>Audit-ready exports and management scorecards</li></ul></div></div>'
+  },
+};// Open modal
+function openModal(modalId) {
+  const modal = document.getElementById('modal-' + modalId);
+  if (modal) {
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  } else {
+    console.error('Modal not found:', modalId);
+  }
+}
 
-    // close drawer after tapping a link
-    mobileNav?.addEventListener('click', (e) => {
-      if (e.target.closest('a')) mobileNav.classList.add('hidden');
+// Close modal
+function closeModal(modalId) {
+  const modal = document.getElementById('modal-' + modalId);
+  if (modal) {
+    modal.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+}
+
+// Generate modals
+function generateModals() {
+  const container = document.getElementById('modalContainer');
+  if (!container) {
+    console.error('Container not found!');
+    return;
+  }
+  
+  Object.keys(modalContent).forEach(function(key) {
+    const data = modalContent[key];
+    const modal = document.createElement('div');
+    modal.id = 'modal-' + key;
+    modal.className = 'modal';
+    
+    const modalHTML = '<div class="modal-content">' +
+      '<div class="modal-close" onclick="closeModal(\'' + key + '\')">' +
+      '<i class="fas fa-times"></i>' +
+      '</div>' +
+      '<div class="flex items-center mb-6">' +
+      '<div class="bg-hertz-primary/10 p-4 rounded-lg mr-4">' +
+      '<i class="' + data.icon + ' text-hertz-primary text-3xl"></i>' +
+      '</div>' +
+      '<div>' +
+      '<h2 class="text-2xl font-bold text-gray-900">' + data.title + '</h2>' +
+      '<p class="text-gray-600">' + data.subtitle + '</p>' +
+      '</div>' +
+      '</div>' +
+      data.content +
+      '</div>';
+    
+    modal.innerHTML = modalHTML;
+    container.appendChild(modal);
+    console.log('Created modal:', key);
+  });
+  
+  console.log('Total modals created:', document.querySelectorAll('.modal').length);
+}
+
+// Close on background click
+document.addEventListener('click', function(e) {
+  if (e.target.classList.contains('modal')) {
+    e.target.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+});
+
+// Close on ESC
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') {
+    document.querySelectorAll('.modal.active').forEach(function(modal) {
+      modal.classList.remove('active');
+      document.body.style.overflow = '';
     });
-  </script>
+  }
+});
 
+// Initialize
+document.addEventListener('DOMContentLoaded', function() {
+  console.log('DOM loaded, generating modals...');
+  generateModals();
+  console.log('openModal function exists:', typeof openModal);
+  console.log('Page ready!');
+});
+
+// Mobile nav
+const navBtn = document.getElementById('navBtn');
+const mobileNav = document.getElementById('mobileNav');
+if (navBtn) {
+  navBtn.addEventListener('click', function() {
+    if (mobileNav) mobileNav.classList.toggle('hidden');
+  });
+}
+if (mobileNav) {
+  mobileNav.addEventListener('click', function(e) {
+    if (e.target.closest('a')) mobileNav.classList.add('hidden');
+  });
+}
+
+console.log('Script loaded successfully');
+</script>
 
 </body>
 </html>
-
