@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="styles.css">
+<style>
+  html { scroll-behavior: smooth; }
+</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Hertzwave Platform — Modules, Tiers & Architecture</title>
+
+ <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-R4ZT581V9Z"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    // Basic config
+    gtag('config', 'G-R4ZT581V9Z');
+  </script>
+
+  
+  <meta name="description" content="Explore Hertzwave’s SaaS modules, plan tiers, and our secure cloud architecture." />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'hertz-light':'#A8E6A3',
+            'hertz-primary':'#4A7C59',
+            'hertz-dark':'#2F4F3F',
+            'hertz-black':'#000000'
+          },
+          fontFamily: { 'outfit':['Outfit','sans-serif'] },
+          animation: {
+            'float':'float 6s ease-in-out infinite',
+            'pulse-slow':'pulse 3s cubic-bezier(0.4,0,0.6,1) infinite'
+          },
+          keyframes: {
+            float:{ '0%,100%':{transform:'translateY(0)'}, '50%':{transform:'translateY(-12px)'} }
+          }
+        }
+      }
+    }
+  </script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <style>
+    body{font-family: 'Outfit', sans-serif}
+    .hz-motifs{position:absolute; inset:0; pointer-events:none; user-select:none; z-index:0}
+    .hz-hero{position:relative; z-index:10}
+  </style>
+</head>
+<body class="bg-white">
+
+  <!-- Nav (match your main site; update links as needed) -->
+  <nav class="fixed top-0 w-full bg-white/95 backdrop-blur-sm border-b border-gray-200 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-16">
+        <a href="index.html" class="flex items-center space-x-3">
+          <img src="/HW-Logo-Light.png" alt="Hertzwave" class="hz-logo" />
+        </a>
+        <div class="hidden md:flex items-center space-x-8">
+          <a href="platform.html" class="text-hertz-primary font-semibold">Platform</a>
+          <a href="solutions.html" class="text-gray-700 hover:text-hertz-primary">Solutions</a>
+          <a href="industries.html" class="text-gray-700 hover:text-hertz-primary">Industries</a>
+          <a href="resources/index.html" class="text-gray-700 hover:text-hertz-primary transition-colors font-medium">Resources</a>
+          <a href="about.html" class="text-gray-700 hover:text-hertz-primary">About</a>
+          <a href="/legal/index.html" class="text-gray-700 hover:text-hertz-primary transition-colors font-medium">
+  Security & Legal
+</a>
+          <a href="hertzwave-demo.html"
+   class="bg-hertz-primary text-white px-6 py-2 rounded-lg hover:bg-hertz-dark font-semibold">
+  <i class="fas fa-play-circle mr-2"></i>Experience Interactive Demo
+</a>
+        </div>
+        <button class="md:hidden text-gray-700" id="navBtn"><i class="fas fa-bars text-xl"></i></button>
+      </div>
+    </div>
+    <div id="mobileNav" class="hidden md:hidden bg-white border-t border-gray-200">
+      <div class="px-4 py-3 space-y-2">
+        <a href="platform.html" class="block py-2 text-hertz-primary font-semibold">Platform</a>
+        <a href="solutions.html" class="block py-2 text-gray-700">Solutions</a>
+        <a href="industries.html" class="block py-2 text-gray-700">Industries</a>
+        <a href="resources.html" class="block py-2 text-gray-700">Resources</a>
+        <a href="about.html" class="block py-2 text-gray-700">About</a>
+        <a href="/legal/index.html" class="block py-2 text-gray-700 font-medium">Security & Legal</a>
+    <a href="hertzwave-demo.html"
+   class="block w-full text-center bg-hertz-primary text-white px-6 py-2 rounded-lg font-semibold mt-2">
+  <i class="fas fa-play-circle mr-2"></i>Experience Interactive Demo
+</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Demo Form Modal -->
+<div id="demo-modal"
+     class="fixed inset-0 bg-black/50 z-50 hidden"
+     role="dialog" aria-modal="true" aria-labelledby="demo-title">
+  <div class="flex items-start md:items-center justify-center min-h-screen p-4 overflow-y-auto overscroll-contain">
+    <div class="bg-white rounded-lg max-w-md w-full p-6 max-h-[85vh] md:max-h-[90vh] overflow-y-auto" style="-webkit-overflow-scrolling: touch;">
+      <div class="flex justify-between items-center mb-4">
+        <h3 id="demo-title" class="text-xl font-semibold text-gray-900">Book a Demo</h3>
+        <button id="close-modal" class="text-gray-400 hover:text-gray-600" aria-label="Close">
+          <i class="fas fa-times text-xl"></i>
+        </button>
+      </div>
+
+      <!-- Fallback notice (hidden by default) -->
+      <div id="email-fallback"
+           class="hidden mb-4 rounded-lg border border-amber-300 bg-amber-50 text-amber-900 text-sm p-3">
+        We tried to open your email app with the form details.
+        <span class="block mt-1">
+          Did it open?
+          <button id="fallback-ok" class="ml-2 underline">Yes</button>
+          <button id="fallback-send" class="ml-2 underline font-semibold">No — send via web</button>
+        </span>
+      </div>
+
+      <form id="demo-form" action="https://formspree.io/f/xrbygejz" method="POST">
+        <input type="hidden" name="_subject" value="New demo request — hertzwave.in">
+        <input type="text" name="_honey" tabindex="-1" autocomplete="off" class="hidden" aria-hidden="true">
+
+        <div class="space-y-4">
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1">Full Name *</label>
+            <input type="text" name="name" required
+                   class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-hertz-primary focus:border-hertz-primary">
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1">Email *</label>
+            <input type="email" name="email" required
+                   class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-hertz-primary focus:border-hertz-primary">
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1">Company *</label>
+            <input type="text" name="company" required
+                   class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-hertz-primary focus:border-hertz-primary">
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1">Job Title</label>
+            <input type="text" name="title"
+                   class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-hertz-primary focus:border-hertz-primary">
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1">Company Size</label>
+            <select name="company_size"
+                    class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-hertz-primary focus:border-hertz-primary">
+              <option value="">Select size</option>
+              <option value="1-50">1-50 employees</option>
+              <option value="51-200">51-200 employees</option>
+              <option value="201-1000">201-1000 employees</option>
+              <option value="1000+">1000+ employees</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1">Industry</label>
+            <select name="industry"
+                    class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-hertz-primary focus:border-hertz-primary">
+              <option value="">Select industry</option>
+              <option value="steel-metals">Steel &amp; Metals</option>
+              <option value="oil-gas">Oil &amp; Gas</option>
+              <option value="cement">Cement</option>
+              <option value="automotive">Automotive</option>
+              <option value="textiles">Textiles</option>
+              <option value="food-agriculture">Food &amp; Agriculture</option>
+              <option value="power-generation">Power Generation</option>
+              <option value="mining">Mining</option>
+              <option value="shipping">Shipping</option>
+              <option value="healthcare">Healthcare</option>
+              <option value="pharma-chemicals">Pharma &amp; Chemicals</option>
+              <option value="hospitality">Hospitality</option>
+              <option value="technology-data-centers">Technology / Data Centers</option>
+              <option value="real-estate-construction">Real Estate / Construction</option>
+              <option value="energy-utilities">Energy &amp; Utilities</option>
+              <option value="fertiliser">Fertiliser</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1">Message</label>
+            <textarea name="message" rows="3"
+                      class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-hertz-primary focus:border-hertz-primary"
+                      placeholder="Tell us about your carbon accounting needs..."></textarea>
+          </div>
+        </div>
+
+        <div class="mt-6">
+          <button type="submit" id="demo-submit"
+                  class="w-full bg-hertz-primary text-white py-2 px-4 rounded-lg hover:bg-hertz-dark transition-colors font-semibold">
+            Request Demo
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+
+  
+  <!-- Hero -->
+  <header class="pt-28 pb-16 bg-gradient-to-br from-green-50 via-white to-hertz-light/20 overflow-hidden relative">
+    <!-- Green motifs -->
+    <div class="hz-motifs">
+      <svg class="absolute left-10 top-28 w-32 opacity-40 animate-float" viewBox="0 0 64 64" fill="none">
+        <path d="M56 8C40 8 24 20 16 36c-6 12-6 20-6 20s8 0 20-6C46 42 58 26 56 8Z"
+              stroke="#2F4F3F" stroke-width="2.5" fill="#A8E6A3"></path>
+      </svg>
+      <svg class="absolute right-20 top-16 w-14 opacity-30 animate-float" style="animation-duration:8s" viewBox="0 0 64 64" fill="none">
+        <path d="M32 6c8 14 18 20 18 30a18 18 0 1 1-36 0c0-10 10-16 18-30Z"
+              stroke="#4A7C59" stroke-width="1.6" fill="#A8E6A3"></path>
+      </svg>
+      <svg class="absolute left-1/3 bottom-10 w-20 opacity-25 animate-float" style="animation-duration:10s" viewBox="0 0 64 64" fill="none">
+        <path d="M32 6c8 14 18 20 18 30a18 18 0 1 1-36 0c0-10 10-16 18-30Z"
+              stroke="#4A7C59" stroke-width="2" fill="#A8E6A3"></path>
+      </svg>
+    </div>
+
+    <div class="hz-hero max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-10 items-center">
+        <div>
+          <h1 class="text-3xl lg:text-4xl font-semibold text-gray-900 mb-4 leading-tight">
+            The Hertzwave <span class="text-hertz-primary">Platform</span>
+          </h1>
+          <p class="text-lg lg:text-xl text-gray-600 mb-6">
+            Modular, AI-powered carbon intelligence—from data ingestion to net-zero planning—built on a secure, scalable cloud-native platform.
+          </p>
+          <div class="flex flex-wrap gap-4">
+            <a href="#modules" class="bg-hertz-primary text-white px-6 py-3 rounded-lg hover:bg-hertz-dark font-semibold">Explore Modules</a>
+            <a href="#tiers" class="border-2 border-hertz-primary text-hertz-primary px-6 py-3 rounded-lg hover:bg-hertz-primary hover:text-white font-semibold">Compare Tiers</a>
+          </div>
+        </div>
+        <div class="relative">
+          <div class="absolute inset-0 bg-gradient-to-r from-hertz-light to-hertz-primary rounded-3xl blur-3xl opacity-20 animate-pulse-slow"></div>
+          <div class="relative bg-white p-8 rounded-3xl shadow-2xl border border-hertz-light/50">
+            <h3 class="text-xl font-semibold text-gray-900 mb-4">At-a-glance</h3>
+            <ul class="space-y-3 text-gray-700">
+              <li><i class="fa-solid fa-cloud mr-2 text-hertz-primary"></i> SaaS, multi-tenant, cloud-native app</li>
+              <li><i class="fa-solid fa-shield-halved mr-2 text-hertz-primary"></i> Enterprise security & RBAC</li>
+              <li><i class="fa-solid fa-diagram-project mr-2 text-hertz-primary"></i> API-first integrations</li>
+              <li><i class="fa-solid fa-gauge-high mr-2 text-hertz-primary"></i> Scales from SME to enterprise</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Landscape break -->
+  <section aria-label="decorative separator" class="w-full">
+    <!-- Place plandscape1.jpg next to this file -->
+    <img src="./plandscape1.jpg" alt="" class="block w-full h-48 md:h-64 lg:h-80 object-cover select-none pointer-events-none">
+  </section>
+
+  <!-- Modules -->
+  <section id="modules" class="py-16 bg-gradient-to-br from-gray-50 to-hertz-light/10 scroll-mt-24">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-12">
+      <h2 class="text-3xl lg:text-4xl font-semibold text-gray-900">SaaS Modules</h2>
+      <p class="text-lg text-gray-600">
+        From data ingestion to GreenCo, BRSR Lite/Core and CBAM-ready reporting—India-first, global-ready carbon management.
+      </p>
+    </div>
+
+    <div class="grid lg:grid-cols-3 gap-8">
+      <!-- Ingestion Hub -->
+      <div class="bg-white p-7 rounded-2xl shadow border border-hertz-light/30">
+        <div class="text-hertz-primary text-3xl mb-3"><i class="fas fa-upload"></i></div>
+        <h3 class="text-xl font-semibold text-gray-900 mb-2">Ingestion Hub</h3>
+        <p class="text-gray-600 mb-3">
+          Plug-and-play connectors for ERPs, GST / e-way bills, CSV &amp; SFTP, utility data and IoT sources—so Indian and global facilities land on one data fabric.
+        </p>
+        <ul class="text-sm text-gray-500 space-y-2">
+          <li><i class="fas fa-check text-hertz-primary mr-2"></i>Multi-source, multi-entity integration</li>
+          <li><i class="fas fa-check text-hertz-primary mr-2"></i>Automated data validation &amp; deduplication</li>
+          <li><i class="fas fa-check text-hertz-primary mr-2"></i>Regulation-ready data structures</li>
+        </ul>
+      </div>
+
+      <!-- Validation AI -->
+      <div class="bg-white p-7 rounded-2xl shadow border border-hertz-light/30">
+        <div class="text-hertz-primary text-3xl mb-3"><i class="fas fa-brain"></i></div>
+        <h3 class="text-xl font-semibold text-gray-900 mb-2">Validation AI</h3>
+        <p class="text-gray-600 mb-3">
+          ML-powered engine that auto-maps schemas, flags gaps and scores data quality across plants, suppliers and exports.
+        </p>
+        <ul class="text-sm text-gray-500 space-y-2">
+          <li><i class="fas fa-check text-hertz-primary mr-2"></i>Intelligent schema mapping</li>
+          <li><i class="fas fa-check text-hertz-primary mr-2"></i>Confidence scoring &amp; anomaly detection</li>
+          <li><i class="fas fa-check text-hertz-primary mr-2"></i>Consultant-friendly review workflows</li>
+        </ul>
+      </div>
+
+      <!-- Emissions Engine -->
+      <div class="bg-white p-7 rounded-2xl shadow border border-hertz-light/30">
+        <div class="text-hertz-primary text-3xl mb-3"><i class="fas fa-calculator"></i></div>
+        <h3 class="text-xl font-semibold text-gray-900 mb-2">Emissions Engine</h3>
+        <p class="text-gray-600 mb-3">
+          Full Scope 1, 2 &amp; 3 measurement using global libraries (DEFRA, EPA, Ecoinvent) plus India-specific factors, ready for CBAM, CCTS and value-chain disclosures.
+        </p>
+        <ul class="text-sm text-gray-500 space-y-2">
+          <li><i class="fas fa-check text-hertz-primary mr-2"></i>Plant-level &amp; supplier-level calculations</li>
+          <li><i class="fas fa-check text-hertz-primary mr-2"></i>Region &amp; fuel-specific factors</li>
+          <li><i class="fas fa-check text-hertz-primary mr-2"></i>High-volume, export-grade processing</li>
+        </ul>
+      </div>
+
+      <!-- Compliance & Certification Mapper -->
+      <div class="bg-white p-7 rounded-2xl shadow border border-hertz-light/30">
+        <div class="text-hertz-primary text-3xl mb-3"><i class="fas fa-file-alt"></i></div>
+        <h3 class="text-xl font-semibold text-gray-900 mb-2">Compliance &amp; Certification Mapper</h3>
+        <p class="text-gray-600 mb-3">
+          “One-click” export to SEBI BRSR Lite/Core, GreenCo templates, CSRD / ESRS, ISSB, TCFD, GRESB and more—no spreadsheet gymnastics.
+        </p>
+        <ul class="text-sm text-gray-500 space-y-2">
+          <li><i class="fas fa-check text-hertz-primary mr-2"></i>Pre-mapped fields for India regulations</li>
+          <li><i class="fas fa-check text-hertz-primary mr-2"></i>Global formats for groups &amp; investors</li>
+          <li><i class="fas fa-check text-hertz-primary mr-2"></i>Assurance-ready audit trail</li>
+        </ul>
+      </div>
+
+      <!-- Supplier & Export Readiness -->
+      <div class="bg-white p-7 rounded-2xl shadow border border-hertz-light/30">
+        <div class="text-hertz-primary text-3xl mb-3"><i class="fas fa-users"></i></div>
+        <h3 class="text-xl font-semibold text-gray-900 mb-2">Supplier &amp; Export Readiness</h3>
+        <p class="text-gray-600 mb-3">
+          Live supplier leaderboard and export views that highlight CBAM, UK-FTA and large buyer requirements, with CO₂e per tonne or per ₹/USD visibility.
+        </p>
+        <ul class="text-sm text-gray-500 space-y-2">
+          <li><i class="fas fa-check text-hertz-primary mr-2"></i>Supplier &amp; lane-level benchmarking</li>
+          <li><i class="fas fa-check text-hertz-primary mr-2"></i>Data completeness &amp; quality scoring</li>
+          <li><i class="fas fa-check text-hertz-primary mr-2"></i>Export customer-ready dashboards</li>
+        </ul>
+      </div>
+
+      <!-- Net-Zero Pathfinder -->
+      <div class="bg-white p-7 rounded-2xl shadow border border-hertz-light/30">
+        <div class="text-hertz-primary text-3xl mb-3"><i class="fas fa-route"></i></div>
+        <h3 class="text-xl font-semibold text-gray-900 mb-2">Net-Zero Pathfinder</h3>
+        <p class="text-gray-600 mb-3">
+          Scenario modeller to plan reduction levers, carbon credits and sequestration projects—aligned with India CCTS and global net-zero commitments.
+        </p>
+        <ul class="text-sm text-gray-500 space-y-2">
+          <li><i class="fas fa-check text-hertz-primary mr-2"></i>Multiple capex / opex scenarios</li>
+          <li><i class="fas fa-check text-hertz-primary mr-2"></i>Carbon credit &amp; offset tracking</li>
+          <li><i class="fas fa-check text-hertz-primary mr-2"></i>Board-ready, regulator-ready visuals</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+  <!-- Landscape break -->
+  <section aria-label="decorative separator" class="w-full">
+    <!-- Place plandscape2.jpg next to this file -->
+    <img src="./plandscape2.jpg" alt="" class="block w-full h-48 md:h-64 lg:h-80 object-cover select-none pointer-events-none">
+  </section>
+
+  <!-- Tiers (no pricing) -->
+<section id="tiers" class="bg-gradient-to-br from-green-50 via-white to-hertz-light/20 scroll-mt-24">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <h2 class="text-3xl lg:text-4xl font-semibold text-center text-gray-900 mb-4">Choose Your Tier</h2>
+    <p class="text-center text-gray-600 max-w-2xl mx-auto mb-12">
+      Two simple tiers, plus modular add-ons—aligned to how Indian manufacturers and consultants actually use the platform.
+    </p>
+
+    <div class="grid md:grid-cols-2 gap-8">
+      <!-- Essentials Tier -->
+      <div class="bg-white border border-hertz-light/40 rounded-2xl shadow-md hover:shadow-lg transition-shadow p-8 flex flex-col">
+        <h3 class="text-2xl font-semibold text-hertz-primary mb-4 text-center">Essentials</h3>
+        <p class="text-gray-600 mb-6 text-center">
+          Designed for SMEs and mid-cap manufacturers who need fast BRSR Lite compliance and core carbon coverage.
+        </p>
+        <ul class="space-y-3 text-gray-700 flex-1">
+          <li><i class="fas fa-check text-hertz-primary mr-2"></i>Scope 1, 2 &amp; 3 emissions engine</li>
+          <li><i class="fas fa-check text-hertz-primary mr-2"></i>BRSR Lite compliance-ready reports</li>
+          <li><i class="fas fa-check text-hertz-primary mr-2"></i>Up to 5 facilities; single-entity reporting</li>
+          <li><i class="fas fa-check text-hertz-primary mr-2"></i>Standard dashboards + custom report builder</li>
+          <li><i class="fas fa-check text-hertz-primary mr-2"></i>Data ingestion via manual upload, CSV, SFTP &amp; select plug-and-play connectors</li>
+          <li><i class="fas fa-check text-hertz-primary mr-2"></i>Standard emission libraries (DEFRA, EPA, Ecoinvent)</li>
+        </ul>
+      </div>
+
+      <!-- Professional Tier -->
+      <div class="bg-white border-2 border-hertz-primary rounded-2xl shadow-lg hover:shadow-xl transition-shadow p-8 flex flex-col relative">
+        <span class="absolute -top-3 right-4 bg-hertz-primary text-white text-xs px-3 py-1 rounded-full uppercase tracking-wider">For Consultants &amp; Large Enterprises</span>
+        <h3 class="text-2xl font-semibold text-hertz-primary mb-4 text-center">Professional</h3>
+        <p class="text-gray-600 mb-6 text-center">
+          Built for consultants and large enterprises managing multi-entity, multi-facility and export-heavy portfolios.
+        </p>
+        <ul class="space-y-3 text-gray-700 flex-1">
+          <li><i class="fas fa-check text-hertz-primary mr-2"></i>Everything in Essentials</li>
+          <li><i class="fas fa-check text-hertz-primary mr-2"></i>All modular add-ons included (Full Compliance, AI Suite, Supplier Evaluation, NetZero, Carbon Marketplace, Auditor Pack)</li>
+          <li><i class="fas fa-check text-hertz-primary mr-2"></i>Multi-entity &amp; multi-facility consolidation</li>
+          <li><i class="fas fa-check text-hertz-primary mr-2"></i>Unlimited facilities and advanced user management</li>
+          <li><i class="fas fa-check text-hertz-primary mr-2"></i>Consultant mode for managing multiple client accounts</li>
+          <li><i class="fas fa-check text-hertz-primary mr-2"></i>Advanced RBAC, SSO options and audit logging</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Modular Add-ons -->
+    <div class="mt-16">
+      <div class="text-center mb-6">
+        <h3 class="text-2xl font-semibold text-gray-900 mb-2">Modular Add-ons</h3>
+        <p class="text-sm text-gray-600 max-w-2xl mx-auto">
+          Start with <span class="font-semibold">Essentials</span> and light up more power as you grow.
+          All add-ons are <span class="font-semibold">included</span> in <span class="font-semibold">Professional</span>.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-6">
+        <!-- Full Compliance -->
+        <div class="bg-white/90 rounded-2xl border border-hertz-light/60 shadow-sm hover:shadow-md transition-shadow p-5 flex flex-col">
+          <div class="flex items-center mb-3">
+            <div class="w-9 h-9 rounded-full bg-hertz-light/70 flex items-center justify-center mr-3">
+              <i class="fas fa-file-alt text-hertz-dark text-sm"></i>
+            </div>
+            <h4 class="font-semibold text-hertz-primary">Full Compliance</h4>
+          </div>
+          <p class="text-sm text-gray-600 flex-1">
+            1-click packs for BRSR Core, extended ESG disclosures and multi-format packs for boards, investors and regulators.
+          </p>
+          <p class="mt-3 text-xs text-gray-500 italic">
+            Turn your emissions data into ready-to-send compliance artefacts.
+          </p>
+        </div>
+
+        <!-- AI Suite -->
+        <div class="bg-white/90 rounded-2xl border border-hertz-light/60 shadow-sm hover:shadow-md transition-shadow p-5 flex flex-col">
+          <div class="flex items-center mb-3">
+            <div class="w-9 h-9 rounded-full bg-hertz-light/70 flex items-center justify-center mr-3">
+              <i class="fas fa-brain text-hertz-dark text-sm"></i>
+            </div>
+            <h4 class="font-semibold text-hertz-primary">AI Suite</h4>
+          </div>
+          <p class="text-sm text-gray-600 flex-1">
+            AI-assisted validation, anomaly detection and draft narratives for sustainability reports and management commentary.
+          </p>
+          <p class="mt-3 text-xs text-gray-500 italic">
+            Less manual number-crunching, more time for strategy.
+          </p>
+        </div>
+
+        <!-- Supplier Evaluation -->
+        <div class="bg-white/90 rounded-2xl border border-hertz-light/60 shadow-sm hover:shadow-md transition-shadow p-5 flex flex-col">
+          <div class="flex items-center mb-3">
+            <div class="w-9 h-9 rounded-full bg-hertz-light/70 flex items-center justify-center mr-3">
+              <i class="fas fa-users text-hertz-dark text-sm"></i>
+            </div>
+            <h4 class="font-semibold text-hertz-primary">Supplier Evaluation</h4>
+          </div>
+          <p class="text-sm text-gray-600 flex-1">
+            Scope 3 supplier scoring, benchmarking and readiness views for CBAM, CCTS and large buyer programs.
+          </p>
+          <p class="mt-3 text-xs text-gray-500 italic">
+            See which suppliers lift—or drag—your decarbonisation story.
+          </p>
+        </div>
+
+        <!-- NetZero -->
+        <div class="bg-white/90 rounded-2xl border border-hertz-light/60 shadow-sm hover:shadow-md transition-shadow p-5 flex flex-col">
+          <div class="flex items-center mb-3">
+            <div class="w-9 h-9 rounded-full bg-hertz-light/70 flex items-center justify-center mr-3">
+              <i class="fas fa-route text-hertz-dark text-sm"></i>
+            </div>
+            <h4 class="font-semibold text-hertz-primary">NetZero</h4>
+          </div>
+          <p class="text-sm text-gray-600 flex-1">
+            Scenario modelling for reduction levers, targets and pathways aligned with India CCTS and global commitments.
+          </p>
+          <p class="mt-3 text-xs text-gray-500 italic">
+            Translate ambition into quantified, sequenced action.
+          </p>
+        </div>
+
+        <!-- Carbon Marketplace -->
+        <div class="bg-white/90 rounded-2xl border border-hertz-light/60 shadow-sm hover:shadow-md transition-shadow p-5 flex flex-col">
+          <div class="flex items-center mb-3">
+            <div class="w-9 h-9 rounded-full bg-hertz-light/70 flex items-center justify-center mr-3">
+              <i class="fas fa-store text-hertz-dark text-sm"></i>
+            </div>
+            <h4 class="font-semibold text-hertz-primary">Carbon Marketplace</h4>
+          </div>
+          <p class="text-sm text-gray-600 flex-1">
+            Integrated view of carbon credits, projects and transactions for portfolio planning and long-term procurement.
+          </p>
+          <p class="mt-3 text-xs text-gray-500 italic">
+            Bring credits, projects and impact into a single pane of glass.
+          </p>
+        </div>
+
+        <!-- Auditor Pack -->
+        <div class="bg-white/90 rounded-2xl border border-hertz-light/60 shadow-sm hover:shadow-md transition-shadow p-5 flex flex-col">
+          <div class="flex items-center mb-3">
+            <div class="w-9 h-9 rounded-full bg-hertz-light/70 flex items-center justify-center mr-3">
+              <i class="fas fa-search text-hertz-dark text-sm"></i>
+            </div>
+            <h4 class="font-semibold text-hertz-primary">Auditor Pack</h4>
+          </div>
+          <p class="text-sm text-gray-600 flex-1">
+            Evidence trails, sampling support and exports curated for independent assurance and regulator review.
+          </p>
+          <p class="mt-3 text-xs text-gray-500 italic">
+            Reduce audit friction with clean, structured evidence.
+          </p>
+        </div>
+      </div>
+
+      <p class="text-xs text-gray-400 text-center mt-6">
+        Tier structure designed for first time adoption and modular add-ons designed for land-and-expand growth, besides Enterprise users & Consultants
+      </p>
+    </div>
+  </div>
+</section>
+
+    <!-- Landscape break -->
+  <section aria-label="decorative separator" class="w-full">
+    <!-- Place plandscape3.jpg next to this file -->
+    <img src="./plandscape3.jpg" alt="" class="block w-full h-48 md:h-64 lg:h-80 object-cover select-none pointer-events-none">
+  </section>
+  
+  <!-- Architecture -->
+<section id="architecture" class="py-16 bg-gradient-to-br from-hertz-light/20 to-green-50">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-12">
+      <h2 class="text-3xl lg:text-4xl font-semibold text-gray-900">Secure Cloud Architecture</h2>
+      <p class="text-lg text-gray-600">
+        A cloud-native, multi-tenant application with clear separation between API, modules and data—simpler to operate,
+        while ready for enterprise scale.
+      </p>
+    </div>
+
+    <div class="grid lg:grid-cols-2 gap-10 items-center">
+      <!-- Logical architecture sketch -->
+      <div class="bg-white rounded-2xl shadow border border-hertz-light/30 p-6">
+        <svg viewBox="0 0 900 520" class="w-full h-auto" aria-hidden="true">
+          <!-- Edge/API -->
+          <rect x="40" y="30" width="820" height="80" rx="12" fill="#E9F7E8" stroke="#4A7C59"/>
+          <text x="450" y="65" text-anchor="middle" fill="#2F4F3F" font-size="18" font-family="Outfit">
+            Web / API Gateway · Auth · Rate Limiting
+          </text>
+          <text x="450" y="90" text-anchor="middle" fill="#2F4F3F" font-size="12" font-family="Outfit">
+            WAF · TLS termination · Routing
+          </text>
+
+          <!-- Modules row 1 -->
+          <rect x="40" y="140" width="250" height="90" rx="10" fill="#FFFFFF" stroke="#4A7C59"/>
+          <text x="165" y="175" text-anchor="middle" fill="#2F4F3F" font-size="16" font-family="Outfit">Ingestion Hub</text>
+          <text x="165" y="200" text-anchor="middle" fill="#2F4F3F" font-size="12" font-family="Outfit">Connectors · Pipelines</text>
+
+          <rect x="325" y="140" width="250" height="90" rx="10" fill="#FFFFFF" stroke="#4A7C59"/>
+          <text x="450" y="175" text-anchor="middle" fill="#2F4F3F" font-size="16" font-family="Outfit">Validation AI</text>
+          <text x="450" y="200" text-anchor="middle" fill="#2F4F3F" font-size="12" font-family="Outfit">Rules · ML scoring</text>
+
+          <rect x="610" y="140" width="250" height="90" rx="10" fill="#FFFFFF" stroke="#4A7C59"/>
+          <text x="735" y="175" text-anchor="middle" fill="#2F4F3F" font-size="16" font-family="Outfit">Emissions Engine</text>
+          <text x="735" y="200" text-anchor="middle" fill="#2F4F3F" font-size="12" font-family="Outfit">Scope 1 / 2 / 3</text>
+
+          <!-- Modules row 2 -->
+          <rect x="40" y="250" width="250" height="90" rx="10" fill="#FFFFFF" stroke="#4A7C59"/>
+          <text x="165" y="285" text-anchor="middle" fill="#2F4F3F" font-size="16" font-family="Outfit">Compliance &amp; Frameworks</text>
+          <text x="165" y="310" text-anchor="middle" fill="#2F4F3F" font-size="12" font-family="Outfit">BRSR · GreenCo · CSRD</text>
+
+          <rect x="325" y="250" width="250" height="90" rx="10" fill="#FFFFFF" stroke="#4A7C59"/>
+          <text x="450" y="285" text-anchor="middle" fill="#2F4F3F" font-size="16" font-family="Outfit">Supplier &amp; Export</text>
+          <text x="450" y="310" text-anchor="middle" fill="#2F4F3F" font-size="12" font-family="Outfit">CBAM · UK-FTA</text>
+
+          <rect x="610" y="250" width="250" height="90" rx="10" fill="#FFFFFF" stroke="#4A7C59"/>
+          <text x="735" y="285" text-anchor="middle" fill="#2F4F3F" font-size="16" font-family="Outfit">Net-Zero Pathfinder</text>
+          <text x="735" y="310" text-anchor="middle" fill="#2F4F3F" font-size="12" font-family="Outfit">Scenarios · Credits</text>
+
+          <!-- Data layer -->
+          <rect x="40" y="370" width="820" height="100" rx="12" fill="#E9F7E8" stroke="#4A7C59"/>
+          <text x="450" y="405" text-anchor="middle" fill="#2F4F3F" font-size="18" font-family="Outfit">
+            Data Store: Relational DB · Object Storage · Cache
+          </text>
+          <text x="450" y="430" text-anchor="middle" fill="#2F4F3F" font-size="12" font-family="Outfit">
+            Multi-tenant schema · Encryption at rest · Backups &amp; retention
+          </text>
+        </svg>
+      </div>
+
+      <!-- Architecture copy -->
+      <div>
+        <h3 class="text-xl font-semibold text-gray-900 mb-3">Cloud deployment &amp; security</h3>
+        <ul class="space-y-2 text-gray-700">
+          <li><i class="fa-solid fa-check text-hertz-primary mr-2"></i>Single codebase with modular layers for simpler operations and upgrades</li>
+          <li><i class="fa-solid fa-check text-hertz-primary mr-2"></i>Hardened edge with WAF, auth, rate limiting and API gateway</li>
+          <li><i class="fa-solid fa-check text-hertz-primary mr-2"></i>Encryption in transit &amp; at rest; role-based access and audit logs</li>
+          <li><i class="fa-solid fa-check text-hertz-primary mr-2"></i>Data partitioning to support multi-entity and multi-region reporting</li>
+        </ul>
+
+        <h4 class="mt-6 font-semibold text-gray-900">Designed for India &amp; global workflows</h4>
+        <ul class="space-y-2 text-gray-700">
+          <li><i class="fa-solid fa-check text-hertz-primary mr-2"></i>Built to handle plant, supplier and export flows for CBAM / CCTS</li>
+          <li><i class="fa-solid fa-check text-hertz-primary mr-2"></i>Ready for independent assurance and regulator / investor reviews</li>
+        </ul>
+
+        <div class="mt-6">
+          <a href="#tiers" class="inline-flex items-center bg-hertz-primary text-white px-6 py-3 rounded-lg hover:bg-hertz-dark font-semibold">
+            See what’s included by tier<i class="fa-solid fa-arrow-right ml-2"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+  <!-- CTA -->
+  <section class="py-16 bg-gradient-to-r from-hertz-primary to-hertz-dark">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-3xl lg:text-4xl font-semibold text-white mb-6">Ready to go deeper?</h2>
+      <p class="text-lg text-hertz-light mb-8">See the platform in action with your data and workflows.</p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+      <a href="hertzwave-demo.html"
+   class="bg-white text-hertz-primary px-8 py-4 rounded-lg text-lg font-semibold hover:bg-gray-100">
+  <i class="fas fa-play-circle mr-2"></i>Experience Interactive Demo
+</a>
+       <button id="book-demo-cta"
+        class="border-2 border-white text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-white hover:text-hertz-primary">
+  <i class="fas fa-calendar mr-2"></i>Book a Demo
+</button>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer (tight version) -->
+  <!-- Footer -->
+ <footer class="bg-gray-900 text-white py-16">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid gap-12 md:grid-cols-2 items-start">
+      <!-- Left block -->
+      <div>
+        <a href="/index.html" class="inline-block">
+  <img src="/HW-Logo-Light.png" alt="Hertzwave" class="hz-logo-footer brightness-0 invert">
+</a>
+
+        <p class="text-gray-400 mt-6 max-w-md">
+          AI-powered carbon accounting platform for enterprise compliance and net-zero planning.
+        </p>
+
+        <div class="mt-5 flex gap-4 text-gray-400">
+          <a href="#" aria-label="LinkedIn" class="hover:text-white">
+            <i class="fab fa-linkedin text-xl"></i>
+          </a>
+          <a href="#" aria-label="X (Twitter)" class="hover:text-white">
+            <i class="fab fa-twitter text-xl"></i>
+          </a>
+          <a href="#" aria-label="GitHub" class="hover:text-white">
+            <i class="fab fa-github text-xl"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- Right block -->
+
+<div class="md:text-right">
+  <div class="border-t border-gray-800 pt-6 md:border-none md:pt-0"></div>
+
+  <p class="text-gray-400 text-sm">© 2025 Hertzwave. All rights reserved.</p>
+
+  <!-- Policy links -->
+  <ul class="mt-3 flex md:justify-end flex-wrap gap-x-6 gap-y-2 text-gray-400 text-sm">
+    <li><a href="/legal/security.html" class="hover:text-white">Security</a></li>
+    <li><a href="/legal/privacy.html" class="hover:text-white">Privacy Policy</a></li>
+    <li><a href="/legal/data-protection.html" class="hover:text-white">Data Protection</a></li>
+    <li><a href="/legal/terms.html" class="hover:text-white">Terms of Use</a></li>
+  </ul>
+
+  <!-- Honest status note -->
+  <p class="mt-2 text-xs text-gray-500">
+    ISO 27001, SOC 2 Type II and GDPR compliance are in progress.
+  </p>
+</div>
+
+    </div>
+  </div>
+</footer>
+
+  <script>
+    // mobile nav
+    const navBtn = document.getElementById('navBtn');
+    const mobileNav = document.getElementById('mobileNav');
+    if (navBtn) navBtn.addEventListener('click', ()=> mobileNav.classList.toggle('hidden'));
+  </script>
+
+  <!-- ===== Demo modal + dual-submit behaviour ===== -->
+<script>
+  // Open/close modal on this page
+  (function(){
+    const modal = document.getElementById('demo-modal');
+    const closeBtn = document.getElementById('close-modal');
+
+    const buttons = [
+      document.getElementById('book-demo-nav'),
+      document.getElementById('book-demo-mobile'),
+      document.getElementById('book-demo-cta')
+    ].filter(Boolean);
+
+    buttons.forEach(btn => btn.addEventListener('click', () => {
+      modal.classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+    }));
+
+    if (closeBtn) {
+      closeBtn.addEventListener('click', () => {
+        modal.classList.add('hidden');
+        document.body.style.overflow = 'auto';
+      });
+    }
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) {
+        modal.classList.add('hidden');
+        document.body.style.overflow = 'auto';
+      }
+    });
+  })();
+
+  // Mailto + Formspree dual submit
+  (function(){
+    const form = document.getElementById('demo-form');
+    const submitBtn = document.getElementById('demo-submit');
+    const modal = document.getElementById('demo-modal');
+
+    if (!form) return;
+
+    function buildMailtoBody(data) {
+      const lines = [
+        'New Demo Request',
+        '',
+        `Full Name: ${data.name || ''}`,
+        `Email: ${data.email || ''}`,
+        `Company: ${data.company || ''}`,
+        `Job Title: ${data.title || ''}`,
+        `Company Size: ${data.company_size || ''}`,
+        `Industry: ${data.industry || ''}`,
+        '',
+        'Message:',
+        (data.message || '').trim()
+      ];
+      return lines.join('\n');
+    }
+    function closeModal(){
+      if (modal) { modal.classList.add('hidden'); document.body.style.overflow='auto'; }
+    }
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const fd   = new FormData(form);
+      const data = Object.fromEntries(fd.entries());
+
+      // GA optional
+      if (typeof gtag === 'function') {
+        gtag('event', 'generate_lead', { form: 'demo', location: 'platform' });
+      }
+
+      // 1) Open mail client
+      const subject = `Hertzwave demo request — ${data.company || data.name || ''}`;
+      const body    = buildMailtoBody(data);
+      const params  = new URLSearchParams({ subject, body });
+      window.location.href = `mailto:info@hertzwave.in?${params.toString()}`;
+
+      // 2) Background send to Formspree
+      const original = submitBtn ? submitBtn.textContent : null;
+      try {
+        if (submitBtn) { submitBtn.disabled = true; submitBtn.textContent = 'Sending…'; }
+        await fetch(form.action, { method: 'POST', headers: { 'Accept':'application/json' }, body: new FormData(form) });
+      } catch (err) {
+        console.error('Background Formspree send failed:', err);
+      } finally {
+        if (submitBtn) { submitBtn.disabled = false; submitBtn.textContent = original || 'Request Demo'; }
+        form.reset();
+        closeModal();
+      }
+    });
+  })();
+
+</script>
+
+
+  
+</body>
+</html>
+
+

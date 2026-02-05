@@ -1,0 +1,113 @@
+/* === Shared Styling for All Pages === */
+
+/* Brand colors — canonical names */
+:root {
+  --hz-light:   #A8E6A3;
+  --hz-primary: #4A7C59;
+  --hz-dark:    #2F4F3F;
+  --hz-black:   #000000;
+
+  /* Aliases for older code that still uses --hertz-* */
+  --hertz-light:   var(--hz-light);
+  --hertz-primary: var(--hz-primary);
+  --hertz-dark:    var(--hz-dark);
+  --hertz-black:   var(--hz-black);
+
+  /* Logo sizes (single source of truth) */
+  --hz-logo-h-nav:  20px; /* header/nav height */
+  --hz-logo-h-foot: 20px; /* footer height */
+}
+
+.scrollbar-none::-webkit-scrollbar { display: none; }
+.scrollbar-none { -ms-overflow-style: none; scrollbar-width: none; }
+
+/* Hide horizontal scrollbar (still scrolls with swipe) */
+.scrollbar-none { -ms-overflow-style: none; scrollbar-width: none; }
+.scrollbar-none::-webkit-scrollbar { display: none; }
+
+
+/* hide scrollbars (mobile) */
+.scrollbar-none::-webkit-scrollbar{display:none}
+.scrollbar-none{-ms-overflow-style:none;scrollbar-width:none}
+
+/* gentle nudge for the chevrons */
+@keyframes hz-nudge {0%,100%{transform:translateX(0)}50%{transform:translateX(4px)}}
+.hz-nudge{animation:hz-nudge 1.2s ease-in-out infinite}
+
+/* Header logo */
+.hz-logo{
+  height: var(--hz-logo-h-nav) !important;
+  width: auto !important;
+  display: block;
+  object-fit: contain;
+}
+
+/* Footer logo */
+.hz-logo-footer{
+  height: var(--hz-logo-h-foot) !important;
+  width: auto !important;
+  display: block;
+  object-fit: contain;
+}
+
+/* Guard against opinionated resets that set img { width:100% } */
+img.hz-logo,
+img.hz-logo-footer {
+  width: auto !important;
+  max-width: none !important;
+}
+
+/* Buttons */
+.hz-btn-primary {
+  background-color: var(--hz-primary);
+  color: white;
+  padding: 0.75rem 2rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+.hz-btn-primary:hover {
+  background-color: var(--hz-dark);
+  transform: translateY(-2px);
+}
+
+/* Section Titles */
+.hz-section-title {
+  font-size: 1.875rem; /* ~ text-3xl */
+  font-weight: 600;
+  color: #1f2937; /* text-gray-900 */
+  margin-bottom: 1.5rem; /* mb-6 */
+  text-align: center;
+}
+
+/* Consistent Page Padding */
+.hz-section {
+  padding-top: 4rem;   /* pt-16 */
+  padding-bottom: 4rem;/* pb-16 */
+}
+
+/* Landscape separators */
+.hz-landscape {
+  width: 100%;
+  height: 16rem;       /* h-64 */
+  object-fit: cover;
+  user-select: none;
+  pointer-events: none;
+}
+
+/* Reusable pre-title (kicker) used above H1s */
+.hz-pretitle{
+  color: var(--hz-primary);
+  font-weight: 600;
+  letter-spacing: .02em;
+  margin-bottom: .75rem;
+  font-size: 1.125rem;     /* 18px on mobile */
+  line-height: 1.4;
+}
+@media (min-width: 768px){  /* md+ */
+  .hz-pretitle{ font-size: 1.25rem; }   /* 20px on tablets/desktop */
+}
+@media (min-width: 1280px){ /* xl */
+  .hz-pretitle{ font-size: 1.375rem; }  /* 22px on large screens (optional) */
+}
+

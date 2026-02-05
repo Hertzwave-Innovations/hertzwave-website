@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Scope 3 Prioritization — Hertzwave Guide</title>
+  <meta name="description" content="Focus on the largest, most influenceable Scope 3 categories first, and build a data-improvement roadmap."/>
+  <!-- Tailwind + Fonts + Icons -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <!-- IMPORTANT: relative path from /resources/guides/ -->
+  <link rel="stylesheet" href="../../styles.css"/>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
+  <style>
+    body { font-family:'Outfit',sans-serif }
+    /* Same article typography as other guides */
+    .guide-body h2 { font-size:1.5rem; line-height:1.35; font-weight:600; margin:2.25rem 0 1rem; color:#111827; }
+    .guide-body h3 { font-size:1.25rem; line-height:1.4;  font-weight:600; margin:1.5rem 0 .75rem;  color:#1f2937; }
+    .guide-body p  { margin:.9rem 0; color:#374151; }
+    .guide-body ul { margin:.5rem 0 1rem 1.25rem; list-style:disc;   color:#374151; }
+    .guide-body ol { margin:.5rem 0 1rem 1.25rem; list-style:decimal; color:#374151; }
+    .guide-body li { margin:.35rem 0 }
+    .callout { background:#ecfdf5; border:1px solid #a7f3d0; border-radius:.75rem; padding:1rem }
+  </style>
+</head>
+<body class="bg-white text-gray-900">
+
+  <!-- NAV -->
+  <nav class="fixed top-0 w-full bg-white/95 backdrop-blur-sm border-b border-gray-200 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-16">
+        <a href="/index.html" class="flex items-center">
+          <img src="/HW-Logo-Light.png" alt="Hertzwave" class="hz-logo"/>
+        </a>
+        <div class="hidden md:flex items-center space-x-8">
+          <a href="/platform.html"   class="text-gray-700 hover:text-[var(--hz-primary)]">Platform</a>
+          <a href="/solutions.html"  class="text-gray-700 hover:text-[var(--hz-primary)]">Solutions</a>
+          <a href="/industries.html" class="text-gray-700 hover:text-[var(--hz-primary)]">Industries</a>
+          <a href="/resources/"      class="text-[var(--hz-primary)] font-semibold">Resources</a>
+          <a href="/about.html"      class="text-gray-700 hover:text-[var(--hz-primary)]">About</a>
+        </div>
+        <!-- Fallback colors so the button is visible even if CSS vars fail -->
+        <a href="http://netzero.hertzwave.in" target="_blank" rel="noopener"
+           class="px-6 py-2 rounded-lg font-semibold text-white bg-[var(--hz-primary)] hover:bg-[var(--hz-dark)]
+                  bg-[#4A7C59] hover:bg-[#2F4F3F]">
+          Start Free Trial
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="pt-28 pb-14 bg-gradient-to-br from-green-50 via-white to-[color:var(--hz-light)]/20">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <p class="text-sm font-semibold text-[color:var(--hz-primary)] mb-2">Guide · Scope 3</p>
+      <h1 class="text-4xl lg:text-5xl font-semibold text-gray-900 leading-tight mb-4">Scope 3 Prioritization</h1>
+      <p class="text-gray-600 text-lg max-w-2xl mx-auto">
+        Focus on the largest, most influenceable categories first—then upgrade data quality over time with a clear roadmap.
+      </p>
+      <div class="text-sm text-gray-500 mt-3">9 min read · Updated Sep 2025</div>
+    </div>
+  </header>
+
+  <!-- BODY -->
+  <main class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-10 guide-body">
+    <h2>Start where impact and influence meet</h2>
+    <p>For most organizations, a handful of Scope 3 categories dominate emissions. Prioritize where the
+      combination of <em>materiality</em> (biggest tons) and <em>influence</em> (your ability to drive better data or reductions)
+      is highest.</p>
+
+    <h3>Typical high-priority categories</h3>
+    <ul>
+      <li><strong>Category 1 — Purchased Goods &amp; Services:</strong> move from spend-based to hybrid or supplier-specific methods; request activity data from strategic suppliers.</li>
+      <li><strong>Category 3 — Fuel &amp; Energy Related Activities (not in Scope 1/2):</strong> improve allocation and factors tied to your energy mix.</li>
+      <li><strong>Category 11 — Use of Sold Products:</strong> model realistic use-phase scenarios and regional grid dynamics where relevant.</li>
+    </ul>
+
+    <h2>Data-quality roadmap</h2>
+    <ol>
+      <li>Establish a credible baseline using reputable libraries (DEFRA, EPA, Ecoinvent).</li>
+      <li>Upgrade high-impact categories to hybrid methods (activity × industry factors).</li>
+      <li>Engage suppliers for <em>specific</em> activity and emission-factor data; track response rates.</li>
+      <li>Document methodologies, factors, and changes; prepare for assurance.</li>
+    </ol>
+
+    <div class="callout mt-6">
+      <strong>Next step:</strong> kick off supplier outreach with our
+      <a href="/resources/templates/scope3-supplier-survey-short.docx" class="underline text-[color:var(--hz-primary)]">short survey</a>
+      (low-materiality) and
+      <a href="/resources/templates/scope3-supplier-survey-long.docx" class="underline text-[color:var(--hz-primary)]">long survey</a>
+      (strategic vendors). For disclosures, align with the
+      <a href="/resources/templates/csrd-e1-checklist.xlsx" class="underline text-[color:var(--hz-primary)]">ESRS E1 checklist</a>.
+    </div>
+
+    <div class="mt-10">
+      <a href="/resources/" class="inline-flex items-center text-[color:var(--hz-primary)] font-semibold hover:underline">
+        <i class="fa-solid fa-arrow-left mr-2"></i>Back to Resources
+      </a>
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="bg-gray-900 text-white py-10 mt-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between">
+      <a href="/index.html">
+        <img src="/HW-Logo-Light.png" alt="Hertzwave" class="hz-logo-footer brightness-0 invert"/>
+      </a>
+      <p class="text-gray-400 text-sm mt-4 md:mt-0">© 2025 Hertzwave. All rights reserved.</p>
+    </div>
+  </footer>
+</body>
+</html>

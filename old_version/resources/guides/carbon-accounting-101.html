@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Carbon Accounting 101 — Hertzwave Guide</title>
+  <meta name="description" content="Understand Scopes 1–3, pick the right data hierarchy, run calculations correctly, and prepare audit-ready disclosures."/>
+  <!-- Tailwind + Fonts + Icons -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
+  <link rel="stylesheet" href="/styles.css">
+
+  <style>
+    /* Brand tokens (match your index.html colors) */
+    :root { --hz-light:#A8E6A3; --hz-primary:#4A7C59; --hz-dark:#2F4F3F; }
+    body { font-family:'Outfit',sans-serif }
+
+
+
+    /* Simple article typography (no Tailwind plugins) */
+    .guide-body h2 { font-size:1.5rem; line-height:1.35; font-weight:600; margin:2.25rem 0 1rem; color:#111827; }
+    .guide-body h3 { font-size:1.25rem; line-height:1.4;  font-weight:600; margin:1.5rem 0 .75rem;  color:#1f2937; }
+    .guide-body p  { margin:.9rem 0; color:#374151; }
+    .guide-body ul { margin:.5rem 0 1rem 1.25rem; list-style:disc;   color:#374151; }
+    .guide-body ol { margin:.5rem 0 1rem 1.25rem; list-style:decimal; color:#374151; }
+    .guide-body li { margin:.35rem 0 }
+    .callout { background:#ecfdf5; border:1px solid #a7f3d0; border-radius:.75rem; padding:1rem }
+  </style>
+</head>
+<body class="bg-white text-gray-900">
+
+  <!-- NAV -->
+  <nav class="fixed top-0 w-full bg-white/95 backdrop-blur-sm border-b border-gray-200 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-16">
+        <a href="/index.html" class="flex items-center">
+          <img src="/HW-Logo-Light.png" alt="Hertzwave" class="hz-logo"/>
+        </a>
+        <div class="hidden md:flex items-center space-x-8">
+          <a href="/platform.html"   class="text-gray-700 hover:text-[var(--hz-primary)]">Platform</a>
+          <a href="/solutions.html"  class="text-gray-700 hover:text-[var(--hz-primary)]">Solutions</a>
+          <a href="/industries.html" class="text-gray-700 hover:text-[var(--hz-primary)]">Industries</a>
+          <a href="/resources/"      class="text-[var(--hz-primary)] font-semibold">Resources</a>
+          <a href="/about.html"      class="text-gray-700 hover:text-[var(--hz-primary)]">About</a>
+          <a href="http://netzero.hertzwave.in" target="_blank" rel="noopener"
+             class="bg-[var(--hz-primary)] text-white px-6 py-2 rounded-lg hover:bg-[var(--hz-dark)] font-semibold">
+             Start Free Trial</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="pt-28 pb-14 bg-gradient-to-br from-green-50 via-white to-[color:var(--hz-light)]/20">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <p class="text-sm font-semibold text-[color:var(--hz-primary)] mb-2">Guide · GHG Protocol</p>
+      <h1 class="text-4xl lg:text-5xl font-semibold text-gray-900 leading-tight mb-4">Carbon Accounting 101</h1>
+      <p class="text-gray-600 text-lg max-w-2xl mx-auto">
+        A complete primer to measure emissions, choose the right data hierarchy, calculate accurately, and prepare audit-ready reports.
+      </p>
+      <div class="text-sm text-gray-500 mt-3">10 min read · Updated Sep 2025</div>
+    </div>
+  </header>
+
+  <!-- BODY -->
+  <main class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-10 guide-body">
+    <h2>What Is Carbon Accounting?</h2>
+    <p>Carbon accounting is the structured process of quantifying greenhouse gas (GHG) emissions across your organization and value chain. It enables enterprises to measure climate impact, comply with disclosure regulations (BRSR, CSRD, SEC), and design decarbonization strategies with credible baselines.</p>
+
+    <h2>Scopes Explained</h2>
+    <p>Most frameworks follow the <strong>GHG Protocol</strong>, which divides emissions into three scopes:</p>
+
+    <h3>Scope 1 — Direct Emissions</h3>
+    <ul>
+      <li>Stationary combustion: boilers, furnaces, gensets</li>
+      <li>Mobile combustion: company-owned vehicles, construction equipment</li>
+      <li>Fugitive/process: refrigerant leaks (R134a, R410a), SF₆ from switchgear</li>
+    </ul>
+
+    <h3>Scope 2 — Indirect Electricity</h3>
+    <p>Purchased electricity, heat, steam or cooling. Report in two views:</p>
+    <ul>
+      <li><strong>Location-based</strong>: grid-average emission factor</li>
+      <li><strong>Market-based</strong>: adjusted for PPAs, RECs, green tariffs (disclose instruments and residual mix)</li>
+    </ul>
+
+    <h3>Scope 3 — Value Chain</h3>
+    <p>Often 70–90% of total emissions. Typical material categories:</p>
+    <ul>
+      <li>Purchased goods &amp; services; <em>capital goods</em></li>
+      <li>Fuel &amp; energy related (not in Scope 1/2)</li>
+      <li>Upstream T&amp;D, business travel, commuting</li>
+      <li>Use-phase and end-of-life of sold products</li>
+    </ul>
+
+    <h2>Data Hierarchies</h2>
+    <ol>
+      <li>Direct activity data × specific emission factor (best)</li>
+      <li>Supplier-specific factors</li>
+      <li>Industry averages (e.g., DEFRA, Ecoinvent)</li>
+      <li>Spend-based estimates (least preferred)</li>
+    </ol>
+
+    <h2>Sample Calculation (Scope 1)</h2>
+    <div class="callout">
+      <pre class="whitespace-pre-wrap text-gray-700 text-sm">
+Diesel consumed: 12,000 litres
+Emission factor (DEFRA 2024): 2.54 kg CO₂e / litre
+Total = 12,000 × 2.54 / 1,000 = 30.48 tCO₂e
+      </pre>
+    </div>
+
+    <h2>Controls &amp; Assurance</h2>
+    <ul>
+      <li>Versioned emission factors with year, source and region</li>
+      <li>Locked reporting periods; reviewer sign-off workflow</li>
+      <li>Variance analysis vs prior period and drivers (vol/EF/mix)</li>
+      <li>Evidence vault: invoices, meter photos, grid proofs, PPAs/RECs</li>
+    </ul>
+
+    <div class="callout mt-6">
+      <strong>Next step:</strong> start structured data capture with the
+      <a href="/resources/templates/brsr-data-collection.xlsx" class="underline text-[color:var(--hz-primary)]">BRSR Data Collection Template</a>.
+    </div>
+
+    <div class="mt-10">
+      <a href="/resources/" class="inline-flex items-center text-[color:var(--hz-primary)] font-semibold hover:underline">
+        <i class="fa-solid fa-arrow-left mr-2"></i>Back to Resources
+      </a>
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="bg-gray-900 text-white py-10 mt-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between">
+      
+  <img src="/HW-Logo-Light.png" alt="Hertzwave" class="hz-logo-footer brightness-0 invert"/>
+      
+      <p class="text-gray-400 text-sm mt-4 md:mt-0">© 2025 Hertzwave. All rights reserved.</p>
+    </div>
+  </footer>
+</body>
+</html>
+

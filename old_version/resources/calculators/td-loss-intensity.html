@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>T&D Loss → Intensity</title>
+  <meta name="description" content="Translate loss percentage to delivered intensity." />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>body{font-family:'Outfit',sans-serif}</style>
+</head>
+<body class="bg-white text-gray-900">
+<div class="max-w-3xl mx-auto px-4 py-10">
+<a href="/resources/" class="text-emerald-700 underline">&larr; Back to Resources</a>
+
+  <h1 class="text-2xl font-semibold mb-2">T&D Loss → Intensity</h1>
+  <p class="text-gray-600 mb-6">Translate loss percentage to delivered intensity.</p>
+  <div class="grid gap-4">
+<label class="block">Energy sent out (MWh)<input id="eso" type="number" class="mt-1 w-full border rounded p-2"></label>
+<label class="block">T&D loss (%)<input id="loss" type="number" class="mt-1 w-full border rounded p-2" step="0.1"></label>
+<label class="block">Upstream EF (kgCO₂e/kWh)<input id="ef" type="number" class="mt-1 w-full border rounded p-2" step="0.0001"></label>
+<button id="calc" class="bg-emerald-600 text-white px-4 py-2 rounded w-full">Calculate</button>
+<div id="out" class="bg-emerald-50 p-4 rounded hidden"></div>
+</div>
+  <script>
+document.getElementById('calc').onclick = () => {
+  const eso = parseFloat(document.getElementById('eso').value||0) * 1000.0;
+  const loss = parseFloat(document.getElementById('loss').value||0)/100.0;
+  const ef = parseFloat(document.getElementById('ef').value||0);
+  const delivered = eso * (1 - loss);
+  const emissions = eso * ef / 1000.0;
+  const intensity = (emissions * 1000.0) / delivered;
+  const out = document.getElementById('out');
+  out.classList.remove('hidden');
+  out.innerHTML = `<div class='font-semibold'>Results</div>
+    <div class='mt-2'>Delivered energy: <span class='font-semibold'>${(delivered/1000.0).toFixed(1)}</span> MWh</div>
+    <div>Emissions: <span class='font-semibold'>${emissions.toFixed(2)}</span> tCO₂e</div>
+    <div>Delivered intensity: <span class='font-semibold'>${intensity.toFixed(3)}</span> kgCO₂e/kWh</div>`;
+};
+</script>
+
+</div>
+</body>
+</html>
