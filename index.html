@@ -20,25 +20,24 @@
   
   <meta name="description" content="Transform ESG complexity into clarity. HWCAP simplifies carbon accounting, sustainability reporting, and compliance for MSMEs and enterprises - from BRSR to global standards."/>
 
-  <!-- Tailwind CSS Play CDN (Production Ready) -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
-  
-  <!-- Suppress Tailwind CDN console warning -->
+  <!-- Suppress Tailwind CDN console warning — must run BEFORE the CDN script loads -->
   <script>
-    // Override console.warn to filter Tailwind CDN message
     (function() {
       const originalWarn = console.warn;
       console.warn = function(...args) {
         const message = args[0];
         if (typeof message === 'string' && message.includes('cdn.tailwindcss.com')) {
-          return; // Suppress Tailwind CDN warning
+          return;
         }
         originalWarn.apply(console, args);
       };
     })();
   </script>
+
+  <!-- Tailwind CSS Play CDN (Production Ready) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
   
   <script>
     // Tailwind config for custom Hertzwave colors
@@ -89,6 +88,26 @@
     }
     .navigator-banner {
       animation: gentle-pulse 3s ease-in-out infinite;
+    }
+
+    /* ===== Net-Zero Journey Progress Bar ===== */
+    .hz-nz-track {
+      background: #e5e7eb;
+      border-radius: 9999px;
+      height: 14px;
+      overflow: hidden;
+      position: relative;
+      width: 100%;
+    }
+    .hz-nz-fill {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, #A8E6A3, #4A7C59);
+      border-radius: 9999px;
+      transition: width 1.8s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .hz-nz-fill.animate {
+      width: 28%;
     }
   </style>
 </head>
@@ -289,6 +308,12 @@
           <p class="text-xl text-gray-600 mb-8 leading-relaxed font-light">
             <strong class="text-hertz-dark font-semibold">Hertzwave's TerraCAP</strong> simplifies ESG complexity for MSMEs and enterprises — from carbon accounting to complete sustainability reporting. One platform, made in India for India and the World.
           </p>
+          <!-- MSME Guide CTA -->
+          <a href="resources/msme-guide.html"
+             class="inline-flex items-center gap-2 bg-hertz-light text-hertz-dark px-6 py-3 rounded-lg font-semibold hover:bg-hertz-primary hover:text-white transition-all duration-300 shadow-md mt-2">
+            <i class="fas fa-book-open"></i>
+            Free MSME ESG Guide →
+          </a>
         </div>
 
         <!-- Carbon Dashboard Sample -->
@@ -348,6 +373,25 @@
             <i class="fas fa-arrow-right mr-2"></i>Start Navigator
           </a>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MSME Guide Banner -->
+  <section class="py-4 bg-amber-50 border-y border-amber-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col sm:flex-row items-center justify-between gap-3">
+        <div class="flex items-center gap-3 text-amber-900">
+          <i class="fas fa-store text-2xl text-amber-600"></i>
+          <div>
+            <span class="font-semibold text-base">Are you an MSME?</span>
+            <span class="text-sm font-light ml-2">Download our free guide on ESG compliance for small &amp; mid-size businesses in India.</span>
+          </div>
+        </div>
+        <a href="resources/terracap-msme-guide.pdf" download
+           class="bg-amber-500 text-white px-6 py-2 rounded-lg font-semibold hover:bg-amber-600 transition-colors whitespace-nowrap text-sm shadow">
+          <i class="fas fa-download mr-2"></i>Download the Free MSME Guide
+        </a>
       </div>
     </div>
   </section>
@@ -923,6 +967,7 @@
     <li><a href="/legal/privacy.html" class="hover:text-white">Privacy Policy</a></li>
     <li><a href="/legal/data-protection.html" class="hover:text-white">Data Protection</a></li>
     <li><a href="/legal/terms.html" class="hover:text-white">Terms of Use</a></li>
+    <li><a href="/resources/terracap-msme-guide.pdf" class="hover:text-white">MSME ESG Guide</a></li>
   </ul>
 
   <!-- Honest status note -->
@@ -1113,13 +1158,16 @@ form.addEventListener('submit', async (e) => {
       setTimeout(animateBar, 150);
     }
 
-    // Animate when section comes into view
+    // Animate every time section comes into view; reset when it leaves
     if ('IntersectionObserver' in window) {
       const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
             animateBar();
-            observer.disconnect();
+          } else {
+            // Reset so it re-animates cleanly next time
+            fill.classList.remove('animate');
+            void fill.offsetWidth;
           }
         });
       }, { threshold: 0.3 });
