@@ -1,0 +1,24 @@
+# robots.txt — https://www.hertzwave.in/
+# Allow all crawlers full access to the live site.
+User-agent: *
+Allow: /
+
+# Keep search engines away from legacy / non-public folders.
+# (Adjust or remove these lines if the folders don't exist in your repo.)
+Disallow: /old_version/
+Disallow: /downloads/
+Disallow: /index-old.html
+
+# Explicitly welcome major AI answer-engine crawlers (GEO).
+User-agent: GPTBot
+Allow: /
+User-agent: OAI-SearchBot
+Allow: /
+User-agent: PerplexityBot
+Allow: /
+User-agent: ClaudeBot
+Allow: /
+User-agent: Google-Extended
+Allow: /
+
+Sitemap: https://www.hertzwave.in/sitemap.xml
